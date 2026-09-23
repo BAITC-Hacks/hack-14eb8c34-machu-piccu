@@ -1,0 +1,115 @@
+{
+  "specification": {
+    "id": "CatBoost__GFS__global__default",
+    "model": "CatBoost",
+    "feature_group": "GFS",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2026-01",
+  "training_seconds": 2.031399200001033,
+  "features": [
+    "turbine_id",
+    "lead_hours",
+    "hour_sin",
+    "hour_cos",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "gfs_wind_speed_100m",
+    "gfs_wind_direction_100m_sin",
+    "gfs_wind_direction_100m_cos",
+    "gfs_temperature_2m",
+    "gfs_quality_ok"
+  ],
+  "segments": [
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "hour_sin",
+          "hour_cos",
+          "day_of_year_sin",
+          "day_of_year_cos",
+          "gfs_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "gfs_wind_direction_100m_cos",
+          "gfs_temperature_2m",
+          "gfs_quality_ok"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_1",
+            "turbine_2"
+          ]
+        },
+        "native_categories": true,
+        "encoded_features": [
+          "turbine_id",
+          "lead_hours",
+          "hour_sin",
+          "hour_cos",
+          "day_of_year_sin",
+          "day_of_year_cos",
+          "gfs_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "gfs_wind_direction_100m_cos",
+          "gfs_temperature_2m",
+          "gfs_quality_ok"
+        ]
+      },
+      "model_name": "CatBoost",
+      "parameters": {
+        "iterations": 125,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5,
+        "loss_function": "MAE",
+        "eval_metric": "MAE",
+        "random_seed": 20260923,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      "iterations": 125,
+      "training_seconds": 1.9580596000014339,
+      "stopping": {
+        "inner_train_max_target": "2025-12-07 16:00:00+00:00",
+        "inner_valid_min_target": "2025-12-09 00:00:00+00:00",
+        "inner_first_issue": "2025-12-07 19:00:00+00:00",
+        "core_rows": 59243,
+        "tail_rows": 1960
+      },
+      "train_rows": 61327,
+      "train_max_target": "2025-12-29 16:00:00+00:00",
+      "train_max_available": "2025-12-29 18:00:00+00:00",
+      "segment": "global",
+      "match": {},
+      "native_importance": {
+        "turbine_id": 0.0005184046891767178,
+        "lead_hours": 0.0021940928524751256,
+        "hour_sin": 0.03890247932295895,
+        "hour_cos": 0.019055182306125417,
+        "day_of_year_sin": 0.0400974307210805,
+        "day_of_year_cos": 0.05059069987400168,
+        "gfs_wind_speed_100m": 0.6429951072999102,
+        "gfs_wind_direction_100m_sin": 0.06725200326311624,
+        "gfs_wind_direction_100m_cos": 0.07280079077359077,
+        "gfs_temperature_2m": 0.06559380889756436,
+        "gfs_quality_ok": 0.0
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    }
+  ],
+  "metrics": {
+    "n": 2976,
+    "MAE": 0.1886386186539975,
+    "RMSE": 0.2678851440575223,
+    "nMAE": 0.1886386186539975,
+    "nMAE_pct": 18.863861865399752,
+    "Bias": 0.031121751363793908,
+    "R2": 0.3698718366225394
+  }
+}

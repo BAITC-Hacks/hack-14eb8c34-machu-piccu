@@ -1,0 +1,435 @@
+{
+  "specification": {
+    "id": "LightGBM__Top15__horizon_turbine__default",
+    "model": "LightGBM",
+    "feature_group": "Top15",
+    "architecture": "horizon_turbine",
+    "variant": "default"
+  },
+  "fold": "2025-11",
+  "training_seconds": 2.0680878999992274,
+  "features": [
+    "turbine_id",
+    "lead_hours",
+    "ensemble_wind_speed_100m",
+    "ecmwf_wind_speed_10m",
+    "wind_speed_10m_mean",
+    "ecmwf_surface_pressure",
+    "day_of_year_cos",
+    "day_of_year_sin",
+    "ecmwf_wind_speed_100m",
+    "gfs_wind_direction_100m_sin",
+    "icon_wind_gusts_10m",
+    "gfs_wind_direction_10m_cos",
+    "hour_sin",
+    "icon_wind_speed_100m",
+    "gfs_relative_humidity_2m"
+  ],
+  "segments": [
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_1"
+          ]
+        },
+        "native_categories": false,
+        "encoded_features": [
+          "turbine_id__cat_0",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ]
+      },
+      "model_name": "LightGBM",
+      "parameters": {
+        "n_estimators": 230,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "learning_rate": 0.05,
+        "min_child_samples": 80,
+        "colsample_bytree": 0.9,
+        "subsample": 0.9,
+        "subsample_freq": 1,
+        "objective": "regression_l1",
+        "reg_lambda": 5,
+        "random_state": 20260923,
+        "n_jobs": 4,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1
+      },
+      "iterations": 230,
+      "training_seconds": 0.5799321000013151,
+      "stopping": {
+        "inner_train_max_target": "2025-10-08 16:00:00+00:00",
+        "inner_valid_min_target": "2025-10-09 00:00:00+00:00",
+        "inner_first_issue": "2025-10-08 19:00:00+00:00",
+        "core_rows": 12743,
+        "tail_rows": 494
+      },
+      "train_rows": 13244,
+      "train_max_target": "2025-10-29 16:00:00+00:00",
+      "train_max_available": "2025-10-29 18:00:00+00:00",
+      "segment": "D1__turbine_1",
+      "match": {
+        "horizon_bucket": "D1",
+        "turbine_id": "turbine_1"
+      },
+      "native_importance": {
+        "turbine_id": 0.0,
+        "lead_hours": 0.014656284576230456,
+        "ensemble_wind_speed_100m": 0.5005034559185284,
+        "ecmwf_wind_speed_10m": 0.07113478911592004,
+        "wind_speed_10m_mean": 0.10006009943793302,
+        "ecmwf_surface_pressure": 0.044523321297231085,
+        "day_of_year_cos": 0.04566739508248044,
+        "day_of_year_sin": 0.03860561965017801,
+        "ecmwf_wind_speed_100m": 0.0364757514007583,
+        "gfs_wind_direction_100m_sin": 0.03302182013653303,
+        "icon_wind_gusts_10m": 0.021903378871213294,
+        "gfs_wind_direction_10m_cos": 0.029900755171713478,
+        "hour_sin": 0.012331100324799038,
+        "icon_wind_speed_100m": 0.02359260830041286,
+        "gfs_relative_humidity_2m": 0.027623620716068522
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_2"
+          ]
+        },
+        "native_categories": false,
+        "encoded_features": [
+          "turbine_id__cat_0",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ]
+      },
+      "model_name": "LightGBM",
+      "parameters": {
+        "n_estimators": 245,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "learning_rate": 0.05,
+        "min_child_samples": 80,
+        "colsample_bytree": 0.9,
+        "subsample": 0.9,
+        "subsample_freq": 1,
+        "objective": "regression_l1",
+        "reg_lambda": 5,
+        "random_state": 20260923,
+        "n_jobs": 4,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1
+      },
+      "iterations": 245,
+      "training_seconds": 0.5960486000003584,
+      "stopping": {
+        "inner_train_max_target": "2025-10-08 16:00:00+00:00",
+        "inner_valid_min_target": "2025-10-09 00:00:00+00:00",
+        "inner_first_issue": "2025-10-08 19:00:00+00:00",
+        "core_rows": 14016,
+        "tail_rows": 494
+      },
+      "train_rows": 14517,
+      "train_max_target": "2025-10-29 16:00:00+00:00",
+      "train_max_available": "2025-10-29 18:00:00+00:00",
+      "segment": "D1__turbine_2",
+      "match": {
+        "horizon_bucket": "D1",
+        "turbine_id": "turbine_2"
+      },
+      "native_importance": {
+        "turbine_id": 0.0,
+        "lead_hours": 0.01411600751040255,
+        "ensemble_wind_speed_100m": 0.48891132727703474,
+        "ecmwf_wind_speed_10m": 0.06326830050235142,
+        "wind_speed_10m_mean": 0.12126166660263377,
+        "ecmwf_surface_pressure": 0.04455527279411013,
+        "day_of_year_cos": 0.0404129430488664,
+        "day_of_year_sin": 0.03550879675761577,
+        "ecmwf_wind_speed_100m": 0.03435923936266997,
+        "gfs_wind_direction_100m_sin": 0.029934494476891182,
+        "icon_wind_gusts_10m": 0.03201473920582335,
+        "gfs_wind_direction_10m_cos": 0.028967573868868748,
+        "hour_sin": 0.012650336621887527,
+        "icon_wind_speed_100m": 0.026697771072908192,
+        "gfs_relative_humidity_2m": 0.027341530897936266
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_1"
+          ]
+        },
+        "native_categories": false,
+        "encoded_features": [
+          "turbine_id__cat_0",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ]
+      },
+      "model_name": "LightGBM",
+      "parameters": {
+        "n_estimators": 148,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "learning_rate": 0.05,
+        "min_child_samples": 80,
+        "colsample_bytree": 0.9,
+        "subsample": 0.9,
+        "subsample_freq": 1,
+        "objective": "regression_l1",
+        "reg_lambda": 5,
+        "random_state": 20260923,
+        "n_jobs": 4,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1
+      },
+      "iterations": 148,
+      "training_seconds": 0.38928930000110995,
+      "stopping": {
+        "inner_train_max_target": "2025-10-07 16:00:00+00:00",
+        "inner_valid_min_target": "2025-10-09 00:00:00+00:00",
+        "inner_first_issue": "2025-10-07 19:00:00+00:00",
+        "core_rows": 12697,
+        "tail_rows": 494
+      },
+      "train_rows": 13222,
+      "train_max_target": "2025-10-29 16:00:00+00:00",
+      "train_max_available": "2025-10-29 18:00:00+00:00",
+      "segment": "D2__turbine_1",
+      "match": {
+        "horizon_bucket": "D2",
+        "turbine_id": "turbine_1"
+      },
+      "native_importance": {
+        "turbine_id": 0.0,
+        "lead_hours": 0.015913080280694592,
+        "ensemble_wind_speed_100m": 0.5145548081648672,
+        "ecmwf_wind_speed_10m": 0.09185791056033621,
+        "wind_speed_10m_mean": 0.07983977499155012,
+        "ecmwf_surface_pressure": 0.04649150702799199,
+        "day_of_year_cos": 0.04302823493152089,
+        "day_of_year_sin": 0.040154502607344704,
+        "ecmwf_wind_speed_100m": 0.04207079319777229,
+        "gfs_wind_direction_100m_sin": 0.029094213449350845,
+        "icon_wind_gusts_10m": 0.01650617441191293,
+        "gfs_wind_direction_10m_cos": 0.025238081118980578,
+        "hour_sin": 0.011040086383976187,
+        "icon_wind_speed_100m": 0.019888431071297286,
+        "gfs_relative_humidity_2m": 0.024322401802404227
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_2"
+          ]
+        },
+        "native_categories": false,
+        "encoded_features": [
+          "turbine_id__cat_0",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ]
+      },
+      "model_name": "LightGBM",
+      "parameters": {
+        "n_estimators": 108,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "learning_rate": 0.05,
+        "min_child_samples": 80,
+        "colsample_bytree": 0.9,
+        "subsample": 0.9,
+        "subsample_freq": 1,
+        "objective": "regression_l1",
+        "reg_lambda": 5,
+        "random_state": 20260923,
+        "n_jobs": 4,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1
+      },
+      "iterations": 108,
+      "training_seconds": 0.33535439999832306,
+      "stopping": {
+        "inner_train_max_target": "2025-10-07 16:00:00+00:00",
+        "inner_valid_min_target": "2025-10-09 00:00:00+00:00",
+        "inner_first_issue": "2025-10-07 19:00:00+00:00",
+        "core_rows": 13991,
+        "tail_rows": 494
+      },
+      "train_rows": 14516,
+      "train_max_target": "2025-10-29 16:00:00+00:00",
+      "train_max_available": "2025-10-29 18:00:00+00:00",
+      "segment": "D2__turbine_2",
+      "match": {
+        "horizon_bucket": "D2",
+        "turbine_id": "turbine_2"
+      },
+      "native_importance": {
+        "turbine_id": 0.0,
+        "lead_hours": 0.012469886381731205,
+        "ensemble_wind_speed_100m": 0.5315583492215291,
+        "ecmwf_wind_speed_10m": 0.10629958431347769,
+        "wind_speed_10m_mean": 0.10901088559705174,
+        "ecmwf_surface_pressure": 0.0425531736213065,
+        "day_of_year_cos": 0.029796640220770623,
+        "day_of_year_sin": 0.03191047727692237,
+        "ecmwf_wind_speed_100m": 0.025306903176751588,
+        "gfs_wind_direction_100m_sin": 0.02891637542320494,
+        "icon_wind_gusts_10m": 0.021625152417412415,
+        "gfs_wind_direction_10m_cos": 0.021483749835499454,
+        "hour_sin": 0.008549310850374848,
+        "icon_wind_speed_100m": 0.011996072266456138,
+        "gfs_relative_humidity_2m": 0.018523439397511332
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    }
+  ],
+  "metrics": {
+    "n": 2880,
+    "MAE": 0.12948218830413968,
+    "RMSE": 0.19729461119286062,
+    "nMAE": 0.12948218830413968,
+    "nMAE_pct": 12.948218830413968,
+    "Bias": -0.005471799497761001,
+    "R2": 0.7238771365828798
+  }
+}

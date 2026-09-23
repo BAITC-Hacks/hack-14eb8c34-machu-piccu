@@ -1,0 +1,137 @@
+{
+  "specification": {
+    "id": "LightGBM__Top15__global__default",
+    "model": "LightGBM",
+    "feature_group": "Top15",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2025-12",
+  "training_seconds": 0.7682708000029379,
+  "features": [
+    "turbine_id",
+    "lead_hours",
+    "ensemble_wind_speed_100m",
+    "ecmwf_wind_speed_10m",
+    "wind_speed_10m_mean",
+    "ecmwf_surface_pressure",
+    "day_of_year_cos",
+    "day_of_year_sin",
+    "ecmwf_wind_speed_100m",
+    "gfs_wind_direction_100m_sin",
+    "icon_wind_gusts_10m",
+    "gfs_wind_direction_10m_cos",
+    "hour_sin",
+    "icon_wind_speed_100m",
+    "gfs_relative_humidity_2m"
+  ],
+  "segments": [
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_1",
+            "turbine_2"
+          ]
+        },
+        "native_categories": false,
+        "encoded_features": [
+          "turbine_id__cat_0",
+          "turbine_id__cat_1",
+          "lead_hours",
+          "ensemble_wind_speed_100m",
+          "ecmwf_wind_speed_10m",
+          "wind_speed_10m_mean",
+          "ecmwf_surface_pressure",
+          "day_of_year_cos",
+          "day_of_year_sin",
+          "ecmwf_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "icon_wind_gusts_10m",
+          "gfs_wind_direction_10m_cos",
+          "hour_sin",
+          "icon_wind_speed_100m",
+          "gfs_relative_humidity_2m"
+        ]
+      },
+      "model_name": "LightGBM",
+      "parameters": {
+        "n_estimators": 96,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "learning_rate": 0.05,
+        "min_child_samples": 80,
+        "colsample_bytree": 0.9,
+        "subsample": 0.9,
+        "subsample_freq": 1,
+        "objective": "regression_l1",
+        "reg_lambda": 5,
+        "random_state": 20260923,
+        "n_jobs": 4,
+        "deterministic": true,
+        "force_col_wise": true,
+        "verbosity": -1
+      },
+      "iterations": 96,
+      "training_seconds": 0.6888020999977016,
+      "stopping": {
+        "inner_train_max_target": "2025-11-06 16:00:00+00:00",
+        "inner_valid_min_target": "2025-11-08 00:00:00+00:00",
+        "inner_first_issue": "2025-11-06 19:00:00+00:00",
+        "core_rows": 56267,
+        "tail_rows": 1988
+      },
+      "train_rows": 58379,
+      "train_max_target": "2025-11-28 16:00:00+00:00",
+      "train_max_available": "2025-11-28 18:00:00+00:00",
+      "segment": "global",
+      "match": {},
+      "native_importance": {
+        "turbine_id": 0.001484334986433475,
+        "lead_hours": 0.0026522849343635197,
+        "ensemble_wind_speed_100m": 0.5754140410818782,
+        "ecmwf_wind_speed_10m": 0.09396150376634538,
+        "wind_speed_10m_mean": 0.12968270466686346,
+        "ecmwf_surface_pressure": 0.028710193531631217,
+        "day_of_year_cos": 0.025126655044868954,
+        "day_of_year_sin": 0.024952767322843575,
+        "ecmwf_wind_speed_100m": 0.02132137812546508,
+        "gfs_wind_direction_100m_sin": 0.02149426623907606,
+        "icon_wind_gusts_10m": 0.020432900507072672,
+        "gfs_wind_direction_10m_cos": 0.02045173248323058,
+        "hour_sin": 0.010889962704453585,
+        "icon_wind_speed_100m": 0.007271772235992341,
+        "gfs_relative_humidity_2m": 0.016153502369481872
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    }
+  ],
+  "metrics": {
+    "n": 2948,
+    "MAE": 0.17288909948221096,
+    "RMSE": 0.26160428102602207,
+    "nMAE": 0.17288909948221096,
+    "nMAE_pct": 17.288909948221097,
+    "Bias": 0.010420513559123585,
+    "R2": 0.5286168702755518
+  }
+}

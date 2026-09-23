@@ -1,0 +1,22 @@
+{
+  "specification": {
+    "id": "HistoricalMedian__Baseline__global__default",
+    "model": "HistoricalMedian",
+    "feature_group": "Baseline",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2026-01",
+  "training_seconds": 0.18165249999947264,
+  "features": [],
+  "segments": [],
+  "metrics": {
+    "n": 2976,
+    "MAE": 0.2697272625448029,
+    "RMSE": 0.34597566178294525,
+    "nMAE": 0.2697272625448029,
+    "nMAE_pct": 26.97272625448029,
+    "Bias": -0.08543850806451612,
+    "R2": -0.05104843138757342
+  }
+}

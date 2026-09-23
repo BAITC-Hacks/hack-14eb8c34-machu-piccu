@@ -1,0 +1,22 @@
+{
+  "specification": {
+    "id": "HistoricalMean__Baseline__global__default",
+    "model": "HistoricalMean",
+    "feature_group": "Baseline",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2025-11",
+  "training_seconds": 0.1594351000021561,
+  "features": [],
+  "segments": [],
+  "metrics": {
+    "n": 2880,
+    "MAE": 0.3307973482689512,
+    "RMSE": 0.3749707659311765,
+    "nMAE": 0.3307973482689512,
+    "nMAE_pct": 33.07973482689512,
+    "Bias": -0.039698327085509175,
+    "R2": 0.0026060223882040656
+  }
+}

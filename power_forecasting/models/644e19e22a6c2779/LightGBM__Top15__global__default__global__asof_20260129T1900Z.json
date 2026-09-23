@@ -1,0 +1,90 @@
+{
+  "schema": {
+    "features": [
+      "turbine_id",
+      "lead_hours",
+      "ensemble_wind_speed_100m",
+      "ecmwf_wind_speed_10m",
+      "wind_speed_10m_mean",
+      "ecmwf_surface_pressure",
+      "day_of_year_cos",
+      "day_of_year_sin",
+      "ecmwf_wind_speed_100m",
+      "gfs_wind_direction_100m_sin",
+      "icon_wind_gusts_10m",
+      "gfs_wind_direction_10m_cos",
+      "hour_sin",
+      "icon_wind_speed_100m",
+      "gfs_relative_humidity_2m"
+    ],
+    "categories": {
+      "turbine_id": [
+        "turbine_1",
+        "turbine_2"
+      ]
+    },
+    "native_categories": false,
+    "encoded_features": [
+      "turbine_id__cat_0",
+      "turbine_id__cat_1",
+      "lead_hours",
+      "ensemble_wind_speed_100m",
+      "ecmwf_wind_speed_10m",
+      "wind_speed_10m_mean",
+      "ecmwf_surface_pressure",
+      "day_of_year_cos",
+      "day_of_year_sin",
+      "ecmwf_wind_speed_100m",
+      "gfs_wind_direction_100m_sin",
+      "icon_wind_gusts_10m",
+      "gfs_wind_direction_10m_cos",
+      "hour_sin",
+      "icon_wind_speed_100m",
+      "gfs_relative_humidity_2m"
+    ]
+  },
+  "model_name": "LightGBM",
+  "parameters": {
+    "n_estimators": 143,
+    "num_leaves": 31,
+    "max_depth": -1,
+    "learning_rate": 0.05,
+    "min_child_samples": 80,
+    "colsample_bytree": 0.9,
+    "subsample": 0.9,
+    "subsample_freq": 1,
+    "objective": "regression_l1",
+    "reg_lambda": 5,
+    "random_state": 20260923,
+    "n_jobs": 4,
+    "deterministic": true,
+    "force_col_wise": true,
+    "verbosity": -1
+  },
+  "iterations": 143,
+  "training_seconds": 0.4498351000002003,
+  "stopping": {},
+  "train_rows": 64303,
+  "train_max_target": "2026-01-29 16:00:00+00:00",
+  "train_max_available": "2026-01-29 18:00:00+00:00",
+  "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260129T1900Z.joblib",
+  "model_sha256": "3a9841a755f362085ab8c684078796fc667e5f810df5cf8751c10a91c599ef37",
+  "native_model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260129T1900Z.txt",
+  "experiment_id": "LightGBM__Top15__global__default",
+  "feature_group": "Top15",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "pyarrow": "23.0.1",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "python": "3.12.14"
+  },
+  "seed": 20260923,
+  "cutoff_kind": "asof_20260129T1900Z"
+}

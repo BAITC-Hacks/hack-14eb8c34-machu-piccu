@@ -2,6 +2,10 @@
 
 This directory is an isolated addition to the existing WindAgent repository. It does not replace the repository-root source, README, models or submission.
 
+## Jury-ready branch update
+
+In `feature/jury-ready`, the prepared Parquet datasets, four trained model checkpoints, all 53 experiments' out-of-fold predictions, and a checksum manifest ARE included. The exclusions and manual artifact-copy steps below describe the earlier code-only `feature/power-forecasting` branch. They do not apply to the jury-ready bundle. Start with [JURY_GUIDE.md](JURY_GUIDE.md); after dependency installation, run `python judge.py` or `python judge.py --retrain-winner` without downloads or manual data transfer.
+
 ## What is included
 
 - Standalone weather-dataset and ML code, configurations, dependency versions and tests.

@@ -1,0 +1,22 @@
+{
+  "specification": {
+    "id": "Persistence__Baseline__global__default",
+    "model": "Persistence",
+    "feature_group": "Baseline",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2026-01",
+  "training_seconds": 0.08371519999855082,
+  "features": [],
+  "segments": [],
+  "metrics": {
+    "n": 2976,
+    "MAE": 0.30820844534050174,
+    "RMSE": 0.45692279795063523,
+    "nMAE": 0.30820844534050174,
+    "nMAE_pct": 30.820844534050174,
+    "Bias": -0.28893985215053763,
+    "R2": -0.8332313943525489
+  }
+}

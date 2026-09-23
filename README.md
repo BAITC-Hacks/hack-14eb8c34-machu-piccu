@@ -1,5 +1,7 @@
 # WindAgent — Agentic hourly wind-power forecasting
 
+> **Jury-ready branch:** the self-contained compact ML submission is in `power_forecasting/`. Start with [JURY_README.md](JURY_README.md) for included models/data, offline checks and fresh validation replay. The original WindAgent description below is a separate solution with different timezone/horizon assumptions.
+
 An agentic AI system that forecasts hourly output for a two-turbine wind site in the
 Shelek corridor, Kazakhstan, 24–48 hours ahead. It fetches its own weather data from
 open sources, runs a trained power model, analyses the result, and recomputes when

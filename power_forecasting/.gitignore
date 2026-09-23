@@ -22,3 +22,4 @@ models/[0-9a-f][0-9a-f][0-9a-f][0-9a-f]*/
 predictions/validation_predictions.parquet
 reports/training_exclusions.csv
 reports/ml_active_run.json
+jury_results/

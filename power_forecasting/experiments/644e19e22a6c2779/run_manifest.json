@@ -1,0 +1,77 @@
+{
+  "run_id": "644e19e22a6c2779",
+  "inputs": {
+    "data/final/training_dataset.parquet": "01bb7bc09d9dd1c374f5ed72a36fda47405eacc286f730d622ae879516e67828",
+    "data/final/competition_features.parquet": "0b779578b5f1fa302ea185cb7711ff646eb05415af6e08e523b5f0c279a5a52c",
+    "data/final/training_weather_dataset.parquet": "38787af8551b724b1283cbd06573d6dd050cf856f2946cdb9721f81da63ee319",
+    "data/processed/scada_hourly.parquet": "246ddd5da8fd7a2a130c4529ce71f6d6442dd1559454c6835d52a18da56cc9aa",
+    "ml_config.json": "9ca0fc69b8d188550561ddaddda32bee5d1a4d89f93b40c0bbbba294ad4adbf4",
+    "src/ml_data.py": "26122fa02f918fffe98e962886de12c03306c58af35beb90f40088826bde91a6",
+    "src/ml_models.py": "42f1c6c2c30a2a7700f9584b3e1d254df9a979ac476e87b4ba62527f55782441",
+    "src/ml_selection.py": "f52e5fec0d436254f4f9d48c09641751f961e574b315b487e1dd6f0dd18aa345",
+    "src/ml_experiments.py": "8a393b842452c49e60d443b25925af7be7c9aaf1d71a48185aaa9b987b96ee4f"
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "pyarrow": "23.0.1",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "python": "3.12.14"
+  },
+  "config": {
+    "seed": 20260923,
+    "threads": 4,
+    "validation_months": 4,
+    "minimum_month_coverage": 0.85,
+    "inner_validation_days": 21,
+    "early_stopping_rounds": 40,
+    "max_iterations": 500,
+    "tuning_iterations": 800,
+    "top_configurations_to_tune": 3,
+    "simplicity_tolerance_relative": 0.005,
+    "observation_delay_hours": 2,
+    "clip_bounds": [
+      0.0,
+      1.0
+    ],
+    "category_columns": [
+      "turbine_id",
+      "horizon_bucket",
+      "best_weather_model_recent"
+    ],
+    "validation_weather_history": "freeze_before_validation_month_with_issue_time_cutoff",
+    "models": [
+      "CatBoost",
+      "LightGBM",
+      "XGBoost"
+    ],
+    "feature_groups": [
+      "ECMWF",
+      "GFS",
+      "ICON",
+      "Simple",
+      "Weighted",
+      "All",
+      "All_Disagreement",
+      "Full"
+    ],
+    "maximum_preferred_features": 35,
+    "large_model_required_relative_gain": 0.02,
+    "selection_max_missing_fraction": 0.6,
+    "selection_near_constant_fraction": 0.995,
+    "selection_correlation_threshold": 0.98,
+    "feature_count_grid": [
+      10,
+      15,
+      20,
+      30,
+      50
+    ]
+  }
+}

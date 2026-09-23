@@ -1,0 +1,10 @@
+# Stable source-code hashes for the bundled experiment fingerprint.
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yaml text eol=lf
+*.csv text eol=lf
+*.parquet binary
+*.joblib binary
+*.png binary

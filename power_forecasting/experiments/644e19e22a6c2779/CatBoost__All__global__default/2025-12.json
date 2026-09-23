@@ -1,0 +1,135 @@
+{
+  "specification": {
+    "id": "CatBoost__All__global__default",
+    "model": "CatBoost",
+    "feature_group": "All",
+    "architecture": "global",
+    "variant": "default"
+  },
+  "fold": "2025-12",
+  "training_seconds": 1.92383609999888,
+  "features": [
+    "turbine_id",
+    "lead_hours",
+    "hour_sin",
+    "hour_cos",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "ecmwf_wind_speed_100m",
+    "ecmwf_wind_direction_100m_sin",
+    "ecmwf_wind_direction_100m_cos",
+    "gfs_wind_speed_100m",
+    "gfs_wind_direction_100m_sin",
+    "gfs_wind_direction_100m_cos",
+    "icon_wind_speed_100m",
+    "icon_wind_direction_100m_sin",
+    "icon_wind_direction_100m_cos",
+    "temperature_2m_mean"
+  ],
+  "segments": [
+    {
+      "schema": {
+        "features": [
+          "turbine_id",
+          "lead_hours",
+          "hour_sin",
+          "hour_cos",
+          "day_of_year_sin",
+          "day_of_year_cos",
+          "ecmwf_wind_speed_100m",
+          "ecmwf_wind_direction_100m_sin",
+          "ecmwf_wind_direction_100m_cos",
+          "gfs_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "gfs_wind_direction_100m_cos",
+          "icon_wind_speed_100m",
+          "icon_wind_direction_100m_sin",
+          "icon_wind_direction_100m_cos",
+          "temperature_2m_mean"
+        ],
+        "categories": {
+          "turbine_id": [
+            "turbine_1",
+            "turbine_2"
+          ]
+        },
+        "native_categories": true,
+        "encoded_features": [
+          "turbine_id",
+          "lead_hours",
+          "hour_sin",
+          "hour_cos",
+          "day_of_year_sin",
+          "day_of_year_cos",
+          "ecmwf_wind_speed_100m",
+          "ecmwf_wind_direction_100m_sin",
+          "ecmwf_wind_direction_100m_cos",
+          "gfs_wind_speed_100m",
+          "gfs_wind_direction_100m_sin",
+          "gfs_wind_direction_100m_cos",
+          "icon_wind_speed_100m",
+          "icon_wind_direction_100m_sin",
+          "icon_wind_direction_100m_cos",
+          "temperature_2m_mean"
+        ]
+      },
+      "model_name": "CatBoost",
+      "parameters": {
+        "iterations": 99,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5,
+        "loss_function": "MAE",
+        "eval_metric": "MAE",
+        "random_seed": 20260923,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      "iterations": 99,
+      "training_seconds": 1.8471662999982073,
+      "stopping": {
+        "inner_train_max_target": "2025-11-06 16:00:00+00:00",
+        "inner_valid_min_target": "2025-11-08 00:00:00+00:00",
+        "inner_first_issue": "2025-11-06 19:00:00+00:00",
+        "core_rows": 56267,
+        "tail_rows": 1988
+      },
+      "train_rows": 58379,
+      "train_max_target": "2025-11-28 16:00:00+00:00",
+      "train_max_available": "2025-11-28 18:00:00+00:00",
+      "segment": "global",
+      "match": {},
+      "native_importance": {
+        "turbine_id": 0.00018720163158482877,
+        "lead_hours": 0.0008470189092328811,
+        "hour_sin": 0.024832436058580057,
+        "hour_cos": 0.031104993269305,
+        "day_of_year_sin": 0.007122715079502315,
+        "day_of_year_cos": 0.019336020437764043,
+        "ecmwf_wind_speed_100m": 0.27462281302147157,
+        "ecmwf_wind_direction_100m_sin": 0.019524633870845454,
+        "ecmwf_wind_direction_100m_cos": 0.012697985600980463,
+        "gfs_wind_speed_100m": 0.22820945259054295,
+        "gfs_wind_direction_100m_sin": 0.0234058135008864,
+        "gfs_wind_direction_100m_cos": 0.023289748858846816,
+        "icon_wind_speed_100m": 0.30251955847719547,
+        "icon_wind_direction_100m_sin": 0.0182912965296185,
+        "icon_wind_direction_100m_cos": 0.0058018251245042125,
+        "temperature_2m_mean": 0.008206487039139104
+      },
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    }
+  ],
+  "metrics": {
+    "n": 2948,
+    "MAE": 0.17547135973829828,
+    "RMSE": 0.2601773219053048,
+    "nMAE": 0.17547135973829828,
+    "nMAE_pct": 17.54713597382983,
+    "Bias": 0.028061269539728994,
+    "R2": 0.5337453026888301
+  }
+}

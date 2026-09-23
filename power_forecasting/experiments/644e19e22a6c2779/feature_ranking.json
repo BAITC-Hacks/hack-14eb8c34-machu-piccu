@@ -1,0 +1,1301 @@
+{
+  "training_max_target": "2025-09-28 16:00:00+00:00",
+  "ranking_model": "LightGBM",
+  "ranked_candidates": [
+    "turbine_id",
+    "lead_hours",
+    "ensemble_wind_speed_100m",
+    "ecmwf_wind_speed_10m",
+    "wind_speed_10m_mean",
+    "ecmwf_surface_pressure",
+    "day_of_year_cos",
+    "day_of_year_sin",
+    "ecmwf_wind_speed_100m",
+    "gfs_wind_direction_100m_sin",
+    "icon_wind_gusts_10m",
+    "gfs_wind_direction_10m_cos",
+    "hour_sin",
+    "icon_wind_speed_100m",
+    "gfs_relative_humidity_2m",
+    "gfs_wind_speed_10m",
+    "ecmwf_relative_humidity_2m",
+    "ecmwf_temperature_2m",
+    "ensemble_wind_direction_100m_circular_dispersion",
+    "hour_cos",
+    "ensemble_relative_humidity_2m",
+    "ensemble_wind_gusts_10m",
+    "gfs_wind_direction_10m_sin",
+    "ecmwf_wind_direction_100m_sin",
+    "wind_speed_models_std",
+    "ecmwf_wind_direction_10m_sin",
+    "icon_weight",
+    "ecmwf_weight",
+    "gfs_wind_mae_30d",
+    "icon_wind_speed_10m",
+    "ecmwf_temperature_weight",
+    "temperature_models_std",
+    "ensemble_wind_direction_100m_sin",
+    "gfs_temperature_weight",
+    "gfs_wind_speed_100m",
+    "ensemble_wind_direction_10m_cos",
+    "icon_temperature_weight",
+    "ensemble_wind_direction_10m_sin",
+    "ecmwf_wind_direction_100m_cos",
+    "icon_wind_direction_10m_sin",
+    "gfs_wind_gusts_10m",
+    "icon_relative_humidity_2m",
+    "ecmwf_wind_mae_30d",
+    "ensemble_wind_direction_100m_cos",
+    "wind_direction_10m_circular_dispersion",
+    "gfs_weight",
+    "ecmwf_wind_direction_10m_cos",
+    "icon_wind_mae_30d",
+    "icon_wind_direction_100m_cos",
+    "icon_wind_direction_10m_cos",
+    "gfs_wind_direction_100m_cos",
+    "icon_wind_direction_100m_sin",
+    "wind_weights_cold_start",
+    "best_weather_model_recent",
+    "ecmwf_missing_values_count",
+    "ecmwf_relative_humidity_2m_valid"
+  ],
+  "decisions": [
+    {
+      "feature": "turbine_id",
+      "importance_training_only": 0.006027760810821771,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "lead_hours",
+      "importance_training_only": 0.0003591406419123324,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_speed_100m",
+      "importance_training_only": 0.4352192292339211,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "wind_speed_100m_mean",
+      "importance_training_only": 0.09294060718564717,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ensemble_wind_speed_100m"
+    },
+    {
+      "feature": "ecmwf_wind_speed_10m",
+      "importance_training_only": 0.06881154579771559,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "wind_speed_10m_mean",
+      "importance_training_only": 0.04754978680495,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_surface_pressure",
+      "importance_training_only": 0.013232558067762641,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_speed_10m",
+      "importance_training_only": 0.012721366901282205,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for wind_speed_10m_mean"
+    },
+    {
+      "feature": "day_of_year_cos",
+      "importance_training_only": 0.010838496976326942,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "day_of_year_sin",
+      "importance_training_only": 0.01066101357345559,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_wind_speed_100m",
+      "importance_training_only": 0.009346506597189918,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_direction_100m_sin",
+      "importance_training_only": 0.008903576314571855,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "target_day_of_year",
+      "importance_training_only": 0.008777567881649751,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "icon_wind_gusts_10m",
+      "importance_training_only": 0.008111302733023367,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_direction_10m_cos",
+      "importance_training_only": 0.00786216683845423,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "hour_sin",
+      "importance_training_only": 0.007050958396791587,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_speed_100m",
+      "importance_training_only": 0.0064002449130482406,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_direction_10m",
+      "importance_training_only": 0.006225159616402682,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "gfs_relative_humidity_2m",
+      "importance_training_only": 0.0058712177306858215,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_surface_pressure",
+      "importance_training_only": 0.005456013422399913,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_surface_pressure"
+    },
+    {
+      "feature": "gfs_surface_pressure",
+      "importance_training_only": 0.004944798632745579,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_surface_pressure"
+    },
+    {
+      "feature": "gfs_wind_speed_10m",
+      "importance_training_only": 0.004663136359756391,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "target_day_of_week",
+      "importance_training_only": 0.00465918360062599,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "ecmwf_relative_humidity_2m",
+      "importance_training_only": 0.00459433252280944,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "target_hour",
+      "importance_training_only": 0.004336630267298371,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "ecmwf_temperature_2m",
+      "importance_training_only": 0.004179848649394947,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_direction_100m_circular_dispersion",
+      "importance_training_only": 0.003981414044529545,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "hour_cos",
+      "importance_training_only": 0.003880731932118659,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_bias_90d",
+      "importance_training_only": 0.00384606511927087,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_direction_100m",
+      "importance_training_only": 0.0034273924896404194,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "ensemble_relative_humidity_2m",
+      "importance_training_only": 0.0033915540257513413,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_gusts_10m",
+      "importance_training_only": 0.0033663489260771238,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_direction_10m_sin",
+      "importance_training_only": 0.0033296331447474764,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "surface_pressure_mean",
+      "importance_training_only": 0.0033136337541641186,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_surface_pressure"
+    },
+    {
+      "feature": "gfs_wind_bias_7d",
+      "importance_training_only": 0.0032848254772688272,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_2m",
+      "importance_training_only": 0.003227309947360562,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_temperature_2m"
+    },
+    {
+      "feature": "icon_temperature_2m",
+      "importance_training_only": 0.0031865567221589894,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_temperature_2m"
+    },
+    {
+      "feature": "ecmwf_wind_bias_7d",
+      "importance_training_only": 0.0030789684524485683,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_direction_10m",
+      "importance_training_only": 0.003037620866906739,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "ecmwf_temperature_bias_7d",
+      "importance_training_only": 0.0030358163765553067,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_bias_7d",
+      "importance_training_only": 0.0030355464497032816,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_direction_100m_sin",
+      "importance_training_only": 0.0029450797418720275,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_temperature_mae_30d",
+      "importance_training_only": 0.002942051670840429,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "wind_speed_models_std",
+      "importance_training_only": 0.0029418195539167072,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "wind_speed_models_range",
+      "importance_training_only": 0.0029129006826319427,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for wind_speed_models_std"
+    },
+    {
+      "feature": "wind_direction_10m_mean",
+      "importance_training_only": 0.0027655873412139867,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "gfs_temperature_rmse_7d",
+      "importance_training_only": 0.002725260322039098,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ensemble_wind_direction_10m",
+      "importance_training_only": 0.0026933288947830814,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "icon_temperature_rmse_30d",
+      "importance_training_only": 0.002624148483800297,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_bias_7d",
+      "importance_training_only": 0.0026153830306093677,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_direction_10m_sin",
+      "importance_training_only": 0.002562222193197159,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_weight",
+      "importance_training_only": 0.002487055382498427,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_rmse_7d",
+      "importance_training_only": 0.0023489405583234984,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_weight",
+      "importance_training_only": 0.002328762412229268,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_mae_30d",
+      "importance_training_only": 0.0022786549465151256,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_wind_rmse_7d",
+      "importance_training_only": 0.002211937077865354,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "wind_gusts_10m_mean",
+      "importance_training_only": 0.002189547668327344,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ensemble_wind_gusts_10m"
+    },
+    {
+      "feature": "icon_temperature_rmse_7d",
+      "importance_training_only": 0.0021719780958115655,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_mae_7d",
+      "importance_training_only": 0.002151043322350088,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_speed_10m",
+      "importance_training_only": 0.002117934859594947,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_temperature_mae_7d",
+      "importance_training_only": 0.0021027036279181073,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_weight",
+      "importance_training_only": 0.0020459980573494722,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_surface_pressure",
+      "importance_training_only": 0.0020143109378208063,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_surface_pressure"
+    },
+    {
+      "feature": "gfs_temperature_mae_7d",
+      "importance_training_only": 0.0020134671716284,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "temperature_models_std",
+      "importance_training_only": 0.001914457942524822,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_direction_100m_sin",
+      "importance_training_only": 0.001903433187587042,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_temperature_weight",
+      "importance_training_only": 0.001893907909876081,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "relative_humidity_2m_mean",
+      "importance_training_only": 0.0018563243578683301,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ensemble_relative_humidity_2m"
+    },
+    {
+      "feature": "ecmwf_temperature_bias_30d",
+      "importance_training_only": 0.0018383281561116728,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_bias_30d",
+      "importance_training_only": 0.0018310142717419178,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_rmse_90d",
+      "importance_training_only": 0.001792015899313941,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_bias_30d",
+      "importance_training_only": 0.0017895164353834117,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_rmse_7d",
+      "importance_training_only": 0.0017547544147058166,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ensemble_temperature_2m",
+      "importance_training_only": 0.0017529916284119858,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_temperature_2m"
+    },
+    {
+      "feature": "gfs_wind_mae_7d",
+      "importance_training_only": 0.001743332039555637,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "temperature_2m_mean",
+      "importance_training_only": 0.0017198159151053873,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_temperature_2m"
+    },
+    {
+      "feature": "gfs_wind_speed_100m",
+      "importance_training_only": 0.0016706648492230444,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_direction_10m_cos",
+      "importance_training_only": 0.001646521730846839,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_temperature_mae_30d",
+      "importance_training_only": 0.001612096124949126,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_n_90d",
+      "importance_training_only": 0.0016079566096349938,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_mae_7d",
+      "importance_training_only": 0.001594283592566389,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_direction_10m",
+      "importance_training_only": 0.0015883641361176641,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "icon_temperature_weight",
+      "importance_training_only": 0.0015856809818620167,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ensemble_wind_direction_10m_sin",
+      "importance_training_only": 0.0015844885220910685,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_wind_direction_100m_cos",
+      "importance_training_only": 0.0015527612963828204,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_direction_10m_sin",
+      "importance_training_only": 0.0015525572792055929,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_temperature_bias_90d",
+      "importance_training_only": 0.0015273953850914862,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_n_30d",
+      "importance_training_only": 0.001489063009339297,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_gusts_10m",
+      "importance_training_only": 0.001484161135806945,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_temperature_mae_30d",
+      "importance_training_only": 0.001474374429049788,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_n_7d",
+      "importance_training_only": 0.0014695882731731457,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "wind_direction_100m_circular_dispersion",
+      "importance_training_only": 0.0014645014312926095,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ensemble_wind_direction_100m_circular_dispersion"
+    },
+    {
+      "feature": "ecmwf_temperature_mae_90d",
+      "importance_training_only": 0.0014561548595896116,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_relative_humidity_2m",
+      "importance_training_only": 0.001440702647249056,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_wind_mae_30d",
+      "importance_training_only": 0.0014344552738262781,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_direction_100m",
+      "importance_training_only": 0.0013989955363594205,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "gfs_temperature_rmse_30d",
+      "importance_training_only": 0.001371372383522353,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_direction_100m",
+      "importance_training_only": 0.0013601017355499222,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "gfs_wind_mae_90d",
+      "importance_training_only": 0.0013523789340819114,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_rmse_30d",
+      "importance_training_only": 0.001310673429450774,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_rmse_7d",
+      "importance_training_only": 0.0013035789348504483,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_n_30d",
+      "importance_training_only": 0.0012993024517790467,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_bias_7d",
+      "importance_training_only": 0.0012936410665978831,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ensemble_wind_direction_100m_cos",
+      "importance_training_only": 0.0012799636553647257,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_bias_30d",
+      "importance_training_only": 0.0012797252251467322,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_mae_7d",
+      "importance_training_only": 0.0012392672526050903,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "wind_direction_100m_mean",
+      "importance_training_only": 0.001160865297616146,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "wind_direction_10m_circular_dispersion",
+      "importance_training_only": 0.001121084107426921,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_weight",
+      "importance_training_only": 0.001052511627573584,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_wind_bias_90d",
+      "importance_training_only": 0.0010485071441260437,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_bias_90d",
+      "importance_training_only": 0.001046919674661942,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_direction_10m_cos",
+      "importance_training_only": 0.0010230372422627837,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_mae_30d",
+      "importance_training_only": 0.000984528652969599,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_rmse_30d",
+      "importance_training_only": 0.0009600318476460419,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_n_90d",
+      "importance_training_only": 0.0009588885715103115,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_rmse_30d",
+      "importance_training_only": 0.0009583400747387938,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_rmse_90d",
+      "importance_training_only": 0.0009480413514357351,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_mae_90d",
+      "importance_training_only": 0.0009239352845544723,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_rmse_30d",
+      "importance_training_only": 0.0009095840143593648,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_mae_90d",
+      "importance_training_only": 0.000890743755887025,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_bias_30d",
+      "importance_training_only": 0.0008890682578702309,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ensemble_wind_direction_10m_circular_dispersion",
+      "importance_training_only": 0.0008498412883197634,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for wind_direction_10m_circular_dispersion"
+    },
+    {
+      "feature": "icon_wind_direction_100m_cos",
+      "importance_training_only": 0.0008372394668859648,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_direction_10m_cos",
+      "importance_training_only": 0.000817359199335123,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_wind_direction_100m_cos",
+      "importance_training_only": 0.000764232347559245,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_direction_100m_sin",
+      "importance_training_only": 0.0007533448481085176,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "gfs_temperature_n_90d",
+      "importance_training_only": 0.0007344436551724852,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_n_7d",
+      "importance_training_only": 0.0006345612220468397,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_n_30d",
+      "importance_training_only": 0.0005950717842707652,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ensemble_wind_direction_100m",
+      "importance_training_only": 0.0005900824981509361,
+      "selected_candidate": false,
+      "reason": "Raw angle replaced by sine/cosine"
+    },
+    {
+      "feature": "temperature_models_range",
+      "importance_training_only": 0.0005869289196672672,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for temperature_models_std"
+    },
+    {
+      "feature": "ecmwf_temperature_n_7d",
+      "importance_training_only": 0.0005805282086180027,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_rmse_90d",
+      "importance_training_only": 0.0005255366304002597,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_bias_30d",
+      "importance_training_only": 0.0005214496774511776,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_wind_rmse_90d",
+      "importance_training_only": 0.0004728820884602056,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_rmse_90d",
+      "importance_training_only": 0.000463213135815185,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_bias_90d",
+      "importance_training_only": 0.0004261940342177064,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_mae_90d",
+      "importance_training_only": 0.00040777703743038514,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_mae_90d",
+      "importance_training_only": 0.00040408084387479537,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_n_90d",
+      "importance_training_only": 0.00038574207047959444,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_temperature_bias_90d",
+      "importance_training_only": 0.00034454009017551566,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "target_month",
+      "importance_training_only": 0.0002651209657071687,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "icon_temperature_n_30d",
+      "importance_training_only": 0.0002475029079294327,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_rmse_90d",
+      "importance_training_only": 0.00023573547772539653,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "ecmwf_temperature_n_30d",
+      "importance_training_only": 0.00022166262520441089,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "wind_weights_cold_start",
+      "importance_training_only": 0.00020127179931103453,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "icon_wind_n_7d",
+      "importance_training_only": 0.00018995371084304318,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_n_90d",
+      "importance_training_only": 0.00014105704278491327,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_n_30d",
+      "importance_training_only": 5.421095614202435e-05,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "archive_nominal_lead_hours",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "best_weather_model_recent",
+      "importance_training_only": 0.0,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_api_error",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_available",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_impossible_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_missing_target_hour",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_missing_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_partial_coverage",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_quality_ok",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_missing_values_count"
+    },
+    {
+      "feature": "ecmwf_relative_humidity_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": true,
+      "reason": "Ranked safe candidate"
+    },
+    {
+      "feature": "ecmwf_surface_pressure_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_temperature_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_wind_direction_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_missing_values_count"
+    },
+    {
+      "feature": "ecmwf_wind_direction_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_wind_gusts_10m",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Excessive missingness on first training interval"
+    },
+    {
+      "feature": "ecmwf_wind_gusts_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "ecmwf_wind_speed_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_missing_values_count"
+    },
+    {
+      "feature": "ecmwf_wind_speed_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_api_error",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_available",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_impossible_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_missing_target_hour",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_missing_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_partial_coverage",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_quality_ok",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_relative_humidity_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_surface_pressure_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_temperature_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_temperature_n_7d",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "gfs_wind_direction_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_wind_direction_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_wind_gusts_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_wind_speed_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "gfs_wind_speed_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "horizon_bucket",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Redundant horizon or raw calendar; use lead and cyclic time"
+    },
+    {
+      "feature": "icon_api_error",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_available",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_impossible_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_missing_target_hour",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_missing_values_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_partial_coverage",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_quality_ok",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_relative_humidity_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_surface_pressure_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_temperature_2m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_temperature_n_7d",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_temperature_n_90d",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Redundant rolling metric; retain only provider wind MAE 30d"
+    },
+    {
+      "feature": "icon_wind_direction_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_wind_direction_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_wind_gusts_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_wind_speed_100m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "icon_wind_speed_10m_valid",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "temperature_weights_cold_start",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "weather_critical_missing",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "weather_data_quality_score",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_missing_values_count"
+    },
+    {
+      "feature": "weather_models_available_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Constant / near-constant on first training interval"
+    },
+    {
+      "feature": "weather_models_usable_count",
+      "importance_training_only": 0.0,
+      "selected_candidate": false,
+      "reason": "Strongly correlated training-only proxy for ecmwf_missing_values_count"
+    }
+  ],
+  "pilot_iterations": 182
+}
