@@ -304,6 +304,88 @@ widen as history accumulates rather than close.
 
 ---
 
+## Sequence models: RNN, LSTM, and a very small network
+
+The production model predicts one hour from one feature row. Its residuals are
+strongly autocorrelated — lag-1 ACF **0.81** against a white-noise band of ±0.04 —
+so errors arrive as multi-hour episodes, whole weather events the NWP got wrong.
+That is a standing invitation to try a sequence model, and `src/deep.py` takes it.
+
+### What a sequence model can and cannot use here
+
+It cannot feed on its own recent errors. At 24–47 h lead the actual for hour T−1 is
+as unknown as the actual for hour T, which is exactly why the residual ACF collapses
+from 0.81 at lag 1 to **0.10 at lag 24** — the lag-24 part is the only piece a causal
+forecaster could ever observe.
+
+What it *can* use is the shape of the weather forecast across the window, known in
+full at issue time. That also makes a **bidirectional** encoder legitimate: reading
+the NWP sequence backwards uses no information that post-dates the forecast.
+
+### Dataset preparation
+
+`previous_day1` is a constant 24 h-lead series, so the day-ahead rows form one
+continuous hourly signal rather than a mix of lead times. The series is split at
+every missing hour into contiguous runs — a window must never straddle a gap, or the
+model would read a two-month outage as a one-hour step — then sliced into 48-hour
+windows: stride 3 for training (8,713 windows), non-overlapping at evaluation so each
+hour is predicted exactly once. Features are median-imputed and standardised on
+training rows only; targets carry a mask so unobserved hours contribute no gradient.
+
+### Results
+
+Identical 5,730 day-ahead hold-out hours for every model:
+
+| model | MAE | RMSE | R² | parameters |
+|---|---|---|---|---|
+| **LightGBM, L1 objective** | **0.1462** | 0.2223 | 0.622 | — |
+| micronet (1 hidden layer, 32 units) | 0.1497 | 0.2238 | 0.617 | 2,145 |
+| smallnet (128-64-32) | 0.1523 | 0.2277 | 0.603 | 19,009 |
+| RNN (64, 2 layers) | 0.1545 | 0.2319 | 0.589 | 20,929 |
+| tinynet (64-32) | 0.1546 | 0.2298 | 0.596 | 6,401 |
+| LSTM (64, 2 layers) | 0.1589 | 0.2360 | 0.574 | 70,657 |
+| BiLSTM (48, 2 layers) | 0.1593 | 0.2396 | 0.561 | 105,921 |
+| LightGBM, L2 (production) | 0.1638 | 0.2191 | **0.633** | — |
+
+Three things fall out of this table, and the first is a warning about how easily it
+could have been misread.
+
+**The loss function, not the architecture.** On a first pass the LSTM appeared to beat
+production by 5.9% on MAE. It did not: the booster was minimising L2 while the network
+minimised Huber, and MAE was being used to judge them. Adding `lightgbm_l1` as a
+matched control reversed the result outright. An L2-trained model compared on MAE is
+not a baseline, it is a handicap.
+
+**Recurrence does not help.** A plain feed-forward net beats both the LSTM and the
+BiLSTM. The hand-built lag, ramp and rolling columns already carry the within-window
+shape, so the recurrent layers re-learn — less well — what the features state directly.
+
+**Capacity actively hurts, monotonically.** 2,145 parameters beat 19,009, which beat
+70,657, which beat 105,921. Overlapping windows flatter the sample count: at stride 3
+two neighbours share 45 of 48 hours, so 8,713 windows carry only about **660
+independent sequences**. Every network's best epoch arrived early and validation error
+climbed thereafter.
+
+### The finding worth acting on
+
+The control added to make the comparison fair turned out to be the most valuable model
+change discovered anywhere in this project. Across all three rolling-origin folds an
+L1 objective gives **+4.75% MAE (0.1717 → 0.1636), winning 3/3**, paired bootstrap
++0.00816 with 95% CI [+0.00762, +0.00871]. It is a genuine trade, not a free lunch:
+RMSE worsens (0.2299 → 0.2346) and R² falls (0.558 → 0.541), because L1 stops chasing
+the large errors that squared loss punishes. If MAE is the graded metric — the working
+assumption in `RESPONSE_to_partner.md` — that trade is the right one.
+
+Neither change has been promoted: the shipped pipeline and every published forecast
+remain L2 LightGBM.
+
+```bash
+pip install torch                                        # optional
+python -m src.deep --models rnn lstm bilstm micronet     # sequence experiment
+```
+
+---
+
 ## What the data said
 
 Several decisions came from measurement rather than assumption. They are recorded here

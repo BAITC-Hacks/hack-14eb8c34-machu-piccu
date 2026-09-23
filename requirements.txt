@@ -19,3 +19,7 @@ anthropic==1.8.0
 # Optional: challenger model for `python -m src.benchmark`.
 # The forecast pipeline does not import it -- benchmarking is the only use.
 catboost==1.2.10
+
+# Optional: sequence / neural challengers for `python -m src.deep`.
+# The forecast pipeline does not import it.
+torch==2.14.0
