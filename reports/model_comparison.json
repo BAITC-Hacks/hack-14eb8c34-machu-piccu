@@ -1,0 +1,147 @@
+{
+  "folds": [
+    {
+      "fold": "2025-02..2025-06",
+      "model": "lightgbm",
+      "n": 11210,
+      "iterations": 218,
+      "mae_raw": 0.1785420725734622,
+      "mae_calibrated": 0.177105634120107,
+      "rmse_calibrated": 0.2401617335936381,
+      "r2_calibrated": 0.5788969185999762,
+      "bias_calibrated": -0.008342484507918958
+    },
+    {
+      "fold": "2025-02..2025-06",
+      "model": "lightgbm_l1",
+      "n": 11210,
+      "iterations": 525,
+      "mae_raw": 0.1669529660576148,
+      "mae_calibrated": 0.17011421440084218,
+      "rmse_calibrated": 0.24668202765705005,
+      "r2_calibrated": 0.5557209661347686,
+      "bias_calibrated": -0.008312045334730903
+    },
+    {
+      "fold": "2025-02..2025-06",
+      "model": "catboost",
+      "n": 11210,
+      "iterations": 395,
+      "mae_raw": 0.17731605982686596,
+      "mae_calibrated": 0.17644740043013146,
+      "rmse_calibrated": 0.24006679942220524,
+      "r2_calibrated": 0.5792297707175953,
+      "bias_calibrated": -0.007031536423712502
+    },
+    {
+      "fold": "2025-06..2025-10",
+      "model": "lightgbm",
+      "n": 11630,
+      "iterations": 183,
+      "mae_raw": 0.16816259533359965,
+      "mae_calibrated": 0.17238032570501052,
+      "rmse_calibrated": 0.2249965048429505,
+      "r2_calibrated": 0.4808071235321272,
+      "bias_calibrated": -0.003520523419540463
+    },
+    {
+      "fold": "2025-06..2025-10",
+      "model": "lightgbm_l1",
+      "n": 11630,
+      "iterations": 421,
+      "mae_raw": 0.15895107891419413,
+      "mae_calibrated": 0.16472875748173332,
+      "rmse_calibrated": 0.2269335243960661,
+      "r2_calibrated": 0.47182906595770735,
+      "bias_calibrated": -0.004462718345013226
+    },
+    {
+      "fold": "2025-06..2025-10",
+      "model": "catboost",
+      "n": 11630,
+      "iterations": 289,
+      "mae_raw": 0.1661482768693473,
+      "mae_calibrated": 0.17067421964536572,
+      "rmse_calibrated": 0.22432335782530113,
+      "r2_calibrated": 0.4839091301870144,
+      "bias_calibrated": -0.0035544161918711213
+    },
+    {
+      "fold": "2025-10..2026-01",
+      "model": "lightgbm",
+      "n": 11412,
+      "iterations": 194,
+      "mae_raw": 0.1709187224435812,
+      "mae_calibrated": 0.16576301780527683,
+      "rmse_calibrated": 0.22456128732177083,
+      "r2_calibrated": 0.6146979961917702,
+      "bias_calibrated": 0.01063550850957235
+    },
+    {
+      "fold": "2025-10..2026-01",
+      "model": "lightgbm_l1",
+      "n": 11412,
+      "iterations": 239,
+      "mae_raw": 0.1534968737292783,
+      "mae_calibrated": 0.15594654975683056,
+      "rmse_calibrated": 0.23010406340230583,
+      "r2_calibrated": 0.5954426787918359,
+      "bias_calibrated": 0.013131040941697125
+    },
+    {
+      "fold": "2025-10..2026-01",
+      "model": "catboost",
+      "n": 11412,
+      "iterations": 386,
+      "mae_raw": 0.16721296273584665,
+      "mae_calibrated": 0.161395169755811,
+      "rmse_calibrated": 0.22192539664312325,
+      "r2_calibrated": 0.6236902259386945,
+      "bias_calibrated": 0.012618166620897712
+    }
+  ],
+  "summary": {
+    "mae_raw": {
+      "catboost": 0.1702257664773533,
+      "lightgbm": 0.17254113011688102,
+      "lightgbm_l1": 0.15980030623369576
+    },
+    "mae_calibrated": {
+      "catboost": 0.16950559661043607,
+      "lightgbm": 0.17174965921013144,
+      "lightgbm_l1": 0.16359650721313534
+    },
+    "rmse_calibrated": {
+      "catboost": 0.22877185129687652,
+      "lightgbm": 0.22990650858611983,
+      "lightgbm_l1": 0.23457320515180732
+    },
+    "r2_calibrated": {
+      "catboost": 0.5622763756144348,
+      "lightgbm": 0.5581340127746245,
+      "lightgbm_l1": 0.5409975702947706
+    }
+  },
+  "significance": {
+    "lightgbm_l1_vs_lightgbm": {
+      "mean_mae_difference": 0.00815681089742326,
+      "ci_low": 0.0076208547646976835,
+      "ci_high": 0.008705079343950888,
+      "prob_b_better": 1.0,
+      "significant": true,
+      "direction": "challenger better",
+      "folds_won": 3,
+      "folds_total": 3
+    },
+    "catboost_vs_lightgbm": {
+      "mean_mae_difference": 0.0022499910977110556,
+      "ci_low": 0.0019417377766454023,
+      "ci_high": 0.0025561530223442417,
+      "prob_b_better": 1.0,
+      "significant": true,
+      "direction": "challenger better",
+      "folds_won": 3,
+      "folds_total": 3
+    }
+  }
+}

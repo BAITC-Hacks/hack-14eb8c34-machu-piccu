@@ -86,6 +86,12 @@ class ForecastCalibrator:
             state.bias = float(np.clip(raw, -self.bias_cap, self.bias_cap))
             state.bias_samples = int(len(bias_rows))
 
+        # Band calibration needs a quantile forecast to rescale. A log holding
+        # only point forecasts is legitimate -- the bias correction above still
+        # applies -- so fall through rather than failing.
+        if not set(QUANTILE_COLUMNS) <= set(history.columns):
+            return state
+
         band_rows = history[history["time"] >= as_of - pd.Timedelta(days=self.band_window_days)]
         band_rows = band_rows.dropna(subset=list(QUANTILE_COLUMNS))
         if len(band_rows) >= self.min_band_obs:

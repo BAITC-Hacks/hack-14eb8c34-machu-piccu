@@ -1,0 +1,2 @@
+# Optional: model-comparison experiments (src/benchmark.py, src/deep.py); not needed for the pipeline
+torch>=2.3
