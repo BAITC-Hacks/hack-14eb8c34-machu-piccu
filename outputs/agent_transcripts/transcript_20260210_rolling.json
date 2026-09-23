@@ -5,13 +5,13 @@
   "usage": {
     "provider": "openai",
     "model": "gpt-5-mini",
-    "steps": 9,
-    "prompt_tokens": 18033,
-    "completion_tokens": 1355,
-    "estimated_cost_usd": 0.0072
+    "steps": 3,
+    "prompt_tokens": 6006,
+    "completion_tokens": 1246,
+    "estimated_cost_usd": 0.004
   },
-  "generated_at_utc": "2026-09-23T11:31:21+00:00",
-  "briefing": "T1 and T2 48-hour forecast published (issue 2026-02-10 18:00 UTC). Files written and archived.\n\nKey notes and interpretation\n- Model outputs: both turbines show moderate winds (mean ~8.2 m/s at 100 m) with per-model means ranging from ~7.5 (ECMWF) to 9.5 m/s (GFS). Ensemble spread is substantial (mean spread 2.46 m/s, max spread 7.77 m/s) — treat point values cautiously and rely on the P10–P90 band where decisions demand uncertainty.\n- Forecast summary (model run analysis):\n  - T1: 48-hr mean capacity factor 0.431, EFLH 20.68, day-ahead EFLH 13.82. Peak hourly output 0.869 (local 2026-02-11 21:00), trough 0.026 (local 2026-02-12 12:00). Confidence flagged low. Mean ensemble spread 2.46 m/s. Model calibration: recent 14d over-forecast ~+0.027 of rated power; calibration applied and uncertainty band scaled ×1.10.\n  - T2: 48-hr mean capacity factor 0.447, EFLH 21.48, day-ahead EFLH 14.22. Peak 0.886 (2026-02-11 21:00), trough 0.042 (2026-02-12 12:00). Confidence low. Mean ensemble spread 2.46 m/s. Calibration: recent 14d over-forecast ~+0.011; band scaled ×1.13.\n- Recent performance: over the last 14 days both turbines have been biased high (T1 bias +0.031; T2 bias +0.015). MAE ~0.14–0.15, RMSE ~0.19–0.20. P10–P90 coverage acceptable (T1 0.886, T2 0.811) but bands were widened per calibration.\n- Input updates: today’s NWP runs materially revised the day-ahead hours for both turbines vs yesterday’s longer-lead run. Mean absolute change ≈0.056 (fraction of rated), mean signed change ≈ −0.048 for T1 and −0.047 for T2 — i.e., day-ahead outputs were reduced on average. Max single-hour revision ~0.15. Action: day-ahead forecast updated with 24-h lead NWP.\n\nOperationally relevant details (for dispatchers)\n- Expected energy: combined site EFLH over the 48 h ≈ 20.68 + 21.48 = 42.16 full-load-hours equivalent (this is the sum of each turbine’s model EFLH reported by the system).\n- Shape and ramps:\n  - Broad pattern: moderate production through the run with a peak evening hour on 2026-02-11 21:00 local (both turbines near their highest outputs). A trough around midday 2026-02-12 (both turbines) with outputs down to ~0.03–0.04 of rated.\n  - Notable ramp: a down-ramp around 2026-02-11 06:00 local of ~−0.32 fraction of rated power (both turbines). This is the largest step the model flagged — consider scheduling reserve or monitoring around that time.\n- Confidence and caveats:\n  - Overall confidence: low. Large ensemble spread and recent small systematic over-forecast bias drive greater uncertainty. Bands have been widened (×1.10–×1.13) to account for this.\n  - Directional change: today’s NWP reduced the day-ahead expected output vs yesterday; treat yesterday’s schedules as likely slightly high.\n  - Use P10–P90 bands for reserve decisions when possible because deterministic point forecasts understate uncertainty in this situation.\n\nOperator briefing (≤250 words)\nExpected combined energy for the next 48 hours is ~42.2 full-load-hours equivalent. Expect moderate generation with highest outputs around 2026-02-11 21:00 local and lowest around 2026-02-12 12:00 local. The main operational issue is a sharp down-ramp at ~06:00 on 2026-02-11 of roughly −0.32 of rated power at each turbine; staff/reserve that window if you need firm capacity. Today’s NWP runs reduced the day-ahead forecast overall (mean ~−0.05 of rated) compared with yesterday’s run — previous schedules are likely optimistic. Confidence is low due to substantial ensemble spread and a recent tendency for the model to over-forecast (biases +0.031 T1, +0.015 T2); we widened uncertainty bands accordingly. Recommend holding upward reserve around the 06:00 ramp and using P10–P90 ranges for day-ahead reserve sizing.",
+  "generated_at_utc": "2026-09-23T11:45:27+00:00",
+  "briefing": "Forecast published for issue date 2026-02-10 (files: outputs/cycles/forecast_20260210_rolling.csv and outputs/cycles/analysis_20260210_rolling.json).\n\nSummary (both turbines)\n- Forecast horizon: next 48 hours, hourly. Units: fractions of rated power (0–1); energy in equivalent full‑load hours (eflh).\n- Mean wind at hub ~8.24 m/s; ensemble disagreement moderate (mean spread 2.46 m/s, max spread 7.77 m/s). When models disagree, expect higher uncertainty around peaks/troughs.\n- Recent forecast bias: both turbines have been running high in the last 14 days (t1 over‑forecasting; t2 over‑forecasting). Calibration applied (small downward bias corrections and widened bands).\n- Day‑ahead inputs changed materially vs yesterday: day‑ahead was revised down (mean signed change roughly −0.04 to −0.044 of rated power) after today's NWP runs.\n\nPer‑turbine highlights\n- Turbine t1\n  - energy_48h_eflh: 20.85\n  - energy_day_ahead_24h_eflh: 13.9\n  - mean capacity factor: 0.434; peak hour local: 2026-02-11 21:00; trough: 2026-02-12 12:00.\n  - Notable ramp: around 2026-02-11 06:00 a downward step of −0.32 (fraction of rated).\n  - Confidence: low (ensemble spread and recent over‑forecast bias). Bands scaled x1.22.\n\n- Turbine t2\n  - energy_48h_eflh: 21.66\n  - energy_day_ahead_24h_eflh: 14.31\n  - mean capacity factor: 0.451; peak hour local: 2026-02-11 21:00; trough: 2026-02-12 12:00.\n  - Notable ramp: same large downward step near 2026-02-11 06:00 of −0.32.\n  - Confidence: low. Bands scaled x1.28.\n\nOperator briefing (under 250 words)\nExpected energy per turbine: t1 20.85 eflh (48h) with 13.9 eflh in the day‑ahead 24h; t2 21.66 eflh (48h) with 14.31 eflh in the day‑ahead 24h. The day begins with moderate production (mean CF ~0.44), rising toward an evening peak on 2026-02-11 21:00 and falling to a low around 2026-02-12 12:00. The main operational concern is a sharp downward ramp centered near 2026-02-11 06:00 (≈ −0.32 of rated power) — staff/reserve should be ready for that transition. Confidence is low: ensemble spread is moderate to high and the model has shown a small consistent over‑forecast bias in the past 14 days (we applied bias correction and widened uncertainty bands). Today's NWP runs revised the day‑ahead downward relative to yesterday (mean signed change ≈ −0.04), so plan slightly more reserve than you would from yesterday's plan. Use the P10–P90 band rather than the point estimate when setting reserve margins.",
   "transcript": [
     {
       "role": "user",
@@ -26,6 +26,50 @@
           "input": {
             "issue_date": "2026-02-10"
           }
+        },
+        {
+          "name": "inspect_weather",
+          "input": {
+            "turbine": "t1",
+            "issue_date": "2026-02-10"
+          }
+        },
+        {
+          "name": "inspect_weather",
+          "input": {
+            "turbine": "t2",
+            "issue_date": "2026-02-10"
+          }
+        },
+        {
+          "name": "recent_performance",
+          "input": {
+            "turbine": "t1",
+            "as_of": "2026-02-10",
+            "days": "14"
+          }
+        },
+        {
+          "name": "recent_performance",
+          "input": {
+            "turbine": "t2",
+            "as_of": "2026-02-10",
+            "days": "14"
+          }
+        },
+        {
+          "name": "check_input_updates",
+          "input": {
+            "turbine": "t1",
+            "issue_date": "2026-02-10"
+          }
+        },
+        {
+          "name": "check_input_updates",
+          "input": {
+            "turbine": "t2",
+            "issue_date": "2026-02-10"
+          }
         }
       ]
     },
@@ -34,141 +78,31 @@
       "results": [
         {
           "name": "run_forecast_cycle",
-          "content": "{\"issue_date\": \"2026-02-10\", \"issue_time_utc\": \"2026-02-10T18:00:00\", \"policy\": \"rolling\", \"mode\": \"archive\", \"turbines\": {\"t1\": {\"turbine\": \"t1\", \"hours\": 48, \"energy_equivalent_full_load_hours\": 20.68, \"day_ahead_energy_eflh\": 13.82, \"mean_capacity_factor\": 0.431, \"max_output\": 0.869, \"min_output\": 0.026, \"peak_hour_local\": \"2026-02-11 21:00:00\", \"trough_hour_local\": \"2026-02-12 12:00:00\", \"hours_near_rated\": 0, \"hours_below_cutin\": 0, \"mean_band_width\": 0.537, \"confidence\": \"low\", \"ramp_events\": [{\"time_local\": \"2026-02-11 06:00:00\", \"delta\": -0.32}], \"mean_ensemble_spread_ms\": 2.46, \"mean_wind_speed_ms\": 8.24, \"nwp_lead_hours\": [24, 48], \"calibration\": \"recent 14d record shows the model running over-forecast by 0.027 of rated power (192 verified hours); band scaled x1.10\"}, \"t2\": {\"turbine\": \"t2\", \"hours\": 48, \"energy_equivalent_full_load_hours\": 21.48, \"day_ahead_energy_eflh\": 14.22, \"mean_capacity_factor\": 0.447, \"max_output\": 0.886, \"min_output\": 0.042, \"peak_hour_local\": \"2026-02-11 21:00:00\", \"trough_hour_local\": \"2026-02-12 12:00:00\", \"hours_near_rated\": 0, \"hours_below_cutin\": 0, \"mean_band_width\": 0.555, \"confidence\": \"low\", \"ramp_events\": [{\"time_local\": \"2026-02-11 06:00:00\", \"delta\": -0.32}], \"mean_ensemble_spread_ms\": 2.46, \"mean_wind_speed_ms\": 8.24, \"nwp_lead_hours\": [24, 48], \"calibration\": \"recent 14d record shows the model running over-forecast by 0.011 of rated power (192 verified hours); band scaled x1.13\"}}, \"calibration\": {\"t1\": {\"bias\": 0.027328035187182482, \"band_scale\": 1.1014428843451871, \"bias_samples\": 192, \"band_samples\": 528, \"bias_window_days\": 14, \"band_window_days\": 21}, \"t2\": {\"bias\": 0.010676008714196142, \"band_scale\": 1.1335114011909206, \"bias_samples\": 192, \"band_samples\": 528, \"bias_window_days\": 14, \"band_window_days\": 21}}, \"revisions\": {}, \"notes\": []}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "inspect_weather",
-          "input": {
-            "turbine": "t1",
-            "issue_date": "2026-02-10"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+          "content": "{\"issue_date\": \"2026-02-10\", \"issue_time_utc\": \"2026-02-10T18:00:00\", \"policy\": \"rolling\", \"mode\": \"archive\", \"turbines\": {\"t1\": {\"turbine\": \"t1\", \"units\": \"power and changes are fractions of rated power; energy is equivalent full-load hours\", \"hours\": 48, \"energy_48h_eflh\": 20.85, \"energy_day_ahead_24h_eflh\": 13.9, \"mean_capacity_factor\": 0.434, \"max_output\": 0.873, \"min_output\": 0.029, \"peak_hour_local\": \"2026-02-11 21:00:00\", \"trough_hour_local\": \"2026-02-12 12:00:00\", \"hours_near_rated\": 0, \"hours_below_cutin\": 0, \"mean_band_width\": 0.587, \"confidence\": \"low\", \"ramp_events\": [{\"time_local\": \"2026-02-11 06:00:00\", \"delta\": -0.32}], \"mean_ensemble_spread_ms\": 2.46, \"mean_wind_speed_ms\": 8.24, \"nwp_lead_hours\": [24, 48], \"calibration\": \"recent 14d record shows the model running over-forecast by 0.024 of rated power (192 verified hours); band scaled x1.22\"}, \"t2\": {\"turbine\": \"t2\", \"units\": \"power and changes are fractions of rated power; energy is equivalent full-load hours\", \"hours\": 48, \"energy_48h_eflh\": 21.66, \"energy_day_ahead_24h_eflh\": 14.31, \"mean_capacity_factor\": 0.451, \"max_output\": 0.89, \"min_output\": 0.046, \"peak_hour_local\": \"2026-02-11 21:00:00\", \"trough_hour_local\": \"2026-02-12 12:00:00\", \"hours_near_rated\": 0, \"hours_below_cutin\": 0, \"mean_band_width\": 0.611, \"confidence\": \"low\", \"ramp_events\": [{\"time_local\": \"2026-02-11 06:00:00\", \"delta\": -0.32}], \"mean_ensemble_spread_ms\": 2.46, \"mean_wind_speed_ms\": 8.24, \"nwp_lead_hours\": [24, 48], \"calibration\": \"recent 14d record shows the model running over-forecast by 0.007 of rated power (192 verified hours); band scaled x1.28\"}}, \"calibration\": {\"t1\": {\"bias\": 0.02379600275219203, \"band_scale\": 1.2207591700203249, \"bias_samples\": 192, \"band_samples\": 528, \"bias_window_days\": 14, \"band_window_days\": 21}, \"t2\": {\"bias\": 0.00694950697463, \"band_scale\": 1.2783783850905264, \"bias_samples\": 192, \"band_samples\": 528, \"bias_window_days\": 14, \"band_window_days\": 21}}, \"revisions\": {}, \"notes\": []}"
+        },
         {
           "name": "inspect_weather",
           "content": "{\"turbine\": \"t1\", \"issue_date\": \"2026-02-10\", \"policy\": \"rolling\", \"nwp_lead_hours\": [24, 48], \"hours\": 48, \"mean_wind_speed_100m_ms\": 8.24, \"max_wind_speed_100m_ms\": 15.21, \"min_wind_speed_100m_ms\": 2.56, \"mean_temperature_c\": 2.3, \"per_model_mean_wind_ms\": {\"ecmwf_ifs025\": 7.5, \"gfs_seamless\": 9.47, \"icon_seamless\": 7.74}, \"mean_ensemble_spread_ms\": 2.46, \"max_ensemble_spread_ms\": 7.77}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "inspect_weather",
-          "input": {
-            "turbine": "t2",
-            "issue_date": "2026-02-10"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+        },
         {
           "name": "inspect_weather",
           "content": "{\"turbine\": \"t2\", \"issue_date\": \"2026-02-10\", \"policy\": \"rolling\", \"nwp_lead_hours\": [24, 48], \"hours\": 48, \"mean_wind_speed_100m_ms\": 8.24, \"max_wind_speed_100m_ms\": 15.21, \"min_wind_speed_100m_ms\": 2.56, \"mean_temperature_c\": 2.3, \"per_model_mean_wind_ms\": {\"ecmwf_ifs025\": 7.5, \"gfs_seamless\": 9.47, \"icon_seamless\": 7.74}, \"mean_ensemble_spread_ms\": 2.46, \"max_ensemble_spread_ms\": 7.77}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
+        },
         {
           "name": "recent_performance",
-          "input": {
-            "turbine": "t1",
-            "as_of": "2026-02-10",
-            "days": "14"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+          "content": "{\"turbine\": \"t1\", \"window_days\": \"14\", \"verified_hours\": 228, \"mae\": 0.1464, \"rmse\": 0.193, \"bias\": 0.0312, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.873}"
+        },
         {
           "name": "recent_performance",
-          "content": "{\"turbine\": \"t1\", \"window_days\": \"14\", \"verified_hours\": 228, \"mae\": 0.1426, \"rmse\": 0.1927, \"bias\": 0.0312, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.886}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "recent_performance",
-          "input": {
-            "turbine": "t2",
-            "as_of": "2026-02-10",
-            "days": "14"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
-        {
-          "name": "recent_performance",
-          "content": "{\"turbine\": \"t2\", \"window_days\": \"14\", \"verified_hours\": 228, \"mae\": 0.1457, \"rmse\": 0.1994, \"bias\": 0.0153, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.811}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
+          "content": "{\"turbine\": \"t2\", \"window_days\": \"14\", \"verified_hours\": 228, \"mae\": 0.1502, \"rmse\": 0.1997, \"bias\": 0.0157, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.789}"
+        },
         {
           "name": "check_input_updates",
-          "input": {
-            "turbine": "t1",
-            "issue_date": "2026-02-10"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+          "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-02-09\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.0535, \"mean_signed_change\": -0.0437, \"max_abs_change\": 0.1453, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
+        },
         {
           "name": "check_input_updates",
-          "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-02-09\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.0564, \"mean_signed_change\": -0.048, \"max_abs_change\": 0.1497, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "check_input_updates",
-          "input": {
-            "turbine": "t2",
-            "issue_date": "2026-02-10"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
-        {
-          "name": "check_input_updates",
-          "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-02-09\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.0555, \"mean_signed_change\": -0.0467, \"max_abs_change\": 0.1484, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
+          "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-02-09\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.052, \"mean_signed_change\": -0.0415, \"max_abs_change\": 0.1432, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
         }
       ]
     },
@@ -189,13 +123,13 @@
       "results": [
         {
           "name": "publish_forecast",
-          "content": "{\"published\": {\"csv\": \"/Users/admin/Desktop/hack-14eb8c34-machu-piccu/outputs/forecast_20260210_rolling.csv\", \"json\": \"/Users/admin/Desktop/hack-14eb8c34-machu-piccu/outputs/analysis_20260210_rolling.json\"}, \"rows\": 96}"
+          "content": "{\"published\": {\"csv\": \"outputs/cycles/forecast_20260210_rolling.csv\", \"json\": \"outputs/cycles/analysis_20260210_rolling.json\"}, \"rows\": 96}"
         }
       ]
     },
     {
       "role": "assistant",
-      "content": "T1 and T2 48-hour forecast published (issue 2026-02-10 18:00 UTC). Files written and archived.\n\nKey notes and interpretation\n- Model outputs: both turbines show moderate winds (mean ~8.2 m/s at 100 m) with per-model means ranging from ~7.5 (ECMWF) to 9.5 m/s (GFS). Ensemble spread is substantial (mean spread 2.46 m/s, max spread 7.77 m/s) — treat point values cautiously and rely on the P10–P90 band where decisions demand uncertainty.\n- Forecast summary (model run analysis):\n  - T1: 48-hr mean capacity factor 0.431, EFLH 20.68, day-ahead EFLH 13.82. Peak hourly output 0.869 (local 2026-02-11 21:00), trough 0.026 (local 2026-02-12 12:00). Confidence flagged low. Mean ensemble spread 2.46 m/s. Model calibration: recent 14d over-forecast ~+0.027 of rated power; calibration applied and uncertainty band scaled ×1.10.\n  - T2: 48-hr mean capacity factor 0.447, EFLH 21.48, day-ahead EFLH 14.22. Peak 0.886 (2026-02-11 21:00), trough 0.042 (2026-02-12 12:00). Confidence low. Mean ensemble spread 2.46 m/s. Calibration: recent 14d over-forecast ~+0.011; band scaled ×1.13.\n- Recent performance: over the last 14 days both turbines have been biased high (T1 bias +0.031; T2 bias +0.015). MAE ~0.14–0.15, RMSE ~0.19–0.20. P10–P90 coverage acceptable (T1 0.886, T2 0.811) but bands were widened per calibration.\n- Input updates: today’s NWP runs materially revised the day-ahead hours for both turbines vs yesterday’s longer-lead run. Mean absolute change ≈0.056 (fraction of rated), mean signed change ≈ −0.048 for T1 and −0.047 for T2 — i.e., day-ahead outputs were reduced on average. Max single-hour revision ~0.15. Action: day-ahead forecast updated with 24-h lead NWP.\n\nOperationally relevant details (for dispatchers)\n- Expected energy: combined site EFLH over the 48 h ≈ 20.68 + 21.48 = 42.16 full-load-hours equivalent (this is the sum of each turbine’s model EFLH reported by the system).\n- Shape and ramps:\n  - Broad pattern: moderate production through the run with a peak evening hour on 2026-02-11 21:00 local (both turbines near their highest outputs). A trough around midday 2026-02-12 (both turbines) with outputs down to ~0.03–0.04 of rated.\n  - Notable ramp: a down-ramp around 2026-02-11 06:00 local of ~−0.32 fraction of rated power (both turbines). This is the largest step the model flagged — consider scheduling reserve or monitoring around that time.\n- Confidence and caveats:\n  - Overall confidence: low. Large ensemble spread and recent small systematic over-forecast bias drive greater uncertainty. Bands have been widened (×1.10–×1.13) to account for this.\n  - Directional change: today’s NWP reduced the day-ahead expected output vs yesterday; treat yesterday’s schedules as likely slightly high.\n  - Use P10–P90 bands for reserve decisions when possible because deterministic point forecasts understate uncertainty in this situation.\n\nOperator briefing (≤250 words)\nExpected combined energy for the next 48 hours is ~42.2 full-load-hours equivalent. Expect moderate generation with highest outputs around 2026-02-11 21:00 local and lowest around 2026-02-12 12:00 local. The main operational issue is a sharp down-ramp at ~06:00 on 2026-02-11 of roughly −0.32 of rated power at each turbine; staff/reserve that window if you need firm capacity. Today’s NWP runs reduced the day-ahead forecast overall (mean ~−0.05 of rated) compared with yesterday’s run — previous schedules are likely optimistic. Confidence is low due to substantial ensemble spread and a recent tendency for the model to over-forecast (biases +0.031 T1, +0.015 T2); we widened uncertainty bands accordingly. Recommend holding upward reserve around the 06:00 ramp and using P10–P90 ranges for day-ahead reserve sizing."
+      "content": "Forecast published for issue date 2026-02-10 (files: outputs/cycles/forecast_20260210_rolling.csv and outputs/cycles/analysis_20260210_rolling.json).\n\nSummary (both turbines)\n- Forecast horizon: next 48 hours, hourly. Units: fractions of rated power (0–1); energy in equivalent full‑load hours (eflh).\n- Mean wind at hub ~8.24 m/s; ensemble disagreement moderate (mean spread 2.46 m/s, max spread 7.77 m/s). When models disagree, expect higher uncertainty around peaks/troughs.\n- Recent forecast bias: both turbines have been running high in the last 14 days (t1 over‑forecasting; t2 over‑forecasting). Calibration applied (small downward bias corrections and widened bands).\n- Day‑ahead inputs changed materially vs yesterday: day‑ahead was revised down (mean signed change roughly −0.04 to −0.044 of rated power) after today's NWP runs.\n\nPer‑turbine highlights\n- Turbine t1\n  - energy_48h_eflh: 20.85\n  - energy_day_ahead_24h_eflh: 13.9\n  - mean capacity factor: 0.434; peak hour local: 2026-02-11 21:00; trough: 2026-02-12 12:00.\n  - Notable ramp: around 2026-02-11 06:00 a downward step of −0.32 (fraction of rated).\n  - Confidence: low (ensemble spread and recent over‑forecast bias). Bands scaled x1.22.\n\n- Turbine t2\n  - energy_48h_eflh: 21.66\n  - energy_day_ahead_24h_eflh: 14.31\n  - mean capacity factor: 0.451; peak hour local: 2026-02-11 21:00; trough: 2026-02-12 12:00.\n  - Notable ramp: same large downward step near 2026-02-11 06:00 of −0.32.\n  - Confidence: low. Bands scaled x1.28.\n\nOperator briefing (under 250 words)\nExpected energy per turbine: t1 20.85 eflh (48h) with 13.9 eflh in the day‑ahead 24h; t2 21.66 eflh (48h) with 14.31 eflh in the day‑ahead 24h. The day begins with moderate production (mean CF ~0.44), rising toward an evening peak on 2026-02-11 21:00 and falling to a low around 2026-02-12 12:00. The main operational concern is a sharp downward ramp centered near 2026-02-11 06:00 (≈ −0.32 of rated power) — staff/reserve should be ready for that transition. Confidence is low: ensemble spread is moderate to high and the model has shown a small consistent over‑forecast bias in the past 14 days (we applied bias correction and widened uncertainty bands). Today's NWP runs revised the day‑ahead downward relative to yesterday (mean signed change ≈ −0.04), so plan slightly more reserve than you would from yesterday's plan. Use the P10–P90 band rather than the point estimate when setting reserve margins."
     }
   ]
 }

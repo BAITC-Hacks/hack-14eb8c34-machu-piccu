@@ -1,30 +1,39 @@
-Turbine forecasts published for 2026-02-12 (48 h). Files: forecast_20260212_rolling.csv and analysis_20260212_rolling.json.
+Forecast published for 2026-02-12 (48 h, both turbines). Files: outputs/cycles/forecast_20260212_rolling.csv and outputs/cycles/analysis_20260212_rolling.json.
 
-Summary (interpretation and key points)
+Summary — weather and model inputs
+- Mean forecast wind at hub ~5.18 m/s; model disagreement present: GFS ~6.04 m/s while ECMWF and ICON are lower (~4.7–4.8 m/s). Ensemble spread moderate (mean spread 1.97 m/s, max spread 5.19 m/s). Expect model uncertainty through the run; when models diverge prefer the P10–P90 band.
+- Latest NWP runs materially revised the day‑ahead: for t1 the day‑ahead hours were revised (mean absolute change 0.0756, mean signed change -0.0218, max abs change 0.2655) — net downward adjustment. For t2 the day‑ahead was also revised (mean abs change 0.0861, mean signed change -0.031, max abs change 0.2685) — net downward adjustment. Action: day‑ahead forecast revised with today's NWP runs.
 
-- Models and uncertainty
-  - Mean wind at hub ~5.2 m/s; model ensemble mean differs by turbine (ECMWF ~4.7, GFS ~6.0, ICON ~4.8). Ensemble spread is large (mean 1.97 m/s, up to 5.2 m/s) — treat the P10–P90 band as more informative than the single point forecast.
-  - Both turbines show low confidence in point values due to high ensemble spread and low mean wind speeds near cut-in.
+Forecast model performance and calibration
+- Recent 14‑day record shows a tendency to over‑forecast. Calibration applied:
+  - t1: bias ≈ 0.069 over-forecast; band scaled ×1.1506.
+  - t2: bias ≈ 0.049 over-forecast; band scaled ×1.1916.
+- Recent verification (14 d) MAE/RMSE and coverage:
+  - t1: mae 0.194, rmse 0.2377, bias over‑forecasting; P10–P90 coverage 0.78.
+  - t2: mae 0.2062, rmse 0.2486, bias over‑forecasting; P10–P90 coverage 0.636.
+- Because of the over‑forecast tendency and model spread, overall confidence: low.
 
-- Numerical forecast and calibration
-  - Run completed and published. Mean capacity factors: t1 0.18, t2 0.191 over 48 h. Max hourly outputs ~0.72–0.74 rated.
-  - Recent calibration shows the model has been systematically over-forecasting: t1 bias +0.077, t2 bias +0.059 (14-day calibration). Bands widened slightly (scale factors ~1.09 for t1, 1.08 for t2).
-
-- Recent performance
-  - Last 14 days: t1 MAE 0.194, RMSE 0.239, bias +0.027 (over-forecast); t2 MAE 0.206, RMSE 0.250, bias +0.0095 (over-forecast). P10–P90 coverage: t1 0.80, t2 0.67.
-
-- Input updates (compared to yesterday)
-  - Day-ahead hours were revised with today's NWP runs for both turbines.
-  - t1: mean absolute change 0.070 of rated power; mean signed change −0.0165 (slightly lower on average); max change 0.2645.
-  - t2: mean absolute change 0.082; mean signed change −0.0274 (slightly lower on average); max change 0.2671.
-  - Action: day-ahead forecasts were adjusted downward in places after new runs — check P10–P90 for operational decisions.
+Key forecast numbers (do not invent other values)
+- t1:
+  - energy_48h_eflh = 8.87
+  - energy_day_ahead_24h_eflh = 1.64
+  - mean_capacity_factor = 0.185
+  - max_output = 0.725; min_output = 0.0
+  - hours_below_cutin = 20
+  - peak_hour_local = 2026-02-14 02:00:00; trough_hour_local = 2026-02-13 00:00:00
+  - mean_ensemble_spread_ms = 1.97
+- t2:
+  - energy_48h_eflh = 9.52
+  - energy_day_ahead_24h_eflh = 1.82
+  - mean_capacity_factor = 0.198
+  - max_output = 0.744; min_output = 0.0
+  - hours_below_cutin = 17
+  - peak_hour_local = 2026-02-14 02:00:00; trough_hour_local = 2026-02-13 00:00:00
+  - mean_ensemble_spread_ms = 1.97
+- No significant ramp events flagged by the model in the 48 h window.
 
 Operator briefing (under 250 words)
-
-Expected energy: t1 ~8.63 full-load hours, t2 ~9.19 FLH over the next 48 h (published). Average output low: ~18–19% capacity. Peak hourly output around local 02:00 on 2026-02-14 (~0.72–0.74 rated). Long stretches near cut-in: expect ~19–21 hours below cut-in across turbines (reduced/zero output at times).
-
-Shape and ramps: overall light winds with intermittent ups around late local night leading to a modest peak at 02:00 on 2026-02-14. No large sustained ramps flagged by the model; however, individual hours see step changes (max input-update moves up to ~0.26 of rated power). Recent NWP updates nudged the day-ahead forecast slightly lower.
-
-Staffing/reserve advice: hold modest upward reserve capacity for short-notice increases during the late-night peak window (low-probability <25% chance of outputs near 0.7). Because model bias shows small over-forecasting and ensemble spread is large, conservatively plan for lower actual output than the point forecast — use the P10–P90 band for reserve sizing.
-
-Confidence: low. Reasons: mean winds near cut-in, large inter-model disagreement (ECMWF vs GFS spread), recent over-forecast bias, and widened uncertainty bands. Rely on the published P10–P90 band if needing quantitative reserve margins.
+- Expected energy per turbine: t1 48‑h = 8.87 eflh (day‑ahead 24‑h = 1.64 eflh); t2 48‑h = 9.52 eflh (day‑ahead 24‑h = 1.82 eflh).
+- Shape of the day: generally light winds with most hours near or below cut‑in (t1: 20 hours below cut‑in, t2: 17 hours below cut‑in). A modest peak around local 02:00 on 2026‑02‑14; the lowest point around local 00:00 on 2026‑02‑13.
+- Ramps/staffing: no model‑flagged high ramps in the 48‑h forecast; however the recent NWP update produced some large hour‑to‑hour revisions (single‑hour changes up to ~0.27 of rated power between yesterday's and today's day‑ahead runs). Be ready for short notice adjustments if observed winds follow the higher GFS solution.
+- Confidence and recommendation: confidence low due to model disagreement (GFS higher than ECMWF/ICON), moderate ensemble spread, and a recent small warm bias in the forecast that has been corrected in calibration. Hold conservative upward reserve relative to forecasted output for the day‑ahead block in case winds trend toward the higher model (GFS), but also expect many low‑output hours; reserve strategy: retain flexibility rather than fixed additional downward reserve.

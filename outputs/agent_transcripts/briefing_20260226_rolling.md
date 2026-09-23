@@ -1,34 +1,31 @@
-Turbine forecasts published for issue date 2026-02-26.
+Turbine forecasts published for 2026-02-26.
 
-Weather summary (both turbines)
-- Model means for 48 h: ECMWF 8.23 m/s, GFS 10.95 m/s, ICON 9.53 m/s; overall mean wind speed at 100 m ≈ 9.57 m/s.
-- Ensemble spread moderate: mean spread 1.72 m/s, max spread 3.44 m/s. Where ensembles diverge, uncertainty is elevated — prefer the P10–P90 band over point values.
-- Temperatures around -3.3 °C. No models indicate sustained gale or cut-out conditions.
+Summary of model weather input (both turbines)
+- Mean 100 m wind speed next 48 h: 9.57 m/s (models disagree: ECMWF 8.23, GFS 10.95, ICON 9.53).
+- Ensemble spread moderate: mean 1.72 m/s, max 3.44 m/s. Expect model disagreement at times — rely on P10–P90 for uncertainty.
 
 Recent forecast performance
-- No verified forecast history in the last 14 days for either turbine; calibration not yet applied. Treat outputs as uncorrected model forecasts.
+- No verified forecast hours in the last 14 days for either turbine. No bias correction applied; publishing uncorrected model output.
 
-Input updates since yesterday
-- Today's NWP runs materially changed the day‑ahead (24‑48 h) forecast for both turbines.
-- Mean absolute change over overlapping 24 h: 0.103 fraction of rated power; mean signed change: -0.102 (models moved lower overall).
-- Maximum single-hour change up to 0.307 in fraction of rated power.
-- Action: day‑ahead forecast revised using new NWP runs.
+Input updates since previous run
+- New NWP runs materially changed the day-ahead forecast for both turbines. Overlapping day-ahead hours: 24.
+- Mean absolute change in power: 0.1032 (fraction of rated). Mean signed change: -0.1022 — overall downward revision vs yesterday. Max individual-hour change: 0.3066.
+- Action: day-ahead forecast revised with today's NWP runs.
 
-Forecast (summary from model run)
-- Both turbines: 48‑h hourly forecasts published (CSV/JSON saved).
-- Day-ahead energy (first 24 h) per turbine: 13.41 full-load equivalent hours.
-- 48‑h energy equivalent per turbine: 29.99 full-load equivalent hours.
-- Mean capacity factor: 0.625. Expected hourly outputs range roughly 0.224–0.86 of rated power; no hours near rated power, none below cut‑in.
-- Peak hour (local) for both turbines: 2026-02-28 13:00 (highest output in the 48 h window).
-- Trough hour (local) for both turbines: 2026-02-27 11:00 (lowest output).
-- Mean ensemble band width ~0.59–0.60 (fraction of rated power). Overall forecast confidence: low (ensemble spread + no verification history).
+Forecast highlights (from model run)
+- energy_48h_eflh (t1): 29.99
+- energy_day_ahead_24h_eflh (t1): 13.41
+- energy_48h_eflh (t2): 29.99
+- energy_day_ahead_24h_eflh (t2): 13.41
+- Mean capacity factor (both): 0.625. Peak hour local for both turbines: 2026-02-28 13:00. Trough hour local for both: 2026-02-27 11:00.
+- Mean wind speed ~9.57 m/s; max ~11.76 m/s, min ~6.07 m/s.
+- No predicted hours near rated output; no hours below cut-in.
+- Mean ensemble spread indicates low-to-moderate confidence; calibration: none (no verified history).
 
-Operator briefing (for dispatch)
-- Expected energy: ~13.4 full-load hours per turbine over the next 24 h; ~30 FLEH per turbine over 48 h.
-- Shape: moderate winds through the period with a dip around local 2026-02-27 11:00, then recovery to a peak at ~2026-02-28 13:00. Hourly output varies between ~0.22 and ~0.86 of rated power.
-- Ramps/risks: no modelled sharp ramp events flagged by the forecast engine, but ensemble spread is moderate-to-high in places (max spread 3.44 m/s), and today's NWP updates reduced expected day‑ahead output by ~0.10 in capacity fraction on average compared to yesterday. Expect possible revisions if subsequent NWP runs shift again.
-- Confidence & reserves: confidence is low due to a) moderate ensemble disagreement and b) no local verification history to calibrate bias. Recommend holding additional upward reserve in the day‑ahead window to cover potential shortfalls (reserve magnitude consistent with mean_abs_change ~0.10–0.30 fraction of rated capacity for a conservative posture).
-- Notes: outputs are uncalibrated model forecasts; monitor next NWP cycle for changes and update dispatch if the day‑ahead revisions persist.
+Operator briefing (for dispatchers)
+- Expected energy per turbine: energy_48h_eflh = 29.99; day‑ahead 24h energy per turbine = 13.41.
+- Day shape: moderate winds overall with a mid-day peak on 2026-02-28 around 13:00 and a low late morning on 2026-02-27 around 11:00. Expect sustained generation rather than short spikes; mean capacity factor ~0.625.
+- Ramps and staffing: no large, model-predicted ramp events flagged by the model run. However, the day‑ahead forecast was revised downward on average (mean signed change -0.1022) with some hours changing by as much as ~0.307 of rated power — watch the transition into the lower-power period on the morning of 2026-02-27 (~trough hour). Consider holding moderate upward reserve during that morning window in case the stronger-model members verify.
+- Confidence and reason: overall confidence low (mean ensemble spread 1.72 m/s, max 3.44 m/s; models diverge notably between ECMWF and GFS). No recent verification data available, so no bias correction applied. Use the P10–P90 bands from the published files for reserve sizing; expect greater uncertainty around hours where model spread peaks.
 
-Files published:
-- forecast CSV and analysis JSON saved to the operational outputs directory.
+Files written: outputs/cycles/forecast_20260226_rolling.csv and outputs/cycles/analysis_20260226_rolling.json.

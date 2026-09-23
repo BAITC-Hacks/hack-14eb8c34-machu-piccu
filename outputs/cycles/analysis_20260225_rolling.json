@@ -6,9 +6,10 @@
   "turbines": {
     "t1": {
       "turbine": "t1",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 30.95,
-      "day_ahead_energy_eflh": 15.08,
+      "energy_48h_eflh": 30.95,
+      "energy_day_ahead_24h_eflh": 15.08,
       "mean_capacity_factor": 0.645,
       "max_output": 0.85,
       "min_output": 0.263,
@@ -29,9 +30,10 @@
     },
     "t2": {
       "turbine": "t2",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 30.95,
-      "day_ahead_energy_eflh": 15.08,
+      "energy_48h_eflh": 30.95,
+      "energy_day_ahead_24h_eflh": 15.08,
       "mean_capacity_factor": 0.645,
       "max_output": 0.85,
       "min_output": 0.263,
@@ -69,31 +71,6 @@
       "band_window_days": 21
     }
   },
-  "revisions": {
-    "t1": {
-      "changed": true,
-      "units": "fraction of rated power",
-      "previous_issue_date": "2026-02-24",
-      "overlapping_hours": 24,
-      "mean_abs_change": 0.0701,
-      "mean_signed_change": -0.029,
-      "max_abs_change": 0.2241,
-      "previous_nwp_lead_hours": 48,
-      "current_nwp_lead_hours": 24,
-      "action": "day-ahead forecast revised with today's NWP runs"
-    },
-    "t2": {
-      "changed": true,
-      "units": "fraction of rated power",
-      "previous_issue_date": "2026-02-24",
-      "overlapping_hours": 24,
-      "mean_abs_change": 0.0701,
-      "mean_signed_change": -0.029,
-      "max_abs_change": 0.2241,
-      "previous_nwp_lead_hours": 48,
-      "current_nwp_lead_hours": 24,
-      "action": "day-ahead forecast revised with today's NWP runs"
-    }
-  },
+  "revisions": {},
   "notes": []
 }

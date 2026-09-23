@@ -1,27 +1,26 @@
-Forecast published for issue 2026-02-05 (rolling). Files written: CSV and JSON (paths in system). Summary below.
+Forecast published for issue 2026-02-05 (files: outputs/cycles/forecast_20260205_rolling.csv, outputs/cycles/analysis_20260205_rolling.json).
 
-Key model/weather signals
-- Weather models (ECMWF, GFS, ICON) give similar mean 100 m wind (~8.4–8.8 m/s) but ensemble spread is non-negligible (mean spread ~1.8 m/s, max ~4.8 m/s). This drives forecast uncertainty; we flag the 48‑hr as low confidence.
-- Latest NWP runs materially changed the day‑ahead compared with yesterday: the DA hours were revised (overlap 24 h), mean absolute change ~0.048 of rated power and a mean signed change slightly negative (~‑0.017), i.e. today’s input nudged the DA forecast down relative to yesterday. Max single‑hour change up to ~0.148 of rated power.
+Weather overview (both turbines)
+- Model means: per-model mean wind speeds around 8.4–8.8 m/s (ecmwf_ifs025 8.39, gfs_seamless 8.78, icon_seamless 8.52). 
+- Mean wind 100 m ≈ 8.57 m/s, max ≈ 16.99 m/s, min ≈ 2.24 m/s.
+- Ensemble spread moderate (mean spread 1.8 m/s, max spread 4.76 m/s) — use the P10–P90 band where needed; uncertainty is material.
+
+Input updates (day‑ahead change)
+- t1: day‑ahead revised with today's NWP runs. Overlapping 24h: mean_abs_change 0.0481 (fraction of rated), mean_signed_change -0.0155 (small net downward), max_abs_change 0.1467. Action: day‑ahead forecast revised with today's NWP runs.
+- t2: day‑ahead revised with today's NWP runs. Overlapping 24h: mean_abs_change 0.0481, mean_signed_change -0.0152 (small net downward), max_abs_change 0.1464. Action: day‑ahead forecast revised with today's NWP runs.
 
 Recent forecast performance
-- Last 14 days: model MAE ~0.16–0.17, RMSE ~0.21–0.22; small persistent positive bias (model tending to over‑forecast) of ~0.008–0.011 of rated power. P10–P90 calibration coverage ~82–86%. Bands have been scaled to account for the recent bias and spread.
+- t1 (last 14 days): MAE 0.1637, RMSE 0.2103, bias +0.0169 (model slightly over‑forecasting), P10–P90 coverage 0.803.
+- t2 (last 14 days): MAE 0.1701, RMSE 0.2211, bias +0.0164 (slight over‑forecast), P10–P90 coverage 0.756.
+Calibration applied: band scaled up (t1 x1.11, t2 x1.17) and small bias correction applied.
 
-Forecast highlights (per turbine)
-- Energy equivalent full‑load hours (48 h): t1 = 22.04 h, t2 = 22.13 h.
-- Day‑ahead energy (EFLH, the DA slab): t1 = 14.12 h, t2 = 14.16 h.
-- Mean capacity factor over 48 h: t1 ~0.459, t2 ~0.461.
-- Peak hourly output around local 2026-02-06 20:00 for both turbines; trough around local 2026-02-07 08:00.
-- Hours near rated: 9 hours each; no hours below cut‑in.
-- Max hourly outputs ~0.92–0.925 of rated power; min hourly outputs ~0.067–0.069 of rated power.
-- Mean forecast uncertainty (band width) is elevated and bands were scaled (t1 band scale ~1.04, t2 ~1.14) due to recent over‑forecasting and ensemble spread.
-- No modelled sharp ramp events flagged in the analysis.
+Forecast summary (from model output)
+- t1: mean capacity factor 0.455; max output 0.919; min 0.063; hours near rated 8; peak hour local 2026-02-06 20:00:00; trough 2026-02-07 08:00:00; confidence: low.
+- t2: mean capacity factor 0.454; max output 0.918; min 0.062; hours near rated 8; peak hour local 2026-02-06 20:00:00; trough 2026-02-07 08:00:00; confidence: low.
+- No automated large ramp events flagged in the analysis.
 
-Operator briefing (for reserve decision)
-- Expected energy: roughly 14 full‑load hours in the day‑ahead window (per turbine), with mean capacity factor ~0.46. Treat this as a moderate‑production period.
-- Shape: production rises into an evening peak (local ~20:00 on 2026‑02‑06) then falls to a low in the early morning (~08:00 on 2026‑02‑07). Nine hours around the peak approach rated output.
-- Ramps/staffing: No large discrete ramp events were flagged by the forecast. However, the DA run today moved several hours downward (mean signed change ~‑0.017 of rated), and individual hour revisions of up to ~0.148 occurred vs yesterday’s DA — consider keeping some flexible reserve ready around the transition into the evening peak in case actual winds fall on the low side of ensembles.
-- Confidence: LOW. Ensemble spread is moderate to high, and recent model bias shows slight over‑forecasting; bands have been widened accordingly. Use the P10–P90 band (provided in the published files) for reserve sizing rather than the point forecast when uncertainty matters.
-
-Notes
-- Forecast and uncertainty files are saved (CSV/JSON). If you want a dispatchable hourly table extracted or a P10/P90 summary for reserve scheduling, I can pull that next.
+Operator briefing (under 250 words)
+- Expected energy per turbine: t1 energy_48h_eflh = 21.82, energy_day_ahead_24h_eflh = 14.01. t2 energy_48h_eflh = 21.8, energy_day_ahead_24h_eflh = 14.0.
+- Shape: winds moderate with a broad peak into the evening of 2026-02-06 (peak hour 20:00 local) and a low in the early morning of 2026-02-07 (08:00 local). Each turbine has ~8 hours near rated output across the 48h.
+- Ramps/staffing: no model‑flagged rapid ramps, but day‑ahead was revised today (mean_abs_change ~0.048) with some hours changing up to ~0.147 of rated power — watch the transition into the evening peak (around 20:00 on 2026-02-06) where uncertainty is higher.
+- Confidence & reason: low confidence. Ensemble spread is moderate (mean 1.8 m/s, max 4.76 m/s) and recent verification shows a small persistent over‑forecast bias (~+0.016). Bands have been widened by calibration (t1 x1.11, t2 x1.17). Hold modest upward reserve around the evening peak and overnight trough to cover model spread and the small downward revision seen in today's NWP update.

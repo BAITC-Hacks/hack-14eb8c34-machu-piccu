@@ -1,26 +1,33 @@
-Forecast published for issue date 2026-02-15 (rolling). Files: CSV and JSON saved (paths returned by system).
+T1 / T2 forecast published for 2026-02-15. Files:
+- outputs/cycles/forecast_20260215_rolling.csv
+- outputs/cycles/analysis_20260215_rolling.json
 
-Key forecast highlights (both turbines)
-- Forecast length: 48 hours (hourly).
-- Mean capacity factor: 0.597.
-- Energy equivalent (48 h): 28.66 full-load hours.
-- Day-ahead energy (EFLH): 16.76.
-- Hourly range: min output 0.168, max output 0.812.
-- Peak hour (local): 2026-02-16 14:00.
-- Trough hour (local): 2026-02-17 09:00.
-- Notable ramp: 2026-02-17 06:00, downward change ≈ -0.27 (fraction of rated power).
-- Hours near rated / below cut-in: none reported.
-- Mean ensemble spread (wind): 1.47 m/s; max spread observed 3.04 m/s.
-- Forecast confidence: low.
-- Calibration note: no verified history yet — publishing uncorrected model output.
-- Recent verification: no verified forecasts in the past 14 days (no bias correction samples).
+Weather summary (both turbines)
+- Mean wind at hub ~9.3 m/s (100 m), range 5.4–11.5 m/s over 48 h.
+- Different NWP centers diverge: GFS ~10.2 m/s, ECMWF ~9.4 m/s, ICON ~8.3 m/s. Ensemble spread mean 1.47 m/s, max 3.04 m/s — model disagreement is material. Use P10–P90 band where critical.
 
-Input-update check
-- The check for how today's NWP runs moved the previous day-ahead forecast failed when first attempted (run ordering). I could not produce a replay comparison showing whether the new runs materially shifted the day-ahead numbers. Treat the day-ahead as unverified with current model runs.
+Input update note (both turbines)
+- Compared to the previous run (2026-02-14) the day‑ahead 24‑h curve has been revised with today's NWP runs. Overlapping 24 h: mean absolute change ~0.124 (fraction of rated power), mean signed change −0.044 (small downward shift), max abs change 0.255. Expect some hours shifted down vs yesterday’s day‑ahead.
+
+Recent performance
+- No verified forecast history in the past 14 days for either turbine (no bias corrections available). Publishing uncorrected model output; treat point values with caution.
+
+Forecast analysis (both turbines; values from run)
+- energy_48h_eflh = 28.66
+- energy_day_ahead_24h_eflh = 16.76
+- mean_capacity_factor = 0.597
+- max_output = 0.812, min_output = 0.168
+- peak hour local: 2026-02-16 14:00 (both turbines)
+- trough hour local: 2026-02-17 09:00 (both turbines)
+- reported ramp event: 2026-02-17 06:00, drop ≈ 0.27 (fraction of rated power)
+- mean ensemble spread 1.47 m/s; confidence flagged low. No calibration bias samples available.
 
 Operator briefing (for dispatchers)
-- Expected energy: 16.76 EFLH day-ahead (per turbine), moderate production overall with mean capacity ~60%.
-- Shape: production rises toward a clear peak on 16 Feb at 14:00 local, then declines into the early hours of 17 Feb with the lowest at 09:00 local.
-- Ramps/staffing: a notable downward ramp centered 2026-02-17 06:00 of about -0.27 p.u. — hold some downward reserve around that time and be ready for reduction over a few hours. No short, sharp up-ramps near rated output are forecast.
-- Confidence and risk: Confidence is low due to limited verification history and moderate ensemble spread (mean 1.47 m/s, peak spread up to 3.04 m/s). The model output is uncorrected for local bias. Expect higher uncertainty during the trough/ramp period — rely on ensemble P10–P90 if you need a probabilistic reserve plan.
-- Actionable guidance: schedule moderate upward reserve for the afternoon peak and ensure downward reserve availability around 06:00–09:00 on 17 Feb for the expected drop. Monitor updated NWP runs; if the control room wants I will rerun the check-input-updates if new model cycles arrive to quantify any change to the day-ahead numbers.
+- Expected energy per turbine:
+  - energy_48h_eflh = 28.66
+  - energy_day_ahead_24h_eflh = 16.76
+- Shape of the day: winds build toward a peak around 2026-02-16 14:00 local (highest output ~0.81 p.u.), then decline with a notable trough around 2026-02-17 09:00 (lowest ~0.17 p.u.). The day‑ahead 24‑h bulk of production is in the first day (16.76 eflh).
+- Ramps and staffing: expect a pronounced down‑ramp starting around 2026-02-17 06:00 local with a drop of about 0.27 p.u.; that is the main ramp to staff for and may require additional reserve between ~06:00–09:00 local on 2026-02-17.
+- Confidence and recommendation: confidence is low due to limited verification history and material NWP spread (models differ by ~1–2 m/s, max ensemble spread 3 m/s). Also, today's NWP runs lowered the day‑ahead slightly versus yesterday. Hold conservative upward reserve against the morning drop on 2026-02-17 and monitor updates; if you need tight scheduling, use the P10–P90 band rather than the point estimate.
+
+Files published: outputs/cycles/forecast_20260215_rolling.csv and outputs/cycles/analysis_20260215_rolling.json.

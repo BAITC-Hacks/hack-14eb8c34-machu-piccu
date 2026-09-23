@@ -1,15 +1,27 @@
-Forecast published for issue 2026-02-27 (48 h, rolling). Files written: forecast CSV and JSON (paths in system outputs).
+Turbine expected energy (per turbine)
+- energy_48h_eflh: 20.46
+- energy_day_ahead_24h_eflh: 17.5
 
-Quick facts (both turbines, per-tool outputs)
-- 48‑h mean wind at hub ~7.5 m/s; ensemble mean models range ~6.4–9.5 m/s; mean ensemble spread 2.19 m/s (max spread 3.47 m/s).
-- Model-run forecast (each turbine): 48‑h energy equivalent = 20.46 full‑load hours; day‑ahead energy = 17.5 full‑load hours.
-- Mean capacity factor = 0.426; forecast max output 0.867 p.u., min 0.059 p.u.
-- Peak hour local: 2026-02-28 11:00; trough hour local: 2026-03-01 18:00.
-- Mean predictive band width ≈ 0.40 p.u.; overall confidence flagged as low. No ramp events flagged.
+Summary of the forecast and inputs
+- Published the 48-hour hourly forecast (files: outputs/cycles/forecast_20260227_rolling.csv and outputs/cycles/analysis_20260227_rolling.json).
+- Model peak output hour: 2026-02-28 11:00 (local). Trough hour: 2026-03-01 18:00 (local).
+- Mean modeled wind speed at 100 m: 7.5 m/s; mean ensemble spread 2.19 m/s (max spread 3.47 m/s). Per-model mean winds diverge (ECMWF ~6.36, ICON ~6.67, GFS ~9.45 m/s) — the models disagree notably, which increases uncertainty.
+- Calibration: no verified forecast history yet; output is the uncorrected model run.
 
-Input updates and recent performance
-- check_input_updates: today's NWP runs materially revised the day‑ahead (24 overlapping hours) versus yesterday. Mean absolute change ~0.054 p.u., mean signed change +0.0384 p.u. (i.e., net upward tweak); max single‑hour change ~0.195 p.u. Action recorded: day‑ahead revised with today's runs.
-- recent_performance: no verified forecast hours in the 14‑day window (no calibration bias correction available). Forecast published as uncorrected model output.
+Input updates (day‑ahead change)
+- For both turbines the day‑ahead hours were materially revised by today's NWP runs compared with the previous issue:
+  - overlapping hours: 24
+  - mean absolute change: 0.0543 (fraction of rated power)
+  - mean signed change: +0.0384 (net increase)
+  - maximum absolute change: 0.1948
+  - action: day‑ahead forecast revised with today's NWP runs
+- In plain terms: the day‑ahead curve was nudged higher on average; some hours changed substantially (up to ~0.195 of rated).
 
-Operator briefing (under 250 words)
-Expected energy: 20.46 full‑load hours over the next 48 h per turbine (day‑ahead 17.5 FLeh). Shape: moderate winds through the period with a midday peak tomorrow (28 Feb ~11:00 local) and the lowest output late on day two (1 Mar ~18:00 local). No near‑rated or cut‑in hour counts; no discrete ramp events detected by the model. Confidence and risk: low confidence—ensemble spread is moderate (2.19 m/s) and there is no recent verification history to correct bias. Today's NWP update nudged the day‑ahead forecast upward on average (~+0.038 p.u.) with some hours seeing near 0.195 p.u. change; therefore expect some uncertainty in day‑ahead scheduling. Recommendation: hold modest upward reserve into the midday peak window tomorrow in case winds trend higher than the ensemble median; be prepared for lower output around the trough late on day two.
+Performance and confidence
+- No verified forecast hours in the recent 14-day window for either turbine, so no bias correction available.
+- Confidence: low. Reasons: lack of verification history, significant ensemble spread and inter-model differences (GFS higher), and the calibration flag shows uncorrected model output.
+
+Operational implications for dispatchers
+- Expect roughly 17.5 eflh in the next 24 h and 20.46 eflh over 48 h per turbine.
+- Generation is moderate through the day with a peak around late morning on 2026-02-28; no modelled fast ramps flagged by the forecast (no ramp events), but individual hour changes of up to ~0.195 of rated occurred between model runs — maintain some contingency.
+- Recommendation: hold modest upward reserve given low confidence and model disagreement; be ready for hour-to-hour changes particularly late tonight through tomorrow morning when models diverge most.

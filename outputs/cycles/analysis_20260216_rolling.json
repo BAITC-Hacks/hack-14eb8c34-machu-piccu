@@ -6,9 +6,10 @@
   "turbines": {
     "t1": {
       "turbine": "t1",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 29.91,
-      "day_ahead_energy_eflh": 10.3,
+      "energy_48h_eflh": 29.91,
+      "energy_day_ahead_24h_eflh": 10.3,
       "mean_capacity_factor": 0.623,
       "max_output": 0.931,
       "min_output": 0.133,
@@ -16,7 +17,7 @@
       "trough_hour_local": "2026-02-17 09:00:00",
       "hours_near_rated": 8,
       "hours_below_cutin": 0,
-      "mean_band_width": 0.438,
+      "mean_band_width": 0.465,
       "confidence": "low",
       "ramp_events": [],
       "mean_ensemble_spread_ms": 1.83,
@@ -29,9 +30,10 @@
     },
     "t2": {
       "turbine": "t2",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 29.91,
-      "day_ahead_energy_eflh": 10.3,
+      "energy_48h_eflh": 29.91,
+      "energy_day_ahead_24h_eflh": 10.3,
       "mean_capacity_factor": 0.623,
       "max_output": 0.931,
       "min_output": 0.133,
@@ -39,7 +41,7 @@
       "trough_hour_local": "2026-02-17 09:00:00",
       "hours_near_rated": 8,
       "hours_below_cutin": 0,
-      "mean_band_width": 0.479,
+      "mean_band_width": 0.498,
       "confidence": "low",
       "ramp_events": [],
       "mean_ensemble_spread_ms": 1.83,
@@ -54,7 +56,7 @@
   "calibration": {
     "t1": {
       "bias": 0.0,
-      "band_scale": 0.8698541845608101,
+      "band_scale": 0.9240778340694826,
       "bias_samples": 0,
       "band_samples": 240,
       "bias_window_days": 14,
@@ -62,13 +64,38 @@
     },
     "t2": {
       "bias": 0.0,
-      "band_scale": 0.9704196830532625,
+      "band_scale": 1.0084223470541633,
       "bias_samples": 0,
       "band_samples": 240,
       "bias_window_days": 14,
       "band_window_days": 21
     }
   },
-  "revisions": {},
+  "revisions": {
+    "t1": {
+      "changed": true,
+      "units": "fraction of rated power",
+      "previous_issue_date": "2026-02-15",
+      "overlapping_hours": 24,
+      "mean_abs_change": 0.0828,
+      "mean_signed_change": -0.0665,
+      "max_abs_change": 0.2015,
+      "previous_nwp_lead_hours": 48,
+      "current_nwp_lead_hours": 24,
+      "action": "day-ahead forecast revised with today's NWP runs"
+    },
+    "t2": {
+      "changed": true,
+      "units": "fraction of rated power",
+      "previous_issue_date": "2026-02-15",
+      "overlapping_hours": 24,
+      "mean_abs_change": 0.0828,
+      "mean_signed_change": -0.0665,
+      "max_abs_change": 0.2015,
+      "previous_nwp_lead_hours": 48,
+      "current_nwp_lead_hours": 24,
+      "action": "day-ahead forecast revised with today's NWP runs"
+    }
+  },
   "notes": []
 }

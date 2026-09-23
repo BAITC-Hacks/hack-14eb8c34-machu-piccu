@@ -6,9 +6,10 @@
   "turbines": {
     "t1": {
       "turbine": "t1",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 18.9,
-      "day_ahead_energy_eflh": 3.12,
+      "energy_48h_eflh": 18.9,
+      "energy_day_ahead_24h_eflh": 3.12,
       "mean_capacity_factor": 0.394,
       "max_output": 0.822,
       "min_output": 0.048,
@@ -29,9 +30,10 @@
     },
     "t2": {
       "turbine": "t2",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 18.9,
-      "day_ahead_energy_eflh": 3.12,
+      "energy_48h_eflh": 18.9,
+      "energy_day_ahead_24h_eflh": 3.12,
       "mean_capacity_factor": 0.394,
       "max_output": 0.822,
       "min_output": 0.048,

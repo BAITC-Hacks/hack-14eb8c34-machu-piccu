@@ -1,259 +1,259 @@
 {
   "policy": "rolling",
   "cycles": 28,
-  "estimated_total_usd": 0.1379,
+  "estimated_total_usd": 0.1346,
   "per_cycle": [
     {
       "issue_date": "2026-01-31",
       "provider": "openai",
       "model": "gpt-5-mini",
       "steps": 7,
-      "prompt_tokens": 12243,
-      "completion_tokens": 1178,
-      "estimated_cost_usd": 0.0054
+      "prompt_tokens": 12737,
+      "completion_tokens": 1141,
+      "estimated_cost_usd": 0.0055
     },
     {
       "issue_date": "2026-02-01",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 2,
-      "prompt_tokens": 3377,
-      "completion_tokens": 1228,
-      "estimated_cost_usd": 0.0033
+      "steps": 3,
+      "prompt_tokens": 6006,
+      "completion_tokens": 1261,
+      "estimated_cost_usd": 0.004
     },
     {
       "issue_date": "2026-02-02",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 3,
-      "prompt_tokens": 5381,
-      "completion_tokens": 1750,
-      "estimated_cost_usd": 0.0048
+      "steps": 6,
+      "prompt_tokens": 13452,
+      "completion_tokens": 1428,
+      "estimated_cost_usd": 0.0062
     },
     {
       "issue_date": "2026-02-03",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 3,
-      "prompt_tokens": 5379,
-      "completion_tokens": 1172,
-      "estimated_cost_usd": 0.0037
+      "steps": 9,
+      "prompt_tokens": 18269,
+      "completion_tokens": 1101,
+      "estimated_cost_usd": 0.0068
     },
     {
       "issue_date": "2026-02-04",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 2,
-      "prompt_tokens": 3325,
-      "completion_tokens": 1203,
-      "estimated_cost_usd": 0.0032
+      "steps": 3,
+      "prompt_tokens": 5904,
+      "completion_tokens": 1030,
+      "estimated_cost_usd": 0.0035
     },
     {
       "issue_date": "2026-02-05",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 8222,
-      "completion_tokens": 1482,
-      "estimated_cost_usd": 0.005
+      "steps": 3,
+      "prompt_tokens": 5910,
+      "completion_tokens": 1483,
+      "estimated_cost_usd": 0.0044
     },
     {
       "issue_date": "2026-02-06",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 3,
-      "prompt_tokens": 5847,
-      "completion_tokens": 1424,
-      "estimated_cost_usd": 0.0043
+      "steps": 4,
+      "prompt_tokens": 7681,
+      "completion_tokens": 1426,
+      "estimated_cost_usd": 0.0048
     },
     {
       "issue_date": "2026-02-07",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 7,
-      "prompt_tokens": 14629,
-      "completion_tokens": 1253,
-      "estimated_cost_usd": 0.0062
+      "steps": 4,
+      "prompt_tokens": 7680,
+      "completion_tokens": 1011,
+      "estimated_cost_usd": 0.0039
     },
     {
       "issue_date": "2026-02-08",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 8223,
-      "completion_tokens": 1670,
-      "estimated_cost_usd": 0.0054
+      "steps": 6,
+      "prompt_tokens": 13457,
+      "completion_tokens": 1400,
+      "estimated_cost_usd": 0.0062
     },
     {
       "issue_date": "2026-02-09",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 6,
-      "prompt_tokens": 12397,
-      "completion_tokens": 1423,
-      "estimated_cost_usd": 0.0059
+      "steps": 3,
+      "prompt_tokens": 6006,
+      "completion_tokens": 1389,
+      "estimated_cost_usd": 0.0043
     },
     {
       "issue_date": "2026-02-10",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 9,
-      "prompt_tokens": 18033,
-      "completion_tokens": 1355,
-      "estimated_cost_usd": 0.0072
+      "steps": 3,
+      "prompt_tokens": 6006,
+      "completion_tokens": 1246,
+      "estimated_cost_usd": 0.004
     },
     {
       "issue_date": "2026-02-11",
       "provider": "openai",
       "model": "gpt-5-mini",
       "steps": 4,
-      "prompt_tokens": 7295,
-      "completion_tokens": 1429,
-      "estimated_cost_usd": 0.0047
+      "prompt_tokens": 7534,
+      "completion_tokens": 1706,
+      "estimated_cost_usd": 0.0053
     },
     {
       "issue_date": "2026-02-12",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 7292,
-      "completion_tokens": 1113,
-      "estimated_cost_usd": 0.004
+      "steps": 3,
+      "prompt_tokens": 5904,
+      "completion_tokens": 1411,
+      "estimated_cost_usd": 0.0043
     },
     {
       "issue_date": "2026-02-13",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 8362,
-      "completion_tokens": 1733,
-      "estimated_cost_usd": 0.0056
+      "steps": 8,
+      "prompt_tokens": 16311,
+      "completion_tokens": 1244,
+      "estimated_cost_usd": 0.0066
     },
     {
       "issue_date": "2026-02-14",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 3,
-      "prompt_tokens": 5651,
-      "completion_tokens": 1217,
-      "estimated_cost_usd": 0.0038
+      "steps": 9,
+      "prompt_tokens": 17850,
+      "completion_tokens": 1262,
+      "estimated_cost_usd": 0.007
     },
     {
       "issue_date": "2026-02-15",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 2,
-      "prompt_tokens": 3051,
-      "completion_tokens": 1296,
-      "estimated_cost_usd": 0.0034
+      "steps": 6,
+      "prompt_tokens": 12057,
+      "completion_tokens": 1023,
+      "estimated_cost_usd": 0.0051
     },
     {
       "issue_date": "2026-02-16",
       "provider": "openai",
       "model": "gpt-5-mini",
       "steps": 4,
-      "prompt_tokens": 7791,
-      "completion_tokens": 1646,
-      "estimated_cost_usd": 0.0052
+      "prompt_tokens": 7197,
+      "completion_tokens": 1173,
+      "estimated_cost_usd": 0.0041
     },
     {
       "issue_date": "2026-02-17",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 8,
-      "prompt_tokens": 19486,
-      "completion_tokens": 1335,
-      "estimated_cost_usd": 0.0075
+      "steps": 4,
+      "prompt_tokens": 7167,
+      "completion_tokens": 1080,
+      "estimated_cost_usd": 0.004
     },
     {
       "issue_date": "2026-02-18",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 8,
-      "prompt_tokens": 15485,
-      "completion_tokens": 1198,
-      "estimated_cost_usd": 0.0063
+      "steps": 6,
+      "prompt_tokens": 11757,
+      "completion_tokens": 1047,
+      "estimated_cost_usd": 0.005
     },
     {
       "issue_date": "2026-02-19",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 2,
-      "prompt_tokens": 3175,
-      "completion_tokens": 1300,
-      "estimated_cost_usd": 0.0034
+      "steps": 3,
+      "prompt_tokens": 5604,
+      "completion_tokens": 1305,
+      "estimated_cost_usd": 0.004
     },
     {
       "issue_date": "2026-02-20",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 6,
-      "prompt_tokens": 11478,
-      "completion_tokens": 1075,
-      "estimated_cost_usd": 0.005
+      "steps": 4,
+      "prompt_tokens": 7163,
+      "completion_tokens": 1105,
+      "estimated_cost_usd": 0.004
     },
     {
       "issue_date": "2026-02-21",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 6,
-      "prompt_tokens": 11483,
-      "completion_tokens": 1444,
-      "estimated_cost_usd": 0.0058
+      "steps": 3,
+      "prompt_tokens": 5602,
+      "completion_tokens": 1272,
+      "estimated_cost_usd": 0.0039
     },
     {
       "issue_date": "2026-02-22",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 6,
-      "prompt_tokens": 11478,
-      "completion_tokens": 1157,
-      "estimated_cost_usd": 0.0052
+      "steps": 4,
+      "prompt_tokens": 7163,
+      "completion_tokens": 1196,
+      "estimated_cost_usd": 0.0042
     },
     {
       "issue_date": "2026-02-23",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 2,
-      "prompt_tokens": 3173,
-      "completion_tokens": 1199,
-      "estimated_cost_usd": 0.0032
+      "steps": 6,
+      "prompt_tokens": 10165,
+      "completion_tokens": 927,
+      "estimated_cost_usd": 0.0044
     },
     {
       "issue_date": "2026-02-24",
       "provider": "openai",
       "model": "gpt-5-mini",
       "steps": 6,
-      "prompt_tokens": 11483,
-      "completion_tokens": 1177,
-      "estimated_cost_usd": 0.0052
+      "prompt_tokens": 11757,
+      "completion_tokens": 1049,
+      "estimated_cost_usd": 0.005
     },
     {
       "issue_date": "2026-02-25",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 6925,
-      "completion_tokens": 1324,
-      "estimated_cost_usd": 0.0044
+      "steps": 3,
+      "prompt_tokens": 5598,
+      "completion_tokens": 1357,
+      "estimated_cost_usd": 0.0041
     },
     {
       "issue_date": "2026-02-26",
       "provider": "openai",
       "model": "gpt-5-mini",
       "steps": 9,
-      "prompt_tokens": 15497,
-      "completion_tokens": 1103,
-      "estimated_cost_usd": 0.0061
+      "prompt_tokens": 17366,
+      "completion_tokens": 1037,
+      "estimated_cost_usd": 0.0064
     },
     {
       "issue_date": "2026-02-27",
       "provider": "openai",
       "model": "gpt-5-mini",
-      "steps": 4,
-      "prompt_tokens": 7761,
-      "completion_tokens": 1367,
-      "estimated_cost_usd": 0.0047
+      "steps": 3,
+      "prompt_tokens": 5604,
+      "completion_tokens": 1116,
+      "estimated_cost_usd": 0.0036
     }
   ]
 }

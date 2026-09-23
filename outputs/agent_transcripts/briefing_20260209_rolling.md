@@ -1,35 +1,22 @@
-Turbine forecasts published for 2026-02-09 (48 h). Files: forecast_20260209_rolling.csv and analysis_20260209_rolling.json.
+Forecast published for issue 2026-02-09 (files: outputs/cycles/forecast_20260209_rolling.csv and outputs/cycles/analysis_20260209_rolling.json).
 
-Inspection of inputs and verification
-- Weather models (both turbines): mean wind at 100 m ~8.43 m/s (models: ECMWF 8.03, GFS 8.88, ICON 8.39). Ensemble spread moderate: mean sigma 2.69 m/s, max spread 7.53 m/s — expect notable uncertainty where ensembles diverge.
-- Recent performance (last 14 days):
-  - T1: MAE 0.1613, RMSE 0.2134, small positive bias 0.0266 (model tends to over-forecast). P10–P90 coverage 0.906.
-  - T2: MAE 0.1632, RMSE 0.2203, small positive bias 0.0086 (slight over-forecast). P10–P90 coverage 0.844.
-- Input updates: both turbines had material day‑ahead changes vs yesterday (overlapping 24h). Mean absolute change ~0.092 of rated power; mean signed change small positive (~+0.01). Max single-hour revision ~0.215 — today's NWP runs meaningfully revised the DA curve.
+What the models are saying
+- Next 48 h mean wind at hub ~8.43 m/s, min 3.01, max 15.57 m/s.
+- Per-model mean wind: ECMWF 8.03, GFS 8.88, ICON 8.39 m/s.
+- Ensemble spread is notable: mean spread 2.69 m/s, max spread 7.53 m/s — models disagree at times, so uncertainty is elevated.
 
-Forecast summary (analysis outputs)
-- T1 (48 h):
-  - Mean capacity factor: 0.456; mean wind 8.43 m/s.
-  - Energy equivalent full-load hours (48 h window): 21.87; day‑ahead energy: 6.90 FLH.
-  - Peak hourly output: 0.907 of rated; trough: 0.102.
-  - Hours near rated: 3; hours below cut‑in: 0.
-  - Notable ramp: drop of ~0.289 of rated at 2026-02-11 06:00 local.
-  - Uncertainty/confidence: mean ensemble spread 2.69 m/s; forecast confidence = low. Calibration: recent 14d bias shows over-forecast of +0.014 so small downward adjustment applied; band scaled ×0.987.
-- T2 (48 h):
-  - Mean capacity factor: 0.471; mean wind 8.43 m/s.
-  - Energy equivalent full-load hours: 22.60; day‑ahead energy: 7.27 FLH.
-  - Peak hourly output: 0.922; trough: 0.118.
-  - Hours near rated: 3; hours below cut‑in: 0.
-  - Same ramp: −0.289 at 2026-02-11 06:00 local.
-  - Uncertainty/confidence: mean ensemble spread 2.69 m/s; forecast confidence = low. Calibration: recent 14d bias small under-forecast (−0.001) so tiny upward tweak; band scaled ×1.052.
+Input changes since yesterday
+- check_input_updates: day-ahead forecast was revised with today's NWP runs for both turbines. Overlapping 24h hours show mean absolute change 0.0912 (fraction of rated power), mean signed change +0.0131 (t1) / +0.013 (t2) — net slight increase on average, with max absolute change up to 0.2181. Action: day-ahead numbers updated to reflect today's runs.
 
-What changed with the latest NWP runs
-- Both turbines: Day‑ahead period (first 24 h) was materially revised compared with the previous-issue DA curve. Mean absolute change ~0.09 of rated power; some hours moved by ~0.21. The new runs bumped the DA curve slightly upward on average (mean signed change +0.01) — but calibration adjustments reduce systematic bias for T1 and slightly raise T2.
+Recent forecast performance
+- t1 (last 14 days): MAE 0.165, RMSE 0.2138, bias +0.0297 (over-forecasting), P10–P90 coverage 0.862.
+- t2 (last 14 days): MAE 0.1671, RMSE 0.2204, bias +0.0132 (over-forecasting), P10–P90 coverage 0.79.
+- Calibration applied: small positive bias correction and widened uncertainty bands (band scales ~1.13–1.19).
 
-Operator briefing (under 250 words)
-- Expected energy (next 48 h): T1 ~21.9 FLH, T2 ~22.6 FLH (outputs in analysis file). Expect mean capacity ~0.46–0.47 of rated across the period.
-- Shape and timing: Moderate winds with a daytime peak on 2026-02-11 around 21:00 local (highest single-hour output ~0.91–0.92). Lowest output ~0.10–0.12 around 2026-02-10 17:00 local. Three hours near-rated output across the window.
-- Ramps and staffing: A rapid drop of ~0.29 of rated power is forecast at 2026-02-11 06:00 local — this is the primary ramp to plan for. Because ensemble spread is moderate-to-high and DA runs were revised materially, hold reserves to cover ~0.3 of rated power during that interval.
-- Confidence and caveats: Overall confidence is low due to ensemble disagreement (mean spread 2.69 m/s, max spread up to 7.5 m/s) and material day‑ahead revisions today. Recent verification shows small systematic biases (T1 slight over-forecast; T2 nearly unbiased), so we've applied small calibration tweaks. Use the P10–P90 bands in the published JSON for reserve sizing; if you need a single number, expect ±~0.25–0.30 of rated uncertainty around the ramp window.
+Forecast highlights (from model run)
+- Turbine t1: energy_48h_eflh = 21.83 ; energy_day_ahead_24h_eflh = 6.88. Mean capacity factor 0.455. Peak hour local 2026-02-11 21:00; trough 2026-02-10 17:00. One near-rated hour. Confidence flagged low.
+- Turbine t2: energy_48h_eflh = 22.53 ; energy_day_ahead_24h_eflh = 7.23. Mean capacity factor 0.469. Peak hour local 2026-02-11 21:00; trough 2026-02-10 17:00. Three near-rated hours. Confidence flagged low.
+- Both turbines: mean ensemble spread 2.69 m/s in forecast; a significant ramp event at 2026-02-11 06:00 local with delta -0.289 (fraction of rated power).
 
-Files have been written to the control-room directory (CSV + JSON).
+Operator briefing (for reserve decisions — ~150 words)
+Expected energy per turbine over next 48 h: t1 = 21.83 eflh (day-ahead 24h = 6.88 eflh); t2 = 22.53 eflh (day-ahead 24h = 7.23 eflh). Shape: lower output through 2026-02-10 late afternoon (trough at 17:00 local), recovery to a peak around 2026-02-11 21:00. Key ramp: sharp drop around 2026-02-11 06:00 (~-0.289 p.u.) — staff for this potential downward ramp and ensure enough upward reserve if needed. Confidence: low — ensemble spread is elevated and recent model bias shows a small tendency to over-forecast; day-ahead was revised modestly upward with today's runs but uncertainty bands have been widened. Recommendation: hold moderate upward reserve through the night into 2026-02-11 and be ready for a short, substantial down-ramp around 06:00 local on 2026-02-11.

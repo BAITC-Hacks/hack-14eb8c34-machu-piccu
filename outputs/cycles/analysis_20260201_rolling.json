@@ -6,12 +6,13 @@
   "turbines": {
     "t1": {
       "turbine": "t1",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 18.4,
-      "day_ahead_energy_eflh": 13.56,
-      "mean_capacity_factor": 0.383,
-      "max_output": 0.891,
-      "min_output": 0.025,
+      "energy_48h_eflh": 18.35,
+      "energy_day_ahead_24h_eflh": 13.53,
+      "mean_capacity_factor": 0.382,
+      "max_output": 0.89,
+      "min_output": 0.024,
       "peak_hour_local": "2026-02-02 14:00:00",
       "trough_hour_local": "2026-02-03 13:00:00",
       "hours_near_rated": 0,
@@ -30,21 +31,22 @@
         24,
         48
       ],
-      "calibration": "recent 14d record shows the model running over-forecast by 0.032 of rated power (624 verified hours); band scaled x1.10"
+      "calibration": "recent 14d record shows the model running over-forecast by 0.033 of rated power (624 verified hours); band scaled x1.10"
     },
     "t2": {
       "turbine": "t2",
+      "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
       "hours": 48,
-      "energy_equivalent_full_load_hours": 18.36,
-      "day_ahead_energy_eflh": 13.54,
-      "mean_capacity_factor": 0.382,
-      "max_output": 0.89,
-      "min_output": 0.024,
+      "energy_48h_eflh": 18.23,
+      "energy_day_ahead_24h_eflh": 13.47,
+      "mean_capacity_factor": 0.38,
+      "max_output": 0.888,
+      "min_output": 0.021,
       "peak_hour_local": "2026-02-02 14:00:00",
       "trough_hour_local": "2026-02-03 13:00:00",
       "hours_near_rated": 0,
       "hours_below_cutin": 0,
-      "mean_band_width": 0.566,
+      "mean_band_width": 0.563,
       "confidence": "low",
       "ramp_events": [
         {
@@ -58,23 +60,23 @@
         24,
         48
       ],
-      "calibration": "recent 14d record shows the model running over-forecast by 0.033 of rated power (624 verified hours); band scaled x1.15"
+      "calibration": "recent 14d record shows the model running over-forecast by 0.035 of rated power (624 verified hours); band scaled x1.14"
     }
   },
   "calibration": {
     "t1": {
-      "bias": 0.0317395832749526,
-      "band_scale": 1.1020481060192526,
+      "bias": 0.03275072763678366,
+      "band_scale": 1.1019819347104054,
       "bias_samples": 624,
-      "band_samples": 648,
+      "band_samples": 960,
       "bias_window_days": 14,
       "band_window_days": 21
     },
     "t2": {
-      "bias": 0.03254592202926648,
-      "band_scale": 1.1476633377595757,
+      "bias": 0.03529002653839326,
+      "band_scale": 1.1440455781492962,
       "bias_samples": 624,
-      "band_samples": 648,
+      "band_samples": 960,
       "bias_window_days": 14,
       "band_window_days": 21
     }
@@ -85,9 +87,9 @@
       "units": "fraction of rated power",
       "previous_issue_date": "2026-01-31",
       "overlapping_hours": 24,
-      "mean_abs_change": 0.0695,
-      "mean_signed_change": 0.0115,
-      "max_abs_change": 0.2227,
+      "mean_abs_change": 0.069,
+      "mean_signed_change": 0.0087,
+      "max_abs_change": 0.2255,
       "previous_nwp_lead_hours": 48,
       "current_nwp_lead_hours": 24,
       "action": "day-ahead forecast revised with today's NWP runs"
@@ -97,9 +99,9 @@
       "units": "fraction of rated power",
       "previous_issue_date": "2026-01-31",
       "overlapping_hours": 24,
-      "mean_abs_change": 0.0694,
-      "mean_signed_change": 0.0117,
-      "max_abs_change": 0.2207,
+      "mean_abs_change": 0.0688,
+      "mean_signed_change": 0.0086,
+      "max_abs_change": 0.2238,
       "previous_nwp_lead_hours": 48,
       "current_nwp_lead_hours": 24,
       "action": "day-ahead forecast revised with today's NWP runs"

@@ -1,23 +1,32 @@
-Forecast published for issue 2026-02-20 (files: forecast_20260220_rolling.csv and analysis_20260220_rolling.json).
+Turbine 1 / T1 — weather summary (48 h)
+- Mean wind at hub ~8.5 m/s, range 2.0–15.2 m/s.
+- NWP model means: GFS highest (~9.6 m/s), ECMWF ~8.1 m/s, ICON ~7.9 m/s.
+- Ensemble spread moderate (mean 2.47 m/s, peak spread ~7.1 m/s) — model disagreement during some hours, so rely on P10–P90 band for uncertainty.
 
-Summary (both turbines, t1 and t2)
-- Forecast window: 48 hours from issue.
-- Mean capacity factor: 0.514.
-- Day‑ahead energy (equivalent full‑load hours): 13.88 EFLH.
-- Mean wind speed at hub: 8.51 m/s; ensemble spread (mean): 2.47 m/s (max spread 7.06 m/s between members).
-- Forecast range: min output 0.053, max output 0.904 (fraction of rated power).
-- Peak hour (local): 2026-02-22 16:00; trough hour (local): 2026-02-22 07:00.
-- Hours near rated output: 1; no hours below cut-in.
-- Mean uncertainty band width (CF): ~0.60–0.61.
-- Confidence: low. Calibration: no verified history yet — publishing uncorrected model output.
+Turbine 2 / T2 — weather summary (48 h)
+- Same as T1 (identical site exposure): mean 8.5 m/s, 2.0–15.2 m/s.
+- Same per-model differences. Ensemble spread similar.
+
+Input updates since yesterday (day-ahead hours)
+- Both turbines: Today's NWP runs materially revised the day‑ahead (0–24 h) forecast vs yesterday's longer‑lead run.
+- Overlapping 24 h: mean absolute change ~0.103 (fraction of rated power), mean signed change +0.0345 (net small upward tweak), max hourly change 0.26.
+- Action: Day‑ahead forecast has been updated using current NWP runs (lead reduced from 48 to 24 h).
 
 Recent performance
-- No verified forecast hours in the last 14 days for either turbine (no calibration samples available).
+- No verified forecast hours in the last 14 days for either turbine — no calibration bias adjustments available.
 
-Input updates
-- Today's NWP runs materially revised the day‑ahead forecast for both turbines vs yesterday:
-  - Overlapping 24 hours changed (mean absolute change) by 0.1031 fraction of rated power, mean signed change +0.0345 (net upward), max single‑hour abs change 0.26.
-  - Action: day‑ahead forecast revised using current NWP runs (lead reduced from 48 to 24 h).
+Forecast analysis and notes
+- The model run produced identical hourly outputs for both turbines (outputs published).
+- Key statistics (from run): 48‑hour energy per turbine 24.67 eflh; day‑ahead 24 h energy 13.88 eflh.
+- Mean capacity factor ~0.514; peak hourly power 0.904 pu at 2026-02-22 16:00 local; trough 0.053 pu at 2026-02-22 07:00 local.
+- Hours near rated: 1; hours below cut‑in: 0.
+- Confidence: low — ensemble spread and lack of calibration history increase uncertainty.
+- No sharp ramp events flagged by the model, but max abs update 0.26 pu implies some hours changed substantially in the day‑ahead update.
 
-Ramps / reserve guidance (operator briefing — under 250 words)
-Expected energy ~13.9 EFLH per turbine over 48 h (mean CF ~0.51). The day is generally moderate wind with a single daytime peak around local 16:00 on 22 Feb and the lowest output around 07:00 that same day. There is one hour near rated output; otherwise outputs stay well below rated. Ensemble spread is moderate (mean 2.47 m/s; peak spread up to 7 m/s), and the model confidence is low because we have no recent verified performance for calibration. Today's NWP update pushed the day‑ahead forecast modestly higher on average (mean signed change +0.0345) and produced some hours with large changes (up to 0.26). No discrete large ramp events were flagged by the model run, but the material input revisions and the wide ensemble spread imply a risk of unforecasted short ramps — hold standard upward and downward reserves, and monitor the next few NWP updates for possible further shifts.
+Operator briefing (for dispatchers, under 250 words)
+- Expected energy per turbine: energy_48h_eflh = 24.67; energy_day_ahead_24h_eflh = 13.88.
+- Shape of the day: Moderate winds through both days, with a low in the morning of 22 Feb (~0.053 pu at 07:00) and a single high around 16:00 on 22 Feb (~0.904 pu). Overall mean capacity ~0.51.
+- Ramps / staffing: No model‑flagged rapid ramps, but the day‑ahead update included individual hourly changes up to 0.26 pu. Watch the early morning trough and ramp into the afternoon peak on 22 Feb; hold some flexible reserve for potential upward ramp into the peak.
+- Confidence and reason: Low confidence. Ensemble spread is moderate to high in parts of the window and we have no recent verification to correct model bias. Use the P10–P90 range when planning margins and treat the point forecast as indicative rather than exact.
+
+Files published: outputs/cycles/forecast_20260220_rolling.csv and outputs/cycles/analysis_20260220_rolling.json.

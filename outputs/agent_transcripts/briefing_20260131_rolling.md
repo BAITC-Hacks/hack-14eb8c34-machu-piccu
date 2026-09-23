@@ -1,41 +1,24 @@
-Forecast published for issue 2026-01-31 (files saved).
+T1 and T2 48-hour forecast published for issue 2026-01-31 (files: outputs/cycles/forecast_20260131_rolling.csv, outputs/cycles/analysis_20260131_rolling.json).
 
-Turbine summaries (48 h, local times):
+Input changes since yesterday
+- t1: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0538 (down); mean absolute change 0.0964; max abs change 0.2646. Current run uses shorter lead NWP (24h) vs yesterday's 48h.
+- t2: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0547 (down); mean absolute change 0.0968; max abs change 0.2621. Current run uses shorter lead NWP (24h) vs yesterday's 48h.
 
-- t1
-  - Mean capacity factor: 0.372
-  - 48 h energy (equivalent full-load hours): 17.83
-  - Day-ahead energy (next 24 h EFH): 4.55
-  - Peak hour: 2026-02-02 14:00 local (max 0.89 of rated)
-  - Trough hour: 2026-02-01 01:00 local (min 0.027 of rated)
-  - Hours near rated: 0
-  - Ramps: notable drop −0.268 of rated at 2026-02-02 19:00 local
-  - Ensemble spread mean wind-speed: 2.62 m/s (mean band width 0.575)
-  - Confidence: low
-  - Calibration note: model has run high by ~0.030 of rated over the last 14 days; forecast bands scaled ×1.10
-  - Input updates: today’s NWP runs materially changed the day‑ahead (overlap 24 h). Mean absolute change 0.0983, mean signed change −0.0615 (net downward), max change 0.2722.
+Recent model performance (14-day)
+- t1: verified 672 hours. MAE 0.1618, RMSE 0.2164, bias +0.0375 (model over-forecasts), P10–P90 coverage 0.765.
+- t2: verified 672 hours. MAE 0.1658, RMSE 0.2259, bias +0.0417 (model over-forecasts), P10–P90 coverage 0.741.
 
-- t2
-  - Mean capacity factor: 0.371
-  - 48 h energy (equivalent full-load hours): 17.79
-  - Day-ahead energy (next 24 h EFH): 4.53
-  - Peak hour: 2026-02-02 14:00 local (max 0.889 of rated)
-  - Trough hour: 2026-02-01 01:00 local (min 0.026 of rated)
-  - Hours near rated: 0
-  - Ramps: notable drop −0.266 of rated at 2026-02-02 19:00 local
-  - Ensemble spread mean wind-speed: 2.62 m/s (mean band width 0.59)
-  - Confidence: low
-  - Calibration note: model has run high by ~0.031 of rated over the last 14 days; forecast bands scaled ×1.14
-  - Input updates: today’s NWP runs materially changed the day‑ahead (overlap 24 h). Mean absolute change 0.0986, mean signed change −0.0630 (net downward), max change 0.2704.
+Weather summary (from NWPs)
+- Mean wind ~8.0 m/s across the site for the 48h window; ensemble spread moderately large (mean spread 2.62 m/s), producing low confidence in point estimates.
+- Forecast concentrates higher winds into the second day with a broad peak around local 2026-02-02 14:00; a drop/ramp is signalled near local 2026-02-02 19:00.
 
-Recent performance summary (last 14 days):
-- t1: MAE 0.1679, RMSE 0.222, bias +0.0309 (systematic over-forecast), P10–P90 coverage 78.4%.
-- t2: MAE 0.1718, RMSE 0.2314, bias +0.0334 (systematic over-forecast), P10–P90 coverage 75.7%.
+Key forecast numbers (model outputs)
+- t1: energy_48h_eflh = 17.92; energy_day_ahead_24h_eflh = 4.6. Mean CF 0.373. Peak hourly output 0.892, trough 0.029. Mean band width 0.57. Confidence: low. Ensemble-driven ramp: -0.268 at 2026-02-02 19:00 local.
+- t2: energy_48h_eflh = 17.8; energy_day_ahead_24h_eflh = 4.54. Mean CF 0.371. Peak hourly output 0.889, trough 0.027. Mean band width 0.589. Confidence: low. Ensemble-driven ramp: -0.266 at 2026-02-02 19:00 local.
+- Calibration note: recent 14-day record shows systematic over-forecasting (t1 bias 0.028; t2 bias 0.031) and band widths scaled up (t1 x1.09; t2 x1.14).
 
-Operator briefing (under 250 words)
-- Expected energy next 48 h: about 17.8 EFH per turbine (day‑ahead ~4.5 EFH).
-- Shape: moderate winds through the first day with a deep trough around local 01:00 on 2026‑02‑01, then recovery to a peak around 14:00 on 2026‑02‑02 before a sharp decline at 19:00 local that removes ~0.27 of rated power.
-- Ramps to staff for: the main risk is the evening of 2026‑02‑02 at 19:00 local — both turbines show a coordinated drop ~0.266–0.268 of rated within an hour; prepare downward reserve around that time. Also expect low overnight output near 01:00 on 2026‑02‑01.
-- Confidence and caveats: overall confidence is low due to sizable ensemble spread and recent model tendency to over-forecast (~+0.03 of rated). Today's NWP updates materially revised the day‑ahead downward (mean signed change ≈ −0.06), so actual output may be lower than earlier runs indicated. Use the P10–P90 bands for reserve sizing; consider holding extra downward reserve around 19:00 on 2026‑02‑02 and upward reserve overnight if low cut-in risk matters.
-
-Files: hourly CSV and JSON saved to the control-room folder.
+Operator briefing (for reserves; under 250 words)
+- Expected energy per turbine: t1 48h = 17.92 eflh (day-ahead 24h = 4.6 eflh); t2 48h = 17.8 eflh (day-ahead 24h = 4.54 eflh).
+- Shape of the day: relatively low output overnight into day 1 with a significant rise through day 2 peaking around local 2026-02-02 14:00, then a notable drop in the evening of day 2.
+- Ramps/staffing: plan for a downward ramp around local 2026-02-02 19:00 of roughly 0.27 of rated power per turbine (model median); this is the main event to cover with reserve. Smaller hour-to-hour variability expected otherwise due to ensemble spread.
+- Confidence and caveats: low confidence in point values because ensemble spread is substantial and recent model bias shows small systematic over-forecasting. Today's NWP updates reduced the day-ahead median slightly versus yesterday (mean signed change ≈ -0.054). Use the P10–P90 band for reserve sizing rather than the median; bands have been broadened by calibration.
