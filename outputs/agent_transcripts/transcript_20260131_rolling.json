@@ -5,13 +5,13 @@
   "usage": {
     "provider": "openai",
     "model": "gpt-5-mini",
-    "steps": 7,
-    "prompt_tokens": 12737,
-    "completion_tokens": 1141,
-    "estimated_cost_usd": 0.0055
+    "steps": 4,
+    "prompt_tokens": 7686,
+    "completion_tokens": 1277,
+    "estimated_cost_usd": 0.0045
   },
-  "generated_at_utc": "2026-09-23T11:42:18+00:00",
-  "briefing": "T1 and T2 48-hour forecast published for issue 2026-01-31 (files: outputs/cycles/forecast_20260131_rolling.csv, outputs/cycles/analysis_20260131_rolling.json).\n\nInput changes since yesterday\n- t1: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0538 (down); mean absolute change 0.0964; max abs change 0.2646. Current run uses shorter lead NWP (24h) vs yesterday's 48h.\n- t2: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0547 (down); mean absolute change 0.0968; max abs change 0.2621. Current run uses shorter lead NWP (24h) vs yesterday's 48h.\n\nRecent model performance (14-day)\n- t1: verified 672 hours. MAE 0.1618, RMSE 0.2164, bias +0.0375 (model over-forecasts), P10–P90 coverage 0.765.\n- t2: verified 672 hours. MAE 0.1658, RMSE 0.2259, bias +0.0417 (model over-forecasts), P10–P90 coverage 0.741.\n\nWeather summary (from NWPs)\n- Mean wind ~8.0 m/s across the site for the 48h window; ensemble spread moderately large (mean spread 2.62 m/s), producing low confidence in point estimates.\n- Forecast concentrates higher winds into the second day with a broad peak around local 2026-02-02 14:00; a drop/ramp is signalled near local 2026-02-02 19:00.\n\nKey forecast numbers (model outputs)\n- t1: energy_48h_eflh = 17.92; energy_day_ahead_24h_eflh = 4.6. Mean CF 0.373. Peak hourly output 0.892, trough 0.029. Mean band width 0.57. Confidence: low. Ensemble-driven ramp: -0.268 at 2026-02-02 19:00 local.\n- t2: energy_48h_eflh = 17.8; energy_day_ahead_24h_eflh = 4.54. Mean CF 0.371. Peak hourly output 0.889, trough 0.027. Mean band width 0.589. Confidence: low. Ensemble-driven ramp: -0.266 at 2026-02-02 19:00 local.\n- Calibration note: recent 14-day record shows systematic over-forecasting (t1 bias 0.028; t2 bias 0.031) and band widths scaled up (t1 x1.09; t2 x1.14).\n\nOperator briefing (for reserves; under 250 words)\n- Expected energy per turbine: t1 48h = 17.92 eflh (day-ahead 24h = 4.6 eflh); t2 48h = 17.8 eflh (day-ahead 24h = 4.54 eflh).\n- Shape of the day: relatively low output overnight into day 1 with a significant rise through day 2 peaking around local 2026-02-02 14:00, then a notable drop in the evening of day 2.\n- Ramps/staffing: plan for a downward ramp around local 2026-02-02 19:00 of roughly 0.27 of rated power per turbine (model median); this is the main event to cover with reserve. Smaller hour-to-hour variability expected otherwise due to ensemble spread.\n- Confidence and caveats: low confidence in point values because ensemble spread is substantial and recent model bias shows small systematic over-forecasting. Today's NWP updates reduced the day-ahead median slightly versus yesterday (mean signed change ≈ -0.054). Use the P10–P90 band for reserve sizing rather than the median; bands have been broadened by calibration.",
+  "generated_at_utc": "2026-09-23T12:05:34+00:00",
+  "briefing": "Turbine 1:\n- Weather summary (48 h): mean wind ~7.99 m/s at 100 m, model means diverge (ECMWF ~7.7, GFS ~10.35, ICON ~5.92). Ensemble spread moderate to high (mean spread 2.62 m/s, peak spread 5.55 m/s). Temps near 0.9°C. Expect variable winds with model disagreement through the period; rely on P10–P90 band for risk.\n- Input update: Day-ahead hours were materially revised by today's NWP runs vs yesterday (overlap 24 h). Mean absolute change 0.096 of rated power, mean signed change -0.0538 (net downward), max abs change 0.2646. Action: today's runs lowered the DA point forecast on average but introduced some hours with sizable moves.\n- Recent performance: 14-day verification shows the model tends to over-forecast (bias +0.0375) with MAE 0.1618 and RMSE 0.2164. P10–P90 coverage 76.5%. Cal adjustments applied in analysis.\n\nTurbine 2:\n- Weather summary (48 h): same as T1 (site close): mean wind ~7.99 m/s, per-model spread ECMWF 7.7 / GFS 10.35 / ICON 5.92. Ensemble spread mean 2.62 m/s (max 5.55 m/s). Expect variable winds and model disagreement; P10–P90 band important.\n- Input update: Day-ahead hours materially revised by today's NWP runs vs yesterday (overlap 24 h). Mean abs change 0.0968, mean signed change -0.0547 (net downward), max abs change 0.2621. Action: DA point forecast nudged lower overall but with some large-hour adjustments.\n- Recent performance: 14-day verification: bias +0.0417 (over-forecasting), MAE 0.1658, RMSE 0.2259, P10–P90 coverage 74.1%. Calibration applied.\n\nPublication:\n- The 48-hour forecast files have been written: outputs/cycles/forecast_20260131_rolling.csv and outputs/cycles/analysis_20260131_rolling.json (96 hourly rows).\n\nOperator briefing (for dispatchers; <250 words)\n- Expected energy per turbine:\n  - Turbine 1 energy_48h_eflh = 17.92; energy_day_ahead_24h_eflh = 4.6\n  - Turbine 2 energy_48h_eflh = 17.8; energy_day_ahead_24h_eflh = 4.54\n- Shape of the day: Low output overnight into early morning (trough around local 2026-02-01 01:00). Winds build into the second day with a peak mid-afternoon (local 2026-02-02 14:00) then a notable down-ramp late evening (local 2026-02-02 19:00) of roughly -0.27 of rated power.\n- Ramps/staffing: Expect a significant downward ramp around 2026-02-02 19:00 (~0.266–0.268 p.u.). Also allow for variable gustiness during daytime peaks due to model disagreement. If holding reserves, plan for ~0.3 p.u. contingency for that ramp and additional margin given uncertainty.\n- Confidence and reason: Confidence rated low. Ensemble spread and inter-model disagreement are substantial; recent verification shows a systematic over-forecast bias which has been corrected in calibration but reduces trust in point values. Use the provided P10–P90 band for reserve sizing and treat day-ahead point values as biased-high without calibration.\n\nPublished by duty forecaster for Shelek corridor site — forecast issued 2026-01-31 18:00 UTC.",
   "transcript": [
     {
       "role": "user",
@@ -43,10 +43,47 @@
       "content": "",
       "tool_calls": [
         {
+          "name": "inspect_weather",
+          "input": {
+            "turbine": "t1",
+            "issue_date": "2026-01-31"
+          }
+        },
+        {
+          "name": "inspect_weather",
+          "input": {
+            "turbine": "t2",
+            "issue_date": "2026-01-31"
+          }
+        },
+        {
           "name": "check_input_updates",
           "input": {
             "turbine": "t1",
             "issue_date": "2026-01-31"
+          }
+        },
+        {
+          "name": "check_input_updates",
+          "input": {
+            "turbine": "t2",
+            "issue_date": "2026-01-31"
+          }
+        },
+        {
+          "name": "recent_performance",
+          "input": {
+            "turbine": "t1",
+            "as_of": "2026-01-31",
+            "days": "14"
+          }
+        },
+        {
+          "name": "recent_performance",
+          "input": {
+            "turbine": "t2",
+            "as_of": "2026-01-31",
+            "days": "14"
           }
         }
       ]
@@ -54,74 +91,26 @@
     {
       "role": "tool",
       "results": [
+        {
+          "name": "inspect_weather",
+          "content": "{\"turbine\": \"t1\", \"issue_date\": \"2026-01-31\", \"policy\": \"rolling\", \"nwp_lead_hours\": [24, 48], \"hours\": 48, \"mean_wind_speed_100m_ms\": 7.99, \"max_wind_speed_100m_ms\": 12.44, \"min_wind_speed_100m_ms\": 2.62, \"mean_temperature_c\": 0.9, \"per_model_mean_wind_ms\": {\"ecmwf_ifs025\": 7.7, \"gfs_seamless\": 10.35, \"icon_seamless\": 5.92}, \"mean_ensemble_spread_ms\": 2.62, \"max_ensemble_spread_ms\": 5.55}"
+        },
+        {
+          "name": "inspect_weather",
+          "content": "{\"turbine\": \"t2\", \"issue_date\": \"2026-01-31\", \"policy\": \"rolling\", \"nwp_lead_hours\": [24, 48], \"hours\": 48, \"mean_wind_speed_100m_ms\": 7.99, \"max_wind_speed_100m_ms\": 12.44, \"min_wind_speed_100m_ms\": 2.62, \"mean_temperature_c\": 0.9, \"per_model_mean_wind_ms\": {\"ecmwf_ifs025\": 7.7, \"gfs_seamless\": 10.35, \"icon_seamless\": 5.92}, \"mean_ensemble_spread_ms\": 2.62, \"max_ensemble_spread_ms\": 5.55}"
+        },
         {
           "name": "check_input_updates",
           "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-01-30\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.0964, \"mean_signed_change\": -0.0538, \"max_abs_change\": 0.2646, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "check_input_updates",
-          "input": {
-            "turbine": "t2",
-            "issue_date": "2026-01-31"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+        },
         {
           "name": "check_input_updates",
           "content": "{\"changed\": true, \"units\": \"fraction of rated power\", \"previous_issue_date\": \"2026-01-30\", \"overlapping_hours\": 24, \"mean_abs_change\": 0.0968, \"mean_signed_change\": -0.0547, \"max_abs_change\": 0.2621, \"previous_nwp_lead_hours\": 48, \"current_nwp_lead_hours\": 24, \"action\": \"day-ahead forecast revised with today's NWP runs\"}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "recent_performance",
-          "input": {
-            "turbine": "t1",
-            "as_of": "2026-01-31",
-            "days": "14"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+        },
         {
           "name": "recent_performance",
           "content": "{\"turbine\": \"t1\", \"window_days\": \"14\", \"verified_hours\": 672, \"mae\": 0.1618, \"rmse\": 0.2164, \"bias\": 0.0375, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.765}"
-        }
-      ]
-    },
-    {
-      "role": "assistant",
-      "content": "",
-      "tool_calls": [
-        {
-          "name": "recent_performance",
-          "input": {
-            "turbine": "t2",
-            "as_of": "2026-01-31",
-            "days": "14"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "results": [
+        },
         {
           "name": "recent_performance",
           "content": "{\"turbine\": \"t2\", \"window_days\": \"14\", \"verified_hours\": 672, \"mae\": 0.1658, \"rmse\": 0.2259, \"bias\": 0.0417, \"bias_direction\": \"over-forecasting\", \"p10_p90_coverage\": 0.741}"
@@ -151,7 +140,7 @@
     },
     {
       "role": "assistant",
-      "content": "T1 and T2 48-hour forecast published for issue 2026-01-31 (files: outputs/cycles/forecast_20260131_rolling.csv, outputs/cycles/analysis_20260131_rolling.json).\n\nInput changes since yesterday\n- t1: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0538 (down); mean absolute change 0.0964; max abs change 0.2646. Current run uses shorter lead NWP (24h) vs yesterday's 48h.\n- t2: day-ahead hours revised by today's NWP runs. Overlapping 24h mean signed change -0.0547 (down); mean absolute change 0.0968; max abs change 0.2621. Current run uses shorter lead NWP (24h) vs yesterday's 48h.\n\nRecent model performance (14-day)\n- t1: verified 672 hours. MAE 0.1618, RMSE 0.2164, bias +0.0375 (model over-forecasts), P10–P90 coverage 0.765.\n- t2: verified 672 hours. MAE 0.1658, RMSE 0.2259, bias +0.0417 (model over-forecasts), P10–P90 coverage 0.741.\n\nWeather summary (from NWPs)\n- Mean wind ~8.0 m/s across the site for the 48h window; ensemble spread moderately large (mean spread 2.62 m/s), producing low confidence in point estimates.\n- Forecast concentrates higher winds into the second day with a broad peak around local 2026-02-02 14:00; a drop/ramp is signalled near local 2026-02-02 19:00.\n\nKey forecast numbers (model outputs)\n- t1: energy_48h_eflh = 17.92; energy_day_ahead_24h_eflh = 4.6. Mean CF 0.373. Peak hourly output 0.892, trough 0.029. Mean band width 0.57. Confidence: low. Ensemble-driven ramp: -0.268 at 2026-02-02 19:00 local.\n- t2: energy_48h_eflh = 17.8; energy_day_ahead_24h_eflh = 4.54. Mean CF 0.371. Peak hourly output 0.889, trough 0.027. Mean band width 0.589. Confidence: low. Ensemble-driven ramp: -0.266 at 2026-02-02 19:00 local.\n- Calibration note: recent 14-day record shows systematic over-forecasting (t1 bias 0.028; t2 bias 0.031) and band widths scaled up (t1 x1.09; t2 x1.14).\n\nOperator briefing (for reserves; under 250 words)\n- Expected energy per turbine: t1 48h = 17.92 eflh (day-ahead 24h = 4.6 eflh); t2 48h = 17.8 eflh (day-ahead 24h = 4.54 eflh).\n- Shape of the day: relatively low output overnight into day 1 with a significant rise through day 2 peaking around local 2026-02-02 14:00, then a notable drop in the evening of day 2.\n- Ramps/staffing: plan for a downward ramp around local 2026-02-02 19:00 of roughly 0.27 of rated power per turbine (model median); this is the main event to cover with reserve. Smaller hour-to-hour variability expected otherwise due to ensemble spread.\n- Confidence and caveats: low confidence in point values because ensemble spread is substantial and recent model bias shows small systematic over-forecasting. Today's NWP updates reduced the day-ahead median slightly versus yesterday (mean signed change ≈ -0.054). Use the P10–P90 band for reserve sizing rather than the median; bands have been broadened by calibration."
+      "content": "Turbine 1:\n- Weather summary (48 h): mean wind ~7.99 m/s at 100 m, model means diverge (ECMWF ~7.7, GFS ~10.35, ICON ~5.92). Ensemble spread moderate to high (mean spread 2.62 m/s, peak spread 5.55 m/s). Temps near 0.9°C. Expect variable winds with model disagreement through the period; rely on P10–P90 band for risk.\n- Input update: Day-ahead hours were materially revised by today's NWP runs vs yesterday (overlap 24 h). Mean absolute change 0.096 of rated power, mean signed change -0.0538 (net downward), max abs change 0.2646. Action: today's runs lowered the DA point forecast on average but introduced some hours with sizable moves.\n- Recent performance: 14-day verification shows the model tends to over-forecast (bias +0.0375) with MAE 0.1618 and RMSE 0.2164. P10–P90 coverage 76.5%. Cal adjustments applied in analysis.\n\nTurbine 2:\n- Weather summary (48 h): same as T1 (site close): mean wind ~7.99 m/s, per-model spread ECMWF 7.7 / GFS 10.35 / ICON 5.92. Ensemble spread mean 2.62 m/s (max 5.55 m/s). Expect variable winds and model disagreement; P10–P90 band important.\n- Input update: Day-ahead hours materially revised by today's NWP runs vs yesterday (overlap 24 h). Mean abs change 0.0968, mean signed change -0.0547 (net downward), max abs change 0.2621. Action: DA point forecast nudged lower overall but with some large-hour adjustments.\n- Recent performance: 14-day verification: bias +0.0417 (over-forecasting), MAE 0.1658, RMSE 0.2259, P10–P90 coverage 74.1%. Calibration applied.\n\nPublication:\n- The 48-hour forecast files have been written: outputs/cycles/forecast_20260131_rolling.csv and outputs/cycles/analysis_20260131_rolling.json (96 hourly rows).\n\nOperator briefing (for dispatchers; <250 words)\n- Expected energy per turbine:\n  - Turbine 1 energy_48h_eflh = 17.92; energy_day_ahead_24h_eflh = 4.6\n  - Turbine 2 energy_48h_eflh = 17.8; energy_day_ahead_24h_eflh = 4.54\n- Shape of the day: Low output overnight into early morning (trough around local 2026-02-01 01:00). Winds build into the second day with a peak mid-afternoon (local 2026-02-02 14:00) then a notable down-ramp late evening (local 2026-02-02 19:00) of roughly -0.27 of rated power.\n- Ramps/staffing: Expect a significant downward ramp around 2026-02-02 19:00 (~0.266–0.268 p.u.). Also allow for variable gustiness during daytime peaks due to model disagreement. If holding reserves, plan for ~0.3 p.u. contingency for that ramp and additional margin given uncertainty.\n- Confidence and reason: Confidence rated low. Ensemble spread and inter-model disagreement are substantial; recent verification shows a systematic over-forecast bias which has been corrected in calibration but reduces trust in point values. Use the provided P10–P90 band for reserve sizing and treat day-ahead point values as biased-high without calibration.\n\nPublished by duty forecaster for Shelek corridor site — forecast issued 2026-01-31 18:00 UTC."
     }
   ]
 }
