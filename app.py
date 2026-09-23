@@ -61,7 +61,8 @@ tab_cycle, tab_feb, tab_acc, tab_how = st.tabs(["Цикл агента", "Фев
 
 # ---------------------------------------------------------------- cycle tab
 with tab_cycle:
-    if run_det or run_llm:
+    autorun = st.query_params.get("autorun") == "1" and "result" not in st.session_state
+    if run_det or run_llm or autorun:
         eng, ag, _ = get_engine(policy)
         ensure_warm(policy, date)
         d = date.strftime("%Y-%m-%d")
