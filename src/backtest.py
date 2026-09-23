@@ -1,16 +1,17 @@
 """Sequential replay: issue a forecast each day, exactly as it would have been.
 
 Run:
-    python -m src.backtest --start 2026-01-31 --end 2026-02-27 --label february_2026
-    python -m src.backtest --start 2025-10-01 --end 2026-01-30 --label verified
+    python -m src.backtest --policy rolling                       # February 2026 deliverable
+    python -m src.backtest --policy strict                        # conservative variant
+    python -m src.backtest --start 2025-10-01 --end 2026-01-30 --label verified --policy rolling
 
-The first command produces the competition deliverable: a forecast issued on
-31 January for 1-2 February, then a new one each day through the month. The
-second replays a window where production is known, so the same pipeline can be
-scored honestly.
+The default window produces the competition deliverable: a forecast issued on
+31 January for local days 1-2 February, then a new one each day through
+27 February. A window where production is known replays the same pipeline so
+it can be scored honestly.
 
-Each cycle sees only what existed at its issue time -- archived weather at the
-right lead, SCADA up to that instant, and the system's own verified errors.
+Each cycle sees only what existed at its issue moment -- archived weather at
+the right lead, SCADA up to that instant, and the system's own verified errors.
 """
 from __future__ import annotations
 
@@ -24,7 +25,12 @@ from src import agent, config, metrics, pipeline
 
 
 def run_backtest(
-    start: str, end: str, label: str, warmup_days: int = 30, verbose: bool = True
+    start: str,
+    end: str,
+    label: str,
+    policy: str = config.DEFAULT_POLICY,
+    warmup_days: int = 30,
+    verbose: bool = True,
 ) -> dict:
     """Replay every issue date in the window, one cycle per day.
 
@@ -34,14 +40,15 @@ def run_backtest(
     the scored window begins -- matching a system that has been running for a
     while rather than one booted this morning.
     """
-    engine = pipeline.ForecastPipeline(mode="archive")
+    label = f"{label}_{policy}"
+    engine = pipeline.ForecastPipeline(mode="archive", policy=policy)
     wind_agent = agent.WindAgent(engine)
 
     if warmup_days:
         warm_start = pd.Timestamp(start) - pd.Timedelta(days=warmup_days)
         warm_end = pd.Timestamp(start) - pd.Timedelta(days=1)
         if verbose:
-            print(f"  warm-up {warm_start.date()}..{warm_end.date()} (populating verification log)")
+            print(f"  policy={policy}  warm-up {warm_start.date()}..{warm_end.date()} (populating verification log)")
         for issue in pd.date_range(warm_start, warm_end, freq="D"):
             engine.record(wind_agent.run_cycle(issue.strftime("%Y-%m-%d"), publish=False).run)
         if verbose:
@@ -54,13 +61,15 @@ def run_backtest(
 
     for issue in issues:
         result = wind_agent.run_cycle(issue.strftime("%Y-%m-%d"), publish=False)
-        engine.record(result.run)          # closes the loop for tomorrow's calibration
+        engine.record(result.run)          # closes the loop for tomorrow's calibration and revision check
         frame = result.run.combined()
         if not frame.empty:
             collected.append(frame)
         briefings.append({
             "issue_date": issue.strftime("%Y-%m-%d"),
+            "issue_time_utc": engine.issue_moment(issue).isoformat(),
             "analysis": result.run.analysis,
+            "revisions": result.run.revisions,
             "notes": result.run.notes,
         })
         if verbose and issue.day % 7 == 1:
@@ -72,7 +81,7 @@ def run_backtest(
     forecasts = pd.concat(collected, ignore_index=True)
     forecasts = _attach_actuals(forecasts, engine)
 
-    report = _score(forecasts, label, verbose)
+    report = _score(forecasts, briefings, label, policy, verbose)
     _write(forecasts, briefings, report, label)
     return report
 
@@ -86,15 +95,38 @@ def _attach_actuals(forecasts: pd.DataFrame, engine: pipeline.ForecastPipeline) 
     return pd.concat(parts, ignore_index=True)
 
 
-def _score(forecasts: pd.DataFrame, label: str, verbose: bool) -> dict:
+def _revision_summary(briefings: list[dict]) -> dict:
+    """How often, and by how much, fresher NWP runs moved the day-ahead forecast."""
+    checks = [
+        rev for b in briefings for rev in b.get("revisions", {}).values()
+        if "mean_abs_change" in rev
+    ]
+    if not checks:
+        return {"cycles_checked": 0}
+    changes = np.array([c["mean_abs_change"] for c in checks])
+    return {
+        "cycles_checked": int(len(checks)),
+        "cycles_with_material_change": int(sum(c["changed"] for c in checks)),
+        "threshold": pipeline.REVISION_THRESHOLD,
+        "mean_abs_change": round(float(changes.mean()), 4),
+        "max_abs_change": round(float(max(c["max_abs_change"] for c in checks)), 4),
+    }
+
+
+def _score(forecasts: pd.DataFrame, briefings: list[dict], label: str, policy: str, verbose: bool) -> dict:
     """Score the day-ahead window, and measure what the daily refresh buys."""
     verified = forecasts.dropna(subset=["power"])
+    lead_da = int(forecasts.loc[forecasts["horizon_day"] == 1, "nwp_lead_hours"].iloc[0])
+    lead_d2 = int(forecasts.loc[forecasts["horizon_day"] == 2, "nwp_lead_hours"].iloc[0]) if (forecasts["horizon_day"] == 2).any() else None
     report: dict = {
         "label": label,
-        "issue_dates": int(forecasts["issue_time_utc"].nunique()),
+        "policy": policy,
+        "nwp_lead_hours": {"day_ahead": lead_da, "day_2": lead_d2},
+        "issue_dates": int(forecasts["issue_date"].nunique()),
         "forecast_hours": int(len(forecasts)),
         "verified_hours": int(len(verified)),
         "turbines": sorted(forecasts["turbine"].unique()),
+        "input_updates": _revision_summary(briefings),
     }
 
     if verified.empty:
@@ -106,14 +138,13 @@ def _score(forecasts: pd.DataFrame, label: str, verbose: bool) -> dict:
             print(f"\n{report['note']}")
         return report
 
-    # Day-ahead (lead 24-47 h) is the window the brief asks to be judged on.
-    day_ahead = verified[verified["lead_hours"] < 48]
+    day_ahead = verified[verified["horizon_day"] == 1]
     report["overall"] = metrics.point_metrics(verified["power"], verified["forecast"])
-    report["day_ahead_24_47h"] = metrics.point_metrics(day_ahead["power"], day_ahead["forecast"])
+    report["day_ahead"] = metrics.point_metrics(day_ahead["power"], day_ahead["forecast"])
     report["coverage"] = metrics.interval_coverage(verified["power"], verified["p10"], verified["p90"])
-    report["by_lead_day"] = {
-        ("24-47h" if int(lead) < 48 else "48-71h"): metrics.point_metrics(g["power"], g["forecast"])
-        for lead, g in verified.groupby(verified["lead_hours"] // 24)
+    report["by_nwp_lead"] = {
+        f"{int(lead)}h": metrics.point_metrics(g["power"], g["forecast"])
+        for lead, g in verified.groupby("nwp_lead_hours")
     }
     report["per_turbine"] = {
         key: metrics.point_metrics(g["power"], g["forecast"])
@@ -125,29 +156,33 @@ def _score(forecasts: pd.DataFrame, label: str, verbose: bool) -> dict:
         print(f"\n=== Backtest '{label}' ===")
         print(f"{report['issue_dates']} daily cycles, {report['forecast_hours']} forecast hours, "
               f"{report['verified_hours']} verified")
-        for name, key in [("All leads (24-71 h)", "overall"), ("Day-ahead (24-47 h)", "day_ahead_24_47h")]:
+        for name, key in [("All hours (D+1 and D+2)", "overall"), (f"Day-ahead ({lead_da} h NWP lead)", "day_ahead")]:
             m = report[key]
-            print(f"  {name:22s} MAE {m['mae']:.4f}  RMSE {m['rmse']:.4f}  "
+            print(f"  {name:28s} MAE {m['mae']:.4f}  RMSE {m['rmse']:.4f}  "
                   f"bias {m['bias']:+.4f}  R2 {m['r2']:.3f}")
         cov = report["coverage"]
         print(f"  P10-P90 coverage {cov['coverage']:.3f} (target 0.80), width {cov['mean_width']:.3f}")
         rg = report["revision_gain"]
         if rg.get("hours"):
             print(f"\n  Daily refresh: re-forecasting the same hours one day closer cut MAE "
-                  f"{rg['mae_48_71h']:.4f} -> {rg['mae_24_47h']:.4f} ({rg['improvement_pct']:.1f}% better, "
+                  f"{rg['mae_day_2']:.4f} -> {rg['mae_day_ahead']:.4f} ({rg['improvement_pct']:.1f}% better, "
                   f"n={rg['hours']})")
+        iu = report["input_updates"]
+        if iu.get("cycles_checked"):
+            print(f"  Input updates: {iu['cycles_with_material_change']} of {iu['cycles_checked']} cycles moved the "
+                  f"day-ahead forecast by more than {iu['threshold']:.2f} (mean |change| {iu['mean_abs_change']:.3f})")
     return report
 
 
 def _revision_gain(verified: pd.DataFrame) -> dict:
     """Quantify the value of recomputing when fresher inputs arrive.
 
-    Every hour is forecast twice: once at 48-71 h lead, then again the next day
-    at 24-47 h from a newer model run. Comparing the two on identical hours is
-    a direct measure of what the daily update cycle is worth.
+    Every hour is forecast twice: first as day D+2, then again the next day as
+    day D+1 from newer model runs. Comparing the two on identical hours is a
+    direct measure of what the daily update cycle is worth.
     """
-    early = verified[verified["lead_hours"] >= 48][["turbine", "time_utc", "forecast", "power"]]
-    late = verified[verified["lead_hours"] < 48][["turbine", "time_utc", "forecast"]]
+    early = verified[verified["horizon_day"] == 2][["turbine", "time_utc", "forecast", "power"]]
+    late = verified[verified["horizon_day"] == 1][["turbine", "time_utc", "forecast"]]
     paired = early.merge(late, on=["turbine", "time_utc"], suffixes=("_early", "_late"))
     if paired.empty:
         return {"hours": 0}
@@ -156,8 +191,8 @@ def _revision_gain(verified: pd.DataFrame) -> dict:
     mae_late = float((paired["forecast_late"] - paired["power"]).abs().mean())
     return {
         "hours": int(len(paired)),
-        "mae_48_71h": round(mae_early, 4),
-        "mae_24_47h": round(mae_late, 4),
+        "mae_day_2": round(mae_early, 4),
+        "mae_day_ahead": round(mae_late, 4),
         "improvement_pct": round(100 * (1 - mae_late / mae_early), 1) if mae_early else float("nan"),
         "mean_absolute_revision": round(float((paired["forecast_late"] - paired["forecast_early"]).abs().mean()), 4),
     }
@@ -169,7 +204,7 @@ def _write(forecasts: pd.DataFrame, briefings: list[dict], report: dict, label: 
               [c for c in ("power",) if c in forecasts]
 
     forecasts[columns].to_csv(out / f"{label}_hourly_all_leads.csv", index=False)
-    day_ahead = forecasts[forecasts["lead_hours"] < 48].sort_values(["turbine", "time_utc"])
+    day_ahead = forecasts[forecasts["horizon_day"] == 1].sort_values(["turbine", "time_utc"])
     day_ahead[columns].to_csv(out / f"{label}_hourly_day_ahead.csv", index=False)
 
     _write_submission(forecasts, label)
@@ -181,25 +216,27 @@ def _write(forecasts: pd.DataFrame, briefings: list[dict], report: dict, label: 
 def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
     """Write the graded deliverable on the site's own local clock.
 
-    SCADA timestamps are local (UTC+6), so the requested 1-28 February window
-    is a *local* one. Day-ahead slices from consecutive issue dates tile the
-    UTC hours continuously, so selecting the local window from them keeps every
-    hour at a genuine 24-47 h lead -- it just needs the cycle issued on
-    30 January to supply local 1 February 00:00-05:00.
+    Every target day is a local day, so the cycle issued on 31 January covers
+    local 1 February in full; the 28 cycles 31 Jan .. 27 Feb tile the month
+    exactly. Each hour is published once, from the freshest cycle that covered
+    it (its day-ahead value); the D+2 values are kept in `_hourly_all_leads`.
     """
-    day_ahead = forecasts[forecasts["lead_hours"] < 48].copy()
+    day_ahead = forecasts[forecasts["horizon_day"] == 1].copy()
     local_day = day_ahead["time_local"].dt.normalize()
     window = (local_day >= pd.Timestamp(config.TEST_START)) & (local_day <= pd.Timestamp(config.TEST_END))
     if not window.any():
         return  # this replay does not cover the graded test window; nothing to submit
 
-    submission = day_ahead[window].sort_values(["turbine", "time_local", "issue_time_utc"])
+    submission = day_ahead[window].sort_values(["turbine", "time_local", "issue_date"])
     # Belt and braces: if two issues ever covered the same hour, keep the fresher.
     submission = submission.groupby(["turbine", "time_local"], as_index=False).last()
 
-    columns = ["turbine", "time_local", "time_utc", "issue_time_utc", "lead_hours",
-               "forecast", "p10", "p50", "p90"]
-    submission = submission.sort_values(["turbine", "time_local"])[columns]
+    columns = ["turbine", "time_local", "time_utc", "policy", "issue_date", "issue_time_local",
+               "lead_hours", "nwp_lead_hours", "forecast", "p10", "p50", "p90"]
+    submission = submission.sort_values(["turbine", "time_local"])[columns].copy()
+    for column in ("time_local", "time_utc", "issue_time_local"):
+        submission[column] = pd.to_datetime(submission[column]).dt.strftime("%Y-%m-%d %H:%M:%S")
+    submission["issue_date"] = pd.to_datetime(submission["issue_date"]).dt.strftime("%Y-%m-%d")
     path = config.OUTPUT_DIR / f"{label}_submission_local.csv"
     submission.to_csv(path, index=False)
 
@@ -217,12 +254,15 @@ def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Replay daily forecast cycles")
     parser.add_argument("--start", default=config.FIRST_ISSUE_DATE)
-    parser.add_argument("--end", default="2026-02-27")
+    parser.add_argument("--end", default=config.LAST_ISSUE_DATE)
     parser.add_argument("--label", default="february_2026")
+    parser.add_argument("--policy", choices=sorted(config.ASOF_POLICIES), default=config.DEFAULT_POLICY,
+                        help="as-of policy: 'rolling' (24 h NWP lead, issue = end of day D) "
+                             "or 'strict' (48 h NWP lead, issue = start of day D)")
     parser.add_argument("--warmup-days", type=int, default=30,
                         help="days replayed before the window to train the calibrator")
     args = parser.parse_args()
-    run_backtest(args.start, args.end, args.label, warmup_days=args.warmup_days)
+    run_backtest(args.start, args.end, args.label, policy=args.policy, warmup_days=args.warmup_days)
 
 
 if __name__ == "__main__":

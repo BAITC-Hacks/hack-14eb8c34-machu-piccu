@@ -1,0 +1,23 @@
+{
+  "label": "february_2026_strict",
+  "policy": "strict",
+  "nwp_lead_hours": {
+    "day_ahead": 48,
+    "day_2": 72
+  },
+  "issue_dates": 28,
+  "forecast_hours": 2688,
+  "verified_hours": 0,
+  "turbines": [
+    "t1",
+    "t2"
+  ],
+  "input_updates": {
+    "cycles_checked": 56,
+    "cycles_with_material_change": 56,
+    "threshold": 0.02,
+    "mean_abs_change": 0.088,
+    "max_abs_change": 0.4502
+  },
+  "note": "No measured production available for this window, so accuracy cannot be scored here. See the 'verified' backtest for out-of-sample skill."
+}

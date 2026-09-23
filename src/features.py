@@ -1,10 +1,11 @@
 """Feature engineering: turn a raw NWP forecast into model inputs.
 
-The unit of work is a *forecast block*: the 48 hourly rows that one model run,
-issued at 00Z on day D, produces for days D+1 and D+2. Building features per
-block rather than on one long concatenated series matters -- a lag or rolling
-feature computed across a block boundary would mix in a later model run that
-was not available when the forecast was issued.
+The unit of work is a *forecast block*: the hourly rows a forecast cycle of
+day D covers, i.e. the local days D+1 and D+2. Which archived NWP lead serves
+each target day is decided by the as-of policy (see `config.ASOF_POLICIES`).
+Building features per block rather than on one long concatenated series
+matters: a lag or rolling feature computed across a block boundary would mix
+in NWP output that did not exist when the forecast was issued.
 """
 from __future__ import annotations
 
@@ -24,38 +25,66 @@ NEIGHBOUR_OFFSETS = (-3, -2, -1, 1, 2, 3)
 # --------------------------------------------------------------------------
 # Block assembly
 # --------------------------------------------------------------------------
+def issue_moment_utc(issue_date, policy: str = config.DEFAULT_POLICY) -> pd.Timestamp:
+    """The instant a cycle-D forecast is declared issued, in UTC.
+
+    `rolling`: end of local day D (00:00 local of D+1). `strict`: start of
+    local day D (00:00 local of D). Everything the cycle reads -- NWP output,
+    SCADA state, its own verified errors -- must predate this instant.
+    """
+    local_midnight = pd.Timestamp(issue_date).normalize()
+    if policy == "rolling":
+        local_midnight += pd.Timedelta(days=1)
+    return local_midnight - pd.Timedelta(hours=config.SITE_TZ_OFFSET_HOURS)
+
+
 def build_block(
     weather_by_lead: dict[int, pd.DataFrame],
     issue_date: pd.Timestamp,
-    horizon_days: int = 2,
+    horizon_days: int = config.HORIZON_DAYS,
+    policy: str = config.DEFAULT_POLICY,
 ) -> pd.DataFrame:
-    """Assemble the 48-hour forecast block issued at 00Z on `issue_date`.
+    """Assemble the forecast block of cycle date D under an as-of policy.
 
-    Day D+1 is taken from the `previous_day1` archive and day D+2 from
-    `previous_day2`; both describe the same model run -- the one from day D.
+    Target days are *local* days D+1 .. D+horizon. Under `rolling` local day
+    D+k is read from `previous_day{k}`; under `strict` from `previous_day{k+1}`.
+    Each row records `horizon_day` (which target day it belongs to) and
+    `lead_day` (how many days old its NWP input is -- a model feature).
     """
+    if policy not in config.ASOF_POLICIES:
+        raise ValueError(f"unknown as-of policy {policy!r}; choose from {list(config.ASOF_POLICIES)}")
+    offset = config.ASOF_POLICIES[policy]
     issue = pd.Timestamp(issue_date).normalize()
+    tz = pd.Timedelta(hours=config.SITE_TZ_OFFSET_HOURS)
+
     parts: list[pd.DataFrame] = []
     for day in range(1, horizon_days + 1):
-        source = weather_by_lead.get(day)
+        lead = day + offset
+        source = weather_by_lead.get(lead)
         if source is None:
             continue
-        target_day = issue + pd.Timedelta(days=day)
+        start_utc = issue + pd.Timedelta(days=day) - tz   # local midnight of D+day
         window = source[
-            (source["time"] >= target_day)
-            & (source["time"] < target_day + pd.Timedelta(days=1))
+            (source["time"] >= start_utc)
+            & (source["time"] < start_utc + pd.Timedelta(days=1))
         ].copy()
         if window.empty:
             continue
-        window["lead_day"] = day
+        window["horizon_day"] = day
+        window["lead_day"] = lead
         parts.append(window)
 
     if not parts:
         return pd.DataFrame()
 
     block = pd.concat(parts, ignore_index=True).sort_values("time").reset_index(drop=True)
-    block["issue_time"] = issue
-    block["lead_hours"] = (block["time"] - issue).dt.total_seconds() / 3600.0
+    block["issue_time"] = issue                      # cycle date D (local calendar day)
+    block["policy"] = policy
+    block["issue_time_utc"] = issue_moment_utc(issue, policy)
+    # Hours from the declared issue moment to the target hour (the horizon),
+    # and the age of the NWP output behind each hour (the honest lead).
+    block["lead_hours"] = (block["time"] - block["issue_time_utc"]).dt.total_seconds() / 3600.0
+    block["nwp_lead_hours"] = 24.0 * block["lead_day"]
     return block
 
 
@@ -213,8 +242,6 @@ FEATURE_COLUMNS: list[str] = [
     "doy_sin",
     "doy_cos",
     "local_hour",
-    "lead_hours",
-    "lead_day",
     "pc_prior",
     "pc_prior_roll3",
     "last_power_3h",

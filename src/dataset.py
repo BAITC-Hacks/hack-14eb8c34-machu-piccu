@@ -17,7 +17,7 @@ import pandas as pd
 
 from src import config, features, scada, weather
 
-LEAD_DAYS = (1, 2)
+LEAD_DAYS = config.LEAD_DAYS_TRAINED
 DIRECTION_VARS = ("wind_direction_10m", "wind_direction_100m")
 
 
@@ -104,7 +104,10 @@ def persistence_state(scada_hist: pd.DataFrame, issue_time: pd.Timestamp) -> dic
         (scada_hist["time"] < issue_time)
         & (scada_hist["time"] >= issue_time - pd.Timedelta(hours=24))
     ]
-    if recent.empty:
+    # Fewer than six hourly records (e.g. the replay has run past the end of
+    # the SCADA history) means the state is simply unknown: report NaN rather
+    # than a fraction that would read as an outage.
+    if len(recent) < 6:
         return {"last_power_3h": np.nan, "last_power_24h": np.nan, "last_availability_24h": np.nan}
 
     last3 = recent[recent["time"] >= issue_time - pd.Timedelta(hours=3)]
@@ -112,7 +115,7 @@ def persistence_state(scada_hist: pd.DataFrame, issue_time: pd.Timestamp) -> dic
     return {
         "last_power_3h": last3["power"].mean() if not last3.empty else np.nan,
         "last_power_24h": recent["power"].mean(),
-        "last_availability_24h": healthy.sum() / 24.0,
+        "last_availability_24h": float(healthy.mean()),
     }
 
 
@@ -123,20 +126,27 @@ def build_dataset(
     weather_by_lead: dict[int, pd.DataFrame] | None = None,
     scada_hist: pd.DataFrame | None = None,
     with_target: bool = True,
+    horizon_days: int = len(config.LEAD_DAYS_TRAINED),
+    policy: str = "rolling",
 ) -> pd.DataFrame:
-    """Replay every issue date in the window into a flat feature table."""
+    """Replay every issue date in the window into a flat feature table.
+
+    Training replays a three-day horizon under the `rolling` policy, so the
+    table holds rows at 24, 48 and 72 h NWP lead. `lead_day` is a feature and
+    one model then serves both operational policies.
+    """
     if weather_by_lead is None:
-        pad_end = (pd.Timestamp(issue_end) + pd.Timedelta(days=3)).strftime("%Y-%m-%d")
-        weather_by_lead = load_weather_by_lead(turbine_key, issue_start, pad_end)
+        pad_end = max(pd.Timestamp(issue_end) + pd.Timedelta(days=horizon_days + 1), pd.Timestamp(config.ARCHIVE_END))
+        weather_by_lead = load_weather_by_lead(turbine_key, issue_start, pad_end.strftime("%Y-%m-%d"))
     if scada_hist is None:
         scada_hist = scada_utc(turbine_key)
 
     rows: list[pd.DataFrame] = []
     for issue in pd.date_range(issue_start, issue_end, freq="D"):
-        block = features.build_block(weather_by_lead, issue)
+        block = features.build_block(weather_by_lead, issue, horizon_days=horizon_days, policy=policy)
         if block.empty or block["wind_speed_100m"].isna().all():
             continue
-        state = persistence_state(scada_hist, issue)
+        state = persistence_state(scada_hist, features.issue_moment_utc(issue, policy))
         rows.append(features.build_features(block, power_curve=None, persistence=state))
 
     if not rows:

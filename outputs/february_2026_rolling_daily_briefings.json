@@ -1,0 +1,2266 @@
+[
+  {
+    "issue_date": "2026-01-31",
+    "issue_time_utc": "2026-01-31T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 17.92,
+        "day_ahead_energy_eflh": 4.6,
+        "mean_capacity_factor": 0.373,
+        "max_output": 0.892,
+        "min_output": 0.029,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-01 01:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.57,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 19:00:00",
+            "delta": -0.268
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.62,
+        "mean_wind_speed_ms": 7.99,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.028 of rated power (672 verified hours); band scaled x1.09"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 17.8,
+        "day_ahead_energy_eflh": 4.54,
+        "mean_capacity_factor": 0.371,
+        "max_output": 0.889,
+        "min_output": 0.027,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-01 01:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.589,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 19:00:00",
+            "delta": -0.266
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.62,
+        "mean_wind_speed_ms": 7.99,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.031 of rated power (672 verified hours); band scaled x1.14"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-01-30",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0964,
+        "mean_signed_change": -0.0538,
+        "max_abs_change": 0.2646,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-01-30",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0968,
+        "mean_signed_change": -0.0547,
+        "max_abs_change": 0.2621,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.096 of rated on average (max 0.265) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.097 of rated on average (max 0.262) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-01",
+    "issue_time_utc": "2026-02-01T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 18.35,
+        "day_ahead_energy_eflh": 13.53,
+        "mean_capacity_factor": 0.382,
+        "max_output": 0.89,
+        "min_output": 0.024,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-03 13:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.549,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 18:00:00",
+            "delta": -0.342
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.35,
+        "mean_wind_speed_ms": 7.96,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.033 of rated power (624 verified hours); band scaled x1.10"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 18.23,
+        "day_ahead_energy_eflh": 13.47,
+        "mean_capacity_factor": 0.38,
+        "max_output": 0.888,
+        "min_output": 0.021,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-03 13:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.563,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 18:00:00",
+            "delta": -0.342
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.35,
+        "mean_wind_speed_ms": 7.96,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.035 of rated power (624 verified hours); band scaled x1.14"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-01-31",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.069,
+        "mean_signed_change": 0.0087,
+        "max_abs_change": 0.2255,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-01-31",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0688,
+        "mean_signed_change": 0.0086,
+        "max_abs_change": 0.2238,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.069 of rated on average (max 0.226) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.069 of rated on average (max 0.224) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-02",
+    "issue_time_utc": "2026-02-02T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 13.94,
+        "day_ahead_energy_eflh": 6.57,
+        "mean_capacity_factor": 0.29,
+        "max_output": 0.642,
+        "min_output": 0.042,
+        "peak_hour_local": "2026-02-04 23:00:00",
+        "trough_hour_local": "2026-02-03 12:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.653,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 6.48,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.017 of rated power (576 verified hours); band scaled x1.11"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 13.89,
+        "day_ahead_energy_eflh": 6.55,
+        "mean_capacity_factor": 0.289,
+        "max_output": 0.641,
+        "min_output": 0.041,
+        "peak_hour_local": "2026-02-04 23:00:00",
+        "trough_hour_local": "2026-02-03 12:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.663,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 6.48,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.018 of rated power (576 verified hours); band scaled x1.13"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-01",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0884,
+        "mean_signed_change": 0.0733,
+        "max_abs_change": 0.2425,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-01",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0895,
+        "mean_signed_change": 0.0749,
+        "max_abs_change": 0.2441,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.088 of rated on average (max 0.242) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.089 of rated on average (max 0.244) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-03",
+    "issue_time_utc": "2026-02-03T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.17,
+        "day_ahead_energy_eflh": 9.37,
+        "mean_capacity_factor": 0.628,
+        "max_output": 0.919,
+        "min_output": 0.113,
+        "peak_hour_local": "2026-02-05 14:00:00",
+        "trough_hour_local": "2026-02-04 16:00:00",
+        "hours_near_rated": 14,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.519,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.05,
+        "mean_wind_speed_ms": 10.61,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.019 of rated power (528 verified hours); band scaled x1.06"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.13,
+        "day_ahead_energy_eflh": 9.35,
+        "mean_capacity_factor": 0.628,
+        "max_output": 0.918,
+        "min_output": 0.113,
+        "peak_hour_local": "2026-02-05 14:00:00",
+        "trough_hour_local": "2026-02-04 16:00:00",
+        "hours_near_rated": 14,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.535,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.05,
+        "mean_wind_speed_ms": 10.61,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.020 of rated power (528 verified hours); band scaled x1.11"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-02",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1124,
+        "mean_signed_change": 0.0836,
+        "max_abs_change": 0.2804,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-02",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1125,
+        "mean_signed_change": 0.0838,
+        "max_abs_change": 0.2806,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.112 of rated on average (max 0.280) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.113 of rated on average (max 0.281) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-04",
+    "issue_time_utc": "2026-02-04T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 35.25,
+        "day_ahead_energy_eflh": 20.87,
+        "mean_capacity_factor": 0.734,
+        "max_output": 0.917,
+        "min_output": 0.076,
+        "peak_hour_local": "2026-02-05 03:00:00",
+        "trough_hour_local": "2026-02-06 07:00:00",
+        "hours_near_rated": 24,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.407,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 12.32,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.015 of rated power (480 verified hours); band scaled x1.08"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 35.22,
+        "day_ahead_energy_eflh": 20.86,
+        "mean_capacity_factor": 0.734,
+        "max_output": 0.917,
+        "min_output": 0.075,
+        "peak_hour_local": "2026-02-05 03:00:00",
+        "trough_hour_local": "2026-02-06 07:00:00",
+        "hours_near_rated": 24,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.413,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 12.32,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.016 of rated power (480 verified hours); band scaled x1.12"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": false,
+        "previous_issue_date": "2026-02-03",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0154,
+        "mean_signed_change": 0.0033,
+        "max_abs_change": 0.0857,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": false,
+        "previous_issue_date": "2026-02-03",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0154,
+        "mean_signed_change": 0.0034,
+        "max_abs_change": 0.0858,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs confirm yesterday's forecast (mean change 0.015 of rated)",
+      "t2: today's NWP runs confirm yesterday's forecast (mean change 0.015 of rated)"
+    ]
+  },
+  {
+    "issue_date": "2026-02-05",
+    "issue_time_utc": "2026-02-05T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.82,
+        "day_ahead_energy_eflh": 14.01,
+        "mean_capacity_factor": 0.455,
+        "max_output": 0.919,
+        "min_output": 0.063,
+        "peak_hour_local": "2026-02-06 20:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 8,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.523,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.8,
+        "mean_wind_speed_ms": 8.57,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.015 of rated power (432 verified hours); band scaled x1.11"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.8,
+        "day_ahead_energy_eflh": 14.0,
+        "mean_capacity_factor": 0.454,
+        "max_output": 0.918,
+        "min_output": 0.062,
+        "peak_hour_local": "2026-02-06 20:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 8,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.543,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.8,
+        "mean_wind_speed_ms": 8.57,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.015 of rated power (432 verified hours); band scaled x1.17"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-04",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0481,
+        "mean_signed_change": -0.0155,
+        "max_abs_change": 0.1467,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-04",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0481,
+        "mean_signed_change": -0.0152,
+        "max_abs_change": 0.1464,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.048 of rated on average (max 0.147) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.048 of rated on average (max 0.146) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-06",
+    "issue_time_utc": "2026-02-06T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.73,
+        "day_ahead_energy_eflh": 7.9,
+        "mean_capacity_factor": 0.453,
+        "max_output": 0.92,
+        "min_output": 0.034,
+        "peak_hour_local": "2026-02-08 19:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.589,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 16:00:00",
+            "delta": 0.302
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 8.03,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.020 of rated power (384 verified hours); band scaled x1.14"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.67,
+        "day_ahead_energy_eflh": 7.87,
+        "mean_capacity_factor": 0.451,
+        "max_output": 0.919,
+        "min_output": 0.033,
+        "peak_hour_local": "2026-02-08 19:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.625,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 16:00:00",
+            "delta": 0.302
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 8.03,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.022 of rated power (384 verified hours); band scaled x1.23"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-05",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.092,
+        "mean_signed_change": 0.0038,
+        "max_abs_change": 0.1706,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-05",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0919,
+        "mean_signed_change": 0.0029,
+        "max_abs_change": 0.1715,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.092 of rated on average (max 0.171) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.092 of rated on average (max 0.172) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-07",
+    "issue_time_utc": "2026-02-07T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 32.65,
+        "day_ahead_energy_eflh": 14.43,
+        "mean_capacity_factor": 0.68,
+        "max_output": 0.907,
+        "min_output": 0.035,
+        "peak_hour_local": "2026-02-08 21:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 10,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.428,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 15:00:00",
+            "delta": 0.293
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.97,
+        "mean_wind_speed_ms": 12.42,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.029 of rated power (336 verified hours); band scaled x1.12"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 33.24,
+        "day_ahead_energy_eflh": 14.73,
+        "mean_capacity_factor": 0.692,
+        "max_output": 0.919,
+        "min_output": 0.047,
+        "peak_hour_local": "2026-02-08 21:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 11,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.447,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 15:00:00",
+            "delta": 0.293
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.97,
+        "mean_wind_speed_ms": 12.42,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.016 of rated power (336 verified hours); band scaled x1.19"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-06",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0726,
+        "mean_signed_change": 0.0255,
+        "max_abs_change": 0.2973,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-06",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0731,
+        "mean_signed_change": 0.0391,
+        "max_abs_change": 0.3109,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.073 of rated on average (max 0.297) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.073 of rated on average (max 0.311) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-08",
+    "issue_time_utc": "2026-02-08T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.09,
+        "day_ahead_energy_eflh": 17.52,
+        "mean_capacity_factor": 0.502,
+        "max_output": 0.897,
+        "min_output": 0.161,
+        "peak_hour_local": "2026-02-09 00:00:00",
+        "trough_hour_local": "2026-02-10 00:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.62,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.51,
+        "mean_wind_speed_ms": 10.69,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.034 of rated power (288 verified hours); band scaled x1.23"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.79,
+        "day_ahead_energy_eflh": 17.88,
+        "mean_capacity_factor": 0.517,
+        "max_output": 0.912,
+        "min_output": 0.176,
+        "peak_hour_local": "2026-02-09 00:00:00",
+        "trough_hour_local": "2026-02-10 00:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.632,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.51,
+        "mean_wind_speed_ms": 10.69,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.019 of rated power (288 verified hours); band scaled x1.26"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-07",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0297,
+        "mean_signed_change": -0.0287,
+        "max_abs_change": 0.1844,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-07",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0277,
+        "mean_signed_change": -0.0263,
+        "max_abs_change": 0.1819,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.030 of rated on average (max 0.184) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.028 of rated on average (max 0.182) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-09",
+    "issue_time_utc": "2026-02-09T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.83,
+        "day_ahead_energy_eflh": 6.88,
+        "mean_capacity_factor": 0.455,
+        "max_output": 0.906,
+        "min_output": 0.101,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-10 17:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.603,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-11 06:00:00",
+            "delta": -0.289
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.69,
+        "mean_wind_speed_ms": 8.43,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.015 of rated power (240 verified hours); band scaled x1.13"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.53,
+        "day_ahead_energy_eflh": 7.23,
+        "mean_capacity_factor": 0.469,
+        "max_output": 0.921,
+        "min_output": 0.116,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-10 17:00:00",
+        "hours_near_rated": 3,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.631,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-11 06:00:00",
+            "delta": -0.289
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.69,
+        "mean_wind_speed_ms": 8.43,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.001 of rated power (240 verified hours); band scaled x1.19"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-08",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0912,
+        "mean_signed_change": 0.0131,
+        "max_abs_change": 0.2181,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-08",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0912,
+        "mean_signed_change": 0.013,
+        "max_abs_change": 0.218,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.091 of rated on average (max 0.218) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.091 of rated on average (max 0.218) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-10",
+    "issue_time_utc": "2026-02-10T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 20.85,
+        "day_ahead_energy_eflh": 13.9,
+        "mean_capacity_factor": 0.434,
+        "max_output": 0.873,
+        "min_output": 0.029,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-12 12:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.587,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-11 06:00:00",
+            "delta": -0.32
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.46,
+        "mean_wind_speed_ms": 8.24,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.024 of rated power (192 verified hours); band scaled x1.22"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.66,
+        "day_ahead_energy_eflh": 14.31,
+        "mean_capacity_factor": 0.451,
+        "max_output": 0.89,
+        "min_output": 0.046,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-12 12:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.611,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-11 06:00:00",
+            "delta": -0.32
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.46,
+        "mean_wind_speed_ms": 8.24,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.007 of rated power (192 verified hours); band scaled x1.28"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-09",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0535,
+        "mean_signed_change": -0.0437,
+        "max_abs_change": 0.1453,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-09",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.052,
+        "mean_signed_change": -0.0415,
+        "max_abs_change": 0.1432,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.053 of rated on average (max 0.145) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.052 of rated on average (max 0.143) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-11",
+    "issue_time_utc": "2026-02-11T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 7.54,
+        "day_ahead_energy_eflh": 5.37,
+        "mean_capacity_factor": 0.157,
+        "max_output": 0.563,
+        "min_output": 0.036,
+        "peak_hour_local": "2026-02-12 01:00:00",
+        "trough_hour_local": "2026-02-13 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.418,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.86,
+        "mean_wind_speed_ms": 4.33,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.017 of rated power (144 verified hours); band scaled x1.02"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 8.33,
+        "day_ahead_energy_eflh": 5.77,
+        "mean_capacity_factor": 0.174,
+        "max_output": 0.58,
+        "min_output": 0.053,
+        "peak_hour_local": "2026-02-12 01:00:00",
+        "trough_hour_local": "2026-02-13 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.46,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.86,
+        "mean_wind_speed_ms": 4.33,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.000 of rated power (144 verified hours); band scaled x1.10"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-10",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.14,
+        "mean_signed_change": -0.0656,
+        "max_abs_change": 0.3392,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-10",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1401,
+        "mean_signed_change": -0.0659,
+        "max_abs_change": 0.3395,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.140 of rated on average (max 0.339) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.140 of rated on average (max 0.340) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-12",
+    "issue_time_utc": "2026-02-12T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 8.87,
+        "day_ahead_energy_eflh": 1.64,
+        "mean_capacity_factor": 0.185,
+        "max_output": 0.725,
+        "min_output": 0.0,
+        "peak_hour_local": "2026-02-14 02:00:00",
+        "trough_hour_local": "2026-02-13 00:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 20,
+        "mean_band_width": 0.454,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.97,
+        "mean_wind_speed_ms": 5.18,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.069 of rated power (96 verified hours); band scaled x1.15"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 9.52,
+        "day_ahead_energy_eflh": 1.82,
+        "mean_capacity_factor": 0.198,
+        "max_output": 0.744,
+        "min_output": 0.0,
+        "peak_hour_local": "2026-02-14 02:00:00",
+        "trough_hour_local": "2026-02-13 00:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 17,
+        "mean_band_width": 0.483,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.97,
+        "mean_wind_speed_ms": 5.18,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.049 of rated power (96 verified hours); band scaled x1.19"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-11",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0756,
+        "mean_signed_change": -0.0218,
+        "max_abs_change": 0.2655,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-11",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0861,
+        "mean_signed_change": -0.031,
+        "max_abs_change": 0.2685,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.076 of rated on average (max 0.266) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.086 of rated on average (max 0.269) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-13",
+    "issue_time_utc": "2026-02-13T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 16.89,
+        "day_ahead_energy_eflh": 5.2,
+        "mean_capacity_factor": 0.352,
+        "max_output": 0.816,
+        "min_output": 0.0,
+        "peak_hour_local": "2026-02-15 16:00:00",
+        "trough_hour_local": "2026-02-14 14:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 17,
+        "mean_band_width": 0.421,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-14 06:00:00",
+            "delta": -0.265
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.72,
+        "mean_wind_speed_ms": 7.19,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.093 of rated power (48 verified hours); band scaled x1.23"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 17.56,
+        "day_ahead_energy_eflh": 5.5,
+        "mean_capacity_factor": 0.366,
+        "max_output": 0.837,
+        "min_output": 0.0,
+        "peak_hour_local": "2026-02-15 16:00:00",
+        "trough_hour_local": "2026-02-14 16:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 16,
+        "mean_band_width": 0.439,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-14 06:00:00",
+            "delta": -0.265
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.72,
+        "mean_wind_speed_ms": 7.19,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "recent 14d record shows the model running over-forecast by 0.073 of rated power (48 verified hours); band scaled x1.26"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-12",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0922,
+        "mean_signed_change": -0.0848,
+        "max_abs_change": 0.2679,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-12",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0995,
+        "mean_signed_change": -0.0917,
+        "max_abs_change": 0.2875,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.092 of rated on average (max 0.268) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.100 of rated on average (max 0.287) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-14",
+    "issue_time_utc": "2026-02-14T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 31.54,
+        "day_ahead_energy_eflh": 13.71,
+        "mean_capacity_factor": 0.657,
+        "max_output": 0.911,
+        "min_output": 0.046,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 02:00:00",
+        "hours_near_rated": 3,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.421,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.51,
+        "mean_wind_speed_ms": 9.53,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 31.54,
+        "day_ahead_energy_eflh": 13.71,
+        "mean_capacity_factor": 0.657,
+        "max_output": 0.911,
+        "min_output": 0.046,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 02:00:00",
+        "hours_near_rated": 3,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.447,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.51,
+        "mean_wind_speed_ms": 9.53,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-13",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0858,
+        "mean_signed_change": 0.084,
+        "max_abs_change": 0.1749,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-13",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0723,
+        "mean_signed_change": 0.0685,
+        "max_abs_change": 0.1546,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.086 of rated on average (max 0.175) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.072 of rated on average (max 0.155) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-15",
+    "issue_time_utc": "2026-02-15T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 28.66,
+        "day_ahead_energy_eflh": 16.76,
+        "mean_capacity_factor": 0.597,
+        "max_output": 0.812,
+        "min_output": 0.168,
+        "peak_hour_local": "2026-02-16 14:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.563,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-17 06:00:00",
+            "delta": -0.27
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.47,
+        "mean_wind_speed_ms": 9.29,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 28.66,
+        "day_ahead_energy_eflh": 16.76,
+        "mean_capacity_factor": 0.597,
+        "max_output": 0.812,
+        "min_output": 0.168,
+        "peak_hour_local": "2026-02-16 14:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.601,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-17 06:00:00",
+            "delta": -0.27
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.47,
+        "mean_wind_speed_ms": 9.29,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-14",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1243,
+        "mean_signed_change": -0.0442,
+        "max_abs_change": 0.2554,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-14",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1243,
+        "mean_signed_change": -0.0442,
+        "max_abs_change": 0.2554,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.124 of rated on average (max 0.255) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.124 of rated on average (max 0.255) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-16",
+    "issue_time_utc": "2026-02-16T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.91,
+        "day_ahead_energy_eflh": 10.3,
+        "mean_capacity_factor": 0.623,
+        "max_output": 0.931,
+        "min_output": 0.133,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 8,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.465,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.83,
+        "mean_wind_speed_ms": 10.03,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.91,
+        "day_ahead_energy_eflh": 10.3,
+        "mean_capacity_factor": 0.623,
+        "max_output": 0.931,
+        "min_output": 0.133,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 8,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.498,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.83,
+        "mean_wind_speed_ms": 10.03,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-15",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0828,
+        "mean_signed_change": -0.0665,
+        "max_abs_change": 0.2015,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-15",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0828,
+        "mean_signed_change": -0.0665,
+        "max_abs_change": 0.2015,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.083 of rated on average (max 0.202) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.083 of rated on average (max 0.202) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-17",
+    "issue_time_utc": "2026-02-17T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.2,
+        "day_ahead_energy_eflh": 19.73,
+        "mean_capacity_factor": 0.629,
+        "max_output": 0.937,
+        "min_output": 0.079,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-19 22:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.462,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.6,
+        "mean_wind_speed_ms": 10.08,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.2,
+        "day_ahead_energy_eflh": 19.73,
+        "mean_capacity_factor": 0.629,
+        "max_output": 0.937,
+        "min_output": 0.079,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-19 22:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.453,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.6,
+        "mean_wind_speed_ms": 10.08,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-16",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0257,
+        "mean_signed_change": 0.0047,
+        "max_abs_change": 0.0919,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-16",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0257,
+        "mean_signed_change": 0.0047,
+        "max_abs_change": 0.0919,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.026 of rated on average (max 0.092) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.026 of rated on average (max 0.092) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-18",
+    "issue_time_utc": "2026-02-18T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 16.76,
+        "day_ahead_energy_eflh": 9.33,
+        "mean_capacity_factor": 0.349,
+        "max_output": 0.725,
+        "min_output": 0.08,
+        "peak_hour_local": "2026-02-19 01:00:00",
+        "trough_hour_local": "2026-02-20 15:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.593,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.19,
+        "mean_wind_speed_ms": 6.94,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 16.76,
+        "day_ahead_energy_eflh": 9.33,
+        "mean_capacity_factor": 0.349,
+        "max_output": 0.725,
+        "min_output": 0.08,
+        "peak_hour_local": "2026-02-19 01:00:00",
+        "trough_hour_local": "2026-02-20 15:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.589,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.19,
+        "mean_wind_speed_ms": 6.94,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-17",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0773,
+        "mean_signed_change": -0.0478,
+        "max_abs_change": 0.2562,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-17",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0773,
+        "mean_signed_change": -0.0478,
+        "max_abs_change": 0.2562,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.077 of rated on average (max 0.256) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.077 of rated on average (max 0.256) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-19",
+    "issue_time_utc": "2026-02-19T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 20.82,
+        "day_ahead_energy_eflh": 7.77,
+        "mean_capacity_factor": 0.434,
+        "max_output": 0.708,
+        "min_output": 0.093,
+        "peak_hour_local": "2026-02-21 13:00:00",
+        "trough_hour_local": "2026-02-20 17:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.681,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.26,
+        "mean_wind_speed_ms": 7.94,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 20.82,
+        "day_ahead_energy_eflh": 7.77,
+        "mean_capacity_factor": 0.434,
+        "max_output": 0.708,
+        "min_output": 0.093,
+        "peak_hour_local": "2026-02-21 13:00:00",
+        "trough_hour_local": "2026-02-20 17:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.675,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.26,
+        "mean_wind_speed_ms": 7.94,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-18",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1125,
+        "mean_signed_change": 0.0141,
+        "max_abs_change": 0.2726,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-18",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1125,
+        "mean_signed_change": 0.0141,
+        "max_abs_change": 0.2726,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.113 of rated on average (max 0.273) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.113 of rated on average (max 0.273) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-20",
+    "issue_time_utc": "2026-02-20T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.67,
+        "day_ahead_energy_eflh": 13.88,
+        "mean_capacity_factor": 0.514,
+        "max_output": 0.904,
+        "min_output": 0.053,
+        "peak_hour_local": "2026-02-22 16:00:00",
+        "trough_hour_local": "2026-02-22 07:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.608,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.47,
+        "mean_wind_speed_ms": 8.51,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.67,
+        "day_ahead_energy_eflh": 13.88,
+        "mean_capacity_factor": 0.514,
+        "max_output": 0.904,
+        "min_output": 0.053,
+        "peak_hour_local": "2026-02-22 16:00:00",
+        "trough_hour_local": "2026-02-22 07:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.602,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.47,
+        "mean_wind_speed_ms": 8.51,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-19",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1031,
+        "mean_signed_change": 0.0345,
+        "max_abs_change": 0.26,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-19",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1031,
+        "mean_signed_change": 0.0345,
+        "max_abs_change": 0.26,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.103 of rated on average (max 0.260) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.103 of rated on average (max 0.260) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-21",
+    "issue_time_utc": "2026-02-21T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 19.52,
+        "day_ahead_energy_eflh": 10.26,
+        "mean_capacity_factor": 0.407,
+        "max_output": 0.893,
+        "min_output": 0.055,
+        "peak_hour_local": "2026-02-22 15:00:00",
+        "trough_hour_local": "2026-02-22 04:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.504,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.07,
+        "mean_wind_speed_ms": 6.84,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 19.52,
+        "day_ahead_energy_eflh": 10.26,
+        "mean_capacity_factor": 0.407,
+        "max_output": 0.893,
+        "min_output": 0.055,
+        "peak_hour_local": "2026-02-22 15:00:00",
+        "trough_hour_local": "2026-02-22 04:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.499,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.07,
+        "mean_wind_speed_ms": 6.84,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-20",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1965,
+        "mean_signed_change": -0.0219,
+        "max_abs_change": 0.5029,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-20",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1965,
+        "mean_signed_change": -0.0219,
+        "max_abs_change": 0.5029,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.197 of rated on average (max 0.503) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.197 of rated on average (max 0.503) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-22",
+    "issue_time_utc": "2026-02-22T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.75,
+        "day_ahead_energy_eflh": 8.21,
+        "mean_capacity_factor": 0.453,
+        "max_output": 0.903,
+        "min_output": 0.056,
+        "peak_hour_local": "2026-02-24 01:00:00",
+        "trough_hour_local": "2026-02-23 08:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.48,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.63,
+        "mean_wind_speed_ms": 7.68,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.75,
+        "day_ahead_energy_eflh": 8.21,
+        "mean_capacity_factor": 0.453,
+        "max_output": 0.903,
+        "min_output": 0.056,
+        "peak_hour_local": "2026-02-24 01:00:00",
+        "trough_hour_local": "2026-02-23 08:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.476,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.63,
+        "mean_wind_speed_ms": 7.68,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-21",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0626,
+        "mean_signed_change": -0.0436,
+        "max_abs_change": 0.351,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-21",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0626,
+        "mean_signed_change": -0.0436,
+        "max_abs_change": 0.351,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.063 of rated on average (max 0.351) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.063 of rated on average (max 0.351) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-23",
+    "issue_time_utc": "2026-02-23T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.46,
+        "day_ahead_energy_eflh": 13.33,
+        "mean_capacity_factor": 0.468,
+        "max_output": 0.911,
+        "min_output": 0.05,
+        "peak_hour_local": "2026-02-24 00:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 3,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.566,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.55,
+        "mean_wind_speed_ms": 7.64,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.46,
+        "day_ahead_energy_eflh": 13.33,
+        "mean_capacity_factor": 0.468,
+        "max_output": 0.911,
+        "min_output": 0.05,
+        "peak_hour_local": "2026-02-24 00:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 3,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.56,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.55,
+        "mean_wind_speed_ms": 7.64,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-22",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0314,
+        "mean_signed_change": -0.0087,
+        "max_abs_change": 0.085,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-22",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0314,
+        "mean_signed_change": -0.0087,
+        "max_abs_change": 0.085,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.031 of rated on average (max 0.085) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.031 of rated on average (max 0.085) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-24",
+    "issue_time_utc": "2026-02-24T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 18.9,
+        "day_ahead_energy_eflh": 3.12,
+        "mean_capacity_factor": 0.394,
+        "max_output": 0.822,
+        "min_output": 0.048,
+        "peak_hour_local": "2026-02-26 04:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.498,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.79,
+        "mean_wind_speed_ms": 6.62,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 18.9,
+        "day_ahead_energy_eflh": 3.12,
+        "mean_capacity_factor": 0.394,
+        "max_output": 0.822,
+        "min_output": 0.048,
+        "peak_hour_local": "2026-02-26 04:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.494,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.79,
+        "mean_wind_speed_ms": 6.62,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-23",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.2502,
+        "mean_signed_change": -0.2502,
+        "max_abs_change": 0.6653,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-23",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.2502,
+        "mean_signed_change": -0.2502,
+        "max_abs_change": 0.6653,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.250 of rated on average (max 0.665) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.250 of rated on average (max 0.665) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-25",
+    "issue_time_utc": "2026-02-25T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.95,
+        "day_ahead_energy_eflh": 15.08,
+        "mean_capacity_factor": 0.645,
+        "max_output": 0.85,
+        "min_output": 0.263,
+        "peak_hour_local": "2026-02-27 02:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.603,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.8,
+        "mean_wind_speed_ms": 9.85,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.95,
+        "day_ahead_energy_eflh": 15.08,
+        "mean_capacity_factor": 0.645,
+        "max_output": 0.85,
+        "min_output": 0.263,
+        "peak_hour_local": "2026-02-27 02:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.596,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.8,
+        "mean_wind_speed_ms": 9.85,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-24",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0701,
+        "mean_signed_change": -0.029,
+        "max_abs_change": 0.2241,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-24",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0701,
+        "mean_signed_change": -0.029,
+        "max_abs_change": 0.2241,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.070 of rated on average (max 0.224) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.070 of rated on average (max 0.224) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-26",
+    "issue_time_utc": "2026-02-26T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.99,
+        "day_ahead_energy_eflh": 13.41,
+        "mean_capacity_factor": 0.625,
+        "max_output": 0.86,
+        "min_output": 0.224,
+        "peak_hour_local": "2026-02-28 13:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.598,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.72,
+        "mean_wind_speed_ms": 9.57,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.99,
+        "day_ahead_energy_eflh": 13.41,
+        "mean_capacity_factor": 0.625,
+        "max_output": 0.86,
+        "min_output": 0.224,
+        "peak_hour_local": "2026-02-28 13:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.592,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.72,
+        "mean_wind_speed_ms": 9.57,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-25",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1032,
+        "mean_signed_change": -0.1022,
+        "max_abs_change": 0.3066,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-25",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.1032,
+        "mean_signed_change": -0.1022,
+        "max_abs_change": 0.3066,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.103 of rated on average (max 0.307) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast down by 0.103 of rated on average (max 0.307) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  },
+  {
+    "issue_date": "2026-02-27",
+    "issue_time_utc": "2026-02-27T18:00:00",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 20.46,
+        "day_ahead_energy_eflh": 17.5,
+        "mean_capacity_factor": 0.426,
+        "max_output": 0.867,
+        "min_output": 0.059,
+        "peak_hour_local": "2026-02-28 11:00:00",
+        "trough_hour_local": "2026-03-01 18:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.401,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.19,
+        "mean_wind_speed_ms": 7.5,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 20.46,
+        "day_ahead_energy_eflh": 17.5,
+        "mean_capacity_factor": 0.426,
+        "max_output": 0.867,
+        "min_output": 0.059,
+        "peak_hour_local": "2026-02-28 11:00:00",
+        "trough_hour_local": "2026-03-01 18:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.398,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.19,
+        "mean_wind_speed_ms": 7.5,
+        "nwp_lead_hours": [
+          24,
+          48
+        ],
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "revisions": {
+      "t1": {
+        "changed": true,
+        "previous_issue_date": "2026-02-26",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0543,
+        "mean_signed_change": 0.0384,
+        "max_abs_change": 0.1948,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      },
+      "t2": {
+        "changed": true,
+        "previous_issue_date": "2026-02-26",
+        "overlapping_hours": 24,
+        "mean_abs_change": 0.0543,
+        "mean_signed_change": 0.0384,
+        "max_abs_change": 0.1948,
+        "previous_nwp_lead_hours": 48,
+        "current_nwp_lead_hours": 24
+      }
+    },
+    "notes": [
+      "t1: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.054 of rated on average (max 0.195) versus yesterday's 48 h lead forecast; revised forecast published",
+      "t2: today's NWP runs (24 h lead) moved the day-ahead forecast up by 0.054 of rated on average (max 0.195) versus yesterday's 48 h lead forecast; revised forecast published"
+    ]
+  }
+]

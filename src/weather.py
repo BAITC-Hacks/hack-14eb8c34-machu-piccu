@@ -45,6 +45,7 @@ def _request(url: str, params: dict, retries: int = 4) -> dict:
         try:
             response = _SESSION.get(url, params=params, timeout=90)
             if response.status_code == 429:
+                last = WeatherFetchError("HTTP 429: Open-Meteo rate limit reached (600/min, 5000/h, 10000/day)")
                 _time.sleep(10 * (attempt + 1))
                 continue
             response.raise_for_status()

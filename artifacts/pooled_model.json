@@ -1,8 +1,8 @@
 {
   "turbine": "pooled",
-  "trained_rows": 51620,
-  "best_iteration": 194,
-  "n_features": 63,
+  "trained_rows": 25810,
+  "best_iteration": 168,
+  "n_features": 61,
   "quantiles": [
     0.1,
     0.5,

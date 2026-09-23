@@ -18,7 +18,13 @@ import pandas as pd
 from src import calibration, config, dataset, features, metrics, model
 
 TRAIN_ISSUE_START = config.LEAD_ARCHIVE_START
-TRAIN_ISSUE_END = "2026-01-30"     # last issue date whose targets are still in SCADA
+# The model is fitted on 24 h-lead rows only and applied at every lead. Measured
+# on the hold-out: a model trained on leads 24/48/72 h together is *worse* at
+# every lead (24 h: 0.171 vs 0.162 raw MAE) -- noisier inputs at long leads
+# teach a blurrier wind-to-power mapping. Longer leads are still replayed into
+# the table so the validation report can score them.
+TRAIN_LEAD_DAYS: tuple[int, ...] = (1,)
+TRAIN_ISSUE_END = "2026-01-30"     # last cycle whose day-ahead targets (31 Jan) are still in SCADA
 VALID_ISSUE_START = "2025-10-01"   # final ~4 months held out
 POOLED_KEY = "pooled"
 
@@ -60,8 +66,10 @@ def train(use_cache: bool = True, verbose: bool = True) -> model.TrainedModel:
     train_part = dataset.attach_power_curve_prior(train_part, curve)
     valid_part = dataset.attach_power_curve_prior(valid_part, curve)
 
+    fit_rows = train_part[train_part["lead_day"].isin(TRAIN_LEAD_DAYS)]
+    stop_rows = valid_part[valid_part["lead_day"].isin(TRAIN_LEAD_DAYS)]
     fitted = model.fit(
-        train_part, FEATURE_COLUMNS, power_curve=curve, turbine=POOLED_KEY, valid=valid_part
+        fit_rows, FEATURE_COLUMNS, power_curve=curve, turbine=POOLED_KEY, valid=stop_rows
     )
 
     scored = pd.concat(
@@ -91,18 +99,24 @@ def _report(scored: pd.DataFrame, fitted: model.TrainedModel, verbose: bool) -> 
         int(lead): metrics.point_metrics(g["power"], g["forecast_cal"])
         for lead, g in calibrated.groupby("lead_day")
     }
+    # Both operational policies read from this one model: rolling serves
+    # day-ahead from the 24 h lead, strict from the 48 h lead.
+    policy_view = {
+        "rolling_day_ahead_24h": by_lead.get(1), "rolling_day2_48h": by_lead.get(2),
+        "strict_day_ahead_48h": by_lead.get(2), "strict_day2_72h": by_lead.get(3),
+    }
 
     if verbose:
         print(f"\n===== POOLED MODEL =====")
-        print(f"train rows {fitted.trained_rows:,} | features {len(fitted.feature_columns)} | best_iteration {fitted.best_iteration}")
-        print(f"\nHold-out: issue dates >= {VALID_ISSUE_START} (lead 24-71 h)\n")
+        print(f"train rows {fitted.trained_rows:,} (NWP lead {[24 * d for d in TRAIN_LEAD_DAYS]} h) | features {len(fitted.feature_columns)} | best_iteration {fitted.best_iteration}")
+        print(f"\nHold-out: issue dates >= {VALID_ISSUE_START} (NWP leads 24/48/72 h)\n")
         print(table.to_string(float_format=lambda v: f"{v:8.4f}"))
         print(f"\nraw model        MAE {raw['mae']:.4f}  bias {raw['bias']:+.4f}  coverage {band_raw['coverage']:.3f}")
         print(f"after calibration MAE {cal['mae']:.4f}  bias {cal['bias']:+.4f}  coverage {band_cal['coverage']:.3f}")
-        print("\nBy forecast horizon:")
+        print("\nBy NWP lead:")
         for lead, m in sorted(by_lead.items()):
-            label = "24-47 h" if lead == 1 else "48-71 h"
-            print(f"  day+{lead} ({label}): MAE {m['mae']:.4f}  RMSE {m['rmse']:.4f}  R2 {m['r2']:.3f}  n={m['n']}")
+            print(f"  {24 * lead:3d} h lead: MAE {m['mae']:.4f}  RMSE {m['rmse']:.4f}  R2 {m['r2']:.3f}  n={m['n']}")
+        print("  -> rolling policy: day-ahead = 24 h lead, D+2 = 48 h; strict policy: day-ahead = 48 h, D+2 = 72 h")
         print("\nTop features by gain:")
         print(model.feature_importance(fitted, 15).to_string(index=False))
 
@@ -110,7 +124,8 @@ def _report(scored: pd.DataFrame, fitted: model.TrainedModel, verbose: bool) -> 
         "validation_start": VALID_ISSUE_START,
         "raw": raw, "calibrated": cal,
         "coverage_raw": band_raw, "coverage_calibrated": band_cal,
-        "by_lead_day": {str(k): v for k, v in by_lead.items()},
+        "by_nwp_lead_hours": {str(24 * k): v for k, v in by_lead.items()},
+        "policy_view": policy_view,
         "comparison_table": table.to_dict(),
         "best_iteration": fitted.best_iteration,
         "trained_rows": fitted.trained_rows,
@@ -127,7 +142,7 @@ def _replay_calibration(scored: pd.DataFrame) -> pd.DataFrame:
     for _, group in out.groupby("turbine_id"):
         log = group[["time", "forecast", "p10", "p50", "p90", "power"]]
         for issue, block in group.groupby("issue_time"):
-            state = calibrator.fit(log, as_of=issue)
+            state = calibrator.fit(log, as_of=features.issue_moment_utc(issue, "rolling"))
             adjusted = calibration.ForecastCalibrator.apply(
                 block[["forecast", "p10", "p50", "p90"]], state
             )
