@@ -174,10 +174,11 @@ def check_input_updates(turbine: str, issue_date: str) -> str:
     """
     global _LAST_RUN
     engine = _require_pipeline()
-    if _LAST_RUN is None:
-        return json.dumps({"error": "run_forecast_cycle must be called first"})
+    issue = pd.Timestamp(issue_date).normalize()
+    if _LAST_RUN is None or _LAST_RUN.issue_time != issue:
+        run_forecast_cycle(issue_date)   # the check needs a forecast to compare; run the cycle first
 
-    result = engine.detect_input_change(turbine, pd.Timestamp(issue_date).normalize(), _LAST_RUN)
+    result = engine.detect_input_change(turbine, issue, _LAST_RUN)
     fresh = result.pop("run", None)
     _LAST_RUN.revisions[turbine] = result
     if fresh is not None and result.get("changed"):
@@ -198,10 +199,11 @@ def publish_forecast(issue_date: str) -> str:
     Args:
         issue_date: Forecast issue date, YYYY-MM-DD.
     """
-    if _LAST_RUN is None:
-        return json.dumps({"error": "nothing to publish; run_forecast_cycle first"})
+    issue = pd.Timestamp(issue_date).normalize()
+    if _LAST_RUN is None or _LAST_RUN.issue_time != issue:
+        run_forecast_cycle(issue_date)
     paths = pipeline.write_outputs(_LAST_RUN)
-    return json.dumps({"published": {k: str(v) for k, v in paths.items()},
+    return json.dumps({"published": {k: str(v.relative_to(config.ROOT)) for k, v in paths.items()},
                        "rows": int(len(_LAST_RUN.combined()))})
 
 

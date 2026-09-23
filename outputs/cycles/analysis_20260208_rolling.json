@@ -1,0 +1,74 @@
+{
+  "issue_date": "2026-02-08",
+  "issue_time_utc": "2026-02-08T18:00:00",
+  "policy": "rolling",
+  "mode": "archive",
+  "turbines": {
+    "t1": {
+      "turbine": "t1",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 24.27,
+      "day_ahead_energy_eflh": 17.61,
+      "mean_capacity_factor": 0.506,
+      "max_output": 0.901,
+      "min_output": 0.165,
+      "peak_hour_local": "2026-02-09 00:00:00",
+      "trough_hour_local": "2026-02-10 00:00:00",
+      "hours_near_rated": 3,
+      "hours_below_cutin": 0,
+      "mean_band_width": 0.577,
+      "confidence": "low",
+      "ramp_events": [],
+      "mean_ensemble_spread_ms": 2.51,
+      "mean_wind_speed_ms": 10.69,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "recent 14d record shows the model running over-forecast by 0.030 of rated power (288 verified hours); band scaled x1.12"
+    },
+    "t2": {
+      "turbine": "t2",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 25.05,
+      "day_ahead_energy_eflh": 18.01,
+      "mean_capacity_factor": 0.522,
+      "max_output": 0.917,
+      "min_output": 0.181,
+      "peak_hour_local": "2026-02-09 00:00:00",
+      "trough_hour_local": "2026-02-10 00:00:00",
+      "hours_near_rated": 5,
+      "hours_below_cutin": 0,
+      "mean_band_width": 0.6,
+      "confidence": "low",
+      "ramp_events": [],
+      "mean_ensemble_spread_ms": 2.51,
+      "mean_wind_speed_ms": 10.69,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "recent 14d record shows the model running over-forecast by 0.014 of rated power (288 verified hours); band scaled x1.17"
+    }
+  },
+  "calibration": {
+    "t1": {
+      "bias": 0.030034399485782872,
+      "band_scale": 1.1240553577665324,
+      "bias_samples": 288,
+      "band_samples": 624,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    },
+    "t2": {
+      "bias": 0.013583407051648259,
+      "band_scale": 1.1746772962234378,
+      "bias_samples": 288,
+      "band_samples": 624,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    }
+  },
+  "revisions": {},
+  "notes": []
+}

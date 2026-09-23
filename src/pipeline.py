@@ -386,8 +386,8 @@ class ForecastPipeline:
 
 
 def write_outputs(run: ForecastRun, directory: Path | None = None) -> dict[str, Path]:
-    """Persist a run as an hourly CSV plus a JSON analysis summary."""
-    directory = Path(directory or config.OUTPUT_DIR)
+    """Persist one cycle as an hourly CSV plus a JSON analysis summary (outputs/cycles/)."""
+    directory = Path(directory or (config.OUTPUT_DIR / "cycles"))
     directory.mkdir(parents=True, exist_ok=True)
     stamp = run.issue_time.strftime("%Y%m%d")
 

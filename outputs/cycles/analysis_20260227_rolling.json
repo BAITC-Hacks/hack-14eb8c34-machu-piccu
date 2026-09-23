@@ -1,0 +1,74 @@
+{
+  "issue_date": "2026-02-27",
+  "issue_time_utc": "2026-02-27T18:00:00",
+  "policy": "rolling",
+  "mode": "archive",
+  "turbines": {
+    "t1": {
+      "turbine": "t1",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 20.46,
+      "day_ahead_energy_eflh": 17.5,
+      "mean_capacity_factor": 0.426,
+      "max_output": 0.867,
+      "min_output": 0.059,
+      "peak_hour_local": "2026-02-28 11:00:00",
+      "trough_hour_local": "2026-03-01 18:00:00",
+      "hours_near_rated": 0,
+      "hours_below_cutin": 0,
+      "mean_band_width": 0.401,
+      "confidence": "low",
+      "ramp_events": [],
+      "mean_ensemble_spread_ms": 2.19,
+      "mean_wind_speed_ms": 7.5,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "no verified history yet - publishing uncorrected model output"
+    },
+    "t2": {
+      "turbine": "t2",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 20.46,
+      "day_ahead_energy_eflh": 17.5,
+      "mean_capacity_factor": 0.426,
+      "max_output": 0.867,
+      "min_output": 0.059,
+      "peak_hour_local": "2026-02-28 11:00:00",
+      "trough_hour_local": "2026-03-01 18:00:00",
+      "hours_near_rated": 0,
+      "hours_below_cutin": 0,
+      "mean_band_width": 0.398,
+      "confidence": "low",
+      "ramp_events": [],
+      "mean_ensemble_spread_ms": 2.19,
+      "mean_wind_speed_ms": 7.5,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "no verified history yet - publishing uncorrected model output"
+    }
+  },
+  "calibration": {
+    "t1": {
+      "bias": 0.0,
+      "band_scale": 1.0,
+      "bias_samples": 0,
+      "band_samples": 0,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    },
+    "t2": {
+      "bias": 0.0,
+      "band_scale": 1.0,
+      "bias_samples": 0,
+      "band_samples": 0,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    }
+  },
+  "revisions": {},
+  "notes": []
+}

@@ -1,0 +1,84 @@
+{
+  "issue_date": "2026-02-13",
+  "issue_time_utc": "2026-02-13T18:00:00",
+  "policy": "rolling",
+  "mode": "archive",
+  "turbines": {
+    "t1": {
+      "turbine": "t1",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 16.65,
+      "day_ahead_energy_eflh": 5.09,
+      "mean_capacity_factor": 0.347,
+      "max_output": 0.809,
+      "min_output": 0.0,
+      "peak_hour_local": "2026-02-15 16:00:00",
+      "trough_hour_local": "2026-02-14 14:00:00",
+      "hours_near_rated": 0,
+      "hours_below_cutin": 17,
+      "mean_band_width": 0.391,
+      "confidence": "low",
+      "ramp_events": [
+        {
+          "time_local": "2026-02-14 06:00:00",
+          "delta": -0.265
+        }
+      ],
+      "mean_ensemble_spread_ms": 1.72,
+      "mean_wind_speed_ms": 7.19,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "recent 14d record shows the model running over-forecast by 0.101 of rated power (48 verified hours); band scaled x1.15"
+    },
+    "t2": {
+      "turbine": "t2",
+      "hours": 48,
+      "energy_equivalent_full_load_hours": 17.25,
+      "day_ahead_energy_eflh": 5.35,
+      "mean_capacity_factor": 0.359,
+      "max_output": 0.827,
+      "min_output": 0.0,
+      "peak_hour_local": "2026-02-15 16:00:00",
+      "trough_hour_local": "2026-02-14 14:00:00",
+      "hours_near_rated": 0,
+      "hours_below_cutin": 16,
+      "mean_band_width": 0.386,
+      "confidence": "low",
+      "ramp_events": [
+        {
+          "time_local": "2026-02-14 06:00:00",
+          "delta": -0.265
+        }
+      ],
+      "mean_ensemble_spread_ms": 1.72,
+      "mean_wind_speed_ms": 7.19,
+      "nwp_lead_hours": [
+        24,
+        48
+      ],
+      "calibration": "recent 14d record shows the model running over-forecast by 0.082 of rated power (48 verified hours); band scaled x1.12"
+    }
+  },
+  "calibration": {
+    "t1": {
+      "bias": 0.10054769509261141,
+      "band_scale": 1.152717898881404,
+      "bias_samples": 48,
+      "band_samples": 384,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    },
+    "t2": {
+      "bias": 0.08190941135781087,
+      "band_scale": 1.119369095993137,
+      "bias_samples": 48,
+      "band_samples": 384,
+      "bias_window_days": 14,
+      "band_window_days": 21
+    }
+  },
+  "revisions": {},
+  "notes": []
+}
