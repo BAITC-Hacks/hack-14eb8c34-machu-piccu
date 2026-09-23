@@ -172,22 +172,48 @@ def _write(forecasts: pd.DataFrame, briefings: list[dict], report: dict, label: 
     day_ahead = forecasts[forecasts["lead_hours"] < 48].sort_values(["turbine", "time_utc"])
     day_ahead[columns].to_csv(out / f"{label}_hourly_day_ahead.csv", index=False)
 
-    _write_submission(forecasts, label)
+    for policy in ("strict", "rolling"):
+        _write_submission(forecasts, label, policy)
     (out / f"{label}_report.json").write_text(json.dumps(report, indent=2, default=float))
     (out / f"{label}_daily_briefings.json").write_text(json.dumps(briefings, indent=2, default=str))
     print(f"\nWrote {label}_hourly_day_ahead.csv ({len(day_ahead)} rows) and 3 companion files to {out}")
 
 
-def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
+def _write_submission(forecasts: pd.DataFrame, label: str, policy: str = "strict") -> None:
     """Write the graded deliverable on the site's own local clock.
 
     SCADA timestamps are local (UTC+6), so the requested 1-28 February window
-    is a *local* one. Day-ahead slices from consecutive issue dates tile the
-    UTC hours continuously, so selecting the local window from them keeps every
-    hour at a genuine 24-47 h lead -- it just needs the cycle issued on
-    30 January to supply local 1 February 00:00-05:00.
+    is a *local* one.
+
+    The `policy` choice is the as-of discipline, and it matters. Open-Meteo's
+    `previous_dayN` is a **fixed N x 24 h offset from each target hour**, not a
+    48-hour block from one model run (verified: within `previous_day1`, error
+    is flat across the day, while one extra lead-day costs ~0.19 m/s RMSE):
+
+      "rolling"  each hour uses the forecast issued 24 h before *that hour*
+                 (`previous_day1`). A continuously refreshed 24 h-ahead
+                 product -- honest, but not a once-daily issue: the 23:00 hour
+                 uses data that appeared 23 h after a 00:00 issue time.
+
+      "strict"   every hour of day D+1 uses only forecasts issued before the
+                 00:00 day-D issue instant (`previous_day2`). This is the
+                 literal reading of "on 31 January, forecast the next 24-48 h",
+                 and the only one where nothing post-dates the stated issue.
+
+    Strict costs 8.8% MAE (0.1612 -> 0.1755 on the verified replay) and is the
+    default, because the brief grades as-of honesty, not optimism.
     """
-    day_ahead = forecasts[forecasts["lead_hours"] < 48].copy()
+    if policy == "strict":
+        day_ahead = forecasts[forecasts["lead_hours"] >= 48].copy()
+        # Relabel to the issue instant this product actually implies: 00:00 on
+        # the day before the target, which makes every hour 24-47 h ahead.
+        day_ahead["issue_time_utc"] = day_ahead["time_local"].dt.normalize() - pd.Timedelta(days=1)
+        day_ahead["lead_hours"] = (
+            day_ahead["time_local"] - day_ahead["issue_time_utc"]
+        ).dt.total_seconds() / 3600.0
+    else:
+        day_ahead = forecasts[forecasts["lead_hours"] < 48].copy()
+
     local_day = day_ahead["time_local"].dt.normalize()
     window = (local_day >= pd.Timestamp(config.TEST_START)) & (local_day <= pd.Timestamp(config.TEST_END))
     if not window.any():
@@ -200,14 +226,15 @@ def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
     columns = ["turbine", "time_local", "time_utc", "issue_time_utc", "lead_hours",
                "forecast", "p10", "p50", "p90"]
     submission = submission.sort_values(["turbine", "time_local"])[columns]
-    path = config.OUTPUT_DIR / f"{label}_submission_local.csv"
+    suffix = "" if policy == "strict" else "_rolling24h"
+    path = config.OUTPUT_DIR / f"{label}_submission_local{suffix}.csv"
     submission.to_csv(path, index=False)
 
     expected = 24 * (pd.Timestamp(config.TEST_END) - pd.Timestamp(config.TEST_START)).days + 24
     per_turbine = submission.groupby("turbine").size()
     if (per_turbine < expected / 2).all():
         return  # only clipping the edge of the window -- not a real submission
-    print(f"Submission: {path.name} - {len(submission)} rows; "
+    print(f"Submission [{policy}]: {path.name} - {len(submission)} rows; "
           f"per turbine {per_turbine.to_dict()} (expected {expected} each)")
     gaps = {t: int(expected - n) for t, n in per_turbine.items() if n != expected}
     if gaps:

@@ -15,3 +15,7 @@ matplotlib==3.11.2
 # Optional: the LLM reasoning layer (`python -m src.agent --reason`).
 # Everything else -- training, backtesting, forecasting -- runs without it.
 anthropic==1.8.0
+
+# Optional: challenger model for `python -m src.benchmark`.
+# The forecast pipeline does not import it -- benchmarking is the only use.
+catboost==1.2.10

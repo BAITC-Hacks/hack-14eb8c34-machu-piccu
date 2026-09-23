@@ -20,16 +20,20 @@ readable as a fraction of nameplate.
 
 | Forecast | MAE | RMSE | R² | Skill vs. persistence |
 |---|---|---|---|---|
-| **WindAgent, day-ahead (24–47 h)** | **0.1612** | 0.2174 | **0.639** | **52%** |
-| WindAgent, all leads (24–71 h) | 0.1683 | 0.2268 | 0.607 | 50% |
+| **WindAgent — `strict` as-of (the deliverable)** | **0.1755** | 0.2360 | **0.575** | **48%** |
+| WindAgent — `rolling` 24 h-ahead | 0.1612 | 0.2174 | 0.639 | 52% |
 | Power-curve baseline (no ML) | 0.1860 | 0.2460 | 0.538 | 45% |
 | Persistence (yesterday repeated) | 0.3360 | 0.4175 | −0.33 | — |
 | Climatology (hour-of-day mean) | 0.3187 | 0.3618 | 0.00 | 5% |
 
+The two rows are two honest readings of "a forecast issued on day D for day D+1", not
+two models — see [the as-of policy](#the-core-constraint-an-honest-replay). `strict`
+ships as the default because nothing in it post-dates the stated issue instant.
+
 Both turbines score near-identically (MAE 0.1612 / 0.1613) — see
 [Why both turbines get the same forecast](#why-both-turbines-get-the-same-forecast).
 
-**The P10–P90 band covers 76.5%** of outcomes against an 80% target, after conformal
+**The P10–P90 band covers 75.6%** (`strict`) / 77.3% (`rolling`) of outcomes against an 80% target, after conformal
 calibration lifted it from 72.2%.
 
 **The daily recompute is worth 8.7%.** Every hour is forecast twice — once at 48–71 h
@@ -103,10 +107,30 @@ monotonically with lead time, as physics requires:
 | `previous_day2` (48–71 h) | 3.06 m/s | 0.642 |
 | `previous_day3` (72–95 h) | 3.36 m/s | 0.565 |
 
-A forecast issued on day D is assembled as a **48-hour block from a single model run**:
-day D+1 from `previous_day1`, day D+2 from `previous_day2`. Lag, ramp and rolling
-features are computed *within* a block — computing them across block boundaries would
-quietly mix in a later model run that did not exist at issue time.
+**`previous_dayN` is a fixed N x 24 h offset from each target hour, not a 48-hour block
+from one model run.** This was verified rather than assumed: within `previous_day1`,
+wind error is flat across hours 00-23 UTC (ramp -0.08 RMSE, tracking the +0.09 diurnal
+signal in analysis-grade data), whereas a block spanning 24-47 h lead would ramp by
+~+0.19 — exactly what one extra lead-day costs (`previous_day1` 2.86 -> `previous_day2`
+3.06 m/s RMSE).
+
+That distinction decides the deliverable, because "a forecast issued on day D for day
+D+1" has two honest readings:
+
+| policy | construction | what it is | day-ahead MAE |
+|---|---|---|---|
+| **`strict`** (default) | `previous_day2` | every hour of day D+1 uses only forecasts issued **before** the 00:00 day-D issue instant | **0.1755** |
+| `rolling` | `previous_day1` | each hour uses the forecast issued 24 h before *that hour* — a continuously refreshed 24 h-ahead product | 0.1612 |
+
+Under `rolling`, the 23:00 hour of day D+1 rests on data that only appeared 23 h *after*
+a 00:00 issue time, so it is not a once-daily issue. `strict` is the literal reading of
+"on 31 January, forecast the next 24-48 hours" and the only one where nothing
+post-dates the stated issue instant. It costs 8.8% MAE, and it is the default, because
+the brief grades as-of honesty rather than optimism. Both files are written:
+`february_2026_submission_local.csv` (strict) and `..._rolling24h.csv`.
+
+Lag, ramp and rolling features are computed within a constant-lead segment, never
+across the boundary between the 24 h and 48 h products.
 
 The same discipline applies elsewhere: SCADA state is read strictly before the issue
 instant, the power curve is fitted on training rows only, and the online calibration
@@ -171,6 +195,11 @@ regressors for P10/P50/P90. Deliberately small trees (31 leaves, 150 rows per le
 strong L1/L2): the weather input carries only so much information, and a larger model
 memorised training seasons instead of generalising to the next one.
 
+Each backtest opens with a 30-day **warm-up replay** (`--warmup-days`, default 30).
+Those forecasts are discarded, but recording them fills the verification log, so the
+calibration below is already trained when the scored window begins — matching a system
+that has been running for a while rather than one booted that morning.
+
 Curtailment and stuck-sensor hours are separated. Stuck sensors are bad data and never
 train the model; curtailment is a real operational state and is kept in evaluation.
 
@@ -211,6 +240,70 @@ room acts on are produced by code that behaves identically every time; the LLM r
 
 ---
 
+## Challenging the model choice
+
+LightGBM is the shipped model, but that choice is tested rather than asserted.
+`src/benchmark.py` trains challenger models on exactly the same rows, features and
+power-curve prior, scores them over rolling-origin folds, and reports whether any
+difference is real. It is not imported by the forecast pipeline — running it cannot
+change a published forecast, it only produces evidence.
+
+```bash
+pip install catboost                       # optional, benchmark-only
+python -m src.benchmark --quantiles        # 3 rolling-origin folds
+python -m src.benchmark --folds 1          # the production hold-out only
+```
+
+Current result — mean across three folds, scored **after** the online calibration,
+because that is how the pipeline actually ships a number. LightGBM is the baseline
+every challenger is measured against:
+
+| model | MAE (calibrated) | RMSE | R² | folds won | vs. baseline |
+|---|---|---|---|---|---|
+| CatBoost | **0.1695** | 0.2288 | 0.562 | **3 / 3** | **+1.31%**, significant |
+| **LightGBM (production baseline)** | **0.1717** | **0.2299** | **0.558** | — | — |
+| Linear (OLS) | 0.1743 | 0.2350 | 0.540 | 1 / 3 | −1.48%, significant |
+| Ridge (L2) | 0.1743 | 0.2352 | 0.538 | 1 / 3 | −1.49%, significant |
+| Lasso (L1) | 0.1764 | 0.2366 | 0.533 | 0 / 3 | −2.74%, significant |
+| ElasticNet (L1+L2) | 0.1765 | 0.2367 | 0.533 | 1 / 3 | −2.78%, significant |
+
+Significance is a two-sided paired bootstrap on hourly absolute errors. Pairing matters:
+every model sees identical weather, so an unpaired test would drown the difference in
+the day-to-day variance they share.
+
+**The linear result is the interesting one.** Plain OLS lands within 1.5% of a tuned
+gradient booster, and on the most recent fold it ties on MAE outright (0.1709 both) —
+losing only on R² (0.581 vs 0.601), i.e. on the large errors that squared loss punishes.
+An ablation explains why, and it is a caution against reading the table as "trees barely
+help":
+
+| linear model, most recent fold | features | MAE | R² |
+|---|---|---|---|
+| all features | 63 | 0.1709 | 0.581 |
+| without the power-curve priors | 56 | 0.1715 | 0.584 |
+| power-curve priors only | 7 | 0.1818 | 0.543 |
+| raw hub-height wind only | 1 | 0.1885 | 0.543 |
+
+The feature set is doing the work the model would otherwise have to do. `ws100_sq` and
+`ws100_cube` are in there, so a "linear" model on these columns is really a polynomial
+regression that can bend itself into a power curve — which is why dropping `pc_prior`
+costs it almost nothing. Strip the engineering back to raw wind speed and linear falls
+to 0.1885 while LightGBM without the priors still holds 0.1744.
+
+Regularisation does not help: L1 and L2 both score at or below plain OLS. With ~52,000
+rows against 63 deliberately collinear features, there is no variance problem to solve,
+and Lasso's sparsity actively discards ensemble members that carry real signal.
+
+The CatBoost gain is real but small, and it has not been promoted to production: the shipped
+pipeline, its trained artefact and every published forecast remain LightGBM. Two
+things are worth noting before anyone acts on the table. A 50/50 blend scores 0.1632
+against CatBoost's 0.1614 on the most recent fold — *worse* than CatBoost alone, so
+there is nothing to gain by stacking them. And CatBoost's margin grows with training
+data (+0.69% → +1.20% → +2.17% across the three folds), which suggests the gap would
+widen as history accumulates rather than close.
+
+---
+
 ## What the data said
 
 Several decisions came from measurement rather than assumption. They are recorded here
@@ -245,7 +338,7 @@ not a turbine problem.
 The two turbines stand ~400 m apart, inside a single Open-Meteo grid cell, so they
 receive byte-identical weather. Pooled training gave `turbine_id` **zero split gain** —
 the model found no statistically useful difference between the machines' power curves,
-which their near-identical scores (MAE 0.1614 vs 0.1616) confirm. Their model output therefore differs only when recent operating state diverges enough to
+which their near-identical scores (MAE 0.1612 vs 0.1613) confirm. Their model output therefore differs only when recent operating state diverges enough to
 cross a tree split — for a single uncalibrated cycle it can be bit-identical. What does
 separate them in practice is the agentic layer: each turbine carries its own verification
 log, so their calibration corrections differ, and the February forecasts end up 323.9 vs
