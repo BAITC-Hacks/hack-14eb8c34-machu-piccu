@@ -20,21 +20,21 @@ readable as a fraction of nameplate.
 
 | Forecast | MAE | RMSE | R² | Skill vs. persistence |
 |---|---|---|---|---|
-| **WindAgent, day-ahead (24–47 h)** | **0.1615** | 0.2181 | **0.636** | **52%** |
-| WindAgent, all leads (24–71 h) | 0.1684 | 0.2273 | 0.605 | 50% |
+| **WindAgent, day-ahead (24–47 h)** | **0.1612** | 0.2174 | **0.639** | **52%** |
+| WindAgent, all leads (24–71 h) | 0.1683 | 0.2268 | 0.607 | 50% |
 | Power-curve baseline (no ML) | 0.1860 | 0.2460 | 0.538 | 45% |
 | Persistence (yesterday repeated) | 0.3360 | 0.4175 | −0.33 | — |
 | Climatology (hour-of-day mean) | 0.3187 | 0.3618 | 0.00 | 5% |
 
-Both turbines score identically (MAE 0.1614 / 0.1616) — see
+Both turbines score near-identically (MAE 0.1612 / 0.1613) — see
 [Why both turbines get the same forecast](#why-both-turbines-get-the-same-forecast).
 
-**The P10–P90 band covers 76.6%** of outcomes against an 80% target, after conformal
+**The P10–P90 band covers 76.5%** of outcomes against an 80% target, after conformal
 calibration lifted it from 72.2%.
 
-**The daily recompute is worth 8.5%.** Every hour is forecast twice — once at 48–71 h
+**The daily recompute is worth 8.7%.** Every hour is forecast twice — once at 48–71 h
 lead, then again the next day from a newer model run. On 5,682 identical hours, MAE
-falls from 0.1754 to 0.1605. That is the "recompute when inputs update" step earning
+falls from 0.1755 to 0.1603. That is the "recompute when inputs update" step earning
 its place, measured rather than asserted.
 
 ![Error vs lead time](reports/error_vs_lead.png)
@@ -180,8 +180,8 @@ Two corrections, both refitted every cycle from forecasts the system has already
 verified, using only hours whose target time has passed:
 
 - **Adaptive bias** — mean signed error over the last 14 days, capped at ±0.12 so one
-  freak week cannot swing the forecast. This cut MAE 0.1709 → 0.1658 *and* collapsed
-  bias from +0.053 to +0.011.
+  freak week cannot swing the forecast. On the hold-out this cut MAE 0.1709 → 0.1658
+  *and* collapsed bias from +0.053 to +0.011.
 - **Conformal band scaling** — a split-conformal factor restoring nominal 80% coverage,
   scoring each observation in units of the model's own half-band so widening respects
   where the model already knew it was uncertain.
@@ -245,9 +245,12 @@ not a turbine problem.
 The two turbines stand ~400 m apart, inside a single Open-Meteo grid cell, so they
 receive byte-identical weather. Pooled training gave `turbine_id` **zero split gain** —
 the model found no statistically useful difference between the machines' power curves,
-which their near-identical scores (MAE 0.1614 vs 0.1616) confirm. Their forecasts
-therefore differ only when recent operating state diverges enough to cross a tree split.
-This is a real property of the site, not a plumbing bug; it was verified explicitly.
+which their near-identical scores (MAE 0.1614 vs 0.1616) confirm. Their model output therefore differs only when recent operating state diverges enough to
+cross a tree split — for a single uncalibrated cycle it can be bit-identical. What does
+separate them in practice is the agentic layer: each turbine carries its own verification
+log, so their calibration corrections differ, and the February forecasts end up 323.9 vs
+326.2 equivalent full-load hours. This is a real property of the site, not a plumbing
+bug; it was verified explicitly.
 Pooling was kept because it improved accuracy over per-turbine models (0.1709 vs 0.1771
 and 0.1722).
 
@@ -285,12 +288,16 @@ cache/      cached Open-Meteo responses (safe to delete)
   the 122-day out-of-sample replay immediately preceding it. February is winter, when
   NWP wind bias is at its seasonal worst, so treat the figures as an optimistic-leaning
   estimate for that month.
-- **Online calibration freezes during February.** It learns from verified actuals; with
-  none available after 31 January, it holds the correction derived from mid-to-late
-  January. It resumes adapting the moment actuals arrive — no code change needed.
+- **Online calibration decays to nothing across February.** It learns from a rolling
+  14-day window of verified actuals, and the dataset ends 31 January, so that window
+  drains as the month progresses: 672 verified hours at the 30 January cycle, 516 by
+  4 February, 84 by 13 February, and zero from roughly mid-month, after which forecasts
+  are published uncorrected. Early February therefore carries a bias correction of
+  −0.02 to −0.04 and later February carries none. Feeding in actuals as they arrive
+  restores it automatically — no code change needed.
 - **Lead-time archives begin ~March 2024**, so the first year of SCADA (March 2023
   onwards) cannot be used for lead-matched training. Training uses ~2 years.
-- **Band coverage is 76.6% against an 80% target** — slightly overconfident.
+- **Band coverage is 76.5% against an 80% target** — slightly overconfident.
 - **Curtailment is not predicted.** It is ~0.7% of hours and driven by grid instructions
   the model cannot see. Curtailed hours are excluded from fitting but kept in scoring.
 - **Ensemble spread predicts error only weakly** (correlation 0.14 with absolute wind

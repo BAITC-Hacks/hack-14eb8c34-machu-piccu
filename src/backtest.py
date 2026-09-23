@@ -190,6 +190,9 @@ def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
     day_ahead = forecasts[forecasts["lead_hours"] < 48].copy()
     local_day = day_ahead["time_local"].dt.normalize()
     window = (local_day >= pd.Timestamp(config.TEST_START)) & (local_day <= pd.Timestamp(config.TEST_END))
+    if not window.any():
+        return  # this replay does not cover the graded test window; nothing to submit
+
     submission = day_ahead[window].sort_values(["turbine", "time_local", "issue_time_utc"])
     # Belt and braces: if two issues ever covered the same hour, keep the fresher.
     submission = submission.groupby(["turbine", "time_local"], as_index=False).last()
@@ -202,6 +205,8 @@ def _write_submission(forecasts: pd.DataFrame, label: str) -> None:
 
     expected = 24 * (pd.Timestamp(config.TEST_END) - pd.Timestamp(config.TEST_START)).days + 24
     per_turbine = submission.groupby("turbine").size()
+    if (per_turbine < expected / 2).all():
+        return  # only clipping the edge of the window -- not a real submission
     print(f"Submission: {path.name} - {len(submission)} rows; "
           f"per turbine {per_turbine.to_dict()} (expected {expected} each)")
     gaps = {t: int(expected - n) for t, n in per_turbine.items() if n != expected}
