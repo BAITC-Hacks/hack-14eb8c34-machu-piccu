@@ -1,0 +1,55 @@
+{
+  "features": [
+    "day_of_year_cos",
+    "day_of_year_sin",
+    "ecmwf_surface_pressure",
+    "ecmwf_wind_speed_100m",
+    "ecmwf_wind_speed_10m",
+    "ensemble_wind_speed_100m",
+    "gfs_relative_humidity_2m",
+    "gfs_wind_direction_100m_sin",
+    "gfs_wind_direction_10m_cos",
+    "hour_sin",
+    "icon_wind_gusts_10m",
+    "icon_wind_speed_100m",
+    "lead_hours",
+    "turbine_id",
+    "wind_speed_10m_mean"
+  ],
+  "by_route": {
+    "D1__global": [
+      "turbine_id",
+      "lead_hours",
+      "ensemble_wind_speed_100m",
+      "ecmwf_wind_speed_10m",
+      "wind_speed_10m_mean",
+      "ecmwf_surface_pressure",
+      "day_of_year_cos",
+      "day_of_year_sin",
+      "ecmwf_wind_speed_100m",
+      "gfs_wind_direction_100m_sin",
+      "icon_wind_gusts_10m",
+      "gfs_wind_direction_10m_cos",
+      "hour_sin",
+      "icon_wind_speed_100m",
+      "gfs_relative_humidity_2m"
+    ],
+    "D2__global": [
+      "turbine_id",
+      "lead_hours",
+      "ensemble_wind_speed_100m",
+      "ecmwf_wind_speed_10m",
+      "wind_speed_10m_mean",
+      "ecmwf_surface_pressure",
+      "day_of_year_cos",
+      "day_of_year_sin",
+      "ecmwf_wind_speed_100m",
+      "gfs_wind_direction_100m_sin",
+      "icon_wind_gusts_10m",
+      "gfs_wind_direction_10m_cos",
+      "hour_sin",
+      "icon_wind_speed_100m",
+      "gfs_relative_humidity_2m"
+    ]
+  }
+}

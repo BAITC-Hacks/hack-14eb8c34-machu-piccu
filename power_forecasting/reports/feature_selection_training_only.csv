@@ -1,0 +1,207 @@
+feature,importance_training_only,selected_candidate,reason
+turbine_id,0.006027760810821771,True,Ranked safe candidate
+lead_hours,0.0003591406419123324,True,Ranked safe candidate
+ensemble_wind_speed_100m,0.4352192292339211,True,Ranked safe candidate
+wind_speed_100m_mean,0.09294060718564717,False,Strongly correlated training-only proxy for ensemble_wind_speed_100m
+ecmwf_wind_speed_10m,0.06881154579771559,True,Ranked safe candidate
+wind_speed_10m_mean,0.04754978680495,True,Ranked safe candidate
+ecmwf_surface_pressure,0.013232558067762641,True,Ranked safe candidate
+ensemble_wind_speed_10m,0.012721366901282205,False,Strongly correlated training-only proxy for wind_speed_10m_mean
+day_of_year_cos,0.010838496976326942,True,Ranked safe candidate
+day_of_year_sin,0.01066101357345559,True,Ranked safe candidate
+ecmwf_wind_speed_100m,0.009346506597189918,True,Ranked safe candidate
+gfs_wind_direction_100m_sin,0.008903576314571855,True,Ranked safe candidate
+target_day_of_year,0.008777567881649751,False,Redundant horizon or raw calendar; use lead and cyclic time
+icon_wind_gusts_10m,0.008111302733023367,True,Ranked safe candidate
+gfs_wind_direction_10m_cos,0.00786216683845423,True,Ranked safe candidate
+hour_sin,0.007050958396791587,True,Ranked safe candidate
+icon_wind_speed_100m,0.0064002449130482406,True,Ranked safe candidate
+gfs_wind_direction_10m,0.006225159616402682,False,Raw angle replaced by sine/cosine
+gfs_relative_humidity_2m,0.0058712177306858215,True,Ranked safe candidate
+icon_surface_pressure,0.005456013422399913,False,Strongly correlated training-only proxy for ecmwf_surface_pressure
+gfs_surface_pressure,0.004944798632745579,False,Strongly correlated training-only proxy for ecmwf_surface_pressure
+gfs_wind_speed_10m,0.004663136359756391,True,Ranked safe candidate
+target_day_of_week,0.00465918360062599,False,Redundant horizon or raw calendar; use lead and cyclic time
+ecmwf_relative_humidity_2m,0.00459433252280944,True,Ranked safe candidate
+target_hour,0.004336630267298371,False,Redundant horizon or raw calendar; use lead and cyclic time
+ecmwf_temperature_2m,0.004179848649394947,True,Ranked safe candidate
+ensemble_wind_direction_100m_circular_dispersion,0.003981414044529545,True,Ranked safe candidate
+hour_cos,0.003880731932118659,True,Ranked safe candidate
+icon_wind_bias_90d,0.00384606511927087,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_direction_100m,0.0034273924896404194,False,Raw angle replaced by sine/cosine
+ensemble_relative_humidity_2m,0.0033915540257513413,True,Ranked safe candidate
+ensemble_wind_gusts_10m,0.0033663489260771238,True,Ranked safe candidate
+gfs_wind_direction_10m_sin,0.0033296331447474764,True,Ranked safe candidate
+surface_pressure_mean,0.0033136337541641186,False,Strongly correlated training-only proxy for ecmwf_surface_pressure
+gfs_wind_bias_7d,0.0032848254772688272,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_2m,0.003227309947360562,False,Strongly correlated training-only proxy for ecmwf_temperature_2m
+icon_temperature_2m,0.0031865567221589894,False,Strongly correlated training-only proxy for ecmwf_temperature_2m
+ecmwf_wind_bias_7d,0.0030789684524485683,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_direction_10m,0.003037620866906739,False,Raw angle replaced by sine/cosine
+ecmwf_temperature_bias_7d,0.0030358163765553067,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_7d,0.0030355464497032816,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_direction_100m_sin,0.0029450797418720275,True,Ranked safe candidate
+gfs_temperature_mae_30d,0.002942051670840429,False,Redundant rolling metric; retain only provider wind MAE 30d
+wind_speed_models_std,0.0029418195539167072,True,Ranked safe candidate
+wind_speed_models_range,0.0029129006826319427,False,Strongly correlated training-only proxy for wind_speed_models_std
+wind_direction_10m_mean,0.0027655873412139867,False,Raw angle replaced by sine/cosine
+gfs_temperature_rmse_7d,0.002725260322039098,False,Redundant rolling metric; retain only provider wind MAE 30d
+ensemble_wind_direction_10m,0.0026933288947830814,False,Raw angle replaced by sine/cosine
+icon_temperature_rmse_30d,0.002624148483800297,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_bias_7d,0.0026153830306093677,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_direction_10m_sin,0.002562222193197159,True,Ranked safe candidate
+icon_weight,0.002487055382498427,True,Ranked safe candidate
+gfs_wind_rmse_7d,0.0023489405583234984,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_weight,0.002328762412229268,True,Ranked safe candidate
+gfs_wind_mae_30d,0.0022786549465151256,True,Ranked safe candidate
+ecmwf_wind_rmse_7d,0.002211937077865354,False,Redundant rolling metric; retain only provider wind MAE 30d
+wind_gusts_10m_mean,0.002189547668327344,False,Strongly correlated training-only proxy for ensemble_wind_gusts_10m
+icon_temperature_rmse_7d,0.0021719780958115655,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_mae_7d,0.002151043322350088,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_speed_10m,0.002117934859594947,True,Ranked safe candidate
+icon_temperature_mae_7d,0.0021027036279181073,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_weight,0.0020459980573494722,True,Ranked safe candidate
+ensemble_surface_pressure,0.0020143109378208063,False,Strongly correlated training-only proxy for ecmwf_surface_pressure
+gfs_temperature_mae_7d,0.0020134671716284,False,Redundant rolling metric; retain only provider wind MAE 30d
+temperature_models_std,0.001914457942524822,True,Ranked safe candidate
+ensemble_wind_direction_100m_sin,0.001903433187587042,True,Ranked safe candidate
+gfs_temperature_weight,0.001893907909876081,True,Ranked safe candidate
+relative_humidity_2m_mean,0.0018563243578683301,False,Strongly correlated training-only proxy for ensemble_relative_humidity_2m
+ecmwf_temperature_bias_30d,0.0018383281561116728,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_bias_30d,0.0018310142717419178,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_90d,0.001792015899313941,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_30d,0.0017895164353834117,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_7d,0.0017547544147058166,False,Redundant rolling metric; retain only provider wind MAE 30d
+ensemble_temperature_2m,0.0017529916284119858,False,Strongly correlated training-only proxy for ecmwf_temperature_2m
+gfs_wind_mae_7d,0.001743332039555637,False,Redundant rolling metric; retain only provider wind MAE 30d
+temperature_2m_mean,0.0017198159151053873,False,Strongly correlated training-only proxy for ecmwf_temperature_2m
+gfs_wind_speed_100m,0.0016706648492230444,True,Ranked safe candidate
+ensemble_wind_direction_10m_cos,0.001646521730846839,True,Ranked safe candidate
+icon_temperature_mae_30d,0.001612096124949126,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_90d,0.0016079566096349938,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_mae_7d,0.001594283592566389,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_direction_10m,0.0015883641361176641,False,Raw angle replaced by sine/cosine
+icon_temperature_weight,0.0015856809818620167,True,Ranked safe candidate
+ensemble_wind_direction_10m_sin,0.0015844885220910685,True,Ranked safe candidate
+ecmwf_wind_direction_100m_cos,0.0015527612963828204,True,Ranked safe candidate
+icon_wind_direction_10m_sin,0.0015525572792055929,True,Ranked safe candidate
+ecmwf_temperature_bias_90d,0.0015273953850914862,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_n_30d,0.001489063009339297,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_gusts_10m,0.001484161135806945,True,Ranked safe candidate
+ecmwf_temperature_mae_30d,0.001474374429049788,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_7d,0.0014695882731731457,False,Redundant rolling metric; retain only provider wind MAE 30d
+wind_direction_100m_circular_dispersion,0.0014645014312926095,False,Strongly correlated training-only proxy for ensemble_wind_direction_100m_circular_dispersion
+ecmwf_temperature_mae_90d,0.0014561548595896116,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_relative_humidity_2m,0.001440702647249056,True,Ranked safe candidate
+ecmwf_wind_mae_30d,0.0014344552738262781,True,Ranked safe candidate
+icon_wind_direction_100m,0.0013989955363594205,False,Raw angle replaced by sine/cosine
+gfs_temperature_rmse_30d,0.001371372383522353,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_direction_100m,0.0013601017355499222,False,Raw angle replaced by sine/cosine
+gfs_wind_mae_90d,0.0013523789340819114,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_rmse_30d,0.001310673429450774,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_rmse_7d,0.0013035789348504483,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_30d,0.0012993024517790467,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_7d,0.0012936410665978831,False,Redundant rolling metric; retain only provider wind MAE 30d
+ensemble_wind_direction_100m_cos,0.0012799636553647257,True,Ranked safe candidate
+icon_wind_bias_30d,0.0012797252251467322,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_mae_7d,0.0012392672526050903,False,Redundant rolling metric; retain only provider wind MAE 30d
+wind_direction_100m_mean,0.001160865297616146,False,Raw angle replaced by sine/cosine
+wind_direction_10m_circular_dispersion,0.001121084107426921,True,Ranked safe candidate
+gfs_weight,0.001052511627573584,True,Ranked safe candidate
+ecmwf_wind_bias_90d,0.0010485071441260437,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_90d,0.001046919674661942,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_direction_10m_cos,0.0010230372422627837,True,Ranked safe candidate
+icon_wind_mae_30d,0.000984528652969599,True,Ranked safe candidate
+icon_wind_rmse_30d,0.0009600318476460419,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_n_90d,0.0009588885715103115,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_30d,0.0009583400747387938,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_rmse_90d,0.0009480413514357351,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_mae_90d,0.0009239352845544723,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_rmse_30d,0.0009095840143593648,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_mae_90d,0.000890743755887025,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_bias_30d,0.0008890682578702309,False,Redundant rolling metric; retain only provider wind MAE 30d
+ensemble_wind_direction_10m_circular_dispersion,0.0008498412883197634,False,Strongly correlated training-only proxy for wind_direction_10m_circular_dispersion
+icon_wind_direction_100m_cos,0.0008372394668859648,True,Ranked safe candidate
+icon_wind_direction_10m_cos,0.000817359199335123,True,Ranked safe candidate
+gfs_wind_direction_100m_cos,0.000764232347559245,True,Ranked safe candidate
+icon_wind_direction_100m_sin,0.0007533448481085176,True,Ranked safe candidate
+gfs_temperature_n_90d,0.0007344436551724852,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_7d,0.0006345612220468397,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_30d,0.0005950717842707652,False,Redundant rolling metric; retain only provider wind MAE 30d
+ensemble_wind_direction_100m,0.0005900824981509361,False,Raw angle replaced by sine/cosine
+temperature_models_range,0.0005869289196672672,False,Strongly correlated training-only proxy for temperature_models_std
+ecmwf_temperature_n_7d,0.0005805282086180027,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_rmse_90d,0.0005255366304002597,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_30d,0.0005214496774511776,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_rmse_90d,0.0004728820884602056,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_rmse_90d,0.000463213135815185,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_bias_90d,0.0004261940342177064,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_mae_90d,0.00040777703743038514,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_mae_90d,0.00040408084387479537,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_90d,0.00038574207047959444,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_90d,0.00034454009017551566,False,Redundant rolling metric; retain only provider wind MAE 30d
+target_month,0.0002651209657071687,False,Redundant horizon or raw calendar; use lead and cyclic time
+icon_temperature_n_30d,0.0002475029079294327,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_rmse_90d,0.00023573547772539653,False,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_n_30d,0.00022166262520441089,False,Redundant rolling metric; retain only provider wind MAE 30d
+wind_weights_cold_start,0.00020127179931103453,True,Ranked safe candidate
+icon_wind_n_7d,0.00018995371084304318,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_n_90d,0.00014105704278491327,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_n_30d,5.421095614202435e-05,False,Redundant rolling metric; retain only provider wind MAE 30d
+archive_nominal_lead_hours,0.0,False,Redundant horizon or raw calendar; use lead and cyclic time
+best_weather_model_recent,0.0,True,Ranked safe candidate
+ecmwf_api_error,0.0,False,Constant / near-constant on first training interval
+ecmwf_available,0.0,False,Constant / near-constant on first training interval
+ecmwf_impossible_values_count,0.0,False,Constant / near-constant on first training interval
+ecmwf_missing_target_hour,0.0,False,Constant / near-constant on first training interval
+ecmwf_missing_values_count,0.0,True,Ranked safe candidate
+ecmwf_partial_coverage,0.0,False,Constant / near-constant on first training interval
+ecmwf_quality_ok,0.0,False,Strongly correlated training-only proxy for ecmwf_missing_values_count
+ecmwf_relative_humidity_2m_valid,0.0,True,Ranked safe candidate
+ecmwf_surface_pressure_valid,0.0,False,Constant / near-constant on first training interval
+ecmwf_temperature_2m_valid,0.0,False,Constant / near-constant on first training interval
+ecmwf_wind_direction_100m_valid,0.0,False,Strongly correlated training-only proxy for ecmwf_missing_values_count
+ecmwf_wind_direction_10m_valid,0.0,False,Constant / near-constant on first training interval
+ecmwf_wind_gusts_10m,0.0,False,Excessive missingness on first training interval
+ecmwf_wind_gusts_10m_valid,0.0,False,Constant / near-constant on first training interval
+ecmwf_wind_speed_100m_valid,0.0,False,Strongly correlated training-only proxy for ecmwf_missing_values_count
+ecmwf_wind_speed_10m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_api_error,0.0,False,Constant / near-constant on first training interval
+gfs_available,0.0,False,Constant / near-constant on first training interval
+gfs_impossible_values_count,0.0,False,Constant / near-constant on first training interval
+gfs_missing_target_hour,0.0,False,Constant / near-constant on first training interval
+gfs_missing_values_count,0.0,False,Constant / near-constant on first training interval
+gfs_partial_coverage,0.0,False,Constant / near-constant on first training interval
+gfs_quality_ok,0.0,False,Constant / near-constant on first training interval
+gfs_relative_humidity_2m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_surface_pressure_valid,0.0,False,Constant / near-constant on first training interval
+gfs_temperature_2m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_temperature_n_7d,0.0,False,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_direction_100m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_wind_direction_10m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_wind_gusts_10m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_wind_speed_100m_valid,0.0,False,Constant / near-constant on first training interval
+gfs_wind_speed_10m_valid,0.0,False,Constant / near-constant on first training interval
+horizon_bucket,0.0,False,Redundant horizon or raw calendar; use lead and cyclic time
+icon_api_error,0.0,False,Constant / near-constant on first training interval
+icon_available,0.0,False,Constant / near-constant on first training interval
+icon_impossible_values_count,0.0,False,Constant / near-constant on first training interval
+icon_missing_target_hour,0.0,False,Constant / near-constant on first training interval
+icon_missing_values_count,0.0,False,Constant / near-constant on first training interval
+icon_partial_coverage,0.0,False,Constant / near-constant on first training interval
+icon_quality_ok,0.0,False,Constant / near-constant on first training interval
+icon_relative_humidity_2m_valid,0.0,False,Constant / near-constant on first training interval
+icon_surface_pressure_valid,0.0,False,Constant / near-constant on first training interval
+icon_temperature_2m_valid,0.0,False,Constant / near-constant on first training interval
+icon_temperature_n_7d,0.0,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_n_90d,0.0,False,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_direction_100m_valid,0.0,False,Constant / near-constant on first training interval
+icon_wind_direction_10m_valid,0.0,False,Constant / near-constant on first training interval
+icon_wind_gusts_10m_valid,0.0,False,Constant / near-constant on first training interval
+icon_wind_speed_100m_valid,0.0,False,Constant / near-constant on first training interval
+icon_wind_speed_10m_valid,0.0,False,Constant / near-constant on first training interval
+temperature_weights_cold_start,0.0,False,Constant / near-constant on first training interval
+weather_critical_missing,0.0,False,Constant / near-constant on first training interval
+weather_data_quality_score,0.0,False,Strongly correlated training-only proxy for ecmwf_missing_values_count
+weather_models_available_count,0.0,False,Constant / near-constant on first training interval
+weather_models_usable_count,0.0,False,Strongly correlated training-only proxy for ecmwf_missing_values_count

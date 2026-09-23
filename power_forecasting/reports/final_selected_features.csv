@@ -1,0 +1,16 @@
+feature,source,meaning,reason_for_inclusion,importance
+ensemble_wind_speed_100m,Historical-performance weighted weather,Weighted forecast; direction expressed by sine/cosine,Part of near-best compact walk-forward configuration; physically interpretable,0.5794211948801439
+wind_speed_10m_mean,Archived weather aggregate,"10m forecast wind speed (m/s): near-surface regime, complementary to 100m flow",Part of near-best compact walk-forward configuration; physically interpretable,0.1259874901233059
+ecmwf_wind_speed_10m,ECMWF,"10m forecast wind speed (m/s): near-surface regime, complementary to 100m flow",Part of near-best compact walk-forward configuration; physically interpretable,0.059538027324183375
+day_of_year_cos,Target local calendar,Cyclic hour or annual phase,Part of near-best compact walk-forward configuration; physically interpretable,0.03667117191020555
+day_of_year_sin,Target local calendar,Cyclic hour or annual phase,Part of near-best compact walk-forward configuration; physically interpretable,0.03256623251578664
+ecmwf_surface_pressure,ECMWF,Forecast surface pressure (hPa): air-density / synoptic regime proxy,Part of near-best compact walk-forward configuration; physically interpretable,0.03025525227087668
+gfs_wind_direction_10m_cos,GFS,"Sine/cosine component of forecast direction: directional terrain and wake regimes, no raw angle discontinuity",Part of near-best compact walk-forward configuration; physically interpretable,0.02553234088601578
+gfs_wind_direction_100m_sin,GFS,"Sine/cosine component of forecast direction: directional terrain and wake regimes, no raw angle discontinuity",Part of near-best compact walk-forward configuration; physically interpretable,0.02326481476224183
+ecmwf_wind_speed_100m,ECMWF,100m forecast wind speed (m/s): proxy for inflow near turbine operating height,Part of near-best compact walk-forward configuration; physically interpretable,0.022018025189182208
+icon_wind_gusts_10m,ICON,Forecast gust speed (m/s): turbulent / gusty wind regime proxy,Part of near-best compact walk-forward configuration; physically interpretable,0.020546197493636714
+gfs_relative_humidity_2m,GFS,"Forecast relative humidity (%): air-mass / moisture regime proxy, not proof of icing",Part of near-best compact walk-forward configuration; physically interpretable,0.015900235250292525
+hour_sin,Target local calendar,Cyclic hour or annual phase,Part of near-best compact walk-forward configuration; physically interpretable,0.01341126645935652
+icon_wind_speed_100m,ICON,100m forecast wind speed (m/s): proxy for inflow near turbine operating height,Part of near-best compact walk-forward configuration; physically interpretable,0.006343580062652996
+turbine_id,SCADA identifier,Categorical turbine identity; captures turbine differences,Part of near-best compact walk-forward configuration; physically interpretable,0.005949633693774019
+lead_hours,Forecast schedule,"Lead from issue to target, hours",Part of near-best compact walk-forward configuration; physically interpretable,0.0025945371783453373

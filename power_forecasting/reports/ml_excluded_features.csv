@@ -1,0 +1,57 @@
+feature,reason
+forecast_issue_time,Raw timestamp; only explicit calendar transforms allowed
+target_time,Raw timestamp; only explicit calendar transforms allowed
+archive_day,Not in audited upstream feature allowlist; metadata/ID/provenance
+forecast_day,Not in audited upstream feature allowlist; metadata/ID/provenance
+target_local_time,Raw timestamp; only explicit calendar transforms allowed
+archive_reference_time,Raw timestamp; only explicit calendar transforms allowed
+dataset_split,Split identifier
+ecmwf_cache_key,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_grid_latitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_grid_longitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_cache_key,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_grid_latitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_grid_longitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_cache_key,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_grid_latitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_grid_longitude,Not in audited upstream feature allowlist; metadata/ID/provenance
+methodology_status,Not in audited upstream feature allowlist; metadata/ID/provenance
+weather_archive_method,Not in audited upstream feature allowlist; metadata/ID/provenance
+weather_archive_confidence,Not in audited upstream feature allowlist; metadata/ID/provenance
+timezone_status,Not in audited upstream feature allowlist; metadata/ID/provenance
+scada_utc_offset_hours,Observed/evaluation/provenance field; not a predictor
+weather_configuration,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_duplicate_forecast,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_timestamps_consistent,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_run_time,Raw timestamp; only explicit calendar transforms allowed
+ecmwf_estimated_availability_time,Raw timestamp; only explicit calendar transforms allowed
+ecmwf_stale_run,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_duplicate_forecast,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_timestamps_consistent,Not in audited upstream feature allowlist; metadata/ID/provenance
+gfs_run_time,Raw timestamp; only explicit calendar transforms allowed
+gfs_estimated_availability_time,Raw timestamp; only explicit calendar transforms allowed
+gfs_stale_run,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_duplicate_forecast,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_timestamps_consistent,Not in audited upstream feature allowlist; metadata/ID/provenance
+icon_run_time,Raw timestamp; only explicit calendar transforms allowed
+icon_estimated_availability_time,Raw timestamp; only explicit calendar transforms allowed
+icon_stale_run,Not in audited upstream feature allowlist; metadata/ID/provenance
+ecmwf_wind_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+ecmwf_wind_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+ecmwf_wind_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+ecmwf_temperature_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+ecmwf_temperature_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+ecmwf_temperature_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+gfs_wind_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+gfs_wind_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+gfs_wind_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+gfs_temperature_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+gfs_temperature_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+gfs_temperature_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+icon_wind_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+icon_wind_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+icon_wind_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+icon_temperature_history_latest_7d,Observed/evaluation/provenance field; not a predictor
+icon_temperature_history_latest_30d,Observed/evaluation/provenance field; not a predictor
+icon_temperature_history_latest_90d,Observed/evaluation/provenance field; not a predictor
+normalized_active_power,Supervised target; never X

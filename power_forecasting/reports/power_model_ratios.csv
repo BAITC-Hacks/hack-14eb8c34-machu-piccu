@@ -1,0 +1,3 @@
+comparison,MAE_before,MAE_after,ratio_after_before,absolute_improvement,relative_improvement_pct
+Selected ML vs best simple baseline: HistoricalMedian,0.300859735687904,0.15054440950182635,0.5003807144801629,0.15031532618607762,49.96192855198372
+Selected ML vs best controlled single-provider ML: ECMWF,0.16875848159050247,0.15054440950182635,0.8920701826834807,0.01821407208867612,10.79298173165193

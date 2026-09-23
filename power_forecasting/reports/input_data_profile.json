@@ -1,0 +1,124 @@
+[
+  {
+    "turbine_id": "turbine_1",
+    "file": "Dataset HackAlemAI для участников 11.03.2023-28.02.2026 - turbine 1.csv",
+    "sha256": "c4c341582fb2dd348b7187f0128cff265fe055f469413871ebb5db50eef58b5b",
+    "format": "CSV, comma delimiter, UTF-8, decimal point",
+    "columns": [
+      "ID",
+      "Статистическое время",
+      "Средняя скорость ветра(m/s)",
+      "Нормализованная активная мощность",
+      "Средняя температура окружающей среды(°C)"
+    ],
+    "rows": 142360,
+    "timestamp_min": "2023-03-11T00:00:00",
+    "timestamp_max": "2026-01-31T23:50:00",
+    "timezone": null,
+    "timestamp_convention": null,
+    "turbine_id_column": false,
+    "null_cells": {
+      "ID": 0,
+      "Статистическое время": 0,
+      "Средняя скорость ветра(m/s)": 0,
+      "Нормализованная активная мощность": 0,
+      "Средняя температура окружающей среды(°C)": 0
+    },
+    "invalid_numeric": {},
+    "invalid_timestamp_rows": [],
+    "duplicate_timestamps": 0,
+    "duplicate_ids": 0,
+    "sorted_timestamps": true,
+    "cadence_seconds": 600.0,
+    "all_on_cadence_grid": true,
+    "expected_timestamps": 152352,
+    "missing_timestamps": 9992,
+    "missing_timestamp_pct": 6.558496114261709,
+    "empty_hours": 1629,
+    "hour_sample_counts": {
+      "1": 10,
+      "2": 10,
+      "3": 15,
+      "4": 22,
+      "5": 39,
+      "6": 23667
+    },
+    "max_gap_hours": 999.0,
+    "ranges": {
+      "wind_speed": {
+        "min": 0.0,
+        "max": 22.97
+      },
+      "normalized_active_power": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "temperature": {
+        "min": -19.26,
+        "max": 43.48
+      }
+    },
+    "competition_rows": 0
+  },
+  {
+    "turbine_id": "turbine_2",
+    "file": "Dataset HackAlemAI для участников 11.03.2023-28.02.2026 - turbine 2.csv",
+    "sha256": "820578cd18bb557cd30c2e102f3ae5a386dfc6c489a5a15743339c2b017305e5",
+    "format": "CSV, comma delimiter, UTF-8, decimal point",
+    "columns": [
+      "ID",
+      "Статистическое время",
+      "Средняя скорость ветра(m/s)",
+      "Нормализованная активная мощность",
+      "Средняя температура окружающей среды(°C)"
+    ],
+    "rows": 149499,
+    "timestamp_min": "2023-03-11T00:00:00",
+    "timestamp_max": "2026-01-31T23:50:00",
+    "timezone": null,
+    "timestamp_convention": null,
+    "turbine_id_column": false,
+    "null_cells": {
+      "ID": 0,
+      "Статистическое время": 0,
+      "Средняя скорость ветра(m/s)": 0,
+      "Нормализованная активная мощность": 0,
+      "Средняя температура окружающей среды(°C)": 0
+    },
+    "invalid_numeric": {},
+    "invalid_timestamp_rows": [],
+    "duplicate_timestamps": 0,
+    "duplicate_ids": 0,
+    "sorted_timestamps": true,
+    "cadence_seconds": 600.0,
+    "all_on_cadence_grid": true,
+    "expected_timestamps": 152352,
+    "missing_timestamps": 2853,
+    "missing_timestamp_pct": 1.8726370510396975,
+    "empty_hours": 388,
+    "hour_sample_counts": {
+      "1": 26,
+      "2": 35,
+      "3": 24,
+      "4": 49,
+      "5": 85,
+      "6": 24785
+    },
+    "max_gap_hours": 57.5,
+    "ranges": {
+      "wind_speed": {
+        "min": 0.11,
+        "max": 21.43
+      },
+      "normalized_active_power": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "temperature": {
+        "min": -19.08,
+        "max": 43.97
+      }
+    },
+    "competition_rows": 0
+  }
+]
