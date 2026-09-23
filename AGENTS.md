@@ -14,3 +14,5 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 строка `Submission: ... per turbine {'t1': 672, 't2': 672}`. Ключи API нужны только для
 `--reason` (LLM-режим); транскрипты 28 февральских циклов уже лежат в `outputs/agent_transcripts/`,
 их сверка: `.venv/bin/python -m src.audit_transcripts`.
+
+Docker: `docker build -t windagent . && docker run --rm windagent` выполняет тесты и сдачу без установки Python.

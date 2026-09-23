@@ -41,6 +41,25 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 Дашборд: `.venv/bin/python -m streamlit run app.py`, затем открыть http://localhost:8501.
 
+### Docker
+
+Тот же набор без установки Python: образ содержит код, кэш погоды, обученную модель и данные,
+сети и ключей не требует.
+
+```bash
+docker build -t windagent .
+docker run --rm windagent                                   # тесты + сдача за февраль 2026
+docker run --rm windagent test                              # только 14 тестов честности
+docker run --rm windagent replay strict                     # консервативная политика
+docker run --rm windagent verify                            # 122-дневный проверочный реплей, обе политики
+docker run --rm windagent agent 2026-01-31                  # один цикл агента с разбором
+docker run --rm -p 8501:8501 windagent dashboard            # дашборд на http://localhost:8501
+docker run --rm -e OPENAI_API_KEY=... windagent agent-llm   # цикл под управлением LLM
+docker run --rm -v "$PWD/outputs:/app/outputs" windagent    # так файлы сдачи попадут на хост
+```
+
+Команды описаны в `docker/entrypoint.sh`; ключи в образ не попадают (`.env` в `.dockerignore`).
+
 ![Дашборд](reports/dashboard.png)
 
 ---
@@ -467,7 +486,7 @@ DWD ICON (региональные модели высокого разреше�
 Этот раздел написан для автоматического проверяющего. Всё ниже выполняется без сети и без
 ключей API.
 
-**Окружение.** Python 3.11+ (проверено 3.13). На macOS нужен `brew install libomp` для LightGBM.
+**Окружение.** Python 3.11+ (проверено 3.13) или Docker (`docker build -t windagent .`, см. начало документа). На macOS нужен `brew install libomp` для LightGBM.
 Установка: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` (pandas, numpy,
 scikit-learn, lightgbm, pyarrow, requests, matplotlib, pytest, streamlit, plotly; SDK LLM
 опциональны и нужны только для `--reason`).
@@ -537,5 +556,6 @@ artifacts/             обученная модель и сводка вали�
 outputs/               сдачи, отчёты, ежедневные разборы; agent_transcripts/ (LLM-режим)
 reports/               картинки и результаты бенчмарков
 app.py                 дашборд Streamlit
+Dockerfile, docker/    образ с кэшем и моделью; entrypoint с командами check/test/replay/verify/agent/dashboard
 AGENTS.md, Makefile    шпаргалка и те же команды как цели make
 ```

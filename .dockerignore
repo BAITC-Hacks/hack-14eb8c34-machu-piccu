@@ -1,0 +1,11 @@
+.git
+.venv
+venv
+.env
+.claude
+__pycache__
+*.pyc
+data/
+outputs/cycles/
+artifacts/ds_*.parquet
+.DS_Store

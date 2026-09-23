@@ -40,6 +40,25 @@ Expected: `outputs/february_2026_rolling_submission_local.csv` with 1 344 rows a
 
 Dashboard: `.venv/bin/python -m streamlit run app.py`, then open http://localhost:8501.
 
+### Docker
+
+The same set without installing Python: the image holds the code, the weather cache, the trained
+model and the data; it needs no network and no keys.
+
+```bash
+docker build -t windagent .
+docker run --rm windagent                                   # tests + the February 2026 deliverable
+docker run --rm windagent test                              # only the 14 honesty tests
+docker run --rm windagent replay strict                     # the conservative policy
+docker run --rm windagent verify                            # 122-day scored replay, both policies
+docker run --rm windagent agent 2026-01-31                  # one agent cycle with a briefing
+docker run --rm -p 8501:8501 windagent dashboard            # dashboard at http://localhost:8501
+docker run --rm -e OPENAI_API_KEY=... windagent agent-llm   # the LLM-driven cycle
+docker run --rm -v "$PWD/outputs:/app/outputs" windagent    # to get the submission files on the host
+```
+
+Commands are listed in `docker/entrypoint.sh`; keys never enter the image (`.env` is in `.dockerignore`).
+
 ![Dashboard](reports/dashboard.png)
 
 ---
@@ -458,7 +477,7 @@ Roadmap, in order of expected value:
 This section is written for an automated reviewer. Everything below is executable without network
 access or API keys.
 
-**Environment.** Python 3.11+ (3.13 verified). macOS needs `brew install libomp` for LightGBM.
+**Environment.** Python 3.11+ (3.13 verified) or Docker (`docker build -t windagent .`, see the top of this document). macOS needs `brew install libomp` for LightGBM.
 Install with `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` (pandas,
 numpy, scikit-learn, lightgbm, pyarrow, requests, matplotlib, pytest, streamlit, plotly; the LLM
 SDKs are optional and only used with `--reason`).
@@ -528,5 +547,6 @@ artifacts/             trained model and validation summary
 outputs/               submissions, reports, daily analyses; agent_transcripts/ (LLM mode)
 reports/               figures and benchmark results
 app.py                 Streamlit dashboard
+Dockerfile, docker/    image with the cache and the model; entrypoint commands check/test/replay/verify/agent/dashboard
 AGENTS.md, Makefile    cheat sheet and the same commands as make targets
 ```
