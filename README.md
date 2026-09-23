@@ -1,532 +1,541 @@
-# WindAgent: agentic 24–48 h hourly power forecasting for a wind farm
+# WindAgent: агентный прогноз почасовой выработки ВЭС на 24–48 часов
 
-**Русская версия: [README.ru.md](README.ru.md)**
+**English version: [README.en.md](README.en.md)**
 
-Solution for the HackAlemAI case *"Agentic AI for wind farm output forecasting"* (`task.md`).
-The system fetches archived forecasts of three numerical weather models for the turbine
-coordinates, prepares features, runs a trained model, publishes an hourly forecast for the next
-two days per turbine, analyses the result, measures how much fresher inputs changed the answer,
-and learns from its own verified errors. The deliverable is the hourly normalised power for
-**1–28 February 2026**, produced by replaying 28 daily cycles ("on 31 January, on 1 February, …
-on 27 February") with the weather forecasts that were available at each of those moments.
+Решение кейса HackAlemAI «Agentic AI для прогнозирования выработки ВЭС» (`task.md`).
+Система сама забирает архивные прогнозы трёх численных моделей погоды по координатам турбин,
+готовит признаки, запускает обученную модель, публикует почасовой прогноз на два следующих дня
+по каждой турбине, анализирует результат, измеряет, насколько свежие входные данные изменили
+ответ, и учится на собственных проверенных ошибках. Сдача: почасовая нормализованная мощность
+за **1–28 февраля 2026**, полученная реплеем 28 ежедневных циклов («на 31 января, на 1 февраля,
+… на 27 февраля») по прогнозам погоды, которые были доступны в каждый из этих моментов.
 
-Site: two turbines in the Shelek wind corridor, Almaty region (43.645 N, 78.536 E, ~400 m apart).
+Объект: две турбины в Шелекском ветровом коридоре, Алматинская область (43.645 с.ш.,
+78.536 в.д., ~400 м друг от друга).
 
-**Contents:** [Five-minute check](#1-five-minute-check) · [Headline results](#2-headline-results) ·
-[Task and data](#3-the-task-and-the-data) · [Processing and features](#4-data-processing-and-feature-engineering) ·
-[Training](#5-model-training) · [Evaluation](#6-evaluation) · [Agent architecture](#7-agentic-architecture) ·
-[Experiments](#8-experiments) · [Self-assessment](#9-self-assessment-against-the-case-criteria) ·
-[Limitations](#10-limitations-and-roadmap) · [Handoff for the jury's AI agent](#11-handoff-for-the-jurys-ai-agent) ·
-[Repository structure](#12-repository-structure)
+**Содержание:** [Проверка за пять минут](#1-проверка-за-пять-минут) · [Главные результаты](#2-главные-результаты) ·
+[Задача и данные](#3-задача-и-данные) · [Обработка и признаки](#4-обработка-данных-и-признаки) ·
+[Обучение](#5-обучение-модели) · [Оценка](#6-оценка) · [Архитектура агента](#7-агентная-архитектура) ·
+[Эксперименты](#8-эксперименты) · [Самооценка](#9-самооценка-по-критериям-кейса) ·
+[Ограничения](#10-ограничения-и-развитие) · [Handoff для ИИ-агента жюри](#11-handoff-для-ии-агента-жюри) ·
+[Структура репозитория](#12-структура-репозитория)
 
 ---
 
-## 1. Five-minute check
+## 1. Проверка за пять минут
 
-Everything reproduces offline from the repository: the weather archive and the trained model are
-committed, no API keys are needed. Python 3.11+ (verified on 3.13, macOS and a fresh clone).
+Всё воспроизводится офлайн из репозитория: архив погоды и обученная модель закоммичены,
+ключи API не нужны. Python 3.11+ (проверено на 3.13, macOS, свежий клон).
 
 ```bash
-brew install libomp                                   # macOS only, LightGBM needs OpenMP
+brew install libomp                                   # только macOS, LightGBM требует OpenMP
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m pytest -q                         # 14 offline honesty tests, ~5 s
-.venv/bin/python -m src.backtest --policy rolling     # the February 2026 deliverable, ~1 min
-.venv/bin/python -m src.agent --date 2026-01-31       # one agent cycle with an operator briefing
+.venv/bin/python -m pytest -q                         # 14 офлайн-тестов честности, ~5 с
+.venv/bin/python -m src.backtest --policy rolling     # сдача за февраль 2026, ~1 мин
+.venv/bin/python -m src.agent --date 2026-01-31       # один цикл агента с разбором для диспетчера
 ```
 
-Expected: `outputs/february_2026_rolling_submission_local.csv` with 1 344 rows and the line
-`Submission: ... per turbine {'t1': 672, 't2': 672}`. The same commands are in the `Makefile`
-(`make test`, `make replay`, `make agent`); `AGENTS.md` is a one-screen cheat sheet.
+Ожидаемый результат: `outputs/february_2026_rolling_submission_local.csv` на 1 344 строки и
+строка `Submission: ... per turbine {'t1': 672, 't2': 672}`. Те же команды есть в `Makefile`
+(`make test`, `make replay`, `make agent`); `AGENTS.md` это шпаргалка на один экран.
 
-Dashboard: `.venv/bin/python -m streamlit run app.py`, then open http://localhost:8501.
+Дашборд: `.venv/bin/python -m streamlit run app.py`, затем открыть http://localhost:8501.
 
-![Dashboard](reports/dashboard.png)
+![Дашборд](reports/dashboard.png)
 
 ---
 
-## 2. Headline results
+## 2. Главные результаты
 
-Accuracy is measured on a **122-day out-of-sample replay** (cycles 1 Oct 2025 – 30 Jan 2026,
-11 436 verified hours). Power is normalised to rated capacity, so MAE reads as a fraction of
-nameplate: MAE 0.16 means 16 % of rated power.
+Точность измерена на **122-дневном реплее вне обучающей выборки** (циклы с 1 октября 2025 по
+30 января 2026, 11 436 проверенных часов). Мощность нормализована на номинал, поэтому MAE
+читается как доля установленной мощности: MAE 0.16 означает 16 % от номинала.
 
-| Day-ahead forecast (local day D+1) | NWP lead | MAE | RMSE | R² | Skill vs persistence |
+| Прогноз на местные сутки D+1 | Упреждение NWP | MAE | RMSE | R² | Выигрыш к персистентности |
 |---|---|---|---|---|---|
-| **WindAgent, `rolling` policy** (primary deliverable) | 24 h | **0.1586** | 0.2134 | 0.651 | 53 % |
-| WindAgent, `strict` policy (conservative) | 48 h | 0.1760 | 0.2370 | 0.570 | 47 % |
-| Power curve on NWP wind, no ML | 24–72 h | 0.1948 | 0.2537 | 0.508 | 42 % |
-| Persistence (yesterday repeated) | — | 0.3342 | 0.4204 | −0.350 | 0 % |
-| Climatology (hour-of-day mean) | — | 0.3185 | 0.3617 | 0.000 | 5 % |
+| **WindAgent, политика `rolling`** (основная сдача) | 24 ч | **0.1586** | 0.2134 | 0.651 | 53 % |
+| WindAgent, политика `strict` (консервативная) | 48 ч | 0.1760 | 0.2370 | 0.570 | 47 % |
+| Кривая мощности по ветру NWP, без ML | 24–72 ч | 0.1948 | 0.2537 | 0.508 | 42 % |
+| Персистентность (вчерашние сутки) | — | 0.3342 | 0.4204 | −0.350 | 0 % |
+| Климатология (среднее по часу суток) | — | 0.3185 | 0.3617 | 0.000 | 5 % |
 
-Also measured on the same replay (`rolling`):
+Что ещё измерено на том же реплее (`rolling`):
 
-- **The P10–P90 band covers 76.4 %** of outcomes against an 80 % target after conformal
-  calibration (69.7 % before it).
-- **The daily recompute is worth 9.5 % of the error.** Every hour is forecast twice, first as day
-  D+2 and then as day D+1 from newer weather runs: on 5 694 identical hours MAE falls from 0.1738
-  to 0.1573.
-- **Fresher inputs change the answer in 234 of 244 turbine-cycles** by more than 0.02 of rated
-  (mean change 0.065). This is the "recompute when inputs update" step of the brief, measured
-  rather than asserted.
-- Both turbines are forecast equally well (MAE 0.1586 each): they share one grid cell of the
-  weather models.
+- **Интервал P10–P90 накрывает 76.4 % фактов** при цели 80 % после конформной калибровки
+  (69.7 % без неё).
+- **Ежедневный пересчёт стоит 9.5 % ошибки.** Каждый час прогнозируется дважды: сначала как
+  день D+2, потом как день D+1 по более свежим запускам моделей погоды; на 5 694 одинаковых
+  часах MAE падает с 0.1738 до 0.1573.
+- **Свежие входы меняют ответ в 234 из 244 циклов по турбинам** сильнее порога 0.02 от
+  номинала (среднее изменение 0.065). Это шаг «повторный расчёт при обновлении входных данных»
+  из задания, измеренный, а не заявленный.
+- Обе турбины прогнозируются одинаково точно (MAE 0.1586 у каждой): они стоят в одной ячейке
+  сетки моделей погоды.
 
-![Forecast overview](reports/forecast_overview.png)
+![Обзор прогноза](reports/forecast_overview.png)
 
-![Error vs lead](reports/error_vs_lead.png)
+![Ошибка по упреждению](reports/error_vs_lead.png)
 
 ---
 
-## 3. The task and the data
+## 3. Задача и данные
 
-### 3.1 SCADA dataset
+### 3.1 Датасет SCADA
 
-Two CSV files (one per turbine), UTF-8, 10-minute resolution, 11 Mar 2023 00:00 – 31 Jan 2026
-23:50. Columns: record id, timestamp, mean wind speed (m/s), normalised active power (0–1) and
-mean ambient temperature (°C). February 2026, the test month, is not in the files: the organisers
-hold the actual production and score the submitted forecasts against it.
+Два CSV-файла (по одному на турбину), UTF-8, шаг 10 минут, с 11.03.2023 00:00 по 31.01.2026
+23:50. Колонки: номер записи, время, средняя скорость ветра (м/с), нормализованная активная
+мощность (0–1), средняя температура окружающей среды (°C). Февраля 2026, тестового месяца, в
+файлах нет: организаторы держат фактическую выработку у себя и сравнивают с ней сданный прогноз.
 
-| | Turbine 1 | Turbine 2 |
+| | Турбина 1 | Турбина 2 |
 |---|---|---|
-| Rows | 142 360 | 149 499 |
-| Missing on the 10-min grid | 6.6 % | 1.9 % |
-| Longest gap | 18 May – 17 Jul 2024 (outage, ~2 months) | 57 h in May 2024 |
-| Power ceiling | 0.99 | 0.97 (0.98–0.99 in winter) |
+| Строк | 142 360 | 149 499 |
+| Пропусков на 10-минутной сетке | 6.6 % | 1.9 % |
+| Самая длинная дыра | 18.05–17.07.2024 (простой, ~2 месяца) | 57 ч в мае 2024 |
+| Потолок мощности | 0.99 | 0.97 (зимой 0.98–0.99) |
 
-No NaNs, duplicates or malformed rows. The power curve read from the data is clean: cut-in at
-~2.5–3 m/s, rated from ~11–12 m/s, no high-wind cut-out up to 23 m/s. Mean wind 6.45 m/s, 95th
-percentile 12.8 m/s; temperature −19 … +44 °C. The two machines are near twins: wind correlates
-at 0.99, power at 0.96, temperature at 1.00. Downtime with wind above 6 m/s is 0.4–0.6 % of hours.
+Нет NaN, дублей и битых строк. Кривая мощности по данным чистая: старт при ~2.5–3 м/с, номинал с
+~11–12 м/с, отключения по сильному ветру нет вплоть до 23 м/с. Средний ветер 6.45 м/с,
+95-й перцентиль 12.8 м/с; температура от −19 до +44 °C. Турбины почти близнецы: корреляция ветра
+0.99, мощности 0.96, температуры 1.00. Простои при ветре выше 6 м/с составляют 0.4–0.6 % часов.
 
-![Monthly capacity factor](reports/monthly_profile.png)
+![Помесячный КИУМ](reports/monthly_profile.png)
 
-### 3.2 What the data told us
+### 3.2 Что показали данные
 
-- **The SCADA clock is UTC+6 for the whole period.** Kazakhstan moved Almaty from UTC+6 to UTC+5
-  on 1 March 2024, so a mid-dataset jump was the obvious risk. Cross-correlating SCADA against the
-  weather models at 10-minute resolution shows none: the wind peak sits at 6.00 h and the
-  temperature peak at 6.83 h (the extra lag is nacelle-sensor thermal inertia), stable for both
-  turbines and both eras. All weather sources are in UTC, so 6 hours are subtracted when joining.
-- **The weather is the bottleneck, not the machine.** With the turbine's own anemometer, a single
-  power curve reaches MAE 0.027 (R² 0.98). With 24-hour-ahead NWP wind the same curve gives 0.19.
-  Almost all remaining error is wind-forecast error, so the effort went into the weather input.
-- **Weather models over-forecast winter wind**: the ensemble mean by +1.0 m/s in January and
-  February against +0.2 … +0.4 m/s in summer, mostly at night. These are exactly the months to be
-  forecast, which is why online calibration is part of the loop.
-- **No icing or degradation**: power at 6–10 m/s of measured wind holds at 0.45–0.50 in every
-  month and year, so seasonal error is an input problem, not a turbine problem.
+- **Часы SCADA идут по UTC+6 на всём периоде.** 1 марта 2024 Казахстан перевёл Алматы с UTC+6
+  на UTC+5, поэтому напрашивался излом посреди датасета. Кросс-корреляция SCADA с моделями погоды
+  на 10-минутной сетке его не показывает: пик по ветру на 6.00 ч, по температуре на 6.83 ч (лишний
+  лаг это тепловая инерция датчика в гондоле), стабильно у обеих турбин и в обеих эпохах. Все
+  источники погоды идут в UTC, поэтому при склейке вычитается 6 часов.
+- **Узкое место погода, а не машина.** По собственному анемометру турбины одна кривая мощности
+  даёт MAE 0.027 (R² 0.98). По ветру NWP с упреждением 24 ч та же кривая даёт 0.19. Почти вся
+  оставшаяся ошибка это ошибка прогноза ветра, поэтому усилия ушли во входные данные.
+- **Модели погоды завышают зимний ветер**: среднее по ансамблю на +1.0 м/с в январе и феврале
+  против +0.2 … +0.4 м/с летом, в основном ночью. Это ровно те месяцы, которые надо
+  прогнозировать, поэтому онлайн-калибровка стала частью цикла.
+- **Обледенения и деградации нет**: мощность при 6–10 м/с измеренного ветра держится 0.45–0.50
+  во все месяцы и годы, значит сезонная ошибка это проблема входа, а не турбины.
 
-### 3.3 Weather sources
+### 3.3 Источники погоды
 
-Open-Meteo, free and keyless, by turbine coordinates. Three **independent** global models are
-fetched separately instead of a pre-blended "best match": ECMWF IFS 0.25°, NOAA GFS and DWD ICON
-(regional high-resolution models do not cover 78° E). Variables: wind speed at 10 m and 100 m,
-wind direction at both heights, gusts, 2 m temperature, surface pressure, relative humidity.
+Open-Meteo, бесплатно и без ключей, по координатам турбин. Три **независимые** глобальные
+модели берутся по отдельности вместо готовой смеси `best_match`: ECMWF IFS 0.25°, NOAA GFS и
+DWD ICON (региональные модели высокого разрешения не покрывают 78° в.д.). Переменные: скорость
+ветра на 10 и 100 м, направление на обеих высотах, порывы, температура 2 м, давление, влажность.
 
-The Historical Forecast API archive exposes several "layers" of every variable:
+Архив Historical Forecast API отдаёт несколько «слоёв» каждой переменной:
 
-| Variable | What it is | Usable for an honest replay? |
+| Переменная | Что это | Годится для честного реплея? |
 |---|---|---|
-| `wind_speed_100m` | the most recent run's estimate, ~0–24 h lead | **no**, this is nearly the analysis |
-| `wind_speed_100m_previous_day1` | what the models predicted **24 h before the target hour** | yes |
-| `wind_speed_100m_previous_day2` | 48 h before the target hour | yes |
-| `wind_speed_100m_previous_day3` | 72 h before the target hour | yes |
+| `wind_speed_100m` | оценка самого свежего запуска, упреждение ~0–24 ч | **нет**, это почти анализ |
+| `wind_speed_100m_previous_day1` | что модели предсказывали **за 24 ч до целевого часа** | да |
+| `wind_speed_100m_previous_day2` | за 48 ч до целевого часа | да |
+| `wind_speed_100m_previous_day3` | за 72 ч до целевого часа | да |
 
-A fact we verified by measurement: `previous_dayN` is a **fixed offset from the target hour**,
-not "the 00Z run of day D". The wind error inside `previous_day1` does not grow from hour 0 to
-hour 23 of a day as it would inside one run. And these are genuine forecasts, not relabelled
-analysis: accuracy decays monotonically with lead (100 m wind vs the turbine anemometer, 2024–2026):
+Факт, проверенный измерением: `previous_dayN` это **фиксированный сдвиг от целевого часа**, а
+не «запуск 00Z дня D». Ошибка ветра внутри `previous_day1` не растёт от 0 до 23 часа суток, как
+росла бы внутри одного запуска. И это настоящие прогнозы, а не переименованный анализ: точность
+монотонно падает с упреждением (ветер 100 м против анемометра турбины, 2024–2026):
 
-| Archive layer | RMSE, m/s | Correlation |
+| Слой архива | RMSE, м/с | Корреляция |
 |---|---|---|
-| analysis (0–24 h) | 2.42 | 0.790 |
-| `previous_day1` (24 h) | 2.84 | 0.691 |
-| `previous_day2` (48 h) | 3.06 | 0.642 |
-| `previous_day3` (72 h) | 3.36 | 0.565 |
+| анализ (0–24 ч) | 2.42 | 0.790 |
+| `previous_day1` (24 ч) | 2.84 | 0.691 |
+| `previous_day2` (48 ч) | 3.06 | 0.642 |
+| `previous_day3` (72 ч) | 3.36 | 0.565 |
 
-The largest single accuracy gain in the project came from this input, not from the model:
+Самый большой прирост точности в проекте дал именно вход, а не модель:
 
-| Source (24 h lead, 100 m wind) | RMSE vs anemometer, m/s | Correlation |
+| Источник (упреждение 24 ч, ветер 100 м) | RMSE против анемометра, м/с | Корреляция |
 |---|---|---|
 | ECMWF IFS 0.25° | 2.82 | 0.726 |
 | ICON | 2.86 | 0.695 |
 | GFS | 3.36 | 0.670 |
-| *Open-Meteo `best_match` blend (the starting point)* | *2.84* | *0.691* |
-| **mean of the three models** | **2.44** | **0.772** |
+| *смесь `best_match` Open-Meteo (с неё начинали)* | *2.84* | *0.691* |
+| **среднее трёх моделей** | **2.44** | **0.772** |
 
-![NWP bias by month](reports/nwp_bias_by_month.png)
+![Смещение NWP по месяцам](reports/nwp_bias_by_month.png)
 
-The whole archive needed by training and replays (2 turbines × 3 models × 3 leads × 5 half-year
-chunks = 90 requests) is committed in `cache/` (6.5 MB of parquet), so every replay runs offline.
-Deleting the cache makes the system re-download it (free tier: 600 requests/min, 5 000/h,
-10 000/day). Live mode uses the ordinary forecast endpoint for the current run.
+Весь архив, нужный обучению и реплеям (2 турбины × 3 модели × 3 упреждения × 5 полугодовых
+фрагментов = 90 запросов), закоммичен в `cache/` (6.5 МБ parquet), поэтому любой реплей идёт без
+сети. Если кэш удалить, система скачает его заново (бесплатный лимит: 600 запросов в минуту,
+5 000 в час, 10 000 в сутки). Live-режим использует обычный эндпоинт текущего прогноза.
 
-### 3.4 Honesty: two as-of policies
+### 3.4 Честность: две политики момента формирования
 
-The brief requires the weather forecast **available at the moment of forecasting**, not the
-weather that later happened. Because `previous_dayN` is a fixed offset, the moment of issue is an
-explicit parameter, target days are always **local** days, and every published row carries the
-honest NWP lead in `nwp_lead_hours`:
+Кейс требует прогноз погоды, **доступный на момент прогнозирования**, а не погоду, ставшую
+известной позже. Поскольку `previous_dayN` это фиксированный сдвиг, момент формирования вынесен
+в явный параметр, целевые сутки всегда **местные**, а в каждой опубликованной строке стоит честное
+упреждение `nwp_lead_hours`:
 
-| Policy | Moment the "day D" forecast is issued | Day D+1 read from | Day D+2 | Meaning |
+| Политика | Момент формирования прогноза «на день D» | День D+1 читается из | День D+2 | Смысл |
 |---|---|---|---|---|
-| **`rolling`** (primary) | end of local day D (00:00 of D+1) | `previous_day1` (24 h) | `previous_day2` (48 h) | Every hour of D+1 rests on weather output produced exactly 24 h before that hour, i.e. runs initialised during day D. Nothing produced after the issue moment is used. The standard operational "24 h ahead" product. |
-| `strict` (conservative) | start of local day D (00:00 of D) | `previous_day2` (48 h) | `previous_day3` (72 h) | Nothing initialised on day D itself is used. The most cautious reading of "issued on 31 January". |
+| **`rolling`** (основная) | конец местного дня D (00:00 дня D+1) | `previous_day1` (24 ч) | `previous_day2` (48 ч) | Каждый час дня D+1 опирается на прогноз погоды, выпущенный ровно за 24 ч до этого часа, то есть на запуски дня D. Ничего, выпущенного после момента формирования, не используется. Стандартный операционный продукт «24 часа вперёд». |
+| `strict` (консервативная) | начало местного дня D (00:00 дня D) | `previous_day2` (48 ч) | `previous_day3` (72 ч) | Не используется ничего, выпущенного в сам день D. Самое осторожное прочтение фразы «сформирован 31 января». |
 
-The truth for a real dispatcher lies between them (issuing at midday on 31 January they would
-have the 00Z run at 12–36 h lead); only raw GRIB archives of individual runs give that precision,
-see the roadmap. **The cost of strictness is measured** on the same 122-day replay: day-ahead MAE
-0.1586 (`rolling`) vs 0.1760 (`strict`), +11 %. Both submissions are in `outputs/`; we propose
-`rolling` as the primary one.
+Правда для реального диспетчера лежит между ними (выпуская прогноз днём 31 января, он имел бы
+запуск 00Z с упреждением 12–36 ч); такую точность привязки дают только сырые GRIB-архивы
+отдельных запусков, см. развитие. **Цена строгости измерена** на том же 122-дневном реплее: MAE
+дня D+1 0.1586 (`rolling`) против 0.1760 (`strict`), +11 %. Обе сдачи лежат в `outputs/`;
+основной мы предлагаем `rolling`.
 
-The same discipline holds everywhere: turbine state from SCADA is read strictly before the issue
-moment, the power curve is fitted on training rows only, online calibration sees only forecasts
-whose target hour has passed, and lag/rolling features are computed inside one cycle's block so
-they never touch later runs. The test suite checks this for both policies and four dates.
-
----
-
-## 4. Data processing and feature engineering
-
-### 4.1 SCADA processing (`src/scada.py`)
-
-1. Anomaly flags on 10-minute records: **curtailment/outage** = wind ≥ 6 m/s with power ≤ 0.02;
-   **stuck sensor** = wind speed unchanged for six consecutive records.
-2. Hourly aggregation: means of power, wind and temperature; an hour is trusted only with ≥ 4 of
-   its 6 records; an hour is flagged anomalous when more than half of its records are.
-3. Clock shift to UTC (−6 h). Stuck-sensor hours never train the model; curtailment hours are
-   excluded from fitting but kept in scoring, because they are a real operational state.
-
-### 4.2 Weather ensemble (`src/dataset.py`)
-
-Each model's forecast is kept as its own columns (`ecmwf_ifs025__wind_speed_100m`, …), plus the
-consensus mean (circular mean for directions) and the spread statistics of the 100 m wind:
-standard deviation, min, max and range across the three models.
-
-### 4.3 Forecast blocks (`src/features.py`)
-
-The unit of work is one cycle's block: the 48 hours of local days D+1 and D+2, each day sliced
-from the archive lead the policy prescribes. Lag, ramp and rolling features are computed inside
-the block, never across cycles.
-
-### 4.4 Features (61)
-
-- **Physics**: moist-air density from temperature, pressure and humidity; IEC 61400-12
-  density-corrected wind speed; shear exponent between 10 m and 100 m; wind power density ½ρv³;
-  gust factor as a turbulence proxy; directional veer; sin/cos of direction at both heights.
-- **Ramps**: wind in neighbouring hours (±3 h), 1 h and 3 h ramp rates, centred rolling mean and
-  standard deviation over 3/6/12 h, block mean and standard deviation.
-- **Ensemble**: per-model wind at 10 m and 100 m, spread/min/max/range; the site power curve applied
-  to each member and the spread of those, because 2 m/s of disagreement matters at the knee of the
-  curve and not at all above rated.
-- **Physics-informed prior**: the site's own empirical power curve fitted on *forecast* wind, so it
-  absorbs the NWP bias instead of assuming the forecast and the anemometer agree.
-- **Turbine state**: mean power and availability over the 24 h before the issue moment. Measured
-  weight below 0.5 % of gain; losing it in February (SCADA ends 31 January) costs +0.0007 MAE.
-- **Calendar**: cyclic hour of day and day of year in local time.
-
-![Feature importance](reports/feature_importance.png)
-
-![Power curve: anemometer vs NWP](reports/power_curve.png)
+Та же дисциплина действует везде: состояние турбины по SCADA читается строго до момента
+формирования, кривая мощности подгоняется только на обучающих строках, онлайн-калибровка видит
+только прогнозы, целевой час которых уже прошёл, а лаги и скользящие признаки считаются внутри
+блока одного цикла и никогда не касаются более поздних запусков. Тесты проверяют это для обеих
+политик и четырёх дат.
 
 ---
 
-## 5. Model training
+## 4. Обработка данных и признаки
 
-`python -m src.train` builds the training table by replaying every issue date from 1 March 2024
-(when the lead archive begins) into forecast blocks with the actual production attached, then fits:
+### 4.1 Обработка SCADA (`src/scada.py`)
 
-| Item | Choice |
+1. Флаги аномалий на 10-минутных записях: **ограничение или простой** = ветер ≥ 6 м/с при
+   мощности ≤ 0.02; **залипший датчик** = скорость ветра не меняется шесть записей подряд.
+2. Часовая агрегация: средние мощности, ветра и температуры; час считается достоверным при
+   ≥ 4 из 6 записей; час помечается аномальным, если аномальна больше половины его записей.
+3. Перевод часов в UTC (−6 ч). Часы с залипшим датчиком не обучают модель никогда; часы с
+   ограничением исключаются из обучения, но остаются в оценке, потому что это реальное
+   операционное состояние.
+
+### 4.2 Ансамбль погоды (`src/dataset.py`)
+
+Прогноз каждой модели хранится своими колонками (`ecmwf_ifs025__wind_speed_100m`, …), плюс
+консенсус (для направлений круговое среднее) и статистика разброса ветра на 100 м:
+стандартное отклонение, минимум, максимум и размах по трём моделям.
+
+### 4.3 Блоки прогноза (`src/features.py`)
+
+Единица работы это блок одного цикла: 48 часов местных суток D+1 и D+2, каждые сутки вырезаны
+из того слоя архива, который предписывает политика. Лаги, рампы и скользящие признаки считаются
+внутри блока, никогда через границу циклов.
+
+### 4.4 Признаки (61)
+
+- **Физика**: плотность влажного воздуха по температуре, давлению и влажности; скорость ветра с
+  поправкой на плотность по IEC 61400-12; показатель сдвига между 10 и 100 м; удельная мощность
+  потока ½ρv³; порывистость как прокси турбулентности; поворот ветра с высотой; sin/cos
+  направления на обеих высотах.
+- **Рампы**: ветер в соседние часы (±3 ч), скорость изменения за 1 и 3 ч, центрированные
+  скользящие среднее и разброс за 3/6/12 ч, среднее и разброс блока.
+- **Ансамбль**: ветер каждой модели на 10 и 100 м, разброс/минимум/максимум/размах; кривая
+  мощности площадки, применённая к каждой модели, и разброс этих значений, потому что 2 м/с
+  расхождения значат много у колена кривой и ничего выше номинала.
+- **Физический априор**: эмпирическая кривая мощности площадки, подогнанная на *прогнозном*
+  ветре, чтобы впитать смещение NWP, а не предполагать согласие прогноза и анемометра.
+- **Состояние турбины**: средняя мощность и доступность за 24 ч до момента формирования.
+  Измеренный вес ниже 0.5 % gain; потеря их в феврале (SCADA кончается 31 января) стоит
+  +0.0007 MAE.
+- **Календарь**: циклические час суток и день года по местному времени.
+
+![Важность признаков](reports/feature_importance.png)
+
+![Кривая мощности: анемометр против NWP](reports/power_curve.png)
+
+---
+
+## 5. Обучение модели
+
+`python -m src.train` собирает обучающую таблицу, реплеируя каждую дату выпуска с 1 марта 2024
+(начало архива упреждений) в блоки прогноза с приложенной фактической выработкой, и обучает:
+
+| Элемент | Выбор |
 |---|---|
-| Learner | LightGBM, one pooled model for both turbines |
-| Point objective | L2 regression; 31 leaves, ≥ 150 rows per leaf, learning rate 0.02, feature fraction 0.7, bagging 0.8, L1 0.5, L2 5.0 |
-| Uncertainty | three quantile regressors (P10/P50/P90), same trees; quantiles sorted per row |
-| Training rows | 25 810 hours at **24 h NWP lead only** (see the experiment below) |
-| Early stopping | 168 iterations, on the hold-out's 24 h-lead rows |
-| Split | issue dates < 1 Oct 2025 train; 1 Oct 2025 – 30 Jan 2026 hold-out (last cycle whose day-ahead targets are measured) |
-| Power-curve prior | fitted on training rows only |
+| Алгоритм | LightGBM, одна общая модель на обе турбины |
+| Точечная цель | регрессия L2; 31 лист, ≥ 150 строк на лист, learning rate 0.02, доля признаков 0.7, бэггинг 0.8, L1 0.5, L2 5.0 |
+| Неопределённость | три квантильных регрессора (P10/P50/P90), те же деревья; квантили сортируются построчно |
+| Обучающие строки | 25 810 часов **только с упреждением 24 ч** (см. эксперимент ниже) |
+| Ранняя остановка | 168 итераций, по строкам отложенной выборки с упреждением 24 ч |
+| Разбиение | даты выпуска до 1 октября 2025 обучение; 1 октября 2025 – 30 января 2026 отложенная выборка (последний цикл, чьи целевые часы дня D+1 измерены) |
+| Априор кривой мощности | подогнан только на обучающих строках |
 
-Deliberately small trees: the weather input carries only so much information, and larger models
-memorised the training seasons. The model is fitted on 24 h-lead rows only and applied at any
-lead: measured on the hold-out, a model trained on 24/48/72 h rows together was *worse at every
-lead* (24 h: raw MAE 0.171 vs 0.162; 72 h: 0.197 vs 0.189), because noisier long-lead inputs teach
-a blurrier wind-to-power mapping. One model therefore serves both policies; 48 h and 72 h rows are
-replayed only for evaluation.
+Деревья намеренно маленькие: вход несёт ограниченное количество информации, и более крупные
+модели запоминали обучающие сезоны. Модель учится только на строках с упреждением 24 ч и
+применяется на любом упреждении: на отложенной выборке модель, обученная сразу на строках
+24/48/72 ч, оказалась *хуже на каждом упреждении* (24 ч: сырая MAE 0.171 против 0.162; 72 ч:
+0.197 против 0.189), потому что более шумный вход на длинных упреждениях учит более размытой
+связи «ветер → мощность». Поэтому одна модель обслуживает обе политики, а строки 48 и 72 ч
+реплеятся только для оценки.
 
-Hold-out summary (`artifacts/validation_summary.json`, all three leads):
+Сводка по отложенной выборке (`artifacts/validation_summary.json`, все три упреждения):
 
-| Stage | MAE | Bias | P10–P90 coverage |
+| Этап | MAE | Смещение | Покрытие P10–P90 |
 |---|---|---|---|
-| raw model | 0.1757 | +0.045 | 69.7 % |
-| after online calibration | 0.1717 | +0.009 | 77.3 % |
+| сырая модель | 0.1757 | +0.045 | 69.7 % |
+| после онлайн-калибровки | 0.1717 | +0.009 | 77.3 % |
 
-| NWP lead | MAE | RMSE | R² | n |
+| Упреждение NWP | MAE | RMSE | R² | n |
 |---|---|---|---|---|
-| 24 h | 0.1571 | 0.2128 | 0.653 | 5 742 |
-| 48 h | 0.1723 | 0.2329 | 0.585 | 5 694 |
-| 72 h | 0.1860 | 0.2486 | 0.528 | 5 674 |
+| 24 ч | 0.1571 | 0.2128 | 0.653 | 5 742 |
+| 48 ч | 0.1723 | 0.2329 | 0.585 | 5 694 |
+| 72 ч | 0.1860 | 0.2486 | 0.528 | 5 674 |
 
-**Online calibration** (`src/calibration.py`) is refitted every cycle from forecasts already
-verified, using only hours whose target time has passed: an adaptive bias (mean signed error over
-the last 14 days, capped at ±0.12) and a split-conformal band scale (last 21 days) that restores
-nominal 80 % coverage in units of the model's own half-band.
+**Онлайн-калибровка** (`src/calibration.py`) пересчитывается каждый цикл по уже проверенным
+прогнозам, только по часам, целевое время которых прошло: адаптивное смещение (средняя знаковая
+ошибка за последние 14 дней, ограничение ±0.12) и split-conformal коэффициент ширины интервала
+(последний 21 день), восстанавливающий номинальное покрытие 80 % в единицах собственной
+полуширины интервала модели.
 
 ---
 
-## 6. Evaluation
+## 6. Оценка
 
-### 6.1 Protocol
+### 6.1 Протокол
 
 `python -m src.backtest --start 2025-10-01 --end 2026-01-30 --label verified --policy <rolling|strict>`
-replays 122 daily cycles exactly as February is replayed, preceded by a 30-day warm-up so the
-calibrator starts with history. Each cycle sees only what existed at its issue moment. Metrics:
-MAE, RMSE, bias, R² on normalised power; interval coverage; the value of the daily recompute
-(same hours forecast at D+2 and then at D+1); and how often fresher inputs materially moved the
-day-ahead forecast (threshold 0.02 of rated). Baselines are scored on the same hours.
+реплеирует 122 ежедневных цикла ровно так же, как реплеируется февраль, с 30-дневным прогревом,
+чтобы калибратор стартовал с историей. Каждый цикл видит только то, что существовало в его момент
+формирования. Метрики: MAE, RMSE, смещение, R² по нормализованной мощности; покрытие интервала;
+ценность ежедневного пересчёта (одни и те же часы, спрогнозированные как D+2 и затем как D+1);
+как часто свежие входы существенно сдвинули дневной прогноз (порог 0.02 от номинала). Базовые
+прогнозы считаются на тех же часах.
 
-### 6.2 Results
+### 6.2 Результаты
 
-| Metric (122-day replay) | `rolling` | `strict` |
+| Метрика (122-дневный реплей) | `rolling` | `strict` |
 |---|---|---|
-| Day-ahead MAE / RMSE / R² | 0.1586 / 0.2134 / 0.651 | 0.1760 / 0.2370 / 0.570 |
-| Day-ahead bias | +0.023 | +0.025 |
-| All hours (D+1 and D+2) MAE | 0.1662 | 0.1816 |
-| MAE by NWP lead | 24 h 0.1586, 48 h 0.1738 | 48 h 0.1760, 72 h 0.1872 |
-| Per turbine, day-ahead MAE | 0.1586 / 0.1586 | 0.1761 / 0.1759 |
-| P10–P90 coverage (target 80 %) | 76.4 % | 74.8 % |
-| Daily recompute gain (same hours) | 0.1738 → 0.1573, 9.5 % | 0.1872 → 0.1741, 7.0 % |
-| Cycles where inputs materially moved the forecast | 234 of 244, mean change 0.065 | 236 of 244, mean 0.077 |
+| День D+1: MAE / RMSE / R² | 0.1586 / 0.2134 / 0.651 | 0.1760 / 0.2370 / 0.570 |
+| День D+1: смещение | +0.023 | +0.025 |
+| Все часы (D+1 и D+2): MAE | 0.1662 | 0.1816 |
+| MAE по упреждению NWP | 24 ч 0.1586, 48 ч 0.1738 | 48 ч 0.1760, 72 ч 0.1872 |
+| По турбинам, MAE дня D+1 | 0.1586 / 0.1586 | 0.1761 / 0.1759 |
+| Покрытие P10–P90 (цель 80 %) | 76.4 % | 74.8 % |
+| Выигрыш ежедневного пересчёта (те же часы) | 0.1738 → 0.1573, 9.5 % | 0.1872 → 0.1741, 7.0 % |
+| Циклов, где входы существенно сдвинули прогноз | 234 из 244, среднее 0.065 | 236 из 244, среднее 0.077 |
 
-Baselines on the same hold-out: power curve on NWP wind 0.1948, climatology 0.3185, persistence
-0.3342 (MAE). Reports: `outputs/verified_<policy>_report.json`, hourly detail in
-`outputs/verified_<policy>_hourly_*.csv`.
+Базовые прогнозы на той же отложенной выборке: кривая мощности по ветру NWP 0.1948, климатология
+0.3185, персистентность 0.3342 (MAE). Отчёты: `outputs/verified_<policy>_report.json`, почасовая
+детализация в `outputs/verified_<policy>_hourly_*.csv`.
 
-### 6.3 The February 2026 deliverable
+### 6.3 Сдача за февраль 2026
 
-`outputs/february_2026_rolling_submission_local.csv` (primary) and
-`outputs/february_2026_strict_submission_local.csv`, 1 344 rows each: 2 turbines × 28 days × 24
-hours, site local time (UTC+6, as in the dataset), no gaps.
+`outputs/february_2026_rolling_submission_local.csv` (основной) и
+`outputs/february_2026_strict_submission_local.csv`, по 1 344 строки: 2 турбины × 28 дней × 24
+часа, местное время площадки (UTC+6, как в датасете), без пропусков.
 
-| Column | Meaning |
+| Колонка | Смысл |
 |---|---|
 | `turbine` | `t1` / `t2` |
-| `time_local`, `time_utc` | target hour in site local time (UTC+6) and in UTC |
-| `policy` | `rolling` or `strict` |
-| `issue_date` | cycle day D: the forecast "issued on 31 January" has `issue_date = 2026-01-31` |
-| `issue_time_local` | the declared issue moment (`rolling`: 00:00 of D+1; `strict`: 00:00 of D) |
-| `lead_hours` | horizon: hours from the issue moment to the target hour |
-| `nwp_lead_hours` | **honest lead**: how many hours before the target hour the underlying weather forecast was produced (24 for `rolling`, 48 for `strict`) |
-| `forecast` | expected normalised power, 0–1 |
-| `p10`, `p50`, `p90` | calibrated uncertainty band |
+| `time_local`, `time_utc` | целевой час по местному времени (UTC+6) и по UTC |
+| `policy` | `rolling` или `strict` |
+| `issue_date` | день D цикла: прогноз «на 31 января» имеет `issue_date = 2026-01-31` |
+| `issue_time_local` | объявленный момент формирования (`rolling`: 00:00 дня D+1; `strict`: 00:00 дня D) |
+| `lead_hours` | горизонт: часов от момента формирования до целевого часа |
+| `nwp_lead_hours` | **честное упреждение**: за сколько часов до целевого часа выпущен лежащий в основе прогноз погоды (24 у `rolling`, 48 у `strict`) |
+| `forecast` | ожидаемая нормализованная мощность, 0–1 |
+| `p10`, `p50`, `p90` | калиброванный интервал неопределённости |
 
-The full output of every cycle including day D+2 is in
-`outputs/february_2026_<policy>_hourly_all_leads.csv`; the agent's daily analyses with measured
-revisions in `outputs/february_2026_<policy>_daily_briefings.json` (in February, fresher runs
-moved the day-ahead forecast materially in 54 of 56 turbine-cycles, mean 0.088). A farm total is
-the sum of the two turbine columns; converting to MWh needs the rated power, which the dataset
-does not contain.
+Полный вывод каждого цикла, включая день D+2, лежит в
+`outputs/february_2026_<policy>_hourly_all_leads.csv`; ежедневные разборы агента с измеренными
+ревизиями в `outputs/february_2026_<policy>_daily_briefings.json` (в феврале свежие запуски
+существенно сдвигали дневной прогноз в 54 из 56 циклов по турбинам, в среднем на 0.088). Сумма по
+ВЭС это сумма двух колонок турбин; перевод в МВт·ч требует номинальной мощности, которой в
+датасете нет.
 
-### 6.4 Caveats
+### 6.4 Оговорки
 
-February 2026 cannot be scored here (the dataset ends on 31 January); all accuracy figures come
-from the 122 days immediately before it. February is winter, when the models' wind bias is at its
-worst, and the online calibration drains as the month proceeds because no new actuals arrive, so
-the February error will likely be higher than 0.16 (the same scheme on February 2025 gave
-0.21–0.24). Feeding in actuals as they arrive restores the calibration without code changes.
+Февраль 2026 здесь проверить нельзя (датасет кончается 31 января); все цифры точности взяты со
+122 дней непосредственно перед ним. Февраль зимний месяц, когда смещение ветра у моделей
+максимально, а онлайн-калибровка затухает по ходу месяца, потому что новый факт не поступает,
+так что февральская ошибка, скорее всего, будет выше 0.16 (та же схема на феврале 2025 давала
+0.21–0.24). Подача факта по мере появления восстанавливает калибровку без изменения кода.
 
 ---
 
-## 7. Agentic architecture
+## 7. Агентная архитектура
 
 ```
-                      ┌────────────────────── agent cycle, once a day ─────────────────────┐
-                      │                                                                     │
-  Open-Meteo          │  1. fetch weather      ECMWF + GFS + ICON at the policy's lead       │
-  archive / live ─────┼─▶ 2. prepare data       block for local days D+1, D+2; 61 features    │
-                      │  3. run model          LightGBM point forecast + P10/P50/P90         │
-  SCADA history ──────┼─▶ 4. calibrate          bias and band from own verified errors        │
-                      │  5. analyse            energy, ramps, model spread, confidence       │
-                      │  6. publish            hourly CSV + JSON analysis                    │
-                      │  7. check inputs ──────┐ did new runs move the answer? ─▶ revision   │
-                      └────────────────────────┴────────────────────────────────────────────┘
+                     ┌──────────────────── цикл агента, раз в сутки ─────────────────────┐
+                     │                                                                     │
+  Open-Meteo         │  1. получить погоду     ECMWF + GFS + ICON на упреждении политики    │
+  архив / live ──────┼─▶ 2. подготовить данные  блок на местные сутки D+1, D+2; 61 признак   │
+                     │  3. запустить модель    LightGBM: точечный прогноз + P10/P50/P90       │
+  история SCADA ─────┼─▶ 4. откалибровать      смещение и интервал по своим проверенным ошибкам│
+                     │  5. проанализировать    энергия, рампы, разброс моделей, уверенность  │
+                     │  6. опубликовать        почасовой CSV + JSON-разбор                    │
+                     │  7. проверить входы ────┐ новые запуски изменили ответ? ─▶ ревизия    │
+                     └─────────────────────────┴─────────────────────────────────────────────┘
 ```
 
-Steps 1–6 are plain methods of `src/pipeline.py`. Step 7 compares the day-ahead forecast with
-what the previous cycle said for the same hours (they were its day D+2) and records the size and
-direction of the revision; in live mode the operational forecast is refetched and the cycle is
-recomputed when it moved. Recording each cycle closes the loop: once those hours are measured,
-the next cycle's calibration sees its own error.
+Шаги 1–6 это обычные методы `src/pipeline.py`. Шаг 7 сравнивает дневной прогноз с тем, что
+предыдущий цикл сказал о тех же часах (для него это был день D+2), и записывает величину и
+направление ревизии; в live-режиме прогноз погоды запрашивается заново, и при сдвиге цикл
+пересчитывается. Запись каждого цикла замыкает петлю: когда эти часы измерены, калибровка
+следующего цикла видит свою ошибку.
 
-**Two ways to run the agent** (`src/agent.py`):
+**Два способа запустить агента** (`src/agent.py`):
 
-- **Autonomous** (default): a deterministic policy runs the cycle end to end. No keys, bit-for-bit
-  reproducible; the replays and every figure above use it.
-- **Reasoning** (`--reason`): the same steps are exposed to an LLM as five tools,
+- **Автономный** (по умолчанию): детерминированная политика проходит цикл целиком. Без ключей,
+  воспроизводимо байт-в-байт; так работают реплеи и так получены все цифры выше.
+- **Рассуждающий** (`--reason`): те же шаги отданы LLM как пять инструментов:
   `inspect_weather`, `run_forecast_cycle`, `recent_performance`, `check_input_updates`,
-  `publish_forecast`. The LLM decides what to inspect, judges whether model disagreement warrants
-  caution, checks the last 14 days of verified accuracy, records how much the newest runs revised
-  yesterday's forecast, and writes the dispatcher briefing. The provider layer (`src/llm.py`) is
-  shared: OpenAI function calling (default `gpt-5-mini`) or the Anthropic tool runner
-  (`claude-opus-5`), chosen by the key in `.env` or `--llm`. One cycle is 3–8 tool calls and
-  6–15 k tokens, about half a cent on `gpt-5-mini`; a month-long replay stops itself at
-  `--budget-usd`.
+  `publish_forecast`. LLM решает, что посмотреть, оценивает, требует ли разброс моделей
+  осторожности, сверяется с точностью за последние 14 проверенных дней, фиксирует, насколько
+  новые запуски пересмотрели вчерашний прогноз, и пишет разбор для диспетчера. Слой провайдера
+  (`src/llm.py`) общий: OpenAI function calling (по умолчанию `gpt-5-mini`) или tool runner
+  Anthropic (`claude-opus-5`), выбор по ключу в `.env` или флагом `--llm`. Один цикл это 3–8
+  вызовов инструментов и 6–15 тысяч токенов, около половины цента на `gpt-5-mini`; реплей месяца
+  останавливается сам при превышении `--budget-usd`.
 
-One rule holds in both modes: **the language model never invents a number**. Every figure it
-reports came back from a tool that ran the real model. All of February 2026 has been run in
-reasoning mode; the 28 transcripts (tool calls with arguments and results, token usage, briefing)
-are in `outputs/agent_transcripts/`, total cost $0.135. `python -m src.audit_transcripts` checks
-every transcript: no tool errors, both energy figures in the briefing quoted from the tool result,
-no unit slips, and the cycle's numbers identical to the deterministic replay of the same date.
-Result: 28 of 28 pass.
+В обоих режимах действует одно правило: **языковая модель не выдумывает ни одного числа**.
+Каждая цифра, которую она сообщает, пришла из инструмента, запустившего реальную модель. Весь
+февраль 2026 прогнан в рассуждающем режиме; 28 транскриптов (вызовы инструментов с аргументами и
+результатами, расход токенов, разбор) лежат в `outputs/agent_transcripts/`, общий расход $0.135.
+`python -m src.audit_transcripts` проверяет каждый транскрипт: ни одного отказа инструмента, обе
+цифры энергии в разборе взяты из ответа инструмента, единицы не перепутаны, числа цикла совпадают
+с детерминированным реплеем той же даты. Результат: 28 из 28.
 
-**Tests** (`python -m pytest -q`, 14 offline tests, ~3 s): no hour uses weather output produced
-after the issue moment (both policies, four dates); blocks are exactly local days; turbine state
-and calibration read only the past; error grows with lead 24 → 48 → 72 h; a three-cycle replay
-yields a complete submission with ordered quantiles and a measured revision in every cycle.
+**Тесты** (`python -m pytest -q`, 14 офлайн-тестов, ~3 с): ни один час не использует прогноз
+погоды, выпущенный позже момента формирования (обе политики, четыре даты); блоки это ровно
+местные сутки; состояние турбины и калибровка читают только прошлое; ошибка растёт с
+упреждением 24 → 48 → 72 ч; трёхдневный реплей даёт полный файл сдачи с упорядоченными
+квантилями и измеренной ревизией в каждом цикле.
 
-**Dashboard** (`app.py`, Streamlit): pick a cycle date and a policy, "Compute forecast" runs the
-deterministic cycle in a second (the 48 h chart with the P10–P90 band, KPIs, the revision against
-yesterday, the briefing), "Ask the agent" runs the same cycle through the LLM and shows its
-reasoning trace and cost; the "February 2026" and "Accuracy" tabs read the committed outputs and
-work offline.
+**Дашборд** (`app.py`, Streamlit): выбираешь дату цикла и политику, «Рассчитать прогноз»
+запускает детерминированный цикл за секунду (график на 48 часов с полосой P10–P90, карточки,
+ревизия относительно вчера, разбор), «Спросить агента» прогоняет тот же цикл через LLM и
+показывает ход рассуждений и стоимость; вкладки «Февраль 2026» и «Точность» читают уже
+посчитанные файлы и работают без сети.
 
 ---
 
-## 8. Experiments
+## 8. Эксперименты
 
-What was tried, measured and kept or rejected. Numbers are MAE in fractions of rated power.
+Что пробовали, измеряли и оставили или отвергли. Числа это MAE в долях номинала.
 
-| Experiment | Result | Decision |
+| Эксперимент | Результат | Решение |
 |---|---|---|
-| Three separate NWP models vs the Open-Meteo `best_match` blend | wind RMSE 2.44 vs 2.84 m/s; power MAE improved accordingly | keep the ensemble, disagreement as features |
-| Train on 24 h-lead rows only vs 24/48/72 h together | 24 h: 0.162 vs 0.171 raw; 72 h: 0.189 vs 0.197 | single-lead training |
-| Pooled model vs one model per turbine | 0.1709 vs 0.1771 / 0.1722; `turbine_id` got zero split gain | pooled |
-| Explicit seasonal wind debiasing as features | helped the bare power curve (0.186 → 0.176) but hurt the ML model (0.178 → 0.186) | rejected; rolling bias calibration instead |
-| Online bias calibration (14-day window) | 0.1757 → 0.1717 on the hold-out, bias +0.045 → +0.009; February 2025 0.231 → 0.218 on the power-curve model | keep |
-| Conformal band scaling | coverage 69.7 % → 77.3 % | keep |
-| Turbine-state features (last 24 h power, availability) | 0.5 % of gain; removing them costs +0.0007 | keep, documented as weak |
-| `strict` vs `rolling` policy | +11 % MAE for 48 h instead of 24 h lead | both shipped, `rolling` primary |
-| Reasoning-mode transcripts, first run | 31 tool errors (ordering), 14 cycles off the deterministic numbers (shorter warm-up), 3 briefings quoting the wrong energy field | tools made self-sufficient, fields renamed, warm-up aligned; rerun passes the audit 28/28 |
-| Learner benchmark (`src/benchmark.py`, `reports/model_comparison.json`): LightGBM L2 vs L1 objective vs CatBoost, mean over folds | 0.1717 / **0.1636** / 0.1695 | L1 objective is the first candidate for the next iteration |
-| Deep-learning study (`src/deep.py`, `reports/deep_comparison.json`): RNN, LSTM, BiLSTM, small MLPs vs LightGBM on the same evaluation | nets 0.150–0.159, LightGBM L1 0.146, LightGBM L2 0.164 | tree models stay; nets do not pay for themselves at this data size |
-| Independent validation pipeline (`power_forecasting/`): 15-feature LightGBM, walk-forward over the last four months with as-of checkpoints, 42 own tests | overall 0.151, D1 0.142, D2 0.159 (its own validation, not directly comparable) | kept as an independent confirmation of the error level; it has no agent loop |
+| Три отдельные модели NWP против смеси `best_match` Open-Meteo | RMSE ветра 2.44 против 2.84 м/с; MAE мощности улучшилась соответственно | оставить ансамбль, расхождение как признаки |
+| Обучение только на строках 24 ч против 24/48/72 ч вместе | 24 ч: 0.162 против 0.171 сырой; 72 ч: 0.189 против 0.197 | обучение на одном упреждении |
+| Общая модель против модели на каждую турбину | 0.1709 против 0.1771 / 0.1722; признак турбины получил нулевой gain | общая |
+| Явная сезонная дебиас-коррекция ветра как признаки | помогла голой кривой мощности (0.186 → 0.176), но ухудшила ML-модель (0.178 → 0.186) | отвергнута; вместо неё скользящая калибровка смещения |
+| Онлайн-калибровка смещения (окно 14 дней) | 0.1757 → 0.1717 на отложенной выборке, смещение +0.045 → +0.009; февраль 2025 0.231 → 0.218 на модели кривой мощности | оставить |
+| Конформное масштабирование интервала | покрытие 69.7 % → 77.3 % | оставить |
+| Признаки состояния турбины (мощность и доступность за 24 ч) | 0.5 % gain; без них +0.0007 | оставить, вес задокументирован как малый |
+| Политика `strict` против `rolling` | +11 % MAE при упреждении 48 ч вместо 24 ч | сдаются обе, `rolling` основная |
+| Первый прогон рассуждающего режима | 31 отказ инструментов (порядок вызовов), 14 циклов расходились с детерминированными числами (короче прогрев), 3 разбора цитировали не то поле энергии | инструменты сделаны самодостаточными, поля переименованы, прогрев выровнен; повторный прогон проходит сверку 28 из 28 |
+| Бенчмарк алгоритмов (`src/benchmark.py`, `reports/model_comparison.json`): LightGBM с L2 против L1 против CatBoost, среднее по фолдам | 0.1717 / **0.1636** / 0.1695 | цель L1 это первый кандидат на следующую итерацию |
+| Исследование нейросетей (`src/deep.py`, `reports/deep_comparison.json`): RNN, LSTM, BiLSTM, малые MLP против LightGBM на одной оценке | сети 0.150–0.159, LightGBM L1 0.146, LightGBM L2 0.164 | остаются деревья; сети не окупаются при таком объёме данных |
+| Независимый проверочный конвейер (`power_forecasting/`): LightGBM на 15 признаках, walk-forward по четырём последним месяцам с as-of чекпоинтами, 42 своих теста | в целом 0.151, D1 0.142, D2 0.159 (своя валидация, напрямую не сравнима) | оставлен как независимое подтверждение уровня ошибки; агентного цикла в нём нет |
 
-The experiment folders need `pip install -r requirements-experiments.txt` (PyTorch) and are not
-part of the pipeline.
+Экспериментальные модули требуют `pip install -r requirements-experiments.txt` (PyTorch) и не
+входят в конвейер.
 
 ---
 
-## 9. Self-assessment against the case criteria
+## 9. Самооценка по критериям кейса
 
-| Criterion | Evidence in the repository | Our assessment |
+| Критерий | Подтверждение в репозитории | Наша оценка |
 |---|---|---|
-| Fit to the task and a working main scenario (25) | 28 sequential daily cycles from 31 January to 27 February, each using only archived weather available at its declared issue moment; hourly forecast for D+1 and D+2 per turbine with uncertainty; live mode on the current forecast; one command reproduces the deliverable in a minute | Fully met. The main scenario of the brief runs end to end, offline and deterministically. |
-| Technical implementation, architecture, use of agentic AI (25) | Layered `weather → dataset/features → model → calibration → pipeline → agent`; the as-of moment is an explicit, tested parameter; a three-model ensemble; a measured input-update step; an LLM driving real tools with saved transcripts and an automated audit proving it changed no number | Fully met. The implementation matches the stated logic, and the parts most easily faked (honesty of the replay, the recompute step) are measured, not claimed. |
-| README and reproducibility (25) | This document in two languages; weather cache and trained model committed; a fresh clone reproduces the submission byte for byte; 14 tests; `AGENTS.md` and `Makefile`; every headline number traceable to a file | Fully met. Reviewers can verify each claim without network access or keys. |
-| Value and applicability (15) | Half the error of naive forecasts; calibrated P10–P90 bands for reserve decisions; dispatcher briefings that state confidence and revisions; honest lead labelling a control room can trust | Met to a high standard for a two-turbine site; scaling to a fleet follows the roadmap. |
-| Development potential and originality (10) | Two honesty policies with a measured price; calibration from the system's own verified errors; conformal intervals; the finding that single-lead training generalises better; a documented path to exact NWP runs and ensemble members; an independent validation pipeline converging on the same error level | Met. The approach is original where it matters (honesty and self-verification) and has a clear growth path. |
+| Соответствие задаче и работоспособность основного сценария (25) | 28 последовательных ежедневных циклов с 31 января по 27 февраля, каждый только по архивной погоде, доступной на объявленный момент формирования; почасовой прогноз на D+1 и D+2 по турбинам с неопределённостью; live-режим на текущем прогнозе; одна команда воспроизводит сдачу за минуту | Выполнено полностью. Основной сценарий брифа работает от начала до конца, офлайн и детерминированно. |
+| Техническая реализация, архитектура, использование agentic AI (25) | Слои `weather → dataset/features → model → calibration → pipeline → agent`; момент as-of как явный, покрытый тестами параметр; ансамбль трёх моделей; измеряемый шаг обновления входов; LLM управляет реальными инструментами, транскрипты сохранены, автосверка доказывает, что она не изменила ни одного числа | Выполнено полностью. Реализация совпадает с заявленной логикой, а части, которые проще всего сымитировать (честность реплея, шаг пересчёта), измерены, а не заявлены. |
+| README и воспроизводимость (25) | Этот документ на двух языках; кэш погоды и обученная модель в репозитории; свежий клон воспроизводит сдачу байт-в-байт; 14 тестов; `AGENTS.md` и `Makefile`; каждая заглавная цифра прослеживается до файла | Выполнено полностью. Проверяющий подтверждает каждое утверждение без сети и ключей. |
+| Ценность и применимость (15) | Вдвое меньше ошибка, чем у наивных прогнозов; калиброванные интервалы P10–P90 для решений о резерве; разборы для диспетчера с уверенностью и ревизиями; честная разметка упреждения, которой может доверять диспетчерская | Выполнено на высоком уровне для площадки из двух турбин; масштабирование на парк описано в развитии. |
+| Потенциал развития и оригинальность (10) | Две политики честности с измеренной ценой; калибровка по собственным проверенным ошибкам; конформные интервалы; находка, что обучение на одном упреждении обобщается лучше; описанный путь к точным запускам NWP и ансамблевым членам; независимый проверочный конвейер, сошедшийся с основным на одном уровне ошибки | Выполнено. Подход оригинален там, где это важно (честность и самопроверка), и имеет ясный путь роста. |
 
 ---
 
-## 10. Limitations and roadmap
+## 10. Ограничения и развитие
 
-Limitations we state openly: February 2026 is unverifiable here and the winter bias makes the
-quoted accuracy optimistic for it; the online calibration decays during February without new
-actuals; the lead archive starts in March 2024, so only ~2 years train with matched leads; band
-coverage is 76 % against 80 %; curtailment (~0.7 % of hours) is not predictable from weather;
-ensemble spread predicts error only weakly (correlation 0.14 with absolute wind error); the SCADA
-clock offset is UTC+6 by two methods, UTC+5 by the independent pipeline's, a difference of 0.007 in
-correlation that remains open.
+Ограничения, которые мы называем открыто: февраль 2026 здесь не верифицируется, а зимнее
+смещение делает заявленную точность оптимистичной для него; онлайн-калибровка затухает в феврале
+без нового факта; архив упреждений начинается в марте 2024, поэтому с согласованным упреждением
+обучаются только ~2 года; покрытие интервала 76 % при цели 80 %; ограничения мощности (~0.7 %
+часов) по погоде не предсказываются; разброс ансамбля предсказывает ошибку слабо (корреляция 0.14
+с модулем ошибки ветра); сдвиг часов SCADA по двум методам UTC+6, по методу независимого
+конвейера UTC+5, разница корреляций 0.007, вопрос остаётся открытым.
 
-Roadmap, in order of expected value:
+Развитие, в порядке ожидаемой ценности:
 
-1. **Exact NWP runs** from raw GRIB archives (NOAA GFS `s3://noaa-gfs-bdp-pds`, ECMWF Open Data
-   `s3://ecmwf-forecasts`): the 00Z run of day D at 12–36 h lead, strictly honest and fresher than
+1. **Точные запуски NWP** из сырых GRIB-архивов (NOAA GFS `s3://noaa-gfs-bdp-pds`, ECMWF Open
+   Data `s3://ecmwf-forecasts`): запуск 00Z дня D с упреждением 12–36 ч, строго честно и свежее
    `strict`.
-2. **L1 objective and rolling provider-quality features** from the benchmark experiments and the
-   independent pipeline; both showed lower MAE on their validations.
-3. **Ensemble members**, not only means: Open-Meteo's ensemble API exposes 30–50 perturbed members
-   per model; weather is the binding constraint.
-4. **Probabilistic dispatch**: the P10–P90 band with imbalance prices becomes a reserve
-   recommendation; **scheduled retraining** triggered by the verification log, whose drift
-   detection already exists.
+2. **Цель L1 и признаки качества провайдеров по скользящему окну** из бенчмарков и
+   независимого конвейера; оба показали меньшую MAE на своих валидациях.
+3. **Члены ансамбля**, а не только средние: Ensemble API Open-Meteo даёт 30–50 возмущённых
+   членов на модель; погода это связывающее ограничение.
+4. **Вероятностная диспетчеризация**: интервал P10–P90 вместе с ценами небаланса превращается в
+   рекомендацию по резерву; **переобучение по расписанию** с триггером от журнала верификации,
+   обнаружение дрейфа в котором уже есть.
 
 ---
 
-## 11. Handoff for the jury's AI agent
+## 11. Handoff для ИИ-агента жюри
 
-This section is written for an automated reviewer. Everything below is executable without network
-access or API keys.
+Этот раздел написан для автоматического проверяющего. Всё ниже выполняется без сети и без
+ключей API.
 
-**Environment.** Python 3.11+ (3.13 verified). macOS needs `brew install libomp` for LightGBM.
-Install with `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` (pandas,
-numpy, scikit-learn, lightgbm, pyarrow, requests, matplotlib, pytest, streamlit, plotly; the LLM
-SDKs are optional and only used with `--reason`).
+**Окружение.** Python 3.11+ (проверено 3.13). На macOS нужен `brew install libomp` для LightGBM.
+Установка: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` (pandas, numpy,
+scikit-learn, lightgbm, pyarrow, requests, matplotlib, pytest, streamlit, plotly; SDK LLM
+опциональны и нужны только для `--reason`).
 
-**Commands and what they produce.**
+**Команды и что они дают.**
 
-| Command | Runtime | Produces / checks |
+| Команда | Время | Результат / проверка |
 |---|---|---|
-| `.venv/bin/python -m pytest -q` | ~3 s | `14 passed`: the honesty tests of section 7 |
-| `.venv/bin/python -m src.backtest --policy rolling` | ~1 min | `outputs/february_2026_rolling_submission_local.csv`, 1 344 rows; prints `Submission: ... per turbine {'t1': 672, 't2': 672}` |
-| `.venv/bin/python -m src.backtest --policy strict` | ~1 min | the conservative submission |
-| `.venv/bin/python -m src.backtest --start 2025-10-01 --end 2026-01-30 --label verified --policy rolling` | ~1 min | `outputs/verified_rolling_report.json` with the section 2 metrics (day-ahead MAE 0.1586) |
-| `.venv/bin/python -m src.agent --date 2026-01-31` | ~6 s | one deterministic cycle with a printed briefing; files in `outputs/cycles/` |
-| `.venv/bin/python -m src.audit_transcripts` | ~1 s | `28 transcripts, 0 with failures` over `outputs/agent_transcripts/` |
-| `.venv/bin/python -m src.train` | ~3 min | retrains the model from the committed cache; `artifacts/validation_summary.json` reproduces section 5 |
-| `.venv/bin/python -m src.report` | ~10 s | regenerates every figure in `reports/` |
-| `.venv/bin/python -m streamlit run app.py` | — | dashboard at http://localhost:8501 (`?autorun=1` runs the default cycle on load) |
-| `.venv/bin/python -m src.agent --date 2026-01-31 --reason` | ~40 s | LLM-driven cycle; needs `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in `.env` |
+| `.venv/bin/python -m pytest -q` | ~3 с | `14 passed`: тесты честности из раздела 7 |
+| `.venv/bin/python -m src.backtest --policy rolling` | ~1 мин | `outputs/february_2026_rolling_submission_local.csv`, 1 344 строки; печатает `Submission: ... per turbine {'t1': 672, 't2': 672}` |
+| `.venv/bin/python -m src.backtest --policy strict` | ~1 мин | консервативная сдача |
+| `.venv/bin/python -m src.backtest --start 2025-10-01 --end 2026-01-30 --label verified --policy rolling` | ~1 мин | `outputs/verified_rolling_report.json` с метриками раздела 2 (MAE дня D+1 0.1586) |
+| `.venv/bin/python -m src.agent --date 2026-01-31` | ~6 с | один детерминированный цикл с напечатанным разбором; файлы в `outputs/cycles/` |
+| `.venv/bin/python -m src.audit_transcripts` | ~1 с | `28 transcripts, 0 with failures` по `outputs/agent_transcripts/` |
+| `.venv/bin/python -m src.train` | ~3 мин | переобучение модели из закоммиченного кэша; `artifacts/validation_summary.json` воспроизводит раздел 5 |
+| `.venv/bin/python -m src.report` | ~10 с | перерисовывает все картинки в `reports/` |
+| `.venv/bin/python -m streamlit run app.py` | — | дашборд на http://localhost:8501 (`?autorun=1` запускает цикл по умолчанию при загрузке) |
+| `.venv/bin/python -m src.agent --date 2026-01-31 --reason` | ~40 с | цикл под управлением LLM; нужен `OPENAI_API_KEY` или `ANTHROPIC_API_KEY` в `.env` |
 
-**Where each claim lives.** Headline metrics: `outputs/verified_rolling_report.json` and
-`outputs/verified_strict_report.json`. Training summary and baselines:
-`artifacts/validation_summary.json`. Deliverable files: `outputs/february_2026_*_submission_local.csv`.
-Per-cycle analyses with revisions: `outputs/*_daily_briefings.json`. LLM transcripts and the
-replay cost: `outputs/agent_transcripts/`. Weather archive: `cache/` (90 parquet chunks). Trained
-model: `artifacts/pooled_model.joblib`. Model benchmarks: `reports/model_comparison.json`,
-`reports/deep_comparison.json`; the independent validation pipeline: `power_forecasting/` with its own README.
+**Где живёт каждое утверждение.** Заглавные метрики: `outputs/verified_rolling_report.json` и
+`outputs/verified_strict_report.json`. Сводка обучения и базовые прогнозы:
+`artifacts/validation_summary.json`. Файлы сдачи: `outputs/february_2026_*_submission_local.csv`.
+Разборы по циклам с ревизиями: `outputs/*_daily_briefings.json`. Транскрипты LLM и стоимость
+реплея: `outputs/agent_transcripts/`. Архив погоды: `cache/` (90 parquet-фрагментов). Обученная
+модель: `artifacts/pooled_model.joblib`. Бенчмарки моделей: `reports/model_comparison.json`,
+`reports/deep_comparison.json`; независимый проверочный конвейер: `power_forecasting/` со своим README.
 
-**Reading order for the code.** `src/config.py` (coordinates, sources, the two policies) →
-`src/features.py` (`issue_moment_utc`, `build_block`) → `src/pipeline.py` (the seven steps,
-`revision_vs_previous`) → `src/agent.py` (tools, autonomous policy, reasoning mode) →
-`src/backtest.py` (the replay and the submission writer) → `tests/test_honesty.py`.
+**Порядок чтения кода.** `src/config.py` (координаты, источники, две политики) →
+`src/features.py` (`issue_moment_utc`, `build_block`) → `src/pipeline.py` (семь шагов,
+`revision_vs_previous`) → `src/agent.py` (инструменты, автономная политика, рассуждающий режим) →
+`src/backtest.py` (реплей и запись сдачи) → `tests/test_honesty.py`.
 
-**Determinism.** Model seed and LightGBM threads are fixed; a fresh clone on another machine
-produced byte-identical submission files. Replays make no network calls when `cache/` is present.
+**Детерминизм.** Seed модели и число потоков LightGBM зафиксированы; свежий клон на другой
+машине дал байт-в-байт те же файлы сдачи. При наличии `cache/` реплеи не делают сетевых запросов.
 
-**Non-goals.** The February 2026 actuals are not in the repository, so no February accuracy is
-computed here; `power_forecasting/predictions/final_forecast.csv` is the independent
-pipeline's estimate, not the submission.
+**Что не входит в задачу.** Фактов за февраль 2026 в репозитории нет, поэтому февральская
+точность здесь не считается; `power_forecasting/predictions/final_forecast.csv` это оценка
+независимого конвейера, а не файл сдачи.
 
 ---
 
-## 12. Repository structure
+## 12. Структура репозитория
 
 ```
 src/
-  config.py            coordinates, weather sources, as-of policies, time windows
-  scada.py             SCADA loading, anomaly flags, hourly aggregation, power curves
-  weather.py           Open-Meteo client: archive by lead and live, with a disk cache
-  dataset.py           ensemble assembly; replay of history into training rows (24/48/72 h leads)
-  features.py          local-day forecast blocks and the 61 features
-  model.py             LightGBM point model + quantiles
-  calibration.py       online bias correction and conformal band scaling
-  pipeline.py          the deterministic forecast cycle and the input-update check
-  agent.py             agent tools, autonomous policy, LLM reasoning mode, budgeted LLM replay
-  llm.py               provider layer: OpenAI and Anthropic, token accounting and cost
-  backtest.py          sequential daily replay, scoring, submission files
-  metrics.py           metrics and the baselines a forecast must beat
-  train.py             training
-  audit_transcripts.py audit of reasoning-mode transcripts against tool outputs and the replay
-  report.py            figures for this README
-  benchmark.py, deep.py   learner benchmarks and the deep-learning study (optional, requirements-experiments.txt)
-tests/                 offline honesty tests (pytest)
-power_forecasting/     independent validation pipeline, own README and tests
-dataset/               the two SCADA CSV files
-cache/                 Open-Meteo archive chunks (parquet): replays run offline
-artifacts/             trained model and validation summary
-outputs/               submissions, reports, daily analyses; agent_transcripts/ (LLM mode)
-reports/               figures and benchmark results
-app.py                 Streamlit dashboard
-AGENTS.md, Makefile    cheat sheet and the same commands as make targets
+  config.py            координаты, источники погоды, политики as-of, окна времени
+  scada.py             загрузка SCADA, флаги аномалий, часовая агрегация, кривые мощности
+  weather.py           клиент Open-Meteo: архив по упреждению и live, с дисковым кэшем
+  dataset.py           сборка ансамбля; реплей истории в обучающие строки (упреждения 24/48/72 ч)
+  features.py          блоки прогноза по местным суткам и 61 признак
+  model.py             LightGBM: точечная модель + квантили
+  calibration.py       онлайн-коррекция смещения и конформное масштабирование интервала
+  pipeline.py          детерминированный цикл прогноза и проверка обновления входов
+  agent.py             инструменты агента, автономная политика, LLM-режим, реплей с бюджетом
+  llm.py               слой провайдера: OpenAI и Anthropic, учёт токенов и стоимости
+  backtest.py          последовательный ежедневный реплей, оценка, файлы сдачи
+  metrics.py           метрики и базовые прогнозы, которые нужно превзойти
+  train.py             обучение
+  audit_transcripts.py сверка транскриптов LLM-режима с выводом инструментов и реплеем
+  report.py            картинки для этого README
+  benchmark.py, deep.py   бенчмарки алгоритмов и исследование нейросетей (опционально, requirements-experiments.txt)
+tests/                 офлайн-тесты честности (pytest)
+power_forecasting/     независимый проверочный конвейер, свой README и тесты
+dataset/               два CSV-файла SCADA
+cache/                 фрагменты архива Open-Meteo (parquet): реплеи работают без сети
+artifacts/             обученная модель и сводка валидации
+outputs/               сдачи, отчёты, ежедневные разборы; agent_transcripts/ (LLM-режим)
+reports/               картинки и результаты бенчмарков
+app.py                 дашборд Streamlit
+AGENTS.md, Makefile    шпаргалка и те же команды как цели make
 ```
