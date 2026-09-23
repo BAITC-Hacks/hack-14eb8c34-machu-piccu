@@ -1,0 +1,11 @@
+{
+  "status": "COMPLETE",
+  "run_id": "644e19e22a6c2779",
+  "experiments": 53,
+  "selected": {
+    "D1": "LightGBM__Top15__global__default",
+    "D2": "LightGBM__Top15__global__default"
+  },
+  "competition_rows": 2688,
+  "immutable_input_hashes_verified": true
+}

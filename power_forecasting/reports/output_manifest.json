@@ -1,0 +1,22 @@
+[
+  {
+    "file": "competition_features.parquet",
+    "bytes": 819916,
+    "sha256": "0b779578b5f1fa302ea185cb7711ff646eb05415af6e08e523b5f0c279a5a52c"
+  },
+  {
+    "file": "offline_test_with_targets.parquet",
+    "bytes": 824760,
+    "sha256": "916928adb15493f912e1272e01dbabeeba9e0597357a8790049bbfc411ddbe87"
+  },
+  {
+    "file": "training_dataset.parquet",
+    "bytes": 15833997,
+    "sha256": "01bb7bc09d9dd1c374f5ed72a36fda47405eacc286f730d622ae879516e67828"
+  },
+  {
+    "file": "training_weather_dataset.parquet",
+    "bytes": 18592556,
+    "sha256": "38787af8551b724b1283cbd06573d6dd050cf856f2946cdb9721f81da63ee319"
+  }
+]

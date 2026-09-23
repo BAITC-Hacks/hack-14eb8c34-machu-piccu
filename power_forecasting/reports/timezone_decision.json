@@ -1,0 +1,12 @@
+{
+  "selected_offset_hours": 5,
+  "timezone_status": "inferred",
+  "fallback_timezone": "UTC",
+  "reference": "D1 archived wind_speed_100m, ECMWF/GFS/ICON",
+  "inference_start": "2024-01-01 00:00:00",
+  "inference_end_exclusive": "2026-01-01 00:00:00",
+  "correlation_gap": 0.006638022544642186,
+  "relative_rmse_improvement": 0.00981080700960472,
+  "best_candidate_offset": 5,
+  "limitation": "Statistical alignment only: forecast phase errors and sensor height may confound offsets. One fixed offset is used. No competition observations used."
+}

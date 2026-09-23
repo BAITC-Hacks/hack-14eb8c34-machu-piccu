@@ -1,0 +1,53 @@
+{
+  "status": "DATASETS_GENERATED_AND_VALIDATED",
+  "master_rows": 104256,
+  "training_rows": 64503,
+  "competition_rows": 2688,
+  "offline_test_rows": 2688,
+  "feature_columns": 206,
+  "train_target_min_utc": "2024-02-16 06:00:00+00:00",
+  "train_target_max_utc": "2026-01-31 18:00:00+00:00",
+  "competition_target_min_local": "2026-02-01 00:00:00",
+  "competition_target_max_local": "2026-02-28 23:00:00",
+  "unique_target_timestamps": 26064,
+  "turbines": 2,
+  "D1_rows": 52128,
+  "D2_rows": 52128,
+  "train_schedule_rows": 101568,
+  "train_excluded_rows": 37065,
+  "timezone": {
+    "selected_offset_hours": 5,
+    "timezone_status": "inferred",
+    "fallback_timezone": "UTC",
+    "reference": "D1 archived wind_speed_100m, ECMWF/GFS/ICON",
+    "inference_start": "2024-01-01 00:00:00",
+    "inference_end_exclusive": "2026-01-01 00:00:00",
+    "correlation_gap": 0.006638022544642186,
+    "relative_rmse_improvement": 0.00981080700960472,
+    "best_candidate_offset": 5,
+    "limitation": "Statistical alignment only: forecast phase errors and sensor height may confound offsets. One fixed offset is used. No competition observations used."
+  },
+  "validation": {
+    "status": "PASS_UNDER_DOCUMENTED_LEAD_TIME_SEMANTICS",
+    "rows_checked": 104256,
+    "exact_publication_timestamps_verified": false,
+    "limitation": "Previous Runs API provides forecasts at fixed historical lead-time offsets but does not expose exact historical API publication timestamps for every individual value."
+  },
+  "provider_usable_pct_master": {
+    "ecmwf": 66.6244628606507,
+    "gfs": 68.42004297114795,
+    "icon": 68.39702271332105
+  },
+  "provider_usable_pct_training": {
+    "ecmwf": 97.16137233927104,
+    "gfs": 100.0,
+    "icon": 99.98294652961877
+  },
+  "provider_usable_pct_competition": {
+    "ecmwf": 100.0,
+    "gfs": 100.0,
+    "icon": 100.0
+  },
+  "offline_targets_present": 0,
+  "limitation": "Previous Runs API provides forecasts at fixed historical lead-time offsets but does not expose exact historical API publication timestamps for every individual value."
+}

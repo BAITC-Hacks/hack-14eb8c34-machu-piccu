@@ -1,0 +1,192 @@
+removed_feature,reason_for_removal
+horizon_bucket,Redundant horizon or raw calendar; use lead and cyclic time
+archive_nominal_lead_hours,Redundant horizon or raw calendar; use lead and cyclic time
+ecmwf_wind_direction_10m,Raw angle replaced by sine/cosine
+ecmwf_wind_direction_100m,Raw angle replaced by sine/cosine
+ecmwf_temperature_2m,Not required by the chosen compact validation configuration
+ecmwf_relative_humidity_2m,Not required by the chosen compact validation configuration
+ecmwf_wind_gusts_10m,Excessive missingness on first training interval
+ecmwf_api_error,Constant / near-constant on first training interval
+ecmwf_missing_target_hour,Constant / near-constant on first training interval
+gfs_wind_speed_10m,Not required by the chosen compact validation configuration
+gfs_wind_speed_100m,Not required by the chosen compact validation configuration
+gfs_wind_direction_10m,Raw angle replaced by sine/cosine
+gfs_wind_direction_100m,Raw angle replaced by sine/cosine
+gfs_temperature_2m,Strongly correlated training-only proxy for ecmwf_temperature_2m
+gfs_surface_pressure,Strongly correlated training-only proxy for ecmwf_surface_pressure
+gfs_wind_gusts_10m,Not required by the chosen compact validation configuration
+gfs_api_error,Constant / near-constant on first training interval
+gfs_missing_target_hour,Constant / near-constant on first training interval
+icon_wind_speed_10m,Not required by the chosen compact validation configuration
+icon_wind_direction_10m,Raw angle replaced by sine/cosine
+icon_wind_direction_100m,Raw angle replaced by sine/cosine
+icon_temperature_2m,Strongly correlated training-only proxy for ecmwf_temperature_2m
+icon_surface_pressure,Strongly correlated training-only proxy for ecmwf_surface_pressure
+icon_relative_humidity_2m,Not required by the chosen compact validation configuration
+icon_api_error,Constant / near-constant on first training interval
+icon_missing_target_hour,Constant / near-constant on first training interval
+ecmwf_wind_speed_10m_valid,Constant / near-constant on first training interval
+ecmwf_wind_speed_100m_valid,Strongly correlated training-only proxy for ecmwf_missing_values_count
+ecmwf_wind_direction_10m_valid,Constant / near-constant on first training interval
+ecmwf_wind_direction_100m_valid,Strongly correlated training-only proxy for ecmwf_missing_values_count
+ecmwf_temperature_2m_valid,Constant / near-constant on first training interval
+ecmwf_surface_pressure_valid,Constant / near-constant on first training interval
+ecmwf_relative_humidity_2m_valid,Not required by the chosen compact validation configuration
+ecmwf_wind_gusts_10m_valid,Constant / near-constant on first training interval
+ecmwf_available,Constant / near-constant on first training interval
+ecmwf_missing_values_count,Not required by the chosen compact validation configuration
+ecmwf_impossible_values_count,Constant / near-constant on first training interval
+ecmwf_partial_coverage,Constant / near-constant on first training interval
+ecmwf_quality_ok,Strongly correlated training-only proxy for ecmwf_missing_values_count
+gfs_wind_speed_10m_valid,Constant / near-constant on first training interval
+gfs_wind_speed_100m_valid,Constant / near-constant on first training interval
+gfs_wind_direction_10m_valid,Constant / near-constant on first training interval
+gfs_wind_direction_100m_valid,Constant / near-constant on first training interval
+gfs_temperature_2m_valid,Constant / near-constant on first training interval
+gfs_surface_pressure_valid,Constant / near-constant on first training interval
+gfs_relative_humidity_2m_valid,Constant / near-constant on first training interval
+gfs_wind_gusts_10m_valid,Constant / near-constant on first training interval
+gfs_available,Constant / near-constant on first training interval
+gfs_missing_values_count,Constant / near-constant on first training interval
+gfs_impossible_values_count,Constant / near-constant on first training interval
+gfs_partial_coverage,Constant / near-constant on first training interval
+gfs_quality_ok,Constant / near-constant on first training interval
+icon_wind_speed_10m_valid,Constant / near-constant on first training interval
+icon_wind_speed_100m_valid,Constant / near-constant on first training interval
+icon_wind_direction_10m_valid,Constant / near-constant on first training interval
+icon_wind_direction_100m_valid,Constant / near-constant on first training interval
+icon_temperature_2m_valid,Constant / near-constant on first training interval
+icon_surface_pressure_valid,Constant / near-constant on first training interval
+icon_relative_humidity_2m_valid,Constant / near-constant on first training interval
+icon_wind_gusts_10m_valid,Constant / near-constant on first training interval
+icon_available,Constant / near-constant on first training interval
+icon_missing_values_count,Constant / near-constant on first training interval
+icon_impossible_values_count,Constant / near-constant on first training interval
+icon_partial_coverage,Constant / near-constant on first training interval
+icon_quality_ok,Constant / near-constant on first training interval
+weather_models_available_count,Constant / near-constant on first training interval
+weather_models_usable_count,Strongly correlated training-only proxy for ecmwf_missing_values_count
+weather_data_quality_score,Strongly correlated training-only proxy for ecmwf_missing_values_count
+weather_critical_missing,Constant / near-constant on first training interval
+ecmwf_wind_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_mae_30d,Not required by the chosen compact validation configuration
+ecmwf_wind_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_wind_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_mae_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+ecmwf_temperature_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_mae_30d,Not required by the chosen compact validation configuration
+gfs_wind_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_wind_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_mae_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+gfs_temperature_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_mae_30d,Not required by the chosen compact validation configuration
+icon_wind_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_wind_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_mae_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_rmse_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_n_7d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_mae_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_rmse_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_n_30d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_mae_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_rmse_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_bias_90d,Redundant rolling metric; retain only provider wind MAE 30d
+icon_temperature_n_90d,Redundant rolling metric; retain only provider wind MAE 30d
+wind_weights_cold_start,Not required by the chosen compact validation configuration
+ecmwf_weight,Not required by the chosen compact validation configuration
+gfs_weight,Not required by the chosen compact validation configuration
+icon_weight,Not required by the chosen compact validation configuration
+best_weather_model_recent,Not required by the chosen compact validation configuration
+temperature_weights_cold_start,Constant / near-constant on first training interval
+ecmwf_temperature_weight,Not required by the chosen compact validation configuration
+gfs_temperature_weight,Not required by the chosen compact validation configuration
+icon_temperature_weight,Not required by the chosen compact validation configuration
+ensemble_wind_speed_10m,Strongly correlated training-only proxy for wind_speed_10m_mean
+wind_speed_models_std,Not required by the chosen compact validation configuration
+wind_speed_models_range,Strongly correlated training-only proxy for wind_speed_models_std
+wind_speed_100m_mean,Strongly correlated training-only proxy for ensemble_wind_speed_100m
+wind_direction_10m_circular_dispersion,Not required by the chosen compact validation configuration
+ensemble_wind_direction_10m_circular_dispersion,Strongly correlated training-only proxy for wind_direction_10m_circular_dispersion
+wind_direction_10m_mean,Raw angle replaced by sine/cosine
+ensemble_wind_direction_10m,Raw angle replaced by sine/cosine
+wind_direction_100m_circular_dispersion,Strongly correlated training-only proxy for ensemble_wind_direction_100m_circular_dispersion
+ensemble_wind_direction_100m_circular_dispersion,Not required by the chosen compact validation configuration
+wind_direction_100m_mean,Raw angle replaced by sine/cosine
+ensemble_wind_direction_100m,Raw angle replaced by sine/cosine
+temperature_models_std,Not required by the chosen compact validation configuration
+temperature_models_range,Strongly correlated training-only proxy for temperature_models_std
+temperature_2m_mean,Strongly correlated training-only proxy for ecmwf_temperature_2m
+ensemble_temperature_2m,Strongly correlated training-only proxy for ecmwf_temperature_2m
+surface_pressure_mean,Strongly correlated training-only proxy for ecmwf_surface_pressure
+ensemble_surface_pressure,Strongly correlated training-only proxy for ecmwf_surface_pressure
+relative_humidity_2m_mean,Strongly correlated training-only proxy for ensemble_relative_humidity_2m
+ensemble_relative_humidity_2m,Not required by the chosen compact validation configuration
+wind_gusts_10m_mean,Strongly correlated training-only proxy for ensemble_wind_gusts_10m
+ensemble_wind_gusts_10m,Not required by the chosen compact validation configuration
+target_hour,Redundant horizon or raw calendar; use lead and cyclic time
+target_day_of_week,Redundant horizon or raw calendar; use lead and cyclic time
+target_month,Redundant horizon or raw calendar; use lead and cyclic time
+target_day_of_year,Redundant horizon or raw calendar; use lead and cyclic time
+hour_cos,Not required by the chosen compact validation configuration
+ecmwf_wind_direction_10m_sin,Not required by the chosen compact validation configuration
+ecmwf_wind_direction_10m_cos,Not required by the chosen compact validation configuration
+ecmwf_wind_direction_100m_sin,Not required by the chosen compact validation configuration
+ecmwf_wind_direction_100m_cos,Not required by the chosen compact validation configuration
+gfs_wind_direction_10m_sin,Not required by the chosen compact validation configuration
+gfs_wind_direction_100m_cos,Not required by the chosen compact validation configuration
+icon_wind_direction_10m_sin,Not required by the chosen compact validation configuration
+icon_wind_direction_10m_cos,Not required by the chosen compact validation configuration
+icon_wind_direction_100m_sin,Not required by the chosen compact validation configuration
+icon_wind_direction_100m_cos,Not required by the chosen compact validation configuration
+ensemble_wind_direction_10m_sin,Not required by the chosen compact validation configuration
+ensemble_wind_direction_10m_cos,Not required by the chosen compact validation configuration
+ensemble_wind_direction_100m_sin,Not required by the chosen compact validation configuration
+ensemble_wind_direction_100m_cos,Not required by the chosen compact validation configuration

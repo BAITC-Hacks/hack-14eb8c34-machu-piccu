@@ -1,0 +1,599 @@
+{
+  "status": "PASS",
+  "rows": 2688,
+  "finite_predictions": true,
+  "one_prediction_per_input_key": true,
+  "all_model_labels_available_before_issue": true,
+  "min_prediction": 0.0,
+  "max_prediction": 0.9918018788857093,
+  "coverage": {
+    "turbine_1/D1": 672,
+    "turbine_1/D2": 672,
+    "turbine_2/D1": 672,
+    "turbine_2/D2": 672
+  },
+  "parquet_sha256": "1f7c13271ad82584fadad542bda4f6150c17812c811a8ccfc54698b2dd7bbe05",
+  "csv_sha256": "5960cfb96c900c6a88cf3b8675e733390c9dc798b57269e9c0a7d6096875395d",
+  "batches": [
+    {
+      "horizon": "D1",
+      "issue": "2026-01-30 19:00:00+00:00",
+      "rows": 2,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260130T1900Z.joblib",
+      "train_max_available": "2026-01-30 18:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-01-31 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260131T1900Z.joblib",
+      "train_max_available": "2026-01-31 18:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-01 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-02 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-03 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-04 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-05 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-06 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-07 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-08 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-09 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-10 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-11 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-12 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-13 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-14 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-15 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-16 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-17 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-18 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-19 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-20 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-21 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-22 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-23 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-24 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-25 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-26 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D1",
+      "issue": "2026-02-27 19:00:00+00:00",
+      "rows": 46,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-01-29 19:00:00+00:00",
+      "rows": 2,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260129T1900Z.joblib",
+      "train_max_available": "2026-01-29 18:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-01-30 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260130T1900Z.joblib",
+      "train_max_available": "2026-01-30 18:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-01-31 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260131T1900Z.joblib",
+      "train_max_available": "2026-01-31 18:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-01 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-02 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-03 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-04 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-05 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-06 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-07 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-08 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-09 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-10 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-11 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-12 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-13 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-14 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-15 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-16 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-17 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-18 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-19 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-20 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-21 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-22 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-23 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-24 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-25 19:00:00+00:00",
+      "rows": 48,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    },
+    {
+      "horizon": "D2",
+      "issue": "2026-02-26 19:00:00+00:00",
+      "rows": 46,
+      "checkpoint": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+      "train_max_available": "2026-01-31 20:00:00+00:00",
+      "unseen_categories": {
+        "turbine_id": 0
+      }
+    }
+  ]
+}

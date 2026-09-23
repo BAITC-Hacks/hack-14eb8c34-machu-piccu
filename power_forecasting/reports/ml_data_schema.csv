@@ -1,0 +1,263 @@
+column,dtype,missing_n,missing_pct
+forecast_issue_time,"datetime64[us, UTC]",0,0.0
+lead_hours,int64,0,0.0
+target_time,"datetime64[us, UTC]",0,0.0
+archive_day,int64,0,0.0
+forecast_day,int64,0,0.0
+horizon_bucket,str,0,0.0
+target_local_time,datetime64[us],0,0.0
+archive_nominal_lead_hours,int64,0,0.0
+archive_reference_time,"datetime64[us, UTC]",0,0.0
+dataset_split,str,0,0.0
+turbine_id,str,0,0.0
+ecmwf_wind_speed_10m,float64,0,0.0
+ecmwf_wind_speed_100m,float64,1831,2.8386276607289584
+ecmwf_wind_direction_10m,float64,0,0.0
+ecmwf_wind_direction_100m,float64,1831,2.8386276607289584
+ecmwf_temperature_2m,float64,0,0.0
+ecmwf_surface_pressure,float64,0,0.0
+ecmwf_relative_humidity_2m,float64,1255,1.9456459389485763
+ecmwf_wind_gusts_10m,float64,64503,100.0
+ecmwf_api_error,bool,0,0.0
+ecmwf_missing_target_hour,bool,0,0.0
+ecmwf_cache_key,str,0,0.0
+ecmwf_grid_latitude,float64,0,0.0
+ecmwf_grid_longitude,float64,0,0.0
+gfs_wind_speed_10m,float64,0,0.0
+gfs_wind_speed_100m,float64,0,0.0
+gfs_wind_direction_10m,float64,0,0.0
+gfs_wind_direction_100m,float64,0,0.0
+gfs_temperature_2m,float64,0,0.0
+gfs_surface_pressure,float64,0,0.0
+gfs_relative_humidity_2m,float64,0,0.0
+gfs_wind_gusts_10m,float64,0,0.0
+gfs_api_error,bool,0,0.0
+gfs_missing_target_hour,bool,0,0.0
+gfs_cache_key,str,0,0.0
+gfs_grid_latitude,float64,0,0.0
+gfs_grid_longitude,float64,0,0.0
+icon_wind_speed_10m,float64,0,0.0
+icon_wind_speed_100m,float64,11,0.01705347038122258
+icon_wind_direction_10m,float64,0,0.0
+icon_wind_direction_100m,float64,11,0.01705347038122258
+icon_temperature_2m,float64,0,0.0
+icon_surface_pressure,float64,0,0.0
+icon_relative_humidity_2m,float64,0,0.0
+icon_wind_gusts_10m,float64,0,0.0
+icon_api_error,bool,0,0.0
+icon_missing_target_hour,bool,0,0.0
+icon_cache_key,str,0,0.0
+icon_grid_latitude,float64,0,0.0
+icon_grid_longitude,float64,0,0.0
+methodology_status,str,0,0.0
+weather_archive_method,str,0,0.0
+weather_archive_confidence,str,0,0.0
+timezone_status,str,0,0.0
+scada_utc_offset_hours,int64,0,0.0
+weather_configuration,str,0,0.0
+ecmwf_wind_speed_10m_valid,bool,0,0.0
+ecmwf_wind_speed_100m_valid,bool,0,0.0
+ecmwf_wind_direction_10m_valid,bool,0,0.0
+ecmwf_wind_direction_100m_valid,bool,0,0.0
+ecmwf_temperature_2m_valid,bool,0,0.0
+ecmwf_surface_pressure_valid,bool,0,0.0
+ecmwf_relative_humidity_2m_valid,bool,0,0.0
+ecmwf_wind_gusts_10m_valid,bool,0,0.0
+ecmwf_available,bool,0,0.0
+ecmwf_missing_values_count,int8,0,0.0
+ecmwf_impossible_values_count,int8,0,0.0
+ecmwf_partial_coverage,bool,0,0.0
+ecmwf_quality_ok,bool,0,0.0
+ecmwf_duplicate_forecast,bool,0,0.0
+ecmwf_timestamps_consistent,bool,0,0.0
+ecmwf_run_time,"datetime64[ns, UTC]",64503,100.0
+ecmwf_estimated_availability_time,"datetime64[ns, UTC]",64503,100.0
+ecmwf_stale_run,boolean,64503,100.0
+gfs_wind_speed_10m_valid,bool,0,0.0
+gfs_wind_speed_100m_valid,bool,0,0.0
+gfs_wind_direction_10m_valid,bool,0,0.0
+gfs_wind_direction_100m_valid,bool,0,0.0
+gfs_temperature_2m_valid,bool,0,0.0
+gfs_surface_pressure_valid,bool,0,0.0
+gfs_relative_humidity_2m_valid,bool,0,0.0
+gfs_wind_gusts_10m_valid,bool,0,0.0
+gfs_available,bool,0,0.0
+gfs_missing_values_count,int8,0,0.0
+gfs_impossible_values_count,int8,0,0.0
+gfs_partial_coverage,bool,0,0.0
+gfs_quality_ok,bool,0,0.0
+gfs_duplicate_forecast,bool,0,0.0
+gfs_timestamps_consistent,bool,0,0.0
+gfs_run_time,"datetime64[ns, UTC]",64503,100.0
+gfs_estimated_availability_time,"datetime64[ns, UTC]",64503,100.0
+gfs_stale_run,boolean,64503,100.0
+icon_wind_speed_10m_valid,bool,0,0.0
+icon_wind_speed_100m_valid,bool,0,0.0
+icon_wind_direction_10m_valid,bool,0,0.0
+icon_wind_direction_100m_valid,bool,0,0.0
+icon_temperature_2m_valid,bool,0,0.0
+icon_surface_pressure_valid,bool,0,0.0
+icon_relative_humidity_2m_valid,bool,0,0.0
+icon_wind_gusts_10m_valid,bool,0,0.0
+icon_available,bool,0,0.0
+icon_missing_values_count,int8,0,0.0
+icon_impossible_values_count,int8,0,0.0
+icon_partial_coverage,bool,0,0.0
+icon_quality_ok,bool,0,0.0
+icon_duplicate_forecast,bool,0,0.0
+icon_timestamps_consistent,bool,0,0.0
+icon_run_time,"datetime64[ns, UTC]",64503,100.0
+icon_estimated_availability_time,"datetime64[ns, UTC]",64503,100.0
+icon_stale_run,boolean,64503,100.0
+weather_models_available_count,int8,0,0.0
+weather_models_usable_count,int8,0,0.0
+weather_data_quality_score,float64,0,0.0
+weather_critical_missing,bool,0,0.0
+ecmwf_wind_mae_7d,float64,2173,3.3688355580360603
+ecmwf_wind_rmse_7d,float64,2173,3.3688355580360603
+ecmwf_wind_bias_7d,float64,2173,3.3688355580360603
+ecmwf_wind_n_7d,float64,0,0.0
+ecmwf_wind_history_latest_7d,"datetime64[ns, UTC]",2173,3.3688355580360603
+ecmwf_wind_mae_30d,float64,2173,3.3688355580360603
+ecmwf_wind_rmse_30d,float64,2173,3.3688355580360603
+ecmwf_wind_bias_30d,float64,2173,3.3688355580360603
+ecmwf_wind_n_30d,float64,0,0.0
+ecmwf_wind_history_latest_30d,"datetime64[ns, UTC]",2173,3.3688355580360603
+ecmwf_wind_mae_90d,float64,2079,3.2231059020510675
+ecmwf_wind_rmse_90d,float64,2079,3.2231059020510675
+ecmwf_wind_bias_90d,float64,2079,3.2231059020510675
+ecmwf_wind_n_90d,float64,0,0.0
+ecmwf_wind_history_latest_90d,"datetime64[ns, UTC]",2079,3.2231059020510675
+ecmwf_temperature_mae_7d,float64,94,0.14572965598499296
+ecmwf_temperature_rmse_7d,float64,94,0.14572965598499296
+ecmwf_temperature_bias_7d,float64,94,0.14572965598499296
+ecmwf_temperature_n_7d,float64,0,0.0
+ecmwf_temperature_history_latest_7d,"datetime64[ns, UTC]",94,0.14572965598499296
+ecmwf_temperature_mae_30d,float64,94,0.14572965598499296
+ecmwf_temperature_rmse_30d,float64,94,0.14572965598499296
+ecmwf_temperature_bias_30d,float64,94,0.14572965598499296
+ecmwf_temperature_n_30d,float64,0,0.0
+ecmwf_temperature_history_latest_30d,"datetime64[ns, UTC]",94,0.14572965598499296
+ecmwf_temperature_mae_90d,float64,0,0.0
+ecmwf_temperature_rmse_90d,float64,0,0.0
+ecmwf_temperature_bias_90d,float64,0,0.0
+ecmwf_temperature_n_90d,float64,0,0.0
+ecmwf_temperature_history_latest_90d,"datetime64[ns, UTC]",0,0.0
+gfs_wind_mae_7d,float64,277,0.4294373905089686
+gfs_wind_rmse_7d,float64,277,0.4294373905089686
+gfs_wind_bias_7d,float64,277,0.4294373905089686
+gfs_wind_n_7d,float64,0,0.0
+gfs_wind_history_latest_7d,"datetime64[ns, UTC]",277,0.4294373905089686
+gfs_wind_mae_30d,float64,277,0.4294373905089686
+gfs_wind_rmse_30d,float64,277,0.4294373905089686
+gfs_wind_bias_30d,float64,277,0.4294373905089686
+gfs_wind_n_30d,float64,0,0.0
+gfs_wind_history_latest_30d,"datetime64[ns, UTC]",277,0.4294373905089686
+gfs_wind_mae_90d,float64,183,0.28370773452397563
+gfs_wind_rmse_90d,float64,183,0.28370773452397563
+gfs_wind_bias_90d,float64,183,0.28370773452397563
+gfs_wind_n_90d,float64,0,0.0
+gfs_wind_history_latest_90d,"datetime64[ns, UTC]",183,0.28370773452397563
+gfs_temperature_mae_7d,float64,94,0.14572965598499296
+gfs_temperature_rmse_7d,float64,94,0.14572965598499296
+gfs_temperature_bias_7d,float64,94,0.14572965598499296
+gfs_temperature_n_7d,float64,0,0.0
+gfs_temperature_history_latest_7d,"datetime64[ns, UTC]",94,0.14572965598499296
+gfs_temperature_mae_30d,float64,94,0.14572965598499296
+gfs_temperature_rmse_30d,float64,94,0.14572965598499296
+gfs_temperature_bias_30d,float64,94,0.14572965598499296
+gfs_temperature_n_30d,float64,0,0.0
+gfs_temperature_history_latest_30d,"datetime64[ns, UTC]",94,0.14572965598499296
+gfs_temperature_mae_90d,float64,0,0.0
+gfs_temperature_rmse_90d,float64,0,0.0
+gfs_temperature_bias_90d,float64,0,0.0
+gfs_temperature_n_90d,float64,0,0.0
+gfs_temperature_history_latest_90d,"datetime64[ns, UTC]",0,0.0
+icon_wind_mae_7d,float64,277,0.4294373905089686
+icon_wind_rmse_7d,float64,277,0.4294373905089686
+icon_wind_bias_7d,float64,277,0.4294373905089686
+icon_wind_n_7d,float64,0,0.0
+icon_wind_history_latest_7d,"datetime64[ns, UTC]",277,0.4294373905089686
+icon_wind_mae_30d,float64,277,0.4294373905089686
+icon_wind_rmse_30d,float64,277,0.4294373905089686
+icon_wind_bias_30d,float64,277,0.4294373905089686
+icon_wind_n_30d,float64,0,0.0
+icon_wind_history_latest_30d,"datetime64[ns, UTC]",277,0.4294373905089686
+icon_wind_mae_90d,float64,183,0.28370773452397563
+icon_wind_rmse_90d,float64,183,0.28370773452397563
+icon_wind_bias_90d,float64,183,0.28370773452397563
+icon_wind_n_90d,float64,0,0.0
+icon_wind_history_latest_90d,"datetime64[ns, UTC]",183,0.28370773452397563
+icon_temperature_mae_7d,float64,94,0.14572965598499296
+icon_temperature_rmse_7d,float64,94,0.14572965598499296
+icon_temperature_bias_7d,float64,94,0.14572965598499296
+icon_temperature_n_7d,float64,0,0.0
+icon_temperature_history_latest_7d,"datetime64[ns, UTC]",94,0.14572965598499296
+icon_temperature_mae_30d,float64,94,0.14572965598499296
+icon_temperature_rmse_30d,float64,94,0.14572965598499296
+icon_temperature_bias_30d,float64,94,0.14572965598499296
+icon_temperature_n_30d,float64,0,0.0
+icon_temperature_history_latest_30d,"datetime64[ns, UTC]",94,0.14572965598499296
+icon_temperature_mae_90d,float64,0,0.0
+icon_temperature_rmse_90d,float64,0,0.0
+icon_temperature_bias_90d,float64,0,0.0
+icon_temperature_n_90d,float64,0,0.0
+icon_temperature_history_latest_90d,"datetime64[ns, UTC]",0,0.0
+wind_weights_cold_start,bool,0,0.0
+ecmwf_weight,float64,0,0.0
+gfs_weight,float64,0,0.0
+icon_weight,float64,0,0.0
+best_weather_model_recent,str,0,0.0
+temperature_weights_cold_start,bool,0,0.0
+ecmwf_temperature_weight,float64,0,0.0
+gfs_temperature_weight,float64,0,0.0
+icon_temperature_weight,float64,0,0.0
+wind_speed_10m_mean,float64,0,0.0
+ensemble_wind_speed_10m,float64,0,0.0
+wind_speed_models_std,float64,0,0.0
+wind_speed_models_range,float64,0,0.0
+wind_speed_100m_mean,float64,0,0.0
+ensemble_wind_speed_100m,float64,0,0.0
+wind_direction_10m_circular_dispersion,float64,0,0.0
+ensemble_wind_direction_10m_circular_dispersion,float64,0,0.0
+wind_direction_10m_mean,float64,0,0.0
+ensemble_wind_direction_10m,float64,0,0.0
+wind_direction_100m_circular_dispersion,float64,0,0.0
+ensemble_wind_direction_100m_circular_dispersion,float64,0,0.0
+wind_direction_100m_mean,float64,0,0.0
+ensemble_wind_direction_100m,float64,0,0.0
+temperature_models_std,float64,0,0.0
+temperature_models_range,float64,0,0.0
+temperature_2m_mean,float64,0,0.0
+ensemble_temperature_2m,float64,0,0.0
+surface_pressure_mean,float64,0,0.0
+ensemble_surface_pressure,float64,0,0.0
+relative_humidity_2m_mean,float64,0,0.0
+ensemble_relative_humidity_2m,float64,0,0.0
+wind_gusts_10m_mean,float64,0,0.0
+ensemble_wind_gusts_10m,float64,0,0.0
+target_hour,int32,0,0.0
+target_day_of_week,int32,0,0.0
+target_month,int32,0,0.0
+target_day_of_year,int32,0,0.0
+hour_sin,float64,0,0.0
+hour_cos,float64,0,0.0
+day_of_year_sin,float64,0,0.0
+day_of_year_cos,float64,0,0.0
+ecmwf_wind_direction_10m_sin,float64,0,0.0
+ecmwf_wind_direction_10m_cos,float64,0,0.0
+ecmwf_wind_direction_100m_sin,float64,1831,2.8386276607289584
+ecmwf_wind_direction_100m_cos,float64,1831,2.8386276607289584
+gfs_wind_direction_10m_sin,float64,0,0.0
+gfs_wind_direction_10m_cos,float64,0,0.0
+gfs_wind_direction_100m_sin,float64,0,0.0
+gfs_wind_direction_100m_cos,float64,0,0.0
+icon_wind_direction_10m_sin,float64,0,0.0
+icon_wind_direction_10m_cos,float64,0,0.0
+icon_wind_direction_100m_sin,float64,11,0.01705347038122258
+icon_wind_direction_100m_cos,float64,11,0.01705347038122258
+ensemble_wind_direction_10m_sin,float64,0,0.0
+ensemble_wind_direction_10m_cos,float64,0,0.0
+ensemble_wind_direction_100m_sin,float64,0,0.0
+ensemble_wind_direction_100m_cos,float64,0,0.0
+normalized_active_power,float64,0,0.0

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "run_id": "644e19e22a6c2779",
+  "seed": 20260923,
+  "clip_bounds": [
+    0.0,
+    1.0
+  ],
+  "observation_delay_hours": 2,
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "pyarrow": "23.0.1",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "python": "3.12.14"
+  },
+  "input_training_sha256": "01bb7bc09d9dd1c374f5ed72a36fda47405eacc286f730d622ae879516e67828",
+  "input_competition_sha256": "0b779578b5f1fa302ea185cb7711ff646eb05415af6e08e523b5f0c279a5a52c",
+  "routes": {
+    "D1": {
+      "model": "LightGBM",
+      "feature_group": "Top15",
+      "architecture": "global",
+      "variant": "default",
+      "validation_mae": 0.14233740145611232,
+      "experiment_id": "LightGBM__Top15__global__default",
+      "segments": [
+        {
+          "segment": "global",
+          "match": {},
+          "features": [
+            "turbine_id",
+            "lead_hours",
+            "ensemble_wind_speed_100m",
+            "ecmwf_wind_speed_10m",
+            "wind_speed_10m_mean",
+            "ecmwf_surface_pressure",
+            "day_of_year_cos",
+            "day_of_year_sin",
+            "ecmwf_wind_speed_100m",
+            "gfs_wind_direction_100m_sin",
+            "icon_wind_gusts_10m",
+            "gfs_wind_direction_10m_cos",
+            "hour_sin",
+            "icon_wind_speed_100m",
+            "gfs_relative_humidity_2m"
+          ],
+          "checkpoints": [
+            {
+              "issue_time": null,
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+              "model_sha256": "dabee87ecf5ba3025c866f520b703d8ce7a88074841899d783935f474e7d5db7",
+              "train_max_target": "2026-01-31 18:00:00+00:00",
+              "train_max_available": "2026-01-31 20:00:00+00:00",
+              "training_rows": 64503,
+              "iterations": 143
+            },
+            {
+              "issue_time": "2026-01-30 19:00:00+00:00",
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260130T1900Z.joblib",
+              "model_sha256": "683078e0152c9dda729d73953945c398ce5848acc43c3a95706c08653329c9e4",
+              "train_max_target": "2026-01-30 16:00:00+00:00",
+              "train_max_available": "2026-01-30 18:00:00+00:00",
+              "training_rows": 64399,
+              "iterations": 143
+            },
+            {
+              "issue_time": "2026-01-31 19:00:00+00:00",
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260131T1900Z.joblib",
+              "model_sha256": "393faad3a69d2e52b030b1d744481cd024d5f2e0e2e4956850a7c659ff22a1ed",
+              "train_max_target": "2026-01-31 16:00:00+00:00",
+              "train_max_available": "2026-01-31 18:00:00+00:00",
+              "training_rows": 64495,
+              "iterations": 143
+            }
+          ]
+        }
+      ]
+    },
+    "D2": {
+      "model": "LightGBM",
+      "feature_group": "Top15",
+      "architecture": "global",
+      "variant": "default",
+      "validation_mae": 0.15875141754754044,
+      "experiment_id": "LightGBM__Top15__global__default",
+      "segments": [
+        {
+          "segment": "global",
+          "match": {},
+          "features": [
+            "turbine_id",
+            "lead_hours",
+            "ensemble_wind_speed_100m",
+            "ecmwf_wind_speed_10m",
+            "wind_speed_10m_mean",
+            "ecmwf_surface_pressure",
+            "day_of_year_cos",
+            "day_of_year_sin",
+            "ecmwf_wind_speed_100m",
+            "gfs_wind_direction_100m_sin",
+            "icon_wind_gusts_10m",
+            "gfs_wind_direction_10m_cos",
+            "hour_sin",
+            "icon_wind_speed_100m",
+            "gfs_relative_humidity_2m"
+          ],
+          "checkpoints": [
+            {
+              "issue_time": null,
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__all_history.joblib",
+              "model_sha256": "dabee87ecf5ba3025c866f520b703d8ce7a88074841899d783935f474e7d5db7",
+              "train_max_target": "2026-01-31 18:00:00+00:00",
+              "train_max_available": "2026-01-31 20:00:00+00:00",
+              "training_rows": 64503,
+              "iterations": 143
+            },
+            {
+              "issue_time": "2026-01-29 19:00:00+00:00",
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260129T1900Z.joblib",
+              "model_sha256": "3a9841a755f362085ab8c684078796fc667e5f810df5cf8751c10a91c599ef37",
+              "train_max_target": "2026-01-29 16:00:00+00:00",
+              "train_max_available": "2026-01-29 18:00:00+00:00",
+              "training_rows": 64303,
+              "iterations": 143
+            },
+            {
+              "issue_time": "2026-01-30 19:00:00+00:00",
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260130T1900Z.joblib",
+              "model_sha256": "683078e0152c9dda729d73953945c398ce5848acc43c3a95706c08653329c9e4",
+              "train_max_target": "2026-01-30 16:00:00+00:00",
+              "train_max_available": "2026-01-30 18:00:00+00:00",
+              "training_rows": 64399,
+              "iterations": 143
+            },
+            {
+              "issue_time": "2026-01-31 19:00:00+00:00",
+              "model_file": "models/644e19e22a6c2779/LightGBM__Top15__global__default__global__asof_20260131T1900Z.joblib",
+              "model_sha256": "393faad3a69d2e52b030b1d744481cd024d5f2e0e2e4956850a7c659ff22a1ed",
+              "train_max_target": "2026-01-31 16:00:00+00:00",
+              "train_max_available": "2026-01-31 18:00:00+00:00",
+              "training_rows": 64495,
+              "iterations": 143
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "validation_note": "Four-month walk-forward model-selection results, not independent February test",
+  "D1": {
+    "model": "LightGBM",
+    "feature_group": "Top15",
+    "validation_mae": 0.14233740145611232,
+    "architecture": "global"
+  },
+  "D2": {
+    "model": "LightGBM",
+    "feature_group": "Top15",
+    "validation_mae": 0.15875141754754044,
+    "architecture": "global"
+  }
+}
