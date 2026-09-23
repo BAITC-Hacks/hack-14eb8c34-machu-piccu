@@ -17,3 +17,7 @@ matplotlib==3.11.2
 # Everything else -- training, backtesting, forecasting -- runs without it.
 anthropic==1.8.0
 openai>=1.60
+
+# Dashboard (`streamlit run app.py`)
+streamlit>=1.40
+plotly>=5.24

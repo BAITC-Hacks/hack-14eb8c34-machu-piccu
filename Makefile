@@ -1,6 +1,6 @@
 PY := .venv/bin/python
 
-.PHONY: setup test replay replay-strict verify agent agent-llm audit figures
+.PHONY: setup test replay replay-strict verify agent agent-llm audit dashboard figures
 
 setup:            ## окружение (macOS: сначала brew install libomp)
 	python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
@@ -26,6 +26,9 @@ agent-llm:        ## тот же цикл, но циклом управляет 
 
 audit:            ## сверка транскриптов LLM-режима: ни одного выдуманного числа
 	$(PY) -m src.audit_transcripts
+
+dashboard:        ## дашборд Streamlit на http://localhost:8501
+	$(PY) -m streamlit run app.py
 
 figures:          ## графики для README
 	$(PY) -m src.report
