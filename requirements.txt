@@ -5,6 +5,7 @@ scikit-learn==1.9.1
 lightgbm==4.7.0
 joblib==1.6.0
 pyarrow==25.0.1
+pytest>=8
 
 # Weather data access (Open-Meteo, no API key required)
 requests==2.34.2
@@ -12,6 +13,7 @@ requests==2.34.2
 # Reporting figures
 matplotlib==3.11.2
 
-# Optional: the LLM reasoning layer (`python -m src.agent --reason`).
+# Optional: the LLM reasoning layer (`python -m src.agent --reason`), either provider works.
 # Everything else -- training, backtesting, forecasting -- runs without it.
 anthropic==1.8.0
+openai>=1.60

@@ -341,6 +341,7 @@ class ForecastPipeline:
         delta = today.loc[overlap] - previous.loc[overlap]
         return {
             "changed": bool(delta.abs().mean() > REVISION_THRESHOLD),
+            "units": "fraction of rated power",
             "previous_issue_date": (issue_time - pd.Timedelta(days=1)).strftime("%Y-%m-%d"),
             "overlapping_hours": int(len(overlap)),
             "mean_abs_change": round(float(delta.abs().mean()), 4),
@@ -376,6 +377,7 @@ class ForecastPipeline:
         delta = (new.loc[overlap] - old.loc[overlap]).abs()
         return {
             "changed": bool(delta.mean() > REVISION_THRESHOLD),
+            "units": "fraction of rated power",
             "mean_abs_change": round(float(delta.mean()), 4),
             "max_abs_change": round(float(delta.max()), 4),
             "overlapping_hours": int(len(overlap)),

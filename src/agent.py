@@ -28,9 +28,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src import config, pipeline
-
-MODEL_ID = "claude-opus-5"
+from src import config, llm, pipeline
 
 SYSTEM_PROMPT = """\
 You are the duty forecaster for a two-turbine wind site in the Shelek corridor, \
@@ -47,6 +45,8 @@ Work through the tools available to you:
 Rules that matter:
 - Never state a number the tools did not return. You interpret the forecast; \
 you do not produce it.
+- Units: every power, energy and change figure the tools return is a fraction of \
+rated power (0-1) or equivalent full-load hours; wind speeds are m/s.
 - Ensemble spread is your uncertainty signal. When the weather models disagree \
 sharply, say so plainly and lean on the P10-P90 band rather than the point value.
 - Check recent performance before trusting the forecast. A model that has been \
@@ -54,10 +54,10 @@ running consistently high for a fortnight deserves a caveat.
 - Always call check_input_updates for each turbine: if the newest runs moved \
 the day-ahead forecast materially, say what changed and in which direction.
 
-Finish with a short operator briefing: expected energy, the shape of the day, \
-any ramps worth staffing for, and your confidence with the reason for it. \
-Write for a dispatcher deciding how much reserve to hold, not for a data \
-scientist. No preamble."""
+Finish with a short operator briefing (under 250 words): expected energy, the \
+shape of the day, any ramps worth staffing for, and your confidence with the \
+reason for it. Write for a dispatcher deciding how much reserve to hold, not \
+for a data scientist. No preamble."""
 
 # The tool functions below are module-level so the SDK can derive their schemas.
 # They talk to one pipeline instance set up by `WindAgent`.
@@ -140,8 +140,11 @@ def recent_performance(turbine: str, as_of: str, days: int = 14) -> str:
     engine = _require_pipeline()
     cutoff = pd.Timestamp(as_of).normalize()
     log = engine.verification_log
-    log = log[(log["turbine"] == turbine) & (log["time"] < cutoff)]
-    log = log[log["time"] >= cutoff - pd.Timedelta(days=days)].dropna(subset=["power"])
+    if log.empty:
+        return json.dumps({"turbine": turbine, "verified_hours": 0,
+                           "note": "no verified forecasts in this window yet"})
+    log = log[(log["turbine"] == turbine) & (pd.to_datetime(log["time"]) < cutoff)]
+    log = log[pd.to_datetime(log["time"]) >= cutoff - pd.Timedelta(days=int(days))].dropna(subset=["power"])
 
     if log.empty:
         return json.dumps({"turbine": turbine, "verified_hours": 0,
@@ -217,6 +220,7 @@ class CycleResult:
     briefing: str
     reasoning_mode: str
     transcript: list | None = None
+    usage: dict | None = None
 
 
 class WindAgent:
@@ -297,100 +301,130 @@ class WindAgent:
         return "\n".join(lines)
 
     # -- LLM-in-the-loop --------------------------------------------------
-    def run_cycle_with_reasoning(self, issue_date: str, max_tokens: int = 8000) -> CycleResult:
-        """Let Claude drive the same tools and write the operator briefing.
+    def run_cycle_with_reasoning(self, issue_date: str, provider: str | None = None,
+                                 model: str | None = None) -> CycleResult:
+        """Let the LLM drive the same tools and write the operator briefing.
 
-        The conversation is mirrored into a transcript (every tool call, its
-        arguments and its result) and saved with the forecast, so a reviewer
-        without an API key can still read what the agent did and why.
+        The provider is OpenAI or Anthropic (`src.llm`); the transcript of every
+        tool call, its arguments, its result and the token spend is saved next to
+        the forecast, so a reviewer without an API key can still read what the
+        agent did and why.
         """
         global _LAST_RUN
-        import anthropic
-
-        client = anthropic.Anthropic()
-        tools = [anthropic.beta_tool(fn) for fn in TOOL_FUNCTIONS]
+        _LAST_RUN = None
+        provider = provider or llm.available_provider()
+        if provider is None:
+            raise RuntimeError("no LLM credentials: put OPENAI_API_KEY or ANTHROPIC_API_KEY in .env")
         user_prompt = (
             f"Produce and publish the 48-hour forecast issued on {issue_date} "
             f"for both turbines, then brief the control room."
         )
-
-        runner = client.beta.messages.tool_runner(
-            model=MODEL_ID,
-            max_tokens=max_tokens,
-            system=SYSTEM_PROMPT,
-            thinking={"type": "adaptive"},
-            tools=tools,
-            messages=[{"role": "user", "content": user_prompt}],
-        )
-
-        transcript: list[dict] = [{"role": "user", "content": user_prompt}]
-        final_text: list[str] = []
-        for message in runner:
-            blocks = []
-            for block in message.content:
-                if block.type == "text":
-                    blocks.append({"type": "text", "text": block.text})
-                    if block.text.strip():
-                        final_text.append(block.text)
-                elif block.type == "tool_use":
-                    blocks.append({"type": "tool_use", "name": block.name, "input": block.input})
-            transcript.append({"role": "assistant", "stop_reason": message.stop_reason, "content": blocks})
-            tool_response = runner.generate_tool_call_response()
-            if tool_response is not None:
-                results = []
-                for block in tool_response["content"]:
-                    content = block.get("content")
-                    results.append({"type": "tool_result", "content": content if isinstance(content, str) else str(content)})
-                transcript.append({"role": "user", "content": results})
-
+        result = llm.run(provider, SYSTEM_PROMPT, user_prompt, TOOL_FUNCTIONS, model=model)
         run = _LAST_RUN or self.engine.run_cycle(issue_date)
-        briefing = "\n".join(final_text).strip()
-        self._save_transcript(issue_date, run, briefing, transcript)
-        return CycleResult(run=run, briefing=briefing, reasoning_mode="llm", transcript=transcript)
+        self._save_transcript(issue_date, run, result)
+        return CycleResult(run=run, briefing=result.final_text, reasoning_mode=f"llm:{result.model}",
+                           transcript=result.transcript, usage=result.usage())
 
-    def _save_transcript(self, issue_date: str, run: pipeline.ForecastRun, briefing: str, transcript: list) -> None:
+    def _save_transcript(self, issue_date: str, run: pipeline.ForecastRun, result: llm.LLMRun) -> None:
         stamp = pd.Timestamp(issue_date).strftime("%Y%m%d")
-        path = config.OUTPUT_DIR / f"agent_transcript_{stamp}_{run.policy}.json"
-        path.write_text(json.dumps({
+        directory = config.OUTPUT_DIR / "agent_transcripts"
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / f"transcript_{stamp}_{run.policy}.json").write_text(json.dumps({
             "issue_date": issue_date,
             "policy": run.policy,
             "mode": self.engine.mode,
-            "model": MODEL_ID,
+            "usage": result.usage(),
             "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "briefing": briefing,
-            "transcript": transcript,
+            "briefing": result.final_text,
+            "transcript": result.transcript,
         }, indent=2, ensure_ascii=False, default=str))
-        (config.OUTPUT_DIR / f"briefing_{stamp}_{run.policy}.md").write_text(briefing + "\n")
+        (directory / f"briefing_{stamp}_{run.policy}.md").write_text(result.final_text + "\n")
 
 
-def has_api_credentials() -> bool:
-    return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
+def replay_with_reasoning(start: str, end: str, policy: str, provider: str | None, model: str | None,
+                          budget_usd: float, warmup_days: int = 14) -> dict:
+    """Run the reasoning mode for every issue date in a window, within a budget.
+
+    The calibrator and the recent-performance tool need a verification log, so
+    a deterministic warm-up replay precedes the window. Each LLM cycle is
+    recorded afterwards, exactly as the deterministic backtest does, and the
+    loop stops before the next cycle once the estimated spend would exceed
+    `budget_usd`.
+    """
+    engine = pipeline.ForecastPipeline(mode="archive", policy=policy)
+    wind_agent = WindAgent(engine)
+    if warmup_days:
+        warm_start = pd.Timestamp(start) - pd.Timedelta(days=warmup_days)
+        for issue in pd.date_range(warm_start, pd.Timestamp(start) - pd.Timedelta(days=1), freq="D"):
+            engine.record(wind_agent.run_cycle(issue.strftime("%Y-%m-%d"), publish=False).run)
+
+    spent = 0.0
+    summary = []
+    for issue in pd.date_range(start, end, freq="D"):
+        date = issue.strftime("%Y-%m-%d")
+        result = wind_agent.run_cycle_with_reasoning(date, provider=provider, model=model)
+        engine.record(result.run)
+        cost = result.usage["estimated_cost_usd"]
+        spent += cost
+        summary.append({"issue_date": date, **result.usage})
+        print(f"  {date}: {result.usage['steps']} steps, {result.usage['prompt_tokens']} in / "
+              f"{result.usage['completion_tokens']} out tokens, ~${cost:.4f} (total ~${spent:.3f})")
+        per_cycle = spent / len(summary)
+        if spent + per_cycle > budget_usd:
+            print(f"  budget ${budget_usd:.2f} would be exceeded by the next cycle; stopping after {date}")
+            break
+    report = {"policy": policy, "cycles": len(summary), "estimated_total_usd": round(spent, 4), "per_cycle": summary}
+    (config.OUTPUT_DIR / "agent_transcripts" / f"llm_replay_{policy}_summary.json").write_text(
+        json.dumps(report, indent=2))
+    return report
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run one WindAgent forecast cycle")
+    parser = argparse.ArgumentParser(description="Run one WindAgent forecast cycle (or an LLM replay)")
     parser.add_argument("--date", default=config.FIRST_ISSUE_DATE, help="issue date, YYYY-MM-DD")
     parser.add_argument("--mode", choices=["archive", "live"], default="archive",
                         help="'archive' replays a past issue date; 'live' calls the current forecast")
     parser.add_argument("--policy", choices=sorted(config.ASOF_POLICIES), default=config.DEFAULT_POLICY,
                         help="as-of policy for archive replays (see config.ASOF_POLICIES)")
     parser.add_argument("--reason", action="store_true",
-                        help="let Claude drive the tools and write the briefing")
+                        help="let an LLM drive the tools and write the briefing")
+    parser.add_argument("--llm", choices=["auto", "openai", "anthropic"], default="auto",
+                        help="LLM provider for --reason; 'auto' picks whichever key is configured")
+    parser.add_argument("--model", default=None, help="override the provider's default model id")
+    parser.add_argument("--start", default=None, help="with --reason: replay the reasoning mode from this date")
+    parser.add_argument("--end", default=None, help="with --reason: ... to this date (inclusive)")
+    parser.add_argument("--budget-usd", type=float, default=3.0, help="stop an LLM replay before exceeding this spend")
+    parser.add_argument("--warmup-days", type=int, default=14,
+                        help="archive mode: replay this many preceding days first to populate the verification log")
     args = parser.parse_args()
+    provider = None if args.llm == "auto" else args.llm
+
+    if args.reason and args.start:
+        report = replay_with_reasoning(args.start, args.end or args.start, args.policy, provider, args.model, args.budget_usd)
+        print(f"\nLLM replay: {report['cycles']} cycles, estimated ${report['estimated_total_usd']:.3f}; "
+              f"transcripts in {config.OUTPUT_DIR / 'agent_transcripts'}")
+        return
 
     agent = WindAgent(pipeline.ForecastPipeline(mode=args.mode, policy=args.policy))
-
+    if args.mode == "archive" and args.warmup_days:
+        # Replay the preceding days deterministically so the calibration and the
+        # recent-performance tool have a verification log, as in operation.
+        first = pd.Timestamp(args.date) - pd.Timedelta(days=args.warmup_days)
+        for issue in pd.date_range(first, pd.Timestamp(args.date) - pd.Timedelta(days=1), freq="D"):
+            agent.engine.record(agent.run_cycle(issue.strftime("%Y-%m-%d"), publish=False).run)
     if args.reason:
-        if not has_api_credentials():
-            print("ANTHROPIC_API_KEY is not set - falling back to autonomous mode.\n")
+        if llm.available_provider() is None and provider is None:
+            print("No OPENAI_API_KEY / ANTHROPIC_API_KEY found (.env or environment) - falling back to autonomous mode.\n")
             result = agent.run_cycle(args.date)
         else:
-            result = agent.run_cycle_with_reasoning(args.date)
+            result = agent.run_cycle_with_reasoning(args.date, provider=provider, model=args.model)
     else:
         result = agent.run_cycle(args.date)
 
     print(f"=== WindAgent cycle {args.date} ({result.reasoning_mode}, {args.policy}) ===\n")
     print(result.briefing)
+    if result.usage:
+        print(f"\nLLM usage: {result.usage}")
     print(f"\nOutputs written to {config.OUTPUT_DIR}")
 
 
