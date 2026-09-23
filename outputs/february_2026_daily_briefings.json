@@ -1,0 +1,1425 @@
+[
+  {
+    "issue_date": "2026-01-30",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.7,
+        "day_ahead_energy_eflh": 12.62,
+        "mean_capacity_factor": 0.452,
+        "max_output": 0.924,
+        "min_output": 0.051,
+        "peak_hour_local": "2026-01-31 12:00:00",
+        "trough_hour_local": "2026-02-01 02:00:00",
+        "hours_near_rated": 6,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.526,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-01-31 19:00:00",
+            "delta": -0.257
+          }
+        ],
+        "mean_ensemble_spread_ms": 3.02,
+        "mean_wind_speed_ms": 8.16,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.68,
+        "day_ahead_energy_eflh": 12.6,
+        "mean_capacity_factor": 0.452,
+        "max_output": 0.924,
+        "min_output": 0.051,
+        "peak_hour_local": "2026-01-31 12:00:00",
+        "trough_hour_local": "2026-02-01 02:00:00",
+        "hours_near_rated": 6,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.523,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-01-31 19:00:00",
+            "delta": -0.258
+          }
+        ],
+        "mean_ensemble_spread_ms": 3.02,
+        "mean_wind_speed_ms": 8.16,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-01-31",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.89,
+        "day_ahead_energy_eflh": 7.64,
+        "mean_capacity_factor": 0.456,
+        "max_output": 0.931,
+        "min_output": 0.146,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-01 06:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.58,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.25,
+        "mean_wind_speed_ms": 8.67,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.89,
+        "day_ahead_energy_eflh": 7.64,
+        "mean_capacity_factor": 0.456,
+        "max_output": 0.931,
+        "min_output": 0.146,
+        "peak_hour_local": "2026-02-02 14:00:00",
+        "trough_hour_local": "2026-02-01 06:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.577,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.25,
+        "mean_wind_speed_ms": 8.67,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-01",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.42,
+        "day_ahead_energy_eflh": 14.34,
+        "mean_capacity_factor": 0.446,
+        "max_output": 0.924,
+        "min_output": 0.067,
+        "peak_hour_local": "2026-02-02 13:00:00",
+        "trough_hour_local": "2026-02-03 12:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.576,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 18:00:00",
+            "delta": -0.287
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.31,
+        "mean_wind_speed_ms": 7.63,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.51,
+        "day_ahead_energy_eflh": 14.42,
+        "mean_capacity_factor": 0.448,
+        "max_output": 0.926,
+        "min_output": 0.067,
+        "peak_hour_local": "2026-02-02 13:00:00",
+        "trough_hour_local": "2026-02-03 12:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.574,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-02 18:00:00",
+            "delta": -0.286
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.31,
+        "mean_wind_speed_ms": 7.63,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-02",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.44,
+        "day_ahead_energy_eflh": 9.24,
+        "mean_capacity_factor": 0.447,
+        "max_output": 0.935,
+        "min_output": 0.062,
+        "peak_hour_local": "2026-02-05 05:00:00",
+        "trough_hour_local": "2026-02-03 14:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.607,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.47,
+        "mean_wind_speed_ms": 7.21,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.44,
+        "day_ahead_energy_eflh": 9.24,
+        "mean_capacity_factor": 0.447,
+        "max_output": 0.935,
+        "min_output": 0.062,
+        "peak_hour_local": "2026-02-05 05:00:00",
+        "trough_hour_local": "2026-02-03 14:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.608,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.47,
+        "mean_wind_speed_ms": 7.21,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-03",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 31.39,
+        "day_ahead_energy_eflh": 12.35,
+        "mean_capacity_factor": 0.654,
+        "max_output": 0.951,
+        "min_output": 0.159,
+        "peak_hour_local": "2026-02-05 14:00:00",
+        "trough_hour_local": "2026-02-04 18:00:00",
+        "hours_near_rated": 18,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.467,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.95,
+        "mean_wind_speed_ms": 10.89,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 31.39,
+        "day_ahead_energy_eflh": 12.35,
+        "mean_capacity_factor": 0.654,
+        "max_output": 0.951,
+        "min_output": 0.159,
+        "peak_hour_local": "2026-02-05 14:00:00",
+        "trough_hour_local": "2026-02-04 18:00:00",
+        "hours_near_rated": 18,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.46,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.95,
+        "mean_wind_speed_ms": 10.89,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-04",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 36.08,
+        "day_ahead_energy_eflh": 19.19,
+        "mean_capacity_factor": 0.752,
+        "max_output": 0.943,
+        "min_output": 0.152,
+        "peak_hour_local": "2026-02-05 13:00:00",
+        "trough_hour_local": "2026-02-06 07:00:00",
+        "hours_near_rated": 21,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.397,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.87,
+        "mean_wind_speed_ms": 11.97,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 36.08,
+        "day_ahead_energy_eflh": 19.19,
+        "mean_capacity_factor": 0.752,
+        "max_output": 0.943,
+        "min_output": 0.152,
+        "peak_hour_local": "2026-02-05 13:00:00",
+        "trough_hour_local": "2026-02-06 07:00:00",
+        "hours_near_rated": 21,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.388,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.87,
+        "mean_wind_speed_ms": 11.97,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-05",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 23.86,
+        "day_ahead_energy_eflh": 14.94,
+        "mean_capacity_factor": 0.497,
+        "max_output": 0.943,
+        "min_output": 0.081,
+        "peak_hour_local": "2026-02-06 20:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.514,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.9,
+        "mean_wind_speed_ms": 8.47,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 23.86,
+        "day_ahead_energy_eflh": 14.94,
+        "mean_capacity_factor": 0.497,
+        "max_output": 0.943,
+        "min_output": 0.081,
+        "peak_hour_local": "2026-02-06 20:00:00",
+        "trough_hour_local": "2026-02-07 08:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.51,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.9,
+        "mean_wind_speed_ms": 8.47,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-06",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.87,
+        "day_ahead_energy_eflh": 11.02,
+        "mean_capacity_factor": 0.56,
+        "max_output": 0.955,
+        "min_output": 0.084,
+        "peak_hour_local": "2026-02-08 19:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 14,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.437,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 16:00:00",
+            "delta": 0.279
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 9.33,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.87,
+        "day_ahead_energy_eflh": 11.02,
+        "mean_capacity_factor": 0.56,
+        "max_output": 0.955,
+        "min_output": 0.084,
+        "peak_hour_local": "2026-02-08 19:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 14,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.434,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 16:00:00",
+            "delta": 0.279
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 9.33,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-07",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.87,
+        "day_ahead_energy_eflh": 15.65,
+        "mean_capacity_factor": 0.643,
+        "max_output": 0.955,
+        "min_output": 0.075,
+        "peak_hour_local": "2026-02-08 20:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 11,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.445,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 15:00:00",
+            "delta": 0.332
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.98,
+        "mean_wind_speed_ms": 11.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 30.87,
+        "day_ahead_energy_eflh": 15.65,
+        "mean_capacity_factor": 0.643,
+        "max_output": 0.955,
+        "min_output": 0.075,
+        "peak_hour_local": "2026-02-08 20:00:00",
+        "trough_hour_local": "2026-02-08 12:00:00",
+        "hours_near_rated": 11,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.439,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-08 15:00:00",
+            "delta": 0.332
+          }
+        ],
+        "mean_ensemble_spread_ms": 1.98,
+        "mean_wind_speed_ms": 11.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-08",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.36,
+        "day_ahead_energy_eflh": 14.29,
+        "mean_capacity_factor": 0.549,
+        "max_output": 0.884,
+        "min_output": 0.199,
+        "peak_hour_local": "2026-02-09 14:00:00",
+        "trough_hour_local": "2026-02-10 03:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.577,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.56,
+        "mean_wind_speed_ms": 10.08,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.36,
+        "day_ahead_energy_eflh": 14.29,
+        "mean_capacity_factor": 0.549,
+        "max_output": 0.884,
+        "min_output": 0.199,
+        "peak_hour_local": "2026-02-09 14:00:00",
+        "trough_hour_local": "2026-02-10 03:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.573,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.56,
+        "mean_wind_speed_ms": 10.08,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-09",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.57,
+        "day_ahead_energy_eflh": 11.53,
+        "mean_capacity_factor": 0.554,
+        "max_output": 0.922,
+        "min_output": 0.164,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-10 17:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.589,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.63,
+        "mean_wind_speed_ms": 9.06,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 26.57,
+        "day_ahead_energy_eflh": 11.53,
+        "mean_capacity_factor": 0.554,
+        "max_output": 0.922,
+        "min_output": 0.164,
+        "peak_hour_local": "2026-02-11 21:00:00",
+        "trough_hour_local": "2026-02-10 17:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.585,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.63,
+        "mean_wind_speed_ms": 9.06,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-10",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 16.98,
+        "day_ahead_energy_eflh": 12.98,
+        "mean_capacity_factor": 0.354,
+        "max_output": 0.904,
+        "min_output": 0.071,
+        "peak_hour_local": "2026-02-11 20:00:00",
+        "trough_hour_local": "2026-02-12 13:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.586,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.59,
+        "mean_wind_speed_ms": 6.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 16.98,
+        "day_ahead_energy_eflh": 12.98,
+        "mean_capacity_factor": 0.354,
+        "max_output": 0.904,
+        "min_output": 0.071,
+        "peak_hour_local": "2026-02-11 20:00:00",
+        "trough_hour_local": "2026-02-12 13:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.586,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.59,
+        "mean_wind_speed_ms": 6.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-11",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 10.69,
+        "day_ahead_energy_eflh": 3.47,
+        "mean_capacity_factor": 0.223,
+        "max_output": 0.828,
+        "min_output": 0.058,
+        "peak_hour_local": "2026-02-14 03:00:00",
+        "trough_hour_local": "2026-02-13 05:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.395,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 4.24,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 10.69,
+        "day_ahead_energy_eflh": 3.47,
+        "mean_capacity_factor": 0.223,
+        "max_output": 0.828,
+        "min_output": 0.058,
+        "peak_hour_local": "2026-02-14 03:00:00",
+        "trough_hour_local": "2026-02-13 05:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.396,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 4.24,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-12",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 14.02,
+        "day_ahead_energy_eflh": 7.94,
+        "mean_capacity_factor": 0.292,
+        "max_output": 0.855,
+        "min_output": 0.054,
+        "peak_hour_local": "2026-02-14 02:00:00",
+        "trough_hour_local": "2026-02-13 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.505,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.13,
+        "mean_wind_speed_ms": 5.31,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 14.02,
+        "day_ahead_energy_eflh": 7.94,
+        "mean_capacity_factor": 0.292,
+        "max_output": 0.855,
+        "min_output": 0.054,
+        "peak_hour_local": "2026-02-14 02:00:00",
+        "trough_hour_local": "2026-02-13 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.505,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.13,
+        "mean_wind_speed_ms": 5.31,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-13",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.09,
+        "day_ahead_energy_eflh": 3.1,
+        "mean_capacity_factor": 0.439,
+        "max_output": 0.921,
+        "min_output": 0.063,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 02:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.415,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.71,
+        "mean_wind_speed_ms": 7.24,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.09,
+        "day_ahead_energy_eflh": 3.1,
+        "mean_capacity_factor": 0.439,
+        "max_output": 0.921,
+        "min_output": 0.063,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 02:00:00",
+        "hours_near_rated": 5,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.41,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.71,
+        "mean_wind_speed_ms": 7.24,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-14",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 34.92,
+        "day_ahead_energy_eflh": 17.33,
+        "mean_capacity_factor": 0.727,
+        "max_output": 0.918,
+        "min_output": 0.197,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 06:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.505,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 10.48,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 34.92,
+        "day_ahead_energy_eflh": 17.33,
+        "mean_capacity_factor": 0.727,
+        "max_output": 0.918,
+        "min_output": 0.197,
+        "peak_hour_local": "2026-02-15 15:00:00",
+        "trough_hour_local": "2026-02-15 06:00:00",
+        "hours_near_rated": 4,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.495,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.61,
+        "mean_wind_speed_ms": 10.48,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-15",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.29,
+        "day_ahead_energy_eflh": 16.29,
+        "mean_capacity_factor": 0.61,
+        "max_output": 0.852,
+        "min_output": 0.184,
+        "peak_hour_local": "2026-02-18 05:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.606,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.44,
+        "mean_wind_speed_ms": 9.41,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.29,
+        "day_ahead_energy_eflh": 16.29,
+        "mean_capacity_factor": 0.61,
+        "max_output": 0.852,
+        "min_output": 0.184,
+        "peak_hour_local": "2026-02-18 05:00:00",
+        "trough_hour_local": "2026-02-17 09:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.601,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.44,
+        "mean_wind_speed_ms": 9.41,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-16",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 32.22,
+        "day_ahead_energy_eflh": 12.48,
+        "mean_capacity_factor": 0.671,
+        "max_output": 0.942,
+        "min_output": 0.162,
+        "peak_hour_local": "2026-02-18 15:00:00",
+        "trough_hour_local": "2026-02-17 11:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.505,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.73,
+        "mean_wind_speed_ms": 10.04,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 32.22,
+        "day_ahead_energy_eflh": 12.48,
+        "mean_capacity_factor": 0.671,
+        "max_output": 0.942,
+        "min_output": 0.162,
+        "peak_hour_local": "2026-02-18 15:00:00",
+        "trough_hour_local": "2026-02-17 11:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.496,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.73,
+        "mean_wind_speed_ms": 10.04,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-17",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.96,
+        "day_ahead_energy_eflh": 20.21,
+        "mean_capacity_factor": 0.624,
+        "max_output": 0.949,
+        "min_output": 0.153,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-19 22:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.526,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 9.44,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 29.96,
+        "day_ahead_energy_eflh": 20.21,
+        "mean_capacity_factor": 0.624,
+        "max_output": 0.949,
+        "min_output": 0.153,
+        "peak_hour_local": "2026-02-18 14:00:00",
+        "trough_hour_local": "2026-02-19 22:00:00",
+        "hours_near_rated": 9,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.519,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 9.44,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-18",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 19.95,
+        "day_ahead_energy_eflh": 8.88,
+        "mean_capacity_factor": 0.416,
+        "max_output": 0.749,
+        "min_output": 0.104,
+        "peak_hour_local": "2026-02-20 22:00:00",
+        "trough_hour_local": "2026-02-20 13:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.666,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-20 19:00:00",
+            "delta": 0.271
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.24,
+        "mean_wind_speed_ms": 6.92,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 19.95,
+        "day_ahead_energy_eflh": 8.88,
+        "mean_capacity_factor": 0.416,
+        "max_output": 0.749,
+        "min_output": 0.104,
+        "peak_hour_local": "2026-02-20 22:00:00",
+        "trough_hour_local": "2026-02-20 13:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.668,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-02-20 19:00:00",
+            "delta": 0.271
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.24,
+        "mean_wind_speed_ms": 6.92,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-19",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.54,
+        "day_ahead_energy_eflh": 10.31,
+        "mean_capacity_factor": 0.47,
+        "max_output": 0.674,
+        "min_output": 0.115,
+        "peak_hour_local": "2026-02-21 13:00:00",
+        "trough_hour_local": "2026-02-20 17:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.73,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.41,
+        "mean_wind_speed_ms": 8.04,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.54,
+        "day_ahead_energy_eflh": 10.31,
+        "mean_capacity_factor": 0.47,
+        "max_output": 0.674,
+        "min_output": 0.115,
+        "peak_hour_local": "2026-02-21 13:00:00",
+        "trough_hour_local": "2026-02-20 17:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.729,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.41,
+        "mean_wind_speed_ms": 8.04,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-20",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.55,
+        "day_ahead_energy_eflh": 10.67,
+        "mean_capacity_factor": 0.449,
+        "max_output": 0.895,
+        "min_output": 0.069,
+        "peak_hour_local": "2026-02-22 16:00:00",
+        "trough_hour_local": "2026-02-22 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.591,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.07,
+        "mean_wind_speed_ms": 7.55,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 21.55,
+        "day_ahead_energy_eflh": 10.67,
+        "mean_capacity_factor": 0.449,
+        "max_output": 0.895,
+        "min_output": 0.069,
+        "peak_hour_local": "2026-02-22 16:00:00",
+        "trough_hour_local": "2026-02-22 07:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.589,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.07,
+        "mean_wind_speed_ms": 7.55,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-21",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.48,
+        "day_ahead_energy_eflh": 10.8,
+        "mean_capacity_factor": 0.51,
+        "max_output": 0.901,
+        "min_output": 0.103,
+        "peak_hour_local": "2026-02-22 13:00:00",
+        "trough_hour_local": "2026-02-23 07:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.508,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.13,
+        "mean_wind_speed_ms": 7.58,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.48,
+        "day_ahead_energy_eflh": 10.8,
+        "mean_capacity_factor": 0.51,
+        "max_output": 0.901,
+        "min_output": 0.103,
+        "peak_hour_local": "2026-02-22 13:00:00",
+        "trough_hour_local": "2026-02-23 07:00:00",
+        "hours_near_rated": 1,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.504,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 2.13,
+        "mean_wind_speed_ms": 7.58,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-22",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.48,
+        "day_ahead_energy_eflh": 13.53,
+        "mean_capacity_factor": 0.468,
+        "max_output": 0.903,
+        "min_output": 0.067,
+        "peak_hour_local": "2026-02-24 01:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 2,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.508,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 7.44,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.48,
+        "day_ahead_energy_eflh": 13.53,
+        "mean_capacity_factor": 0.468,
+        "max_output": 0.903,
+        "min_output": 0.067,
+        "peak_hour_local": "2026-02-24 01:00:00",
+        "trough_hour_local": "2026-02-25 00:00:00",
+        "hours_near_rated": 2,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.506,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.5,
+        "mean_wind_speed_ms": 7.44,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-23",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 23.22,
+        "day_ahead_energy_eflh": 8.61,
+        "mean_capacity_factor": 0.484,
+        "max_output": 0.857,
+        "min_output": 0.063,
+        "peak_hour_local": "2026-02-26 04:00:00",
+        "trough_hour_local": "2026-02-25 01:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.619,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.53,
+        "mean_wind_speed_ms": 7.57,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 23.22,
+        "day_ahead_energy_eflh": 8.61,
+        "mean_capacity_factor": 0.484,
+        "max_output": 0.857,
+        "min_output": 0.063,
+        "peak_hour_local": "2026-02-26 04:00:00",
+        "trough_hour_local": "2026-02-25 01:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.62,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.53,
+        "mean_wind_speed_ms": 7.57,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-24",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.02,
+        "day_ahead_energy_eflh": 7.68,
+        "mean_capacity_factor": 0.5,
+        "max_output": 0.874,
+        "min_output": 0.066,
+        "peak_hour_local": "2026-02-27 01:00:00",
+        "trough_hour_local": "2026-02-25 15:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.555,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.94,
+        "mean_wind_speed_ms": 7.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 24.02,
+        "day_ahead_energy_eflh": 7.68,
+        "mean_capacity_factor": 0.5,
+        "max_output": 0.874,
+        "min_output": 0.066,
+        "peak_hour_local": "2026-02-27 01:00:00",
+        "trough_hour_local": "2026-02-25 15:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.551,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.94,
+        "mean_wind_speed_ms": 7.76,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-25",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 28.9,
+        "day_ahead_energy_eflh": 14.16,
+        "mean_capacity_factor": 0.602,
+        "max_output": 0.811,
+        "min_output": 0.262,
+        "peak_hour_local": "2026-02-27 18:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.627,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.95,
+        "mean_wind_speed_ms": 9.59,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 28.9,
+        "day_ahead_energy_eflh": 14.16,
+        "mean_capacity_factor": 0.602,
+        "max_output": 0.811,
+        "min_output": 0.262,
+        "peak_hour_local": "2026-02-27 18:00:00",
+        "trough_hour_local": "2026-02-27 11:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.621,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.95,
+        "mean_wind_speed_ms": 9.59,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-26",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 25.75,
+        "day_ahead_energy_eflh": 13.59,
+        "mean_capacity_factor": 0.536,
+        "max_output": 0.805,
+        "min_output": 0.104,
+        "peak_hour_local": "2026-02-28 13:00:00",
+        "trough_hour_local": "2026-03-01 05:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.564,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 8.94,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 25.75,
+        "day_ahead_energy_eflh": 13.59,
+        "mean_capacity_factor": 0.536,
+        "max_output": 0.805,
+        "min_output": 0.104,
+        "peak_hour_local": "2026-02-28 13:00:00",
+        "trough_hour_local": "2026-03-01 05:00:00",
+        "hours_near_rated": 0,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.56,
+        "confidence": "low",
+        "ramp_events": [],
+        "mean_ensemble_spread_ms": 1.77,
+        "mean_wind_speed_ms": 8.94,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  },
+  {
+    "issue_date": "2026-02-27",
+    "analysis": {
+      "t1": {
+        "turbine": "t1",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.61,
+        "day_ahead_energy_eflh": 14.34,
+        "mean_capacity_factor": 0.471,
+        "max_output": 0.927,
+        "min_output": 0.065,
+        "peak_hour_local": "2026-03-02 03:00:00",
+        "trough_hour_local": "2026-03-01 10:00:00",
+        "hours_near_rated": 6,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.433,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-03-01 22:00:00",
+            "delta": 0.292
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.08,
+        "mean_wind_speed_ms": 8.2,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      },
+      "t2": {
+        "turbine": "t2",
+        "hours": 48,
+        "energy_equivalent_full_load_hours": 22.61,
+        "day_ahead_energy_eflh": 14.34,
+        "mean_capacity_factor": 0.471,
+        "max_output": 0.927,
+        "min_output": 0.065,
+        "peak_hour_local": "2026-03-02 03:00:00",
+        "trough_hour_local": "2026-03-01 10:00:00",
+        "hours_near_rated": 6,
+        "hours_below_cutin": 0,
+        "mean_band_width": 0.43,
+        "confidence": "low",
+        "ramp_events": [
+          {
+            "time_local": "2026-03-01 22:00:00",
+            "delta": 0.292
+          }
+        ],
+        "mean_ensemble_spread_ms": 2.08,
+        "mean_wind_speed_ms": 8.2,
+        "calibration": "no verified history yet - publishing uncorrected model output"
+      }
+    },
+    "notes": [
+      "t1: inputs stable, no recompute needed",
+      "t2: inputs stable, no recompute needed"
+    ]
+  }
+]

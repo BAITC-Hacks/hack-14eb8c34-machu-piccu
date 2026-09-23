@@ -1,0 +1,11 @@
+{
+  "turbine": "pooled",
+  "trained_rows": 51620,
+  "best_iteration": 194,
+  "n_features": 63,
+  "quantiles": [
+    0.1,
+    0.5,
+    0.9
+  ]
+}

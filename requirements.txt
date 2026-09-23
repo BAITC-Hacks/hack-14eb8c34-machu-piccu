@@ -1,0 +1,17 @@
+# Core modelling stack
+pandas==3.0.6
+numpy==2.4.6
+scikit-learn==1.9.1
+lightgbm==4.7.0
+joblib==1.6.0
+pyarrow==25.0.1
+
+# Weather data access (Open-Meteo, no API key required)
+requests==2.34.2
+
+# Reporting figures
+matplotlib==3.11.2
+
+# Optional: the LLM reasoning layer (`python -m src.agent --reason`).
+# Everything else -- training, backtesting, forecasting -- runs without it.
+anthropic==1.8.0
