@@ -5,9 +5,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 17.92,
-        "day_ahead_energy_eflh": 4.6,
+        "energy_48h_eflh": 17.92,
+        "energy_day_ahead_24h_eflh": 4.6,
         "mean_capacity_factor": 0.373,
         "max_output": 0.892,
         "min_output": 0.029,
@@ -33,9 +34,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 17.8,
-        "day_ahead_energy_eflh": 4.54,
+        "energy_48h_eflh": 17.8,
+        "energy_day_ahead_24h_eflh": 4.54,
         "mean_capacity_factor": 0.371,
         "max_output": 0.889,
         "min_output": 0.027,
@@ -63,6 +65,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-01-30",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0964,
@@ -73,6 +76,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-01-30",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0968,
@@ -93,9 +97,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 18.35,
-        "day_ahead_energy_eflh": 13.53,
+        "energy_48h_eflh": 18.35,
+        "energy_day_ahead_24h_eflh": 13.53,
         "mean_capacity_factor": 0.382,
         "max_output": 0.89,
         "min_output": 0.024,
@@ -121,9 +126,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 18.23,
-        "day_ahead_energy_eflh": 13.47,
+        "energy_48h_eflh": 18.23,
+        "energy_day_ahead_24h_eflh": 13.47,
         "mean_capacity_factor": 0.38,
         "max_output": 0.888,
         "min_output": 0.021,
@@ -151,6 +157,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-01-31",
         "overlapping_hours": 24,
         "mean_abs_change": 0.069,
@@ -161,6 +168,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-01-31",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0688,
@@ -181,9 +189,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 13.94,
-        "day_ahead_energy_eflh": 6.57,
+        "energy_48h_eflh": 13.94,
+        "energy_day_ahead_24h_eflh": 6.57,
         "mean_capacity_factor": 0.29,
         "max_output": 0.642,
         "min_output": 0.042,
@@ -204,9 +213,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 13.89,
-        "day_ahead_energy_eflh": 6.55,
+        "energy_48h_eflh": 13.89,
+        "energy_day_ahead_24h_eflh": 6.55,
         "mean_capacity_factor": 0.289,
         "max_output": 0.641,
         "min_output": 0.041,
@@ -229,6 +239,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-01",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0884,
@@ -239,6 +250,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-01",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0895,
@@ -259,9 +271,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.17,
-        "day_ahead_energy_eflh": 9.37,
+        "energy_48h_eflh": 30.17,
+        "energy_day_ahead_24h_eflh": 9.37,
         "mean_capacity_factor": 0.628,
         "max_output": 0.919,
         "min_output": 0.113,
@@ -282,9 +295,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.13,
-        "day_ahead_energy_eflh": 9.35,
+        "energy_48h_eflh": 30.13,
+        "energy_day_ahead_24h_eflh": 9.35,
         "mean_capacity_factor": 0.628,
         "max_output": 0.918,
         "min_output": 0.113,
@@ -307,6 +321,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-02",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1124,
@@ -317,6 +332,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-02",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1125,
@@ -337,9 +353,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 35.25,
-        "day_ahead_energy_eflh": 20.87,
+        "energy_48h_eflh": 35.25,
+        "energy_day_ahead_24h_eflh": 20.87,
         "mean_capacity_factor": 0.734,
         "max_output": 0.917,
         "min_output": 0.076,
@@ -360,9 +377,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 35.22,
-        "day_ahead_energy_eflh": 20.86,
+        "energy_48h_eflh": 35.22,
+        "energy_day_ahead_24h_eflh": 20.86,
         "mean_capacity_factor": 0.734,
         "max_output": 0.917,
         "min_output": 0.075,
@@ -385,6 +403,7 @@
     "revisions": {
       "t1": {
         "changed": false,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-03",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0154,
@@ -395,6 +414,7 @@
       },
       "t2": {
         "changed": false,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-03",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0154,
@@ -415,9 +435,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.82,
-        "day_ahead_energy_eflh": 14.01,
+        "energy_48h_eflh": 21.82,
+        "energy_day_ahead_24h_eflh": 14.01,
         "mean_capacity_factor": 0.455,
         "max_output": 0.919,
         "min_output": 0.063,
@@ -438,9 +459,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.8,
-        "day_ahead_energy_eflh": 14.0,
+        "energy_48h_eflh": 21.8,
+        "energy_day_ahead_24h_eflh": 14.0,
         "mean_capacity_factor": 0.454,
         "max_output": 0.918,
         "min_output": 0.062,
@@ -463,6 +485,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-04",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0481,
@@ -473,6 +496,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-04",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0481,
@@ -493,9 +517,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.73,
-        "day_ahead_energy_eflh": 7.9,
+        "energy_48h_eflh": 21.73,
+        "energy_day_ahead_24h_eflh": 7.9,
         "mean_capacity_factor": 0.453,
         "max_output": 0.92,
         "min_output": 0.034,
@@ -521,9 +546,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.67,
-        "day_ahead_energy_eflh": 7.87,
+        "energy_48h_eflh": 21.67,
+        "energy_day_ahead_24h_eflh": 7.87,
         "mean_capacity_factor": 0.451,
         "max_output": 0.919,
         "min_output": 0.033,
@@ -551,6 +577,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-05",
         "overlapping_hours": 24,
         "mean_abs_change": 0.092,
@@ -561,6 +588,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-05",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0919,
@@ -581,9 +609,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 32.65,
-        "day_ahead_energy_eflh": 14.43,
+        "energy_48h_eflh": 32.65,
+        "energy_day_ahead_24h_eflh": 14.43,
         "mean_capacity_factor": 0.68,
         "max_output": 0.907,
         "min_output": 0.035,
@@ -609,9 +638,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 33.24,
-        "day_ahead_energy_eflh": 14.73,
+        "energy_48h_eflh": 33.24,
+        "energy_day_ahead_24h_eflh": 14.73,
         "mean_capacity_factor": 0.692,
         "max_output": 0.919,
         "min_output": 0.047,
@@ -639,6 +669,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-06",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0726,
@@ -649,6 +680,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-06",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0731,
@@ -669,9 +701,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 24.09,
-        "day_ahead_energy_eflh": 17.52,
+        "energy_48h_eflh": 24.09,
+        "energy_day_ahead_24h_eflh": 17.52,
         "mean_capacity_factor": 0.502,
         "max_output": 0.897,
         "min_output": 0.161,
@@ -692,9 +725,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 24.79,
-        "day_ahead_energy_eflh": 17.88,
+        "energy_48h_eflh": 24.79,
+        "energy_day_ahead_24h_eflh": 17.88,
         "mean_capacity_factor": 0.517,
         "max_output": 0.912,
         "min_output": 0.176,
@@ -717,6 +751,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-07",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0297,
@@ -727,6 +762,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-07",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0277,
@@ -747,9 +783,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.83,
-        "day_ahead_energy_eflh": 6.88,
+        "energy_48h_eflh": 21.83,
+        "energy_day_ahead_24h_eflh": 6.88,
         "mean_capacity_factor": 0.455,
         "max_output": 0.906,
         "min_output": 0.101,
@@ -775,9 +812,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 22.53,
-        "day_ahead_energy_eflh": 7.23,
+        "energy_48h_eflh": 22.53,
+        "energy_day_ahead_24h_eflh": 7.23,
         "mean_capacity_factor": 0.469,
         "max_output": 0.921,
         "min_output": 0.116,
@@ -805,6 +843,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-08",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0912,
@@ -815,6 +854,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-08",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0912,
@@ -835,9 +875,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 20.85,
-        "day_ahead_energy_eflh": 13.9,
+        "energy_48h_eflh": 20.85,
+        "energy_day_ahead_24h_eflh": 13.9,
         "mean_capacity_factor": 0.434,
         "max_output": 0.873,
         "min_output": 0.029,
@@ -863,9 +904,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.66,
-        "day_ahead_energy_eflh": 14.31,
+        "energy_48h_eflh": 21.66,
+        "energy_day_ahead_24h_eflh": 14.31,
         "mean_capacity_factor": 0.451,
         "max_output": 0.89,
         "min_output": 0.046,
@@ -893,6 +935,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-09",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0535,
@@ -903,6 +946,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-09",
         "overlapping_hours": 24,
         "mean_abs_change": 0.052,
@@ -923,9 +967,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 7.54,
-        "day_ahead_energy_eflh": 5.37,
+        "energy_48h_eflh": 7.54,
+        "energy_day_ahead_24h_eflh": 5.37,
         "mean_capacity_factor": 0.157,
         "max_output": 0.563,
         "min_output": 0.036,
@@ -946,9 +991,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 8.33,
-        "day_ahead_energy_eflh": 5.77,
+        "energy_48h_eflh": 8.33,
+        "energy_day_ahead_24h_eflh": 5.77,
         "mean_capacity_factor": 0.174,
         "max_output": 0.58,
         "min_output": 0.053,
@@ -971,6 +1017,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-10",
         "overlapping_hours": 24,
         "mean_abs_change": 0.14,
@@ -981,6 +1028,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-10",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1401,
@@ -1001,9 +1049,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 8.87,
-        "day_ahead_energy_eflh": 1.64,
+        "energy_48h_eflh": 8.87,
+        "energy_day_ahead_24h_eflh": 1.64,
         "mean_capacity_factor": 0.185,
         "max_output": 0.725,
         "min_output": 0.0,
@@ -1024,9 +1073,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 9.52,
-        "day_ahead_energy_eflh": 1.82,
+        "energy_48h_eflh": 9.52,
+        "energy_day_ahead_24h_eflh": 1.82,
         "mean_capacity_factor": 0.198,
         "max_output": 0.744,
         "min_output": 0.0,
@@ -1049,6 +1099,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-11",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0756,
@@ -1059,6 +1110,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-11",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0861,
@@ -1079,9 +1131,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 16.89,
-        "day_ahead_energy_eflh": 5.2,
+        "energy_48h_eflh": 16.89,
+        "energy_day_ahead_24h_eflh": 5.2,
         "mean_capacity_factor": 0.352,
         "max_output": 0.816,
         "min_output": 0.0,
@@ -1107,9 +1160,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 17.56,
-        "day_ahead_energy_eflh": 5.5,
+        "energy_48h_eflh": 17.56,
+        "energy_day_ahead_24h_eflh": 5.5,
         "mean_capacity_factor": 0.366,
         "max_output": 0.837,
         "min_output": 0.0,
@@ -1137,6 +1191,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-12",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0922,
@@ -1147,6 +1202,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-12",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0995,
@@ -1167,9 +1223,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 31.54,
-        "day_ahead_energy_eflh": 13.71,
+        "energy_48h_eflh": 31.54,
+        "energy_day_ahead_24h_eflh": 13.71,
         "mean_capacity_factor": 0.657,
         "max_output": 0.911,
         "min_output": 0.046,
@@ -1190,9 +1247,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 31.54,
-        "day_ahead_energy_eflh": 13.71,
+        "energy_48h_eflh": 31.54,
+        "energy_day_ahead_24h_eflh": 13.71,
         "mean_capacity_factor": 0.657,
         "max_output": 0.911,
         "min_output": 0.046,
@@ -1215,6 +1273,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-13",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0858,
@@ -1225,6 +1284,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-13",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0723,
@@ -1245,9 +1305,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 28.66,
-        "day_ahead_energy_eflh": 16.76,
+        "energy_48h_eflh": 28.66,
+        "energy_day_ahead_24h_eflh": 16.76,
         "mean_capacity_factor": 0.597,
         "max_output": 0.812,
         "min_output": 0.168,
@@ -1273,9 +1334,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 28.66,
-        "day_ahead_energy_eflh": 16.76,
+        "energy_48h_eflh": 28.66,
+        "energy_day_ahead_24h_eflh": 16.76,
         "mean_capacity_factor": 0.597,
         "max_output": 0.812,
         "min_output": 0.168,
@@ -1303,6 +1365,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-14",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1243,
@@ -1313,6 +1376,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-14",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1243,
@@ -1333,9 +1397,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 29.91,
-        "day_ahead_energy_eflh": 10.3,
+        "energy_48h_eflh": 29.91,
+        "energy_day_ahead_24h_eflh": 10.3,
         "mean_capacity_factor": 0.623,
         "max_output": 0.931,
         "min_output": 0.133,
@@ -1356,9 +1421,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 29.91,
-        "day_ahead_energy_eflh": 10.3,
+        "energy_48h_eflh": 29.91,
+        "energy_day_ahead_24h_eflh": 10.3,
         "mean_capacity_factor": 0.623,
         "max_output": 0.931,
         "min_output": 0.133,
@@ -1381,6 +1447,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-15",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0828,
@@ -1391,6 +1458,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-15",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0828,
@@ -1411,9 +1479,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.2,
-        "day_ahead_energy_eflh": 19.73,
+        "energy_48h_eflh": 30.2,
+        "energy_day_ahead_24h_eflh": 19.73,
         "mean_capacity_factor": 0.629,
         "max_output": 0.937,
         "min_output": 0.079,
@@ -1434,9 +1503,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.2,
-        "day_ahead_energy_eflh": 19.73,
+        "energy_48h_eflh": 30.2,
+        "energy_day_ahead_24h_eflh": 19.73,
         "mean_capacity_factor": 0.629,
         "max_output": 0.937,
         "min_output": 0.079,
@@ -1459,6 +1529,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-16",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0257,
@@ -1469,6 +1540,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-16",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0257,
@@ -1489,9 +1561,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 16.76,
-        "day_ahead_energy_eflh": 9.33,
+        "energy_48h_eflh": 16.76,
+        "energy_day_ahead_24h_eflh": 9.33,
         "mean_capacity_factor": 0.349,
         "max_output": 0.725,
         "min_output": 0.08,
@@ -1512,9 +1585,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 16.76,
-        "day_ahead_energy_eflh": 9.33,
+        "energy_48h_eflh": 16.76,
+        "energy_day_ahead_24h_eflh": 9.33,
         "mean_capacity_factor": 0.349,
         "max_output": 0.725,
         "min_output": 0.08,
@@ -1537,6 +1611,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-17",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0773,
@@ -1547,6 +1622,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-17",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0773,
@@ -1567,9 +1643,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 20.82,
-        "day_ahead_energy_eflh": 7.77,
+        "energy_48h_eflh": 20.82,
+        "energy_day_ahead_24h_eflh": 7.77,
         "mean_capacity_factor": 0.434,
         "max_output": 0.708,
         "min_output": 0.093,
@@ -1590,9 +1667,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 20.82,
-        "day_ahead_energy_eflh": 7.77,
+        "energy_48h_eflh": 20.82,
+        "energy_day_ahead_24h_eflh": 7.77,
         "mean_capacity_factor": 0.434,
         "max_output": 0.708,
         "min_output": 0.093,
@@ -1615,6 +1693,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-18",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1125,
@@ -1625,6 +1704,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-18",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1125,
@@ -1645,9 +1725,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 24.67,
-        "day_ahead_energy_eflh": 13.88,
+        "energy_48h_eflh": 24.67,
+        "energy_day_ahead_24h_eflh": 13.88,
         "mean_capacity_factor": 0.514,
         "max_output": 0.904,
         "min_output": 0.053,
@@ -1668,9 +1749,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 24.67,
-        "day_ahead_energy_eflh": 13.88,
+        "energy_48h_eflh": 24.67,
+        "energy_day_ahead_24h_eflh": 13.88,
         "mean_capacity_factor": 0.514,
         "max_output": 0.904,
         "min_output": 0.053,
@@ -1693,6 +1775,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-19",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1031,
@@ -1703,6 +1786,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-19",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1031,
@@ -1723,9 +1807,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 19.52,
-        "day_ahead_energy_eflh": 10.26,
+        "energy_48h_eflh": 19.52,
+        "energy_day_ahead_24h_eflh": 10.26,
         "mean_capacity_factor": 0.407,
         "max_output": 0.893,
         "min_output": 0.055,
@@ -1746,9 +1831,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 19.52,
-        "day_ahead_energy_eflh": 10.26,
+        "energy_48h_eflh": 19.52,
+        "energy_day_ahead_24h_eflh": 10.26,
         "mean_capacity_factor": 0.407,
         "max_output": 0.893,
         "min_output": 0.055,
@@ -1771,6 +1857,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-20",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1965,
@@ -1781,6 +1868,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-20",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1965,
@@ -1801,9 +1889,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.75,
-        "day_ahead_energy_eflh": 8.21,
+        "energy_48h_eflh": 21.75,
+        "energy_day_ahead_24h_eflh": 8.21,
         "mean_capacity_factor": 0.453,
         "max_output": 0.903,
         "min_output": 0.056,
@@ -1824,9 +1913,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 21.75,
-        "day_ahead_energy_eflh": 8.21,
+        "energy_48h_eflh": 21.75,
+        "energy_day_ahead_24h_eflh": 8.21,
         "mean_capacity_factor": 0.453,
         "max_output": 0.903,
         "min_output": 0.056,
@@ -1849,6 +1939,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-21",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0626,
@@ -1859,6 +1950,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-21",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0626,
@@ -1879,9 +1971,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 22.46,
-        "day_ahead_energy_eflh": 13.33,
+        "energy_48h_eflh": 22.46,
+        "energy_day_ahead_24h_eflh": 13.33,
         "mean_capacity_factor": 0.468,
         "max_output": 0.911,
         "min_output": 0.05,
@@ -1902,9 +1995,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 22.46,
-        "day_ahead_energy_eflh": 13.33,
+        "energy_48h_eflh": 22.46,
+        "energy_day_ahead_24h_eflh": 13.33,
         "mean_capacity_factor": 0.468,
         "max_output": 0.911,
         "min_output": 0.05,
@@ -1927,6 +2021,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-22",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0314,
@@ -1937,6 +2032,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-22",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0314,
@@ -1957,9 +2053,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 18.9,
-        "day_ahead_energy_eflh": 3.12,
+        "energy_48h_eflh": 18.9,
+        "energy_day_ahead_24h_eflh": 3.12,
         "mean_capacity_factor": 0.394,
         "max_output": 0.822,
         "min_output": 0.048,
@@ -1980,9 +2077,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 18.9,
-        "day_ahead_energy_eflh": 3.12,
+        "energy_48h_eflh": 18.9,
+        "energy_day_ahead_24h_eflh": 3.12,
         "mean_capacity_factor": 0.394,
         "max_output": 0.822,
         "min_output": 0.048,
@@ -2005,6 +2103,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-23",
         "overlapping_hours": 24,
         "mean_abs_change": 0.2502,
@@ -2015,6 +2114,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-23",
         "overlapping_hours": 24,
         "mean_abs_change": 0.2502,
@@ -2035,9 +2135,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.95,
-        "day_ahead_energy_eflh": 15.08,
+        "energy_48h_eflh": 30.95,
+        "energy_day_ahead_24h_eflh": 15.08,
         "mean_capacity_factor": 0.645,
         "max_output": 0.85,
         "min_output": 0.263,
@@ -2058,9 +2159,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 30.95,
-        "day_ahead_energy_eflh": 15.08,
+        "energy_48h_eflh": 30.95,
+        "energy_day_ahead_24h_eflh": 15.08,
         "mean_capacity_factor": 0.645,
         "max_output": 0.85,
         "min_output": 0.263,
@@ -2083,6 +2185,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-24",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0701,
@@ -2093,6 +2196,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-24",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0701,
@@ -2113,9 +2217,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 29.99,
-        "day_ahead_energy_eflh": 13.41,
+        "energy_48h_eflh": 29.99,
+        "energy_day_ahead_24h_eflh": 13.41,
         "mean_capacity_factor": 0.625,
         "max_output": 0.86,
         "min_output": 0.224,
@@ -2136,9 +2241,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 29.99,
-        "day_ahead_energy_eflh": 13.41,
+        "energy_48h_eflh": 29.99,
+        "energy_day_ahead_24h_eflh": 13.41,
         "mean_capacity_factor": 0.625,
         "max_output": 0.86,
         "min_output": 0.224,
@@ -2161,6 +2267,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-25",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1032,
@@ -2171,6 +2278,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-25",
         "overlapping_hours": 24,
         "mean_abs_change": 0.1032,
@@ -2191,9 +2299,10 @@
     "analysis": {
       "t1": {
         "turbine": "t1",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 20.46,
-        "day_ahead_energy_eflh": 17.5,
+        "energy_48h_eflh": 20.46,
+        "energy_day_ahead_24h_eflh": 17.5,
         "mean_capacity_factor": 0.426,
         "max_output": 0.867,
         "min_output": 0.059,
@@ -2214,9 +2323,10 @@
       },
       "t2": {
         "turbine": "t2",
+        "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
         "hours": 48,
-        "energy_equivalent_full_load_hours": 20.46,
-        "day_ahead_energy_eflh": 17.5,
+        "energy_48h_eflh": 20.46,
+        "energy_day_ahead_24h_eflh": 17.5,
         "mean_capacity_factor": 0.426,
         "max_output": 0.867,
         "min_output": 0.059,
@@ -2239,6 +2349,7 @@
     "revisions": {
       "t1": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-26",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0543,
@@ -2249,6 +2360,7 @@
       },
       "t2": {
         "changed": true,
+        "units": "fraction of rated power",
         "previous_issue_date": "2026-02-26",
         "overlapping_hours": 24,
         "mean_abs_change": 0.0543,

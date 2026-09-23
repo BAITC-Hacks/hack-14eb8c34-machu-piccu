@@ -54,9 +54,10 @@ running consistently high for a fortnight deserves a caveat.
 - Always call check_input_updates for each turbine: if the newest runs moved \
 the day-ahead forecast materially, say what changed and in which direction.
 
-Finish with a short operator briefing (under 250 words): expected energy, the \
-shape of the day, any ramps worth staffing for, and your confidence with the \
-reason for it. Write for a dispatcher deciding how much reserve to hold, not \
+Finish with a short operator briefing (under 250 words): expected energy per \
+turbine, quoting both energy_48h_eflh and energy_day_ahead_24h_eflh exactly as \
+run_forecast_cycle returned them, the shape of the day, any ramps worth staffing \
+for, and your confidence with the reason for it. Write for a dispatcher deciding how much reserve to hold, not \
 for a data scientist. No preamble."""
 
 # The tool functions below are module-level so the SDK can derive their schemas.
@@ -288,8 +289,8 @@ class WindAgent:
         for key, a in run.analysis.items():
             lines += [
                 f"{config.TURBINES[key].name}:",
-                f"  Expected energy   {a['energy_equivalent_full_load_hours']} equivalent full-load hours"
-                f" (mean capacity factor {a['mean_capacity_factor']:.0%}); day-ahead {a['day_ahead_energy_eflh']}",
+                f"  Expected energy   {a['energy_48h_eflh']} equivalent full-load hours over 48 h"
+                f" (mean capacity factor {a['mean_capacity_factor']:.0%}); day-ahead 24 h: {a['energy_day_ahead_24h_eflh']}",
                 f"  Peak {a['max_output']:.0%} at {a['peak_hour_local']}; "
                 f"low {a['min_output']:.0%} at {a['trough_hour_local']}",
                 f"  Confidence {a['confidence']} (P10-P90 width {a['mean_band_width']:.2f},"
@@ -344,7 +345,7 @@ class WindAgent:
 
 
 def replay_with_reasoning(start: str, end: str, policy: str, provider: str | None, model: str | None,
-                          budget_usd: float, warmup_days: int = 14) -> dict:
+                          budget_usd: float, warmup_days: int = 30) -> dict:
     """Run the reasoning mode for every issue date in a window, within a budget.
 
     The calibrator and the recent-performance tool need a verification log, so
@@ -396,13 +397,15 @@ def main() -> None:
     parser.add_argument("--start", default=None, help="with --reason: replay the reasoning mode from this date")
     parser.add_argument("--end", default=None, help="with --reason: ... to this date (inclusive)")
     parser.add_argument("--budget-usd", type=float, default=3.0, help="stop an LLM replay before exceeding this spend")
-    parser.add_argument("--warmup-days", type=int, default=14,
-                        help="archive mode: replay this many preceding days first to populate the verification log")
+    parser.add_argument("--warmup-days", type=int, default=30,
+                        help="archive mode: replay this many preceding days first to populate the verification log "
+                             "(30 = the same warm-up the deterministic backtest uses, so numbers match exactly)")
     args = parser.parse_args()
     provider = None if args.llm == "auto" else args.llm
 
     if args.reason and args.start:
-        report = replay_with_reasoning(args.start, args.end or args.start, args.policy, provider, args.model, args.budget_usd)
+        report = replay_with_reasoning(args.start, args.end or args.start, args.policy, provider, args.model,
+                                       args.budget_usd, warmup_days=args.warmup_days)
         print(f"\nLLM replay: {report['cycles']} cycles, estimated ${report['estimated_total_usd']:.3f}; "
               f"transcripts in {config.OUTPUT_DIR / 'agent_transcripts'}")
         return

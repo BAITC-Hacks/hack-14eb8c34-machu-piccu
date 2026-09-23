@@ -210,9 +210,10 @@ class ForecastPipeline:
 
         return {
             "turbine": turbine_key,
+            "units": "power and changes are fractions of rated power; energy is equivalent full-load hours",
             "hours": int(len(published)),
-            "energy_equivalent_full_load_hours": round(float(fc.sum()), 2),
-            "day_ahead_energy_eflh": round(float(day_ahead["forecast"].sum()), 2),
+            "energy_48h_eflh": round(float(fc.sum()), 2),
+            "energy_day_ahead_24h_eflh": round(float(day_ahead["forecast"].sum()), 2),
             "mean_capacity_factor": round(float(fc.mean()), 3),
             "max_output": round(float(fc.max()), 3),
             "min_output": round(float(fc.min()), 3),
