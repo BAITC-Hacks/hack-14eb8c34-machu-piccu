@@ -407,9 +407,9 @@ What was tried, measured and kept or rejected. Numbers are MAE in fractions of r
 | Turbine-state features (last 24 h power, availability) | 0.5 % of gain; removing them costs +0.0007 | keep, documented as weak |
 | `strict` vs `rolling` policy | +11 % MAE for 48 h instead of 24 h lead | both shipped, `rolling` primary |
 | Reasoning-mode transcripts, first run | 31 tool errors (ordering), 14 cycles off the deterministic numbers (shorter warm-up), 3 briefings quoting the wrong energy field | tools made self-sufficient, fields renamed, warm-up aligned; rerun passes the audit 28/28 |
-| Partner benchmark (`src/benchmark.py`, `reports/model_comparison.json`): LightGBM L2 vs L1 objective vs CatBoost, mean over folds | 0.1717 / **0.1636** / 0.1695 | L1 objective is the first candidate for the next iteration |
-| Partner deep-learning study (`src/deep.py`, `reports/deep_comparison.json`): RNN, LSTM, BiLSTM, small MLPs vs LightGBM on the same evaluation | nets 0.150–0.159, LightGBM L1 0.146, LightGBM L2 0.164 | tree models stay; nets do not pay for themselves at this data size |
-| Independent pipeline by the third team member (`power_forecasting/`): 15-feature LightGBM, walk-forward over the last four months with as-of checkpoints, 42 own tests | overall 0.151, D1 0.142, D2 0.159 (its own validation, not directly comparable) | kept as an independent confirmation of the error level; it has no agent loop |
+| Learner benchmark (`src/benchmark.py`, `reports/model_comparison.json`): LightGBM L2 vs L1 objective vs CatBoost, mean over folds | 0.1717 / **0.1636** / 0.1695 | L1 objective is the first candidate for the next iteration |
+| Deep-learning study (`src/deep.py`, `reports/deep_comparison.json`): RNN, LSTM, BiLSTM, small MLPs vs LightGBM on the same evaluation | nets 0.150–0.159, LightGBM L1 0.146, LightGBM L2 0.164 | tree models stay; nets do not pay for themselves at this data size |
+| Independent validation pipeline (`power_forecasting/`): 15-feature LightGBM, walk-forward over the last four months with as-of checkpoints, 42 own tests | overall 0.151, D1 0.142, D2 0.159 (its own validation, not directly comparable) | kept as an independent confirmation of the error level; it has no agent loop |
 
 The experiment folders need `pip install -r requirements-experiments.txt` (PyTorch) and are not
 part of the pipeline.
@@ -424,7 +424,7 @@ part of the pipeline.
 | Technical implementation, architecture, use of agentic AI (25) | Layered `weather → dataset/features → model → calibration → pipeline → agent`; the as-of moment is an explicit, tested parameter; a three-model ensemble; a measured input-update step; an LLM driving real tools with saved transcripts and an automated audit proving it changed no number | Fully met. The implementation matches the stated logic, and the parts most easily faked (honesty of the replay, the recompute step) are measured, not claimed. |
 | README and reproducibility (25) | This document in two languages; weather cache and trained model committed; a fresh clone reproduces the submission byte for byte; 14 tests; `AGENTS.md` and `Makefile`; every headline number traceable to a file | Fully met. Reviewers can verify each claim without network access or keys. |
 | Value and applicability (15) | Half the error of naive forecasts; calibrated P10–P90 bands for reserve decisions; dispatcher briefings that state confidence and revisions; honest lead labelling a control room can trust | Met to a high standard for a two-turbine site; scaling to a fleet follows the roadmap. |
-| Development potential and originality (10) | Two honesty policies with a measured price; calibration from the system's own verified errors; conformal intervals; the finding that single-lead training generalises better; a documented path to exact NWP runs and ensemble members; three parallel implementations converging on the same error level | Met. The approach is original where it matters (honesty and self-verification) and has a clear growth path. |
+| Development potential and originality (10) | Two honesty policies with a measured price; calibration from the system's own verified errors; conformal intervals; the finding that single-lead training generalises better; a documented path to exact NWP runs and ensemble members; an independent validation pipeline converging on the same error level | Met. The approach is original where it matters (honesty and self-verification) and has a clear growth path. |
 
 ---
 
@@ -435,7 +435,7 @@ quoted accuracy optimistic for it; the online calibration decays during February
 actuals; the lead archive starts in March 2024, so only ~2 years train with matched leads; band
 coverage is 76 % against 80 %; curtailment (~0.7 % of hours) is not predictable from weather;
 ensemble spread predicts error only weakly (correlation 0.14 with absolute wind error); the SCADA
-clock offset is UTC+6 by our two methods, UTC+5 by the third pipeline's, a difference of 0.007 in
+clock offset is UTC+6 by two methods, UTC+5 by the independent pipeline's, a difference of 0.007 in
 correlation that remains open.
 
 Roadmap, in order of expected value:
@@ -443,7 +443,7 @@ Roadmap, in order of expected value:
 1. **Exact NWP runs** from raw GRIB archives (NOAA GFS `s3://noaa-gfs-bdp-pds`, ECMWF Open Data
    `s3://ecmwf-forecasts`): the 00Z run of day D at 12–36 h lead, strictly honest and fresher than
    `strict`.
-2. **L1 objective and rolling provider-quality features** from the partner experiments and the
+2. **L1 objective and rolling provider-quality features** from the benchmark experiments and the
    independent pipeline; both showed lower MAE on their validations.
 3. **Ensemble members**, not only means: Open-Meteo's ensemble API exposes 30–50 perturbed members
    per model; weather is the binding constraint.
@@ -483,8 +483,8 @@ SDKs are optional and only used with `--reason`).
 `artifacts/validation_summary.json`. Deliverable files: `outputs/february_2026_*_submission_local.csv`.
 Per-cycle analyses with revisions: `outputs/*_daily_briefings.json`. LLM transcripts and the
 replay cost: `outputs/agent_transcripts/`. Weather archive: `cache/` (90 parquet chunks). Trained
-model: `artifacts/pooled_model.joblib`. Partner experiments: `reports/model_comparison.json`,
-`reports/deep_comparison.json`; the independent pipeline: `power_forecasting/` with its own README.
+model: `artifacts/pooled_model.joblib`. Model benchmarks: `reports/model_comparison.json`,
+`reports/deep_comparison.json`; the independent validation pipeline: `power_forecasting/` with its own README.
 
 **Reading order for the code.** `src/config.py` (coordinates, sources, the two policies) →
 `src/features.py` (`issue_moment_utc`, `build_block`) → `src/pipeline.py` (the seven steps,
@@ -495,8 +495,8 @@ model: `artifacts/pooled_model.joblib`. Partner experiments: `reports/model_comp
 produced byte-identical submission files. Replays make no network calls when `cache/` is present.
 
 **Non-goals.** The February 2026 actuals are not in the repository, so no February accuracy is
-computed here; `power_forecasting/predictions/final_forecast.csv` is the third member's
-independent estimate, not the submission.
+computed here; `power_forecasting/predictions/final_forecast.csv` is the independent
+pipeline's estimate, not the submission.
 
 ---
 
@@ -519,14 +519,14 @@ src/
   train.py             training
   audit_transcripts.py audit of reasoning-mode transcripts against tool outputs and the replay
   report.py            figures for this README
-  benchmark.py, deep.py   partner experiments (optional, requirements-experiments.txt)
+  benchmark.py, deep.py   learner benchmarks and the deep-learning study (optional, requirements-experiments.txt)
 tests/                 offline honesty tests (pytest)
-power_forecasting/     independent pipeline of the third team member, own README and tests
+power_forecasting/     independent validation pipeline, own README and tests
 dataset/               the two SCADA CSV files
 cache/                 Open-Meteo archive chunks (parquet): replays run offline
 artifacts/             trained model and validation summary
 outputs/               submissions, reports, daily analyses; agent_transcripts/ (LLM mode)
-reports/               figures and the partner experiment results
+reports/               figures and benchmark results
 app.py                 Streamlit dashboard
 AGENTS.md, Makefile    cheat sheet and the same commands as make targets
 ```
